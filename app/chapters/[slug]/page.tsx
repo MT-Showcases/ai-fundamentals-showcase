@@ -1,5 +1,3 @@
-'use client';
-
 import { chapters } from '@/data/chapters';
 import { notFound } from 'next/navigation';
 import ChapterHeader from '@/components/ChapterHeader';
@@ -8,6 +6,14 @@ import KeyTakeaway from '@/components/KeyTakeaway';
 import DiscussionPrompt from '@/components/DiscussionPrompt';
 import ChapterNav from '@/components/ChapterNav';
 import Breadcrumb from '@/components/Breadcrumb';
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  return chapters.map((chapter) => ({
+    slug: chapter.slug,
+  }));
+}
 
 export default function ChapterPage({
   params,
