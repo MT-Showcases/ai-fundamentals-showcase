@@ -7,7 +7,8 @@ import DiscussionPrompt from '@/components/DiscussionPrompt';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
 
-export const revalidate = 3600;
+export const revalidate = 60; // ISR: Revalidate every 60 seconds
+export const dynamicParams = true; // Allow on-demand generation
 
 export type Params = Promise<{ slug: string }>;
 
