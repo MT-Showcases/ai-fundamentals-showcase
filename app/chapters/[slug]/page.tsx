@@ -1,3 +1,4 @@
+// Vercel rebuild trigger: 1777036103
 import { chapters } from '@/data/chapters';
 import { notFound } from 'next/navigation';
 import ChapterHeader from '@/components/ChapterHeader';
