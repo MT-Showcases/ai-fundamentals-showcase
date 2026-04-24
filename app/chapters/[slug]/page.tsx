@@ -7,9 +7,12 @@ import DiscussionPrompt from '@/components/DiscussionPrompt';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export type Params = Promise<{ slug: string }>;
+
+export async function generateMetadata(props: { params: Params }) {
+  const params = await props.params;
   const chapter = chapters.find((ch) => ch.slug === params.slug);
   if (!chapter) return { title: '404' };
   return {
@@ -18,18 +21,18 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return chapters.map((chapter) => ({
     slug: chapter.slug,
   }));
 }
 
 interface Props {
-  params: { slug: string };
+  params: Params;
 }
 
-export default function ChapterPage({ params }: Props) {
-  const { slug } = params;
+export default async function ChapterPage({ params }: Props) {
+  const { slug } = await params;
   const chapter = chapters.find((ch) => ch.slug === slug);
 
   if (!chapter) {
