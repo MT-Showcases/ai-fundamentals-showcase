@@ -1,5 +1,3 @@
-'use client';
-
 import { chapters } from '@/data/chapters';
 import { notFound } from 'next/navigation';
 import ChapterHeader from '@/components/ChapterHeader';
@@ -16,11 +14,11 @@ export async function generateStaticParams() {
 }
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
-export default async function ChapterPage({ params }: Props) {
-  const { slug } = await params;
+export default function ChapterPage({ params }: Props) {
+  const { slug } = params;
   const chapter = chapters.find((ch) => ch.slug === slug);
 
   if (!chapter) {
@@ -54,11 +52,9 @@ export default async function ChapterPage({ params }: Props) {
           </div>
 
           <ChapterHeader
-            chapter={{
-              title: chapter.title,
-              description: chapter.description,
-              slug: chapter.slug,
-            }}
+            title={chapter.title}
+            description={chapter.description}
+            chapterNumber={chapter.id}
           />
         </div>
 
