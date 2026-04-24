@@ -12,7 +12,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h1 className="text-5xl font-bold mb-4">Fondamenti di AI</h1>
           <p className="text-cyan-300 text-lg mb-6">
-            Un percorso completo per comprendere l'Intelligenza Artificiale: dai concetti base alle applicazioni moderne
+            Un percorso completo per comprendere l&apos;Intelligenza Artificiale: dai concetti base alle applicazioni moderne
           </p>
           <div className="flex gap-8 text-sm text-gray-300">
             <div>
