@@ -7,6 +7,17 @@ import DiscussionPrompt from '@/components/DiscussionPrompt';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
 
+export const revalidate = 3600; // Revalidate every hour
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const chapter = chapters.find((ch) => ch.slug === params.slug);
+  if (!chapter) return { title: '404' };
+  return {
+    title: chapter.title,
+    description: chapter.description,
+  };
+}
+
 export async function generateStaticParams() {
   return chapters.map((chapter) => ({
     slug: chapter.slug,
