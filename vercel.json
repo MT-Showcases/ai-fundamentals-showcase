@@ -1,6 +1,14 @@
 {
-  "name": "ai-fundamentals-showcase",
-  "framework": "nextjs",
   "buildCommand": "npm run build",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "github": {
+    "enabled": false
+  },
+  "env": [
+    {
+      "key": "NEXT_TELEMETRY_DISABLED",
+      "value": "1"
+    }
+  ]
 }
