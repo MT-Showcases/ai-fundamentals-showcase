@@ -1,4 +1,3 @@
-// Vercel rebuild trigger: 1777036103
 import { chapters } from '@/data/chapters';
 import { notFound } from 'next/navigation';
 import ChapterHeader from '@/components/ChapterHeader';
@@ -11,18 +10,6 @@ import Link from 'next/link';
 export const revalidate = 60; // ISR: Revalidate every 60 seconds
 export const dynamicParams = true; // Allow on-demand generation
 
-export type Params = Promise<{ slug: string }>;
-
-export async function generateMetadata(props: { params: Params }) {
-  const params = await props.params;
-  const chapter = chapters.find((ch) => ch.slug === params.slug);
-  if (!chapter) return { title: '404' };
-  return {
-    title: chapter.title,
-    description: chapter.description,
-  };
-}
-
 export function generateStaticParams() {
   return chapters.map((chapter) => ({
     slug: chapter.slug,
@@ -30,14 +17,21 @@ export function generateStaticParams() {
 }
 
 interface Props {
-  params: Params;
+  params: { slug: string };
 }
 
-export default async function ChapterPage({ params }: Props) {
-  const { slug } = await params;
+export default function ChapterPage({ params }: Props) {
+  const { slug } = params;
+  
+  // DEBUG: Log what slug we received
+  console.log('[Chapter Page] Rendering slug:', slug, 'time:', new Date().toISOString());
+  
   const chapter = chapters.find((ch) => ch.slug === slug);
 
+  // DEBUG: Log if chapter was found
   if (!chapter) {
+    console.log('[Chapter Page] Chapter not found for slug:', slug);
+    console.log('[Chapter Page] Available slugs:', chapters.map(c => c.slug).slice(0, 3));
     notFound();
   }
 
