@@ -32,7 +32,7 @@ export default function ChaptersLayout({
                   className="block px-3 py-2 rounded hover:bg-blue-800 text-sm text-gray-300 hover:text-cyan-300 transition-colors"
                   onClick={() => setSidebarOpen(false)}
                 >
-                  <span className="text-yellow-400 font-bold mr-2">{chapter.id}</span>
+                  <span className="text-cyan-300 font-bold mr-2">{chapter.id}</span>
                   {chapter.title}
                 </Link>
               </li>

@@ -8,7 +8,6 @@
   --navy-700: #2a4070;
   --blue-400: #00a8ff;
   --cyan-300: #00d9ff;
-  --yellow-400: #ffd700;
 }
 
 @theme inline {
@@ -19,7 +18,6 @@
   --color-navy-700: var(--navy-700);
   --color-blue-400: var(--blue-400);
   --color-cyan-300: var(--cyan-300);
-  --color-yellow-400: var(--yellow-400);
 }
 
 @media (prefers-color-scheme: dark) {
