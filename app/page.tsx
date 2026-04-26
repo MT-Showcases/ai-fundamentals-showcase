@@ -10,9 +10,6 @@ export default function Home() {
       {/* Header */}
       <header className="bg-gradient-to-r from-navy-900 via-blue-900 to-navy-800 py-14 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-blue-400/10 border border-blue-400/30 rounded-full px-4 py-1.5 text-xs font-semibold text-blue-400 mb-5 tracking-wide uppercase">
-            ✦ Steve Jobs Academy Catania
-          </div>
           <h1 className="text-5xl md:text-6xl font-extrabold mb-3 leading-tight">
             Fondamenti di AI
           </h1>
@@ -78,7 +75,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
               <p className="text-white font-semibold text-sm">Fondamenti di AI</p>
-              <p className="text-gray-400 text-xs mt-0.5">Steve Jobs Academy Catania</p>
+              <p className="text-gray-400 text-xs mt-0.5">Corso di Formazione AI</p>
             </div>
             <div className="text-center sm:text-right">
               <p className="text-gray-300 text-sm">Docente: <span className="text-cyan-400 font-medium">Michele Tornello</span></p>
