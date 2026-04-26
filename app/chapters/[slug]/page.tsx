@@ -17,11 +17,11 @@ export function generateStaticParams() {
 }
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export default function ChapterPage({ params }: Props) {
-  const { slug } = params;
+export default async function ChapterPage({ params }: Props) {
+  const { slug } = await params;
   
   // DEBUG: Log what slug we received
   console.log('[Chapter Page] Rendering slug:', slug, 'time:', new Date().toISOString());
