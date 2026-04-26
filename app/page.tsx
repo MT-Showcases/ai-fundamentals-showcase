@@ -4,6 +4,24 @@ import { chapters } from '@/data/chapters';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
 
+const chapterEmojis: Record<number, string> = {
+  1: '📚',
+  2: '🧠',
+  3: '📊',
+  4: '🤖',
+  5: '⚡',
+  6: '💬',
+  7: '👁️',
+  8: '✨',
+  9: '🎯',
+  10: '⚖️',
+  11: '📜',
+  12: '💼',
+  13: '🛠️',
+  14: '🔮',
+  15: '🚀',
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-navy-900 text-white">
@@ -21,41 +39,43 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-6 text-sm text-gray-300">
             <div className="flex items-center gap-2">
-              <span className="text-cyan-400 font-bold text-2xl">{chapters.length}</span>
-              <span className="text-gray-400">Capitoli</span>
+              <span className="text-cyan-400 font-extrabold text-3xl">{chapters.length}</span>
+              <span className="text-gray-400 text-sm">Capitoli</span>
             </div>
             <div className="w-px bg-blue-700 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-cyan-400 font-bold text-2xl">~3h</span>
-              <span className="text-gray-400">di lettura</span>
+              <span className="text-cyan-400 font-extrabold text-3xl">~3h</span>
+              <span className="text-gray-400 text-sm">di lettura</span>
             </div>
             <div className="w-px bg-blue-700 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-cyan-400 font-bold text-2xl">
+              <span className="text-cyan-400 font-extrabold text-3xl">
                 {chapters.reduce((acc, ch) => acc + (ch.discussionPrompts?.length || 0), 0)}
               </span>
-              <span className="text-gray-400">Discussioni</span>
+              <span className="text-gray-400 text-sm">Discussioni</span>
             </div>
           </div>
         </div>
       </header>
 
       {/* Chapters Grid */}
-      <section className="py-10 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-cyan-300">Percorso di Apprendimento</h2>
+      <section className="py-12 px-6">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-white">Percorso di Apprendimento</h2>
             <span className="text-sm text-gray-500">{chapters.length} capitoli disponibili</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {chapters.map((chapter) => (
               <Card key={chapter.id}>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="bg-yellow-400 text-navy-900 px-2 py-0.5 rounded text-xs font-bold">
+                  <span className="bg-cyan-400 text-navy-900 px-2 py-0.5 rounded text-xs font-bold">
                     Cap. {chapter.id}
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-white mb-1.5 leading-snug">{chapter.title}</h3>
+                <h3 className="text-base font-bold text-white mb-3 leading-snug">
+                  {chapterEmojis[chapter.id] ?? ''} {chapter.title}
+                </h3>
                 <p className="text-gray-300 text-sm mb-3 line-clamp-2">{chapter.description}</p>
                 <div className="text-xs text-gray-500 mb-4">
                   {chapter.sections.length} sezioni · {chapter.keyTakeaways.length} punti chiave
