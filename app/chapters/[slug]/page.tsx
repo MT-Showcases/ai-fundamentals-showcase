@@ -56,13 +56,12 @@ export default async function ChapterPage({ params }: Props) {
 
         {/* Main grid: sidebar + content */}
         <div className="flex gap-0 md:gap-6 lg:gap-8">
-          {/* Sidebar — 1 col on md, 1 col on lg */}
-          <div className="hidden md:block md:w-64 lg:w-72 flex-shrink-0">
-            <ChapterSidebar currentSlug={slug} />
-          </div>
-
-          {/* Mobile sidebar (rendered via ChapterSidebar's own fixed positioning) */}
-          <div className="md:hidden">
+          {/*
+            Single ChapterSidebar instance:
+            - Mobile: w-0 (no layout space) — sidebar is fixed overlay, hamburger is fixed top-right
+            - Desktop (md+): w-64/w-72 sticky sidebar in flex layout
+          */}
+          <div className="w-0 overflow-visible md:w-64 lg:w-72 flex-shrink-0">
             <ChapterSidebar currentSlug={slug} />
           </div>
 
