@@ -76,11 +76,11 @@ export default function Home() {
                 <h3 className="text-base font-bold text-white mb-3 leading-snug">
                   {chapterEmojis[chapter.id] ?? ''} {chapter.title}
                 </h3>
-                <p className="text-gray-300 text-sm mb-3 line-clamp-2">{chapter.description}</p>
+                <p className="text-gray-300 text-base mb-3 line-clamp-2">{chapter.description}</p>
                 <div className="text-xs text-gray-500 mb-4">
                   {chapter.sections.length} sezioni · {chapter.keyTakeaways.length} punti chiave
                 </div>
-                <Button href={`/chapters/${chapter.slug}`} className="w-full text-center text-sm py-2.5">
+                <Button href={`/chapters/${chapter.slug}`} className="w-full text-center py-3">
                   Leggi Capitolo →
                 </Button>
               </Card>
