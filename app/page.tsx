@@ -1,26 +1,10 @@
 'use client';
 
 import { chapters } from '@/data/chapters';
+import { chapterEmojis } from '@/data/chapterEmojis';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
-
-const chapterEmojis: Record<number, string> = {
-  1: '📚',
-  2: '🧠',
-  3: '📊',
-  4: '🤖',
-  5: '⚡',
-  6: '💬',
-  7: '👁️',
-  8: '✨',
-  9: '🎯',
-  10: '⚖️',
-  11: '📜',
-  12: '💼',
-  13: '🛠️',
-  14: '🔮',
-  15: '🚀',
-};
+import SearchBar from '@/components/SearchBar';
 
 export default function Home() {
   return (
@@ -65,6 +49,11 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-white">Percorso di Apprendimento</h2>
             <span className="text-sm text-gray-500">{chapters.length} capitoli disponibili</span>
           </div>
+          {/* Search */}
+          <div className="mb-10">
+            <SearchBar />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {chapters.map((chapter) => (
               <Card key={chapter.id}>

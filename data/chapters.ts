@@ -6,6 +6,12 @@ export interface Section {
   content: string;
 }
 
+export interface CodeSnippet {
+  lang: 'python' | 'javascript' | 'json' | 'bash';
+  label: string;
+  code: string;
+}
+
 export interface Chapter {
   id: number;
   slug: string;
@@ -14,6 +20,7 @@ export interface Chapter {
   sections: Section[];
   keyTakeaways: string[];
   discussionPrompts?: string[];
+  codeSnippets?: CodeSnippet[];
 }
 
 export const chapters: Chapter[] = [
@@ -97,6 +104,18 @@ export const chapters: Chapter[] = [
       'Underfitting = modello troppo semplice',
       'La validazione è cruciale'
     ],
+    codeSnippets: [
+      {
+        lang: 'python',
+        label: 'Esempio: Linear Regression con scikit-learn',
+        code: '# Linear Regression con scikit-learn\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\n\n# Dati di training: ore di studio -> voto\nX = np.array([[1], [2], [3], [4], [5]])\ny = np.array([55, 65, 70, 80, 90])\n\nmodel = LinearRegression()\nmodel.fit(X, y)\n\n# Previsione: 6 ore di studio\npred = model.predict([[6]])\nprint(f"Voto previsto: {pred[0]:.1f}")  # -> ~98'
+      },
+      {
+        lang: 'python',
+        label: 'Esempio: Classificazione con Decision Tree',
+        code: '# Decision Tree con scikit-learn\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.model_selection import train_test_split\n\n# Dati: [ore_studio, ore_sonno] -> promosso (1) o no (0)\nX = [[2, 4], [5, 7], [1, 3], [6, 8], [3, 5], [7, 9]]\ny = [0, 1, 0, 1, 0, 1]\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)\nclf = DecisionTreeClassifier(max_depth=3)\nclf.fit(X_train, y_train)\naccuracy = clf.score(X_test, y_test)\nprint(f"Accuratezza: {accuracy:.0%}")  # -> 100%'
+      }
+    ],
     discussionPrompts: [
       'Come potremmo testare se un modello sta soffrendo di overfitting?',
       'In quali situazioni reali è più rischioso l\'overfitting vs underfitting?',
@@ -117,6 +136,13 @@ export const chapters: Chapter[] = [
       'Peso dei neuroni = importanza della connessione',
       'Backprop aggiusta i pesi per ridurre errori',
       'Più layer = più capacità di astrazione'
+    ],
+    codeSnippets: [
+      {
+        lang: 'python',
+        label: 'Rete neurale semplice con PyTorch',
+        code: '# Rete neurale semplice con PyTorch\nimport torch\nimport torch.nn as nn\n\nclass SimpleNN(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.layers = nn.Sequential(\n            nn.Linear(2, 4),\n            nn.ReLU(),\n            nn.Linear(4, 1),\n            nn.Sigmoid()\n        )\n    \n    def forward(self, x):\n        return self.layers(x)\n\nmodel = SimpleNN()\nprint(model)\n# Output: SimpleNN(\n#   (layers): Sequential(\n#     (0): Linear(in_features=2, out_features=4, bias=True)\n#     (1): ReLU()\n#     (2): Linear(in_features=4, out_features=1, bias=True)\n#     (3): Sigmoid()\n#   )\n# )'
+      }
     ],
     discussionPrompts: [
       'Perché una rete neurale con 100 layer sarebbe diversa da una con 2 layer?',
@@ -139,7 +165,19 @@ export const chapters: Chapter[] = [
       'Transformer = base di ChatGPT e moderni LLM',
       'Context window = quante parole ricorda il modello'
     ],
-    discussionPrompts: [
+    codeSnippets: [
+      {
+        lang: 'python',
+        label: 'Tokenizzazione con HuggingFace Transformers',
+        code: '# Tokenizzazione con HuggingFace\nfrom transformers import AutoTokenizer\n\ntokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")\ntext = "L intelligenza artificiale sta cambiando il mondo"\ntokens = tokenizer(text, return_tensors="pt")\nprint(tokens["input_ids"])\n# tensor([[  101,  1048,  9932,  ... ,   102]])\n\n# Visualizza i token come stringhe\ntoken_strings = tokenizer.convert_ids_to_tokens(tokens["input_ids"][0])\nprint(token_strings)'
+      },
+      {
+        lang: 'python',
+        label: 'Word Embeddings con Word2Vec',
+        code: '# Word Embeddings con gensim\nfrom gensim.models import Word2Vec\n\n# Corpus di frasi\nsentences = [\n    ["il", "gatto", "dorme"],\n    ["il", "cane", "corre"],\n    ["l-intelligenza", "artificiale", "impara"]\n]\n\n# Addestra il modello\nmodel = Word2Vec(sentences, vector_size=50, window=3, min_count=1)\n\n# Parole simili\nsimilar = model.wv.most_similar("gatto", topn=3)\nprint(similar)\n# [("cane", 0.85), ...]'
+      }
+    ],
+        discussionPrompts: [
       'Come cambierebbe ChatGPT se non avesse Attention mechanism?',
       'Qual è il limite della context window e come potrebbe impattare la comprensione?',
       'Se due parole hanno embedding molto simili, cosa significa?'
@@ -160,7 +198,14 @@ export const chapters: Chapter[] = [
       'Più layer = feature sempre più astratte',
       'Transfer learning accelera il training'
     ],
-    discussionPrompts: [
+    codeSnippets: [
+      {
+        lang: 'python',
+        label: 'Classificazione immagini con CNN (PyTorch)',
+        code: '# CNN semplice con PyTorch\nimport torch.nn as nn\n\nclass SimpleCNN(nn.Module):\n    def __init__(self, num_classes=10):\n        super().__init__()\n        self.features = nn.Sequential(\n            nn.Conv2d(3, 32, kernel_size=3, padding=1),\n            nn.ReLU(),\n            nn.MaxPool2d(2, 2),\n            nn.Conv2d(32, 64, kernel_size=3, padding=1),\n            nn.ReLU(),\n            nn.MaxPool2d(2, 2)\n        )\n        self.classifier = nn.Linear(64 * 8 * 8, num_classes)\n    \n    def forward(self, x):\n        x = self.features(x)\n        x = x.view(x.size(0), -1)\n        return self.classifier(x)\n\nmodel = SimpleCNN(num_classes=10)\nprint(model)'
+      }
+    ],
+        discussionPrompts: [
       'Perché le CNN funzionano meglio rispetto alle reti neurali normali per le immagini?',
       'Quali situazioni potrebbero ingannare un sistema di riconoscimento di oggetti?',
       'Come potrebbe il "Transfer Learning" risparmiare tempo nel training di un nuovo modello?'
@@ -181,7 +226,19 @@ export const chapters: Chapter[] = [
       'Il prompt shape l\'output in modo drammatico',
       'Context length limita quanto ricorda'
     ],
-    discussionPrompts: [
+    codeSnippets: [
+      {
+        lang: 'python',
+        label: 'Generazione testo con OpenAI API',
+        code: '# Generazione testo con OpenAI API\nfrom openai import OpenAI\n\nclient = OpenAI(api_key="your-api-key")\n\nresponse = client.chat.completions.create(\n    model="gpt-4o-mini",\n    messages=[\n        {"role": "system", "content": "Sei un assistente didattico per studenti."},\n        {"role": "user", "content": "Spiega il Machine Learning in 3 frasi semplici."}\n    ],\n    max_tokens=200\n)\n\nprint(response.choices[0].message.content)'
+      },
+      {
+        lang: 'json',
+        label: 'Struttura di un prompt ben formato (JSON)',
+        code: '{\n  "model": "gpt-4o-mini",\n  "messages": [\n    {\n      "role": "system",\n      "content": "Sei un esperto di AI con linguaggio accessibile."\n    },\n    {\n      "role": "user", \n      "content": "Scrivi un articolo di 300 parole su come l\'AI cambiera\' il marketing, rivolto a startup founder."\n    }\n  ],\n  "temperature": 0.7,\n  "max_tokens": 500\n}'
+      }
+    ],
+        discussionPrompts: [
       'Perché ChatGPT a volte allucinà informazioni false?',
       'Come differisce generare immagini vs generare testo?',
       'Qual è il ruolo del "randomness" nel generare diverse risposte dallo stesso prompt?'
@@ -286,7 +343,14 @@ export const chapters: Chapter[] = [
       'Fact-check sempre l\'output dell\'AI',
       'Prompt quality = risultati migliori'
     ],
-    discussionPrompts: [
+    codeSnippets: [
+      {
+        lang: 'bash',
+        label: 'Installare e usare tools AI da terminale',
+        code: '# Installa le librerie AI principali\npip install openai langchain transformers torch\n\n# Usa ChatGPT da terminale con curl\ncurl https://api.openai.com/v1/chat/completions \\\n  -H "Authorization: Bearer $OPENAI_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d \'{\n    "model": "gpt-4o-mini",\n    "messages": [{"role": "user", "content": "Ciao!"}]\n  }\'\n\n# Oppure con Python\npython3 -c "from openai import OpenAI; c=OpenAI(); print(c.chat.completions.create(model=\"gpt-4o-mini\",messages=[{\"role\":\"user\",\"content\":\"Ciao!\"}]).choices[0].message.content)"'
+      }
+    ],
+        discussionPrompts: [
       'Quando è appropriato usare ChatGPT per i compiti scolastici e quando no?',
       'Come dovrebbero le università adattare l\'insegnamento con gli AI assistant disponibili?',
       'Se Copilot scrive il codice, chi è responsabile dei bug?'
@@ -307,7 +371,19 @@ export const chapters: Chapter[] = [
       'Orchestrazione di più modelli = power',
       'Chain-of-thought = reasoning migliore'
     ],
-    discussionPrompts: [
+    codeSnippets: [
+      {
+        lang: 'python',
+        label: 'RAG con LangChain (schema semplificato)',
+        code: '# RAG con LangChain (schema semplificato)\nfrom langchain.chains import RetrievalQA\nfrom langchain_community.vectorstores import FAISS\nfrom langchain_openai import OpenAIEmbeddings, ChatOpenAI\n\n# 1. Crea vector store dai tuoi documenti\nvectorstore = FAISS.from_documents(documents, OpenAIEmbeddings())\n\n# 2. Crea catena RAG\nllm = ChatOpenAI(model="gpt-4o-mini")\nqa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    retriever=vectorstore.as_retriever(search_kwargs={"k": 3})\n)\n\n# 3. Query\nresult = qa_chain.invoke("Cos\'e\' il Transfer Learning?")\nprint(result["result"])'
+      },
+      {
+        lang: 'python',
+        label: 'AI Agent semplice con tool use',
+        code: '# AI Agent con tool use (OpenAI function calling)\nfrom openai import OpenAI\nimport json\n\nclient = OpenAI()\n\n# Definisci i tool disponibili\ntools = [{\n    "type": "function",\n    "function": {\n        "name": "cerca_voli",\n        "description": "Cerca voli disponibili tra due citta\'",\n        "parameters": {\n            "type": "object",\n            "properties": {\n                "origine": {"type": "string"},\n                "destinazione": {"type": "string"},\n                "data": {"type": "string"}\n            },\n            "required": ["origine", "destinazione", "data"]\n        }\n    }\n}]\n\nresponse = client.chat.completions.create(\n    model="gpt-4o-mini",\n    messages=[{"role": "user", "content": "Prenota un volo Roma-Milano il 15 giugno"}],\n    tools=tools\n)\nprint(response.choices[0].message.tool_calls)'
+      }
+    ],
+        discussionPrompts: [
       'Quali vantaggi ha RAG rispetto al fine-tuning?',
       'Quali rischi ci sono nell\'dare ad un AI Agent l\'accesso a tool reali (email, pagamenti)?',
       'Come potremmo verificare che un Agent non abbia fatto errori prima che causa danni?'
