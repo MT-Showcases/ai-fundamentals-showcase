@@ -1,12 +1,20 @@
 "use client";
 
 import { useState } from 'react';
+import Editor from '@monaco-editor/react';
 
 interface CodeSnippetProps {
   code: string;
   lang: 'python' | 'javascript' | 'json' | 'bash';
   label: string;
 }
+
+const langMap: Record<CodeSnippetProps['lang'], string> = {
+  python: 'python',
+  javascript: 'javascript',
+  json: 'json',
+  bash: 'shell',
+};
 
 export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
   const [copied, setCopied] = useState(false);
@@ -20,6 +28,9 @@ export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
       setCopied(false);
     }
   };
+
+  const lines = code.split('\n').length;
+  const height = Math.min(Math.max(lines * 22 + 28, 180), 520);
 
   return (
     <div className="rounded-xl border border-navy-600 overflow-hidden bg-navy-900/70">
@@ -35,9 +46,25 @@ export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
           {copied ? 'Copiato ✓' : 'Copia'}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto text-sm leading-relaxed text-gray-100 bg-[#0a1f3d]">
-        <code>{code}</code>
-      </pre>
+
+      <Editor
+        height={`${height}px`}
+        language={langMap[lang]}
+        value={code}
+        theme="vs-dark"
+        options={{
+          readOnly: true,
+          minimap: { enabled: false },
+          scrollBeyondLastLine: false,
+          fontSize: 13,
+          lineNumbers: 'on',
+          automaticLayout: true,
+          wordWrap: 'on',
+          tabSize: 2,
+          padding: { top: 12, bottom: 12 },
+          fontFamily: 'JetBrains Mono, Fira Code, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+        }}
+      />
     </div>
   );
 }
