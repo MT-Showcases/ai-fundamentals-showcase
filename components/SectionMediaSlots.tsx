@@ -46,18 +46,30 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
 
   const isReady = (slot: MediaPlaceholder) => slot.notes?.toLowerCase().includes('ready');
+  const readyCount = slots.filter(isReady).length;
 
   return (
     <>
       <div className="mb-8 rounded-xl border border-navy-600 bg-navy-800/40 p-4">
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-cyan-300 font-semibold text-sm">Media sezione {sectionIndex + 1} — {sectionTitle}</h4>
-          <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Coming soon</span>
+          {readyCount === slots.length ? (
+            <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Completa</span>
+          ) : (
+            <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">{readyCount}/{slots.length} pronti</span>
+          )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {slots.map((slot, idx) => (
             <div key={`${slot.type}-${idx}`} className="rounded-lg border border-navy-600 bg-navy-900/70 p-3">
-              <p className="text-cyan-200 text-sm font-medium mb-1">{badgeByType[slot.type]} — {slot.title}</p>
+              <div className="flex items-center justify-between mb-1">
+                <p className="text-cyan-200 text-sm font-medium">{badgeByType[slot.type]} — {slot.title}</p>
+                {isReady(slot) ? (
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
+                ) : (
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
+                )}
+              </div>
               <p className="text-xs text-gray-300 mb-1">{slot.description}</p>
               {slot.estimatedDuration && <p className="text-xs text-gray-400">Durata target: {slot.estimatedDuration}</p>}
               <p className="text-xs text-blue-300 font-mono break-all mt-1">{slot.placeholderPath}</p>

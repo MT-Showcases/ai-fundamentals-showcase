@@ -54,13 +54,21 @@ export default function ChapterMediaSlots({ chapter }: Props) {
   const slots = chapter.media && chapter.media.length > 0 ? chapter.media : defaultSlots(chapter);
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
   const isReady = (slot: MediaPlaceholder) => slot.notes?.toLowerCase().includes('ready');
+  const readyCount = slots.filter(isReady).length;
 
   return (
     <>
       <section className="mb-12 rounded-xl border border-blue-700 bg-blue-900/40 p-6">
-        <h3 className="text-cyan-300 font-bold mb-2 text-xl">Media del Capitolo (Placeholder)</h3>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-cyan-300 font-bold text-xl">Media del Capitolo</h3>
+          {readyCount === slots.length ? (
+            <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Completo</span>
+          ) : (
+            <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">{readyCount}/{slots.length} pronti</span>
+          )}
+        </div>
         <p className="text-gray-300 text-sm mb-5">
-          Questi blocchi mostrano dove verranno caricati i media che mi passerai (video/podcast/infografiche/dispense).
+          Gli slot con media reale non sono più placeholder; gli altri restano placeholder finché non carichiamo i file.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -68,9 +76,11 @@ export default function ChapterMediaSlots({ chapter }: Props) {
             <div key={`${slot.type}-${idx}`} className="rounded-lg border border-navy-600 bg-navy-900/70 p-4">
               <div className="flex items-center justify-between mb-2">
                 <h4 className="text-cyan-200 font-semibold">{badgeByType[slot.type]} — {slot.title}</h4>
-                <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">
-                  Coming soon
-                </span>
+                {isReady(slot) ? (
+                  <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
+                ) : (
+                  <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
+                )}
               </div>
               <p className="text-gray-300 text-sm mb-2">{slot.description}</p>
               {slot.estimatedDuration && (
