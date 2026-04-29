@@ -101,7 +101,7 @@ export default function ChapterMediaSlots({ chapter }: Props) {
                 <>
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-cyan-200 font-semibold">{badgeByType[slot.type]}</h4>
-                    <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
+                    <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">In arrivo</span>
                   </div>
                   <p className="text-gray-300 text-sm mb-2">{slot.description}</p>
                   {slot.estimatedDuration && (

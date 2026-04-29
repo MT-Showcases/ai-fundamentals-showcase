@@ -92,7 +92,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
                 <>
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-cyan-200 text-sm font-medium">{badgeByType[slot.type]}</p>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">In arrivo</span>
                   </div>
                   <p className="text-xs text-gray-300 mb-1">{slot.description}</p>
                   {slot.estimatedDuration && <p className="text-xs text-gray-400">Durata target: {slot.estimatedDuration}</p>}
