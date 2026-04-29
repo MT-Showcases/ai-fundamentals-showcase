@@ -75,49 +75,38 @@ export default function ChapterMediaSlots({ chapter }: Props) {
           {slots.map((slot, idx) => (
             <div key={`${slot.type}-${idx}`} className="rounded-lg border border-navy-600 bg-navy-900/70 p-4">
               <div className="flex items-center justify-between mb-2">
-                <h4 className="text-cyan-200 font-semibold">{badgeByType[slot.type]} — {slot.title}</h4>
+                <h4 className="text-cyan-200 font-semibold">{badgeByType[slot.type]}</h4>
                 {isReady(slot) ? (
                   <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
                 ) : (
                   <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
                 )}
               </div>
-              <p className="text-gray-300 text-sm mb-2">{slot.description}</p>
-              {slot.estimatedDuration && (
-                <p className="text-xs text-gray-400 mb-1">Durata target: {slot.estimatedDuration}</p>
-              )}
-              <p className="text-xs text-blue-300 font-mono break-all mb-1">Path previsto: {slot.placeholderPath}</p>
-              {slot.notes && <p className="text-xs text-gray-400">Note: {slot.notes}</p>}
 
-              {isReady(slot) && slot.type === 'infographic' && (
-                <button onClick={() => setActive(slot)} className="mt-3 block w-full text-left">
+              {isReady(slot) && slot.type === 'infographic' ? (
+                <button onClick={() => setActive(slot)} className="block w-full text-left">
                   <img
                     src={`/${slot.placeholderPath}`}
                     alt={slot.title}
-                    className="w-full h-44 object-cover rounded-md border border-navy-600 hover:opacity-90 transition"
+                    className="w-full h-48 object-cover rounded-md border border-navy-600 hover:opacity-90 transition"
                     loading="lazy"
                   />
-                  <span className="mt-2 inline-block text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition">
-                    Apri in grande
-                  </span>
                 </button>
-              )}
-
-              {isReady(slot) && slot.type === 'video' && (
-                <div className="mt-3">
-                  <video
-                    src={`/${slot.placeholderPath}`}
-                    controls
-                    className="w-full h-44 object-cover rounded-md border border-navy-600 bg-black cursor-pointer"
-                    onClick={() => setActive(slot)}
-                  />
-                  <button
-                    onClick={() => setActive(slot)}
-                    className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
-                  >
-                    Apri in grande
-                  </button>
-                </div>
+              ) : isReady(slot) && slot.type === 'video' ? (
+                <video
+                  src={`/${slot.placeholderPath}`}
+                  controls
+                  className="w-full h-48 object-cover rounded-md border border-navy-600 bg-black cursor-pointer"
+                  onClick={() => setActive(slot)}
+                />
+              ) : (
+                <>
+                  <p className="text-gray-300 text-sm mb-2">{slot.description}</p>
+                  {slot.estimatedDuration && (
+                    <p className="text-xs text-gray-400 mb-1">Durata target: {slot.estimatedDuration}</p>
+                  )}
+                  <p className="text-xs text-blue-300 font-mono break-all mb-1">Path previsto: {slot.placeholderPath}</p>
+                </>
               )}
             </div>
           ))}

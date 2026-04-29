@@ -42,7 +42,10 @@ const badgeByType: Record<MediaPlaceholder['type'], string> = {
 };
 
 export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex, sectionTitle, media }: Props) {
-  const slots = media && media.length > 0 ? media : defaultSectionMedia(chapterId, chapterSlug, sectionIndex, sectionTitle);
+  const baseSlots = defaultSectionMedia(chapterId, chapterSlug, sectionIndex, sectionTitle);
+  const slotMap = new Map(baseSlots.map((s) => [s.type, s]));
+  (media ?? []).forEach((m) => slotMap.set(m.type, { ...slotMap.get(m.type), ...m } as MediaPlaceholder));
+  const slots = Array.from(slotMap.values());
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
 
   const isReady = (slot: MediaPlaceholder) => slot.notes?.toLowerCase().includes('ready');
@@ -62,47 +65,37 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {slots.map((slot, idx) => (
             <div key={`${slot.type}-${idx}`} className="rounded-lg border border-navy-600 bg-navy-900/70 p-3">
-              <div className="flex items-center justify-between mb-1">
-                <p className="text-cyan-200 text-sm font-medium">{badgeByType[slot.type]} — {slot.title}</p>
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-cyan-200 text-sm font-medium">{badgeByType[slot.type]}</p>
                 {isReady(slot) ? (
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
                 ) : (
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
                 )}
               </div>
-              <p className="text-xs text-gray-300 mb-1">{slot.description}</p>
-              {slot.estimatedDuration && <p className="text-xs text-gray-400">Durata target: {slot.estimatedDuration}</p>}
-              <p className="text-xs text-blue-300 font-mono break-all mt-1">{slot.placeholderPath}</p>
 
-              {isReady(slot) && slot.type === 'infographic' && (
-                <button onClick={() => setActive(slot)} className="mt-3 block w-full text-left">
+              {isReady(slot) && slot.type === 'infographic' ? (
+                <button onClick={() => setActive(slot)} className="block w-full text-left">
                   <img
                     src={`/${slot.placeholderPath}`}
                     alt={slot.title}
-                    className="w-full h-40 object-cover rounded-md border border-navy-600 hover:opacity-90 transition"
+                    className="w-full h-44 object-cover rounded-md border border-navy-600 hover:opacity-90 transition"
                     loading="lazy"
                   />
-                  <span className="mt-2 inline-block text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition">
-                    Apri in grande
-                  </span>
                 </button>
-              )}
-
-              {isReady(slot) && slot.type === 'video' && (
-                <div className="mt-3">
-                  <video
-                    src={`/${slot.placeholderPath}`}
-                    controls
-                    className="w-full h-40 object-cover rounded-md border border-navy-600 bg-black cursor-pointer"
-                    onClick={() => setActive(slot)}
-                  />
-                  <button
-                    onClick={() => setActive(slot)}
-                    className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
-                  >
-                    Apri in grande
-                  </button>
-                </div>
+              ) : isReady(slot) && slot.type === 'video' ? (
+                <video
+                  src={`/${slot.placeholderPath}`}
+                  controls
+                  className="w-full h-44 object-cover rounded-md border border-navy-600 bg-black cursor-pointer"
+                  onClick={() => setActive(slot)}
+                />
+              ) : (
+                <>
+                  <p className="text-xs text-gray-300 mb-1">{slot.description}</p>
+                  {slot.estimatedDuration && <p className="text-xs text-gray-400">Durata target: {slot.estimatedDuration}</p>}
+                  <p className="text-xs text-blue-300 font-mono break-all mt-1">{slot.placeholderPath}</p>
+                </>
               )}
             </div>
           ))}
