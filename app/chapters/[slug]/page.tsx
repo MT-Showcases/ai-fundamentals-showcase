@@ -2,6 +2,7 @@ import { chapters } from '@/data/chapters';
 import { notFound } from 'next/navigation';
 import ChapterHeader from '@/components/ChapterHeader';
 import SectionCard from '@/components/SectionCard';
+import SectionMediaSlots from '@/components/SectionMediaSlots';
 import KeyTakeaway from '@/components/KeyTakeaway';
 import DiscussionPrompt from '@/components/DiscussionPrompt';
 import CodeSnippet from '@/components/CodeSnippet';
@@ -98,7 +99,16 @@ export default async function ChapterPage({ params }: Props) {
             {/* Content Sections */}
             <div className="space-y-8 mb-12">
               {chapter.sections.map((section, idx) => (
-                <SectionCard key={idx} title={section.title} content={section.content} />
+                <div key={idx}>
+                  <SectionCard title={section.title} content={section.content} />
+                  <SectionMediaSlots
+                    chapterId={chapter.id}
+                    chapterSlug={chapter.slug}
+                    sectionIndex={idx}
+                    sectionTitle={section.title}
+                    media={section.media}
+                  />
+                </div>
               ))}
             </div>
 

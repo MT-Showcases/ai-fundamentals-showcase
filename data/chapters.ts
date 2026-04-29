@@ -11,6 +11,7 @@ export interface QuizQuestion {
 export interface Section {
   title: string;
   content: string;
+  media?: MediaPlaceholder[];
 }
 
 export interface CodeSnippet {
