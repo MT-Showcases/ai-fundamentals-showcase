@@ -65,8 +65,40 @@ export const chapters: Chapter[] = [
       'Quali differenze noti tra come gli umani e come l\'AI imparano da nuove informazioni?',
       'Puoi fare un esempio di AI che usi regolarmente nella tua vita quotidiana?',
       'Se l\'AI riconosce solo pattern, come può mai essere creativa o innovativa?'
-    ]
-    ,quiz: [
+    ],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Lesson',
+        description: 'Spiegazione visuale del capitolo (8-12 min) con esempi pratici.',
+        estimatedDuration: '8-12 min',
+        placeholderPath: 'media/ch01-what-is-ai/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Deep Dive',
+        description: 'Versione audio con casi reali, errori comuni e takeaway operativi.',
+        estimatedDuration: '10-15 min',
+        placeholderPath: 'media/ch01-what-is-ai/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 1',
+        description: 'Sintesi visuale del capitolo 1: concetti chiave, struttura e punti cardine.',
+        placeholderPath: 'media/ch01-what-is-ai/infographic.png',
+        notes: 'ready'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Materiale scaricabile per studio e esercitazione guidata.',
+        placeholderPath: 'media/ch01-what-is-ai/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
+    quiz: [
       {
         question: "Cosa fa AI moderna in modo principale?",
         options: [
