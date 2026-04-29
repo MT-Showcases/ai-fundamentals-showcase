@@ -74,13 +74,35 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
               {slot.estimatedDuration && <p className="text-xs text-gray-400">Durata target: {slot.estimatedDuration}</p>}
               <p className="text-xs text-blue-300 font-mono break-all mt-1">{slot.placeholderPath}</p>
 
-              {isReady(slot) && (slot.type === 'infographic' || slot.type === 'video') && (
-                <button
-                  onClick={() => setActive(slot)}
-                  className="mt-3 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
-                >
-                  Apri in grande
+              {isReady(slot) && slot.type === 'infographic' && (
+                <button onClick={() => setActive(slot)} className="mt-3 block w-full text-left">
+                  <img
+                    src={`/${slot.placeholderPath}`}
+                    alt={slot.title}
+                    className="w-full h-40 object-cover rounded-md border border-navy-600 hover:opacity-90 transition"
+                    loading="lazy"
+                  />
+                  <span className="mt-2 inline-block text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition">
+                    Apri in grande
+                  </span>
                 </button>
+              )}
+
+              {isReady(slot) && slot.type === 'video' && (
+                <div className="mt-3">
+                  <video
+                    src={`/${slot.placeholderPath}`}
+                    controls
+                    className="w-full h-40 object-cover rounded-md border border-navy-600 bg-black cursor-pointer"
+                    onClick={() => setActive(slot)}
+                  />
+                  <button
+                    onClick={() => setActive(slot)}
+                    className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
+                  >
+                    Apri in grande
+                  </button>
+                </div>
               )}
             </div>
           ))}
