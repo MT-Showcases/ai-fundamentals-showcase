@@ -54,6 +54,17 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
             <p className="text-xs text-gray-300 mb-1">{slot.description}</p>
             {slot.estimatedDuration && <p className="text-xs text-gray-400">Durata target: {slot.estimatedDuration}</p>}
             <p className="text-xs text-blue-300 font-mono break-all mt-1">{slot.placeholderPath}</p>
+
+            {slot.type === 'infographic' && slot.notes?.toLowerCase().includes('ready') && (
+              <div className="mt-3 rounded-md overflow-hidden border border-navy-600">
+                <img
+                  src={`/${slot.placeholderPath}`}
+                  alt={slot.title}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>
