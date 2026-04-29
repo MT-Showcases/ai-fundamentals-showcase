@@ -4,6 +4,8 @@ import ChapterHeader from '@/components/ChapterHeader';
 import SectionCard from '@/components/SectionCard';
 import KeyTakeaway from '@/components/KeyTakeaway';
 import DiscussionPrompt from '@/components/DiscussionPrompt';
+import CodeSnippet from '@/components/CodeSnippet';
+import ChapterQuiz from '@/components/ChapterQuiz';
 import Breadcrumb from '@/components/Breadcrumb';
 import ChapterSidebar from '@/components/ChapterSidebar';
 import Link from 'next/link';
@@ -108,6 +110,26 @@ export default async function ChapterPage({ params }: Props) {
             {chapter.discussionPrompts && chapter.discussionPrompts.length > 0 && (
               <div className="mb-12">
                 <DiscussionPrompt prompts={chapter.discussionPrompts} />
+              </div>
+            )}
+
+            {/* Code Snippets */}
+            {chapter.codeSnippets && chapter.codeSnippets.length > 0 && (
+              <div className="mb-12">
+                <h3 className="text-cyan-300 font-bold mb-4">💻 Code Snippets</h3>
+                <div className="space-y-4">
+                  {chapter.codeSnippets.map((snippet, idx) => (
+                    <CodeSnippet key={idx} code={snippet.code} lang={snippet.lang} label={snippet.label} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Quiz */}
+            {chapter.quiz && chapter.quiz.length > 0 && (
+              <div className="mb-12">
+                <h3 className="text-cyan-300 font-bold mb-4">🧠 Quiz del Capitolo</h3>
+                <ChapterQuiz quiz={chapter.quiz} />
               </div>
             )}
 

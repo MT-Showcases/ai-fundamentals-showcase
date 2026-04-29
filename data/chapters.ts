@@ -1,6 +1,13 @@
 // Chapter data for AI Fundamentals Showcase
 // Source: Fondamenti di AI course (89 pages, updated 2026-04-24)
 
+export interface QuizQuestion {
+  question: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+}
+
 export interface Section {
   title: string;
   content: string;
@@ -21,6 +28,7 @@ export interface Chapter {
   keyTakeaways: string[];
   discussionPrompts?: string[];
   codeSnippets?: CodeSnippet[];
+  quiz?: QuizQuestion[];
 }
 
 export const chapters: Chapter[] = [
@@ -45,6 +53,41 @@ export const chapters: Chapter[] = [
       'Puoi fare un esempio di AI che usi regolarmente nella tua vita quotidiana?',
       'Se l\'AI riconosce solo pattern, come può mai essere creativa o innovativa?'
     ]
+    ,quiz: [
+      {
+        question: "Cosa fa AI moderna in modo principale?",
+        options: [
+          "Riconosce pattern nei dati",
+          "Sostituisce sempre umani",
+          "Funziona senza dati",
+          "Ha coscienza",
+        ],
+        correct: 0,
+        explanation: "AI moderna lavora su pattern nei dati."
+      },
+      {
+        question: "Quale triade serve per AI?",
+        options: [
+          "Dati algoritmo calcolo",
+          "Solo prompt",
+          "Solo GPU",
+          "Solo internet",
+        ],
+        correct: 0,
+        explanation: "Dati algoritmo e calcolo sono base del sistema."
+      },
+      {
+        question: "Output AI dipende da?",
+        options: [
+          "Qualita dati",
+          "Colore UI",
+          "Numero slide",
+          "Sistema operativo",
+        ],
+        correct: 0,
+        explanation: "Qualita dati influenza prestazioni e errori."
+      }
+    ]
   },
   {
     id: 2,
@@ -67,6 +110,41 @@ export const chapters: Chapter[] = [
       'Come cambierebbe il risultato se uno dei tre ingredienti fosse di qualità inferiore?',
       'Puoi pensare a un algoritmo che usi nella vita quotidiana, magari in cucina o nello sport?'
     ]
+    ,quiz: [
+      {
+        question: "Algoritmo significa?",
+        options: [
+          "Sequenza di passi",
+          "Opinione personale",
+          "File immagine",
+          "Tabella casuale",
+        ],
+        correct: 0,
+        explanation: "Algoritmo e una procedura chiara input output."
+      },
+      {
+        question: "Reti neurali sono utili per?",
+        options: [
+          "Apprendere pattern complessi",
+          "Stampare PDF",
+          "Gestire DNS",
+          "Fare backup",
+        ],
+        correct: 0,
+        explanation: "Reti neurali apprendono rappresentazioni complesse."
+      },
+      {
+        question: "Senza dati adeguati il modello?",
+        options: [
+          "Perde efficacia",
+          "Migliora da solo",
+          "Diventa etico",
+          "Non cambia",
+        ],
+        correct: 0,
+        explanation: "Senza dati adeguati le prestazioni calano."
+      }
+    ]
   },
   {
     id: 3,
@@ -87,6 +165,41 @@ export const chapters: Chapter[] = [
       'Se un algoritmo fa discriminazioni, è colpa dell\'algoritmo o dei dati di allenamento?',
       'Come potremmo raccogliere dati che non riflettano i bias umani?',
       'Quali conseguenze potrebbe avere un sistema biased usato per assunzioni, prestiti bancari, o sentenze?'
+    ]
+    ,quiz: [
+      {
+        question: "Bias nei dati puo causare?",
+        options: [
+          "Decisioni discriminatorie",
+          "Zero errori",
+          "Costo zero",
+          "Latenza nulla",
+        ],
+        correct: 0,
+        explanation: "Il modello replica bias presenti nei dati."
+      },
+      {
+        question: "Meglio quantita o qualita dati?",
+        options: [
+          "Entrambe con qualita alta",
+          "Solo quantita",
+          "Solo numero GPU",
+          "Nessuna",
+        ],
+        correct: 0,
+        explanation: "Servono dati sufficienti e di buona qualita."
+      },
+      {
+        question: "Pulizia dati in ML e spesso?",
+        options: [
+          "Parte molto ampia del lavoro",
+          "Trascurabile",
+          "Vietata",
+          "Automatica sempre",
+        ],
+        correct: 0,
+        explanation: "Data cleaning pesa molto nel ciclo ML."
+      }
     ]
   },
   {
@@ -121,6 +234,41 @@ export const chapters: Chapter[] = [
       'In quali situazioni reali è più rischioso l\'overfitting vs underfitting?',
       'Se un algoritmo impiega 1000 cicli per imparare, cosa succede al ciclo 1001?'
     ]
+    ,quiz: [
+      {
+        question: "Overfitting indica?",
+        options: [
+          "Memoria training e scarsa generalizzazione",
+          "Modello troppo semplice",
+          "Nessun training",
+          "CPU lenta",
+        ],
+        correct: 0,
+        explanation: "Overfitting funziona male su dati nuovi."
+      },
+      {
+        question: "Underfitting indica?",
+        options: [
+          "Modello troppo semplice",
+          "Modello perfetto",
+          "Dati troppi",
+          "Token bassi",
+        ],
+        correct: 0,
+        explanation: "Underfitting non cattura pattern utili."
+      },
+      {
+        question: "Validazione serve per?",
+        options: [
+          "Stimare generalizzazione",
+          "Aumentare rumore",
+          "Ridurre etica",
+          "Saltare test",
+        ],
+        correct: 0,
+        explanation: "Validation aiuta scelta modello robusto."
+      }
+    ]
   },
   {
     id: 5,
@@ -148,6 +296,41 @@ export const chapters: Chapter[] = [
       'Perché una rete neurale con 100 layer sarebbe diversa da una con 2 layer?',
       'Come è simile Backpropagation al processo di imparare dai propri errori?',
       'Cosa succederebbe se i pesi iniziali non fossero random ma zero?'
+    ]
+    ,quiz: [
+      {
+        question: "Backpropagation aggiorna?",
+        options: [
+          "Pesi della rete",
+          "Titolo file",
+          "Tema grafico",
+          "DNS record",
+        ],
+        correct: 0,
+        explanation: "Backprop corregge pesi in base errore."
+      },
+      {
+        question: "Più layer puo dare?",
+        options: [
+          "Feature più astratte",
+          "Meno dati sempre",
+          "Nessun vantaggio",
+          "Solo bug",
+        ],
+        correct: 0,
+        explanation: "Profondita permette rappresentazioni complesse."
+      },
+      {
+        question: "Peso neurale rappresenta?",
+        options: [
+          "Importanza connessione",
+          "Colore nodo",
+          "Nome layer",
+          "Ora training",
+        ],
+        correct: 0,
+        explanation: "Peso modula contributo del segnale."
+      }
     ]
   },
   {
@@ -182,6 +365,41 @@ export const chapters: Chapter[] = [
       'Qual è il limite della context window e come potrebbe impattare la comprensione?',
       'Se due parole hanno embedding molto simili, cosa significa?'
     ]
+    ,quiz: [
+      {
+        question: "Tokenizzazione nel NLP e?",
+        options: [
+          "Divisione testo in token",
+          "Traduzione finale",
+          "Compressione zip",
+          "Filtro spam",
+        ],
+        correct: 0,
+        explanation: "NLP elabora token numerici."
+      },
+      {
+        question: "Attention aiuta a?",
+        options: [
+          "Pesare contesto rilevante",
+          "Disattivare training",
+          "Ridurre RAM sempre",
+          "Eliminare dataset",
+        ],
+        correct: 0,
+        explanation: "Attention focalizza parti utili del testo."
+      },
+      {
+        question: "Embedding rappresenta?",
+        options: [
+          "Vettore semantico",
+          "Screenshot parola",
+          "Tabella CSS",
+          "Chiave API",
+        ],
+        correct: 0,
+        explanation: "Embedding mappa testo in spazio numerico."
+      }
+    ]
   },
   {
     id: 7,
@@ -209,6 +427,41 @@ export const chapters: Chapter[] = [
       'Perché le CNN funzionano meglio rispetto alle reti neurali normali per le immagini?',
       'Quali situazioni potrebbero ingannare un sistema di riconoscimento di oggetti?',
       'Come potrebbe il "Transfer Learning" risparmiare tempo nel training di un nuovo modello?'
+    ]
+    ,quiz: [
+      {
+        question: "CNN in vision usa?",
+        options: [
+          "Filtri locali su pixel",
+          "Solo regole if",
+          "Nessun parametro",
+          "Solo OCR",
+        ],
+        correct: 0,
+        explanation: "Convoluzioni estraggono pattern spaziali."
+      },
+      {
+        question: "Transfer learning in vision?",
+        options: [
+          "Riusa modello pre addestrato",
+          "Parte da zero",
+          "Blocca training",
+          "Rimuove etichette",
+        ],
+        correct: 0,
+        explanation: "Accelera training su nuovi task."
+      },
+      {
+        question: "Edge case vision esempio?",
+        options: [
+          "Luce scarsa o sfocatura",
+          "JSON valido",
+          "Prompt breve",
+          "CPU libera",
+        ],
+        correct: 0,
+        explanation: "Condizioni difficili riducono accuratezza."
+      }
     ]
   },
   {
@@ -243,6 +496,41 @@ export const chapters: Chapter[] = [
       'Come differisce generare immagini vs generare testo?',
       'Qual è il ruolo del "randomness" nel generare diverse risposte dallo stesso prompt?'
     ]
+    ,quiz: [
+      {
+        question: "LLM genera testo come?",
+        options: [
+          "Predizione prossimo token",
+          "Ricopia database",
+          "Regole fisse solo",
+          "Hash casuale",
+        ],
+        correct: 0,
+        explanation: "Next token prediction e il core meccanismo."
+      },
+      {
+        question: "Prompt engineering migliora?",
+        options: [
+          "Pertinenza output",
+          "Solo costo rete",
+          "Solo RAM",
+          "Solo deploy",
+        ],
+        correct: 0,
+        explanation: "Prompt chiaro aumenta qualita risposta."
+      },
+      {
+        question: "Allucinazione significa?",
+        options: [
+          "Risposta plausibile ma falsa",
+          "Errore di login",
+          "Token basso",
+          "Crash browser",
+        ],
+        correct: 0,
+        explanation: "LLM puo fornire contenuti non veri."
+      }
+    ]
   },
   {
     id: 9,
@@ -263,6 +551,41 @@ export const chapters: Chapter[] = [
       'Quando sarebbe meglio usare Transfer Learning vs allenare da zero?',
       'Quali rischi ci sono nel fine-tuning se i tuoi dati sono molto diversi dai dati originali?',
       'Come potrebbe RAG (Retrieval-Augmented Generation) essere migliore del fine-tuning?'
+    ]
+    ,quiz: [
+      {
+        question: "Transfer learning conviene quando?",
+        options: [
+          "Adatti modello a dominio specifico",
+          "Hai zero modello e zero dati",
+          "Serve solo UI",
+          "Non fai test",
+        ],
+        correct: 0,
+        explanation: "Adattare pretrain riduce tempi e costi."
+      },
+      {
+        question: "Fine tuning rispetto zero shot?",
+        options: [
+          "Migliora task specifici",
+          "Sempre peggio",
+          "Nessuna differenza",
+          "Sempre vietato",
+        ],
+        correct: 0,
+        explanation: "Fine tuning allinea a dataset del dominio."
+      },
+      {
+        question: "RAG e utile per?",
+        options: [
+          "Usare fonti aggiornabili senza retraining completo",
+          "Sostituire internet",
+          "Evitare prompt",
+          "Eliminare retrieval",
+        ],
+        correct: 0,
+        explanation: "RAG combina recupero fonti e generazione."
+      }
     ]
   },
   {
@@ -285,6 +608,41 @@ export const chapters: Chapter[] = [
       'Qual è il compromesso tra accuratezza e spiegabilità?',
       'Se un algorithmo è provabilmente migliore ma meno trasparente, dovremmo usarlo comunque?'
     ]
+    ,quiz: [
+      {
+        question: "Etica AI serve a?",
+        options: [
+          "Ridurre danni e ingiustizie",
+          "Aumentare token",
+          "Solo marketing",
+          "Cambiare logo",
+        ],
+        correct: 0,
+        explanation: "Etica mitiga impatti su persone reali."
+      },
+      {
+        question: "Explainability indica?",
+        options: [
+          "Spiegare decisione modello",
+          "Nascondere logica",
+          "Aumentare parametri",
+          "Ridurre prompt",
+        ],
+        correct: 0,
+        explanation: "Trasparenza e cruciale in casi sensibili."
+      },
+      {
+        question: "Dataset storici possono?",
+        options: [
+          "Propagare bias esistenti",
+          "Garantire fairness",
+          "Eliminare errori",
+          "Ridurre costi zero",
+        ],
+        correct: 0,
+        explanation: "Storico distorto porta decisioni distorte."
+      }
+    ]
   },
   {
     id: 11,
@@ -306,6 +664,41 @@ export const chapters: Chapter[] = [
       'Quali conseguenze avrà l\'AI Act sulla velocità di innovazione?',
       'Se un azienda non italiana viola l\'AI Act in Europa, chi la multa?'
     ]
+    ,quiz: [
+      {
+        question: "AI Act classifica per?",
+        options: [
+          "Rischio",
+          "Prezzo",
+          "Lingua",
+          "Layout",
+        ],
+        correct: 0,
+        explanation: "Regole cambiano in base al livello rischio."
+      },
+      {
+        question: "Sistema alto rischio richiede?",
+        options: [
+          "Documentazione e controlli",
+          "Nessun obbligo",
+          "Solo README",
+          "Solo landing",
+        ],
+        correct: 0,
+        explanation: "Compliance forte e richiesta."
+      },
+      {
+        question: "Non conformita puo portare?",
+        options: [
+          "Sanzioni elevate",
+          "Premio bonus",
+          "Nessun effetto",
+          "Solo email",
+        ],
+        correct: 0,
+        explanation: "Le multe possono essere rilevanti."
+      }
+    ]
   },
   {
     id: 12,
@@ -326,6 +719,41 @@ export const chapters: Chapter[] = [
       'Quali lavori pensi spariranno nei prossimi 10 anni per colpa dell\'AI?',
       'Come possiamo prepararci ora per lavori che forse non esistono ancora?',
       'Il diritto al "diritto all\'oblio" dovrebbe applicarsi all\'AI training?'
+    ]
+    ,quiz: [
+      {
+        question: "AI nel lavoro tende a?",
+        options: [
+          "Automatizzare compiti ripetitivi",
+          "Bloccare ogni ruolo",
+          "Non cambiare nulla",
+          "Ridurre internet",
+        ],
+        correct: 0,
+        explanation: "Trasforma processi e crea nuovi ruoli."
+      },
+      {
+        question: "Skill centrale era AI?",
+        options: [
+          "Pensiero critico",
+          "Solo dattilografia",
+          "Solo grafica",
+          "Solo memoria",
+        ],
+        correct: 0,
+        explanation: "Valutazione critica resta umana."
+      },
+      {
+        question: "Formazione continua oggi?",
+        options: [
+          "Necessaria",
+          "Inutile",
+          "Solo accademica",
+          "Vietata",
+        ],
+        correct: 0,
+        explanation: "Aggiornarsi e fondamentale."
+      }
     ]
   },
   {
@@ -354,6 +782,41 @@ export const chapters: Chapter[] = [
       'Quando è appropriato usare ChatGPT per i compiti scolastici e quando no?',
       'Come dovrebbero le università adattare l\'insegnamento con gli AI assistant disponibili?',
       'Se Copilot scrive il codice, chi è responsabile dei bug?'
+    ]
+    ,quiz: [
+      {
+        question: "Uso corretto ChatGPT?",
+        options: [
+          "Verifica output prima uso finale",
+          "Pubblica senza controllo",
+          "Ignora fonti",
+          "Disattiva review",
+        ],
+        correct: 0,
+        explanation: "Fact check e fondamentale."
+      },
+      {
+        question: "Copilot e Cursor aiutano a?",
+        options: [
+          "Aumentare produttivita sviluppo",
+          "Sostituire review umana",
+          "Gestire HR",
+          "Bloccare test",
+        ],
+        correct: 0,
+        explanation: "Assistono sviluppo ma responsabilita resta umana."
+      },
+      {
+        question: "Qualita prompt impatta?",
+        options: [
+          "Qualita risposta",
+          "Solo tema colori",
+          "Solo SEO",
+          "Solo uptime",
+        ],
+        correct: 0,
+        explanation: "Prompt migliori danno output migliori."
+      }
     ]
   },
   {
@@ -388,6 +851,41 @@ export const chapters: Chapter[] = [
       'Quali rischi ci sono nell\'dare ad un AI Agent l\'accesso a tool reali (email, pagamenti)?',
       'Come potremmo verificare che un Agent non abbia fatto errori prima che causa danni?'
     ]
+    ,quiz: [
+      {
+        question: "RAG combina?",
+        options: [
+          "Retrieval e generation",
+          "UI e CSS",
+          "Training e backup",
+          "Prompt e cache",
+        ],
+        correct: 0,
+        explanation: "RAG usa documenti rilevanti nel contesto."
+      },
+      {
+        question: "AI agent tipico?",
+        options: [
+          "Usa tool per obiettivo",
+          "Solo chat passiva",
+          "Solo copia testo",
+          "Solo cron",
+        ],
+        correct: 0,
+        explanation: "Agent puo orchestrare azioni con strumenti."
+      },
+      {
+        question: "Rischio con agent tool?",
+        options: [
+          "Azioni sbagliate su sistemi reali",
+          "Sfondo errato",
+          "Poco spazio disco",
+          "Font piccolo",
+        ],
+        correct: 0,
+        explanation: "Servono guardrail e approvazioni."
+      }
+    ]
   },
   {
     id: 15,
@@ -408,6 +906,41 @@ export const chapters: Chapter[] = [
       'Pensi che AGI arriverà nei prossimi 10 anni? 50 anni? Mai?',
       'Se l\'AI potesse fare di tutto, quale sarebbe il valore del lavoro umano?',
       'Come dovremmo preparare il mondo dal punto di vista legale/etico per AGI?'
+    ]
+    ,quiz: [
+      {
+        question: "AGI indica?",
+        options: [
+          "Intelligenza generale multi dominio",
+          "Plugin browser",
+          "Database vettoriale",
+          "Template slide",
+        ],
+        correct: 0,
+        explanation: "AGI e concetto di capacita generali."
+      },
+      {
+        question: "Opportunita AI avanzata?",
+        options: [
+          "Ricerca e medicina accelerate",
+          "Solo call center",
+          "Ridurre rete",
+          "Bloccare innovazione",
+        ],
+        correct: 0,
+        explanation: "AI puo accelerare scoperta e diagnosi."
+      },
+      {
+        question: "Futuro AI sostenibile richiede?",
+        options: [
+          "Innovazione con etica e sicurezza",
+          "Solo velocita",
+          "Zero governance",
+          "Nessuna formazione",
+        ],
+        correct: 0,
+        explanation: "Bilanciamento tra progresso e guardrail."
+      }
     ]
   }
 ];

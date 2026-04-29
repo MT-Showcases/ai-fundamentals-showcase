@@ -46,7 +46,7 @@ export default function SearchBar() {
       {/* Results dropdown */}
       {results.length > 0 && (
         <div className="absolute top-full left-0 right-0 mt-2 bg-navy-800 border border-navy-600 rounded-xl overflow-hidden shadow-2xl z-50">
-          {results.map(({ item }) => (
+          {results.map(({ item }: { item: (typeof chapters)[number] }) => (
             <Link
               key={item.slug}
               href={`/chapters/${item.slug}`}
