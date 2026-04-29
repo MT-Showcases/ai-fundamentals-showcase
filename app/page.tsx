@@ -5,8 +5,11 @@ import { chapterEmojis } from '@/data/chapterEmojis';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
 import SearchBar from '@/components/SearchBar';
+import { useState } from 'react';
 
 export default function Home() {
+  const [introVideoError, setIntroVideoError] = useState(false);
+
   return (
     <main className="min-h-screen bg-navy-900 text-white">
       {/* Header */}
@@ -41,6 +44,27 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {/* Course Intro Video */}
+      <section className="py-10 px-6 border-t border-blue-800/40 border-b border-blue-800/40 bg-navy-900/60">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-2">Introduzione al Corso</h2>
+          <p className="text-gray-400 mb-5">Video overview completo del percorso Fondamenti di AI.</p>
+
+          {!introVideoError ? (
+            <video
+              src="/media/course-intro.mp4"
+              controls
+              className="w-full max-w-4xl rounded-xl bg-black"
+              onError={() => setIntroVideoError(true)}
+            />
+          ) : (
+            <div className="max-w-4xl rounded-xl border border-dashed border-blue-700 bg-navy-800/60 p-6 text-sm text-gray-300">
+              Video non ancora caricato. Inserisci il file in: <span className="text-cyan-300 font-mono">public/media/course-intro.mp4</span>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* Chapters Grid */}
       <section className="py-12 px-6">

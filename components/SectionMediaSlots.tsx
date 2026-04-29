@@ -64,13 +64,20 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {slots.map((slot, idx) => (
-            <div key={`${slot.type}-${idx}`} className="rounded-lg border border-navy-600 bg-navy-900/70 p-3">
+            <div
+              key={`${slot.type}-${idx}`}
+              className={
+                isReady(slot) && (slot.type === 'infographic' || slot.type === 'video')
+                  ? 'rounded-lg p-0'
+                  : 'rounded-lg border border-navy-600 bg-navy-900/70 p-3'
+              }
+            >
               {isReady(slot) && slot.type === 'infographic' ? (
                 <button onClick={() => setActive(slot)} className="block w-full text-left">
                   <img
                     src={`/${slot.placeholderPath}`}
                     alt={slot.title}
-                    className="w-full h-44 object-cover rounded-md border border-navy-600 hover:opacity-90 transition"
+                    className="w-full h-44 object-cover rounded-md hover:opacity-90 transition"
                     loading="lazy"
                   />
                 </button>
@@ -78,7 +85,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
                 <video
                   src={`/${slot.placeholderPath}`}
                   controls
-                  className="w-full h-44 object-cover rounded-md border border-navy-600 bg-black cursor-pointer"
+                  className="w-full h-44 object-cover rounded-md bg-black cursor-pointer"
                   onClick={() => setActive(slot)}
                 />
               ) : (
