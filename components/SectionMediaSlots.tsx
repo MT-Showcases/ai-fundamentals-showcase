@@ -65,15 +65,6 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {slots.map((slot, idx) => (
             <div key={`${slot.type}-${idx}`} className="rounded-lg border border-navy-600 bg-navy-900/70 p-3">
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-cyan-200 text-sm font-medium">{badgeByType[slot.type]}</p>
-                {isReady(slot) ? (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
-                ) : (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
-                )}
-              </div>
-
               {isReady(slot) && slot.type === 'infographic' ? (
                 <button onClick={() => setActive(slot)} className="block w-full text-left">
                   <img
@@ -92,6 +83,10 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
                 />
               ) : (
                 <>
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-cyan-200 text-sm font-medium">{badgeByType[slot.type]}</p>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
+                  </div>
                   <p className="text-xs text-gray-300 mb-1">{slot.description}</p>
                   {slot.estimatedDuration && <p className="text-xs text-gray-400">Durata target: {slot.estimatedDuration}</p>}
                   <p className="text-xs text-blue-300 font-mono break-all mt-1">{slot.placeholderPath}</p>

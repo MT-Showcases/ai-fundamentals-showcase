@@ -74,15 +74,6 @@ export default function ChapterMediaSlots({ chapter }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {slots.map((slot, idx) => (
             <div key={`${slot.type}-${idx}`} className="rounded-lg border border-navy-600 bg-navy-900/70 p-4">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="text-cyan-200 font-semibold">{badgeByType[slot.type]}</h4>
-                {isReady(slot) ? (
-                  <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
-                ) : (
-                  <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
-                )}
-              </div>
-
               {isReady(slot) && slot.type === 'infographic' ? (
                 <button onClick={() => setActive(slot)} className="block w-full text-left">
                   <img
@@ -101,6 +92,10 @@ export default function ChapterMediaSlots({ chapter }: Props) {
                 />
               ) : (
                 <>
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-cyan-200 font-semibold">{badgeByType[slot.type]}</h4>
+                    <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">Placeholder</span>
+                  </div>
                   <p className="text-gray-300 text-sm mb-2">{slot.description}</p>
                   {slot.estimatedDuration && (
                     <p className="text-xs text-gray-400 mb-1">Durata target: {slot.estimatedDuration}</p>
