@@ -98,21 +98,20 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
       </div>
 
       {active && (
-        <div className="fixed inset-0 z-[120] bg-black/80 flex items-center justify-center p-4" onClick={() => setActive(null)}>
-          <div className="relative w-full max-w-5xl max-h-[90vh] bg-navy-900 border border-navy-600 rounded-xl p-3" onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={() => setActive(null)}
-              className="absolute top-2 right-2 text-white/80 hover:text-white text-sm px-2 py-1"
-            >
-              ✕ Chiudi
-            </button>
-            <div className="pt-8">
-              {active.type === 'infographic' ? (
-                <img src={`/${active.placeholderPath}`} alt={active.title} className="w-full h-auto max-h-[78vh] object-contain" />
-              ) : (
-                <video src={`/${active.placeholderPath}`} controls className="w-full max-h-[78vh] bg-black rounded" />
-              )}
-            </div>
+        <div className="fixed inset-0 z-[120] bg-black/85 flex items-center justify-center p-4" onClick={() => setActive(null)}>
+          <button
+            onClick={() => setActive(null)}
+            className="absolute top-4 right-4 text-white/90 hover:text-white text-lg px-3 py-1.5 z-[121]"
+          >
+            ✕
+          </button>
+
+          <div className="w-full max-w-6xl max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
+            {active.type === 'infographic' ? (
+              <img src={`/${active.placeholderPath}`} alt={active.title} className="w-full h-auto max-h-[90vh] object-contain" />
+            ) : (
+              <video src={`/${active.placeholderPath}`} controls className="w-full max-h-[90vh] bg-black" />
+            )}
           </div>
         </div>
       )}
