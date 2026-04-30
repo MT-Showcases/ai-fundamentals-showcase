@@ -101,37 +101,59 @@ export const chapters: Chapter[] = [
     ],
     quiz: [
       {
-        question: "Cosa fa AI moderna in modo principale?",
+        question: "Qual è la differenza chiave tra apprendimento umano e AI?",
         options: [
-          "Riconosce pattern nei dati",
-          "Sostituisce sempre umani",
-          "Funziona senza dati",
-          "Ha coscienza",
+          "L'AI comprende il significato come un umano",
+          "L'AI riconosce pattern statistici nei dati",
+          "L'AI non usa dati",
+          "L'AI è sempre più accurata dell'umano",
         ],
-        correct: 0,
-        explanation: "AI moderna lavora su pattern nei dati."
+        correct: 1,
+        explanation: "L'AI moderna apprende pattern statistici, non comprensione semantica umana piena."
       },
       {
-        question: "Quale triade serve per AI?",
+        question: "Quale combinazione rappresenta i 3 pilastri dell'AI?",
         options: [
-          "Dati algoritmo calcolo",
-          "Solo prompt",
-          "Solo GPU",
-          "Solo internet",
+          "Dati + Algoritmo + Potenza di calcolo",
+          "Prompt + UI + Branding",
+          "Solo GPU + Internet + API",
+          "Design + Marketing + SEO",
         ],
         correct: 0,
-        explanation: "Dati algoritmo e calcolo sono base del sistema."
+        explanation: "Senza dati, algoritmo e calcolo il sistema AI non regge in produzione."
       },
       {
-        question: "Output AI dipende da?",
+        question: "Un sistema di raccomandazione (es. Netflix/Spotify) funziona principalmente grazie a:",
         options: [
-          "Qualita dati",
-          "Colore UI",
-          "Numero slide",
-          "Sistema operativo",
+          "Intuizione umana del modello",
+          "Pattern nei comportamenti utente storici",
+          "Scelta casuale dei contenuti",
+          "Regole fisse uguali per tutti",
         ],
-        correct: 0,
-        explanation: "Qualita dati influenza prestazioni e errori."
+        correct: 1,
+        explanation: "I recommender usano segnali storici e pattern di comportamento per prevedere preferenze."
+      },
+      {
+        question: "Qual è l'errore più comune nell'uso pratico dell'AI?",
+        options: [
+          "Usarla solo offline",
+          "Considerare l'output sempre vero senza verifica",
+          "Fare prompt troppo specifici",
+          "Usare metriche di controllo",
+        ],
+        correct: 1,
+        explanation: "Trattare l'AI come verità assoluta porta errori: serve sempre validazione."
+      },
+      {
+        question: "Prima di mettere AI in produzione, qual è la mossa più corretta?",
+        options: [
+          "Rilasciare subito e correggere dopo",
+          "Definire KPI minimi (accuratezza, errore, fallback)",
+          "Valutare solo la velocità dell'interfaccia",
+          "Basarsi solo su una demo riuscita",
+        ],
+        correct: 1,
+        explanation: "Senza KPI operativi non puoi controllare qualità e degrado del sistema nel tempo."
       }
     ]
   },
