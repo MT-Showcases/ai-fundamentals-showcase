@@ -151,7 +151,8 @@ export const chapters: Chapter[] = [
       'Algoritmo = serie di passi precisi (non intuizioni)',
       'Reti neurali ricercano somiglianze, non significati',
       'Più dati = migliore apprendimento',
-      'L\'output dipende dalla qualità dell\'input'
+      'L\'output dipende dalla qualità dell\'input',
+      'Learning outcome: spiegare la triade dati-algoritmo-calcolo e mapparla su un caso reale',
     ],
     discussionPrompts: [
       'Quale dei tre ingredienti (Dati, Algoritmo, Potenza) pensi sia il più importante per l\'AI moderno?',
@@ -209,7 +210,8 @@ export const chapters: Chapter[] = [
       'Dati di qualità = AI di qualità',
       'Bias nei dati = discriminazione nell\'output',
       'Pulizia dati è 80% del lavoro in ML',
-      'Diversità nei dati = modello più robusto'
+      'Diversità nei dati = modello più robusto',
+      'Learning outcome: riconoscere bias e proporre una correzione dati concreta',
     ],
     discussionPrompts: [
       'Se un algoritmo fa discriminazioni, è colpa dell\'algoritmo o dei dati di allenamento?',
@@ -267,7 +269,8 @@ export const chapters: Chapter[] = [
       'Il modello impara cercando pattern nei dati',
       'Overfitting = memorizzazione (non generalizzazione)',
       'Underfitting = modello troppo semplice',
-      'La validazione è cruciale'
+      'La validazione è cruciale',
+      'Learning outcome: distinguere overfitting/underfitting e scegliere una metrica adeguata',
     ],
     codeSnippets: [
       {
@@ -337,7 +340,8 @@ export const chapters: Chapter[] = [
       'Neuroni artificiali imitano il cervello',
       'Peso dei neuroni = importanza della connessione',
       'Backprop aggiusta i pesi per ridurre errori',
-      'Più layer = più capacità di astrazione'
+      'Più layer = più capacità di astrazione',
+      'Learning outcome: descrivere come i pesi vengono aggiornati durante il training',
     ],
     codeSnippets: [
       {
@@ -400,7 +404,8 @@ export const chapters: Chapter[] = [
       'Il linguaggio deve essere convertito in numeri',
       'Attention mechanism = "cosa è importante"',
       'Transformer = base di ChatGPT e moderni LLM',
-      'Context window = quante parole ricorda il modello'
+      'Context window = quante parole ricorda il modello',
+      'Learning outcome: spiegare token/embedding/attention su un esempio pratico',
     ],
     codeSnippets: [
       {
@@ -468,7 +473,8 @@ export const chapters: Chapter[] = [
       'Immagine = griglia di pixel (numeri)',
       'CNN usa filtri per estrarre feature',
       'Più layer = feature sempre più astratte',
-      'Transfer learning accelera il training'
+      'Transfer learning accelera il training',
+      'Learning outcome: valutare un caso vision e identificare almeno un edge-case critico',
     ],
     codeSnippets: [
       {
@@ -531,7 +537,8 @@ export const chapters: Chapter[] = [
       'LLM predice la prossima parola basandosi sul pattern',
       'ChatGPT ha 175 miliardi di parametri',
       'Il prompt shape l\'output in modo drammatico',
-      'Context length limita quanto ricorda'
+      'Context length limita quanto ricorda',
+      'Learning outcome: progettare un prompt robusto e verificare un output generativo',
     ],
     codeSnippets: [
       {
@@ -599,7 +606,8 @@ export const chapters: Chapter[] = [
       'Transfer learning = addestramento più veloce',
       'Fine-tune su dati specifici per adattare il modello',
       'Richiede meno data che addestrare da zero',
-      'RAG = alternativa al fine-tuning'
+      'RAG = alternativa al fine-tuning',
+      'Learning outcome: decidere quando usare fine-tuning o RAG su un caso di prodotto',
     ],
     discussionPrompts: [
       'Quando sarebbe meglio usare Transfer Learning vs allenare da zero?',
@@ -655,7 +663,8 @@ export const chapters: Chapter[] = [
       'AI riflette i bias nei dati di training',
       'Amazon hiring system discriminava le donne',
       'Explainability = capacità di spiegare perché',
-      'La trasparenza è un diritto (GDPR)'
+      'La trasparenza è un diritto (GDPR)',
+      'Learning outcome: identificare un rischio etico e proporre una mitigazione operativa',
     ],
     discussionPrompts: [
       'Come potremmo renderci conto dei bias prima che un sistema AI faccia danni?',
@@ -711,7 +720,8 @@ export const chapters: Chapter[] = [
       'Rischio Vietato = divieto totale',
       'Alto rischio = obbligo di assessment',
       'Devi mantenere documentazione completa',
-      'Non conformità = multe salate'
+      'Non conformità = multe salate',
+      'Learning outcome: classificare un caso AI per rischio e definire requisiti minimi di compliance',
     ],
     discussionPrompts: [
       'Come decidere in quale categoria di rischio mettere un nuovo sistema AI?',
@@ -767,7 +777,8 @@ export const chapters: Chapter[] = [
       'L\'AI automatizza compiti ripetitivi',
       'Nuovi ruoli: prompt engineer, AI trainer, ethicist',
       'Critical thinking rimane insostituibile',
-      'Lifelong learning è obbligatorio'
+      'Lifelong learning è obbligatorio',
+      'Learning outcome: mappare task automatizzabili e skill umane ad alto valore',
     ],
     discussionPrompts: [
       'Quali lavori pensi spariranno nei prossimi 10 anni per colpa dell\'AI?',
@@ -823,7 +834,8 @@ export const chapters: Chapter[] = [
       'ChatGPT non è infallibile',
       'Copilot accelera lo sviluppo di codice',
       'Fact-check sempre l\'output dell\'AI',
-      'Prompt quality = risultati migliori'
+      'Prompt quality = risultati migliori',
+      'Learning outcome: usare AI tool con workflow di review e quality gate',
     ],
     codeSnippets: [
       {
@@ -886,7 +898,8 @@ export const chapters: Chapter[] = [
       'RAG = LLM + knowledge base',
       'Agents possono usare tool autonomamente',
       'Orchestrazione di più modelli = power',
-      'Chain-of-thought = reasoning migliore'
+      'Chain-of-thought = reasoning migliore',
+      'Learning outcome: disegnare un flusso RAG/Agent con guardrail essenziali',
     ],
     codeSnippets: [
       {
@@ -954,7 +967,8 @@ export const chapters: Chapter[] = [
       'AGI non è ancora qui, ma è il goal',
       'L\'AI cambierà ogni industria',
       'Imparare ora = vantaggio competitivo',
-      'Etica e sicurezza sono fondamentali'
+      'Etica e sicurezza sono fondamentali',
+      'Learning outcome: argomentare opportunità e rischi AI con criteri tecnici ed etici',
     ],
     discussionPrompts: [
       'Pensi che AGI arriverà nei prossimi 10 anni? 50 anni? Mai?',
