@@ -29,6 +29,20 @@ export interface MediaPlaceholder {
   notes?: string;
 }
 
+export interface ExerciseResource {
+  label: string;
+  path: string;
+}
+
+export interface ChapterExercise {
+  title: string;
+  objective: string;
+  duration?: string;
+  steps: string[];
+  deliverable: string;
+  resources?: ExerciseResource[];
+}
+
 export interface Chapter {
   id: number;
   slug: string;
@@ -40,6 +54,7 @@ export interface Chapter {
   codeSnippets?: CodeSnippet[];
   quiz?: QuizQuestion[];
   media?: MediaPlaceholder[];
+  exercises?: ChapterExercise[];
 }
 
 export const chapters: Chapter[] = [
@@ -790,6 +805,25 @@ export const chapters: Chapter[] = [
       'Perché una rete neurale con 100 layer sarebbe diversa da una con 2 layer?',
       'Come è simile Backpropagation al processo di imparare dai propri errori?',
       'Cosa succederebbe se i pesi iniziali non fossero random ma zero?'
+    ]
+    ,exercises: [
+      {
+        title: 'Mini Lab — Piccola rete vs rete più profonda',
+        objective: 'Confrontare due architetture sullo stesso dataset e motivare una scelta tecnica in base a generalizzazione, costo e interpretabilità.',
+        duration: '20 min',
+        steps: [
+          'Scarica train.csv e validation.csv dal dataset CH5.',
+          'Allena due modelli: uno piccolo (1 hidden layer) e uno più profondo (2+ hidden layer).',
+          'Confronta validation accuracy/loss, tempo di training e stabilità dei risultati.',
+          'Scrivi una decisione finale: quale modello porteresti in produzione e perché.'
+        ],
+        deliverable: 'Una tabella comparativa + 5 righe di raccomandazione tecnica.',
+        resources: [
+          { label: 'Dataset train (CSV)', path: '/datasets/ch05-neural-networks/train.csv' },
+          { label: 'Dataset validation (CSV)', path: '/datasets/ch05-neural-networks/validation.csv' },
+          { label: 'Schema campi dataset (JSON)', path: '/datasets/ch05-neural-networks/schema.json' }
+        ]
+      }
     ]
     ,quiz: [
       {

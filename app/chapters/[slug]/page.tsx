@@ -7,6 +7,7 @@ import KeyTakeaway from '@/components/KeyTakeaway';
 import DiscussionPrompt from '@/components/DiscussionPrompt';
 import CodeSnippet from '@/components/CodeSnippet';
 import ChapterQuiz from '@/components/ChapterQuiz';
+import ChapterExercises from '@/components/ChapterExercises';
 import ChapterMediaSlots from '@/components/ChapterMediaSlots';
 import Breadcrumb from '@/components/Breadcrumb';
 import ChapterSidebar from '@/components/ChapterSidebar';
@@ -139,6 +140,11 @@ export default async function ChapterPage({ params }: Props) {
                   ))}
                 </div>
               </div>
+            )}
+
+            {/* Practical Exercises */}
+            {chapter.exercises && chapter.exercises.length > 0 && (
+              <ChapterExercises exercises={chapter.exercises} />
             )}
 
             {/* Quiz */}

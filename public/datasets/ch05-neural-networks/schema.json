@@ -1,0 +1,13 @@
+{
+  "name": "ch05-neural-networks-base",
+  "task": "binary_classification",
+  "target": "passed",
+  "description": "Dataset didattico base per confronto architetture neurali (piccola vs profonda).",
+  "fields": [
+    { "name": "study_hours", "type": "number", "range": [1, 10], "description": "Ore medie di studio" },
+    { "name": "sleep_hours", "type": "number", "range": [4, 9], "description": "Ore medie di sonno" },
+    { "name": "project_score", "type": "number", "range": [0, 100], "description": "Punteggio progetto" },
+    { "name": "practice_days", "type": "number", "range": [1, 6], "description": "Giorni di pratica settimanali" },
+    { "name": "passed", "type": "number", "values": [0, 1], "description": "Label target: 0 = non promosso, 1 = promosso" }
+  ]
+}
