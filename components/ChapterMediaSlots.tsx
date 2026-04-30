@@ -117,7 +117,7 @@ export default function ChapterMediaSlots({ chapter }: Props) {
                   <img
                     src={`/${slot.placeholderPath}`}
                     alt={slot.title}
-                    className="w-full h-48 object-cover rounded-md hover:opacity-90 transition"
+                    className="w-full h-72 object-contain rounded-md hover:opacity-90 transition bg-black/20"
                     loading="lazy"
                   />
                 </button>
@@ -128,7 +128,7 @@ export default function ChapterMediaSlots({ chapter }: Props) {
                     preload="metadata"
                     muted
                     playsInline
-                    className="w-full h-48 object-cover rounded-md bg-black pointer-events-none"
+                    className="w-full h-72 object-contain rounded-md bg-black pointer-events-none"
                   />
                   <span className="absolute inset-0 flex items-center justify-center text-white/90 text-xs bg-black/20">
                     ▶ Apri video

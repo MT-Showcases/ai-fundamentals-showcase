@@ -56,7 +56,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
                 <img
                   src={`/${slot.placeholderPath}`}
                   alt={slot.title}
-                  className="w-full h-44 object-cover rounded-md hover:opacity-90 transition"
+                  className="w-full h-64 md:h-72 object-contain rounded-md hover:opacity-90 transition bg-black/20"
                   loading="lazy"
                 />
               </button>
