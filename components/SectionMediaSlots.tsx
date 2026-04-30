@@ -52,11 +52,11 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
             }
           >
             {isReady(slot) ? (
-              <button onClick={() => setActive(slot)} className="block w-full text-left">
+              <button onClick={() => setActive(slot)} className="block w-full text-left cursor-pointer">
                 <img
                   src={`/${slot.placeholderPath}`}
                   alt={slot.title}
-                  className="w-full h-64 md:h-72 object-contain rounded-md hover:opacity-90 transition bg-black/20"
+                  className="w-full h-64 md:h-72 object-contain rounded-md hover:opacity-90 transition bg-black/20 cursor-pointer"
                   loading="lazy"
                 />
               </button>
