@@ -101,59 +101,114 @@ export const chapters: Chapter[] = [
     ],
     quiz: [
       {
-        question: "Qual è la differenza chiave tra apprendimento umano e AI?",
+        question: "Qual è la differenza più solida tra intelligenza umana e AI moderna?",
         options: [
           "L'AI comprende il significato come un umano",
-          "L'AI riconosce pattern statistici nei dati",
-          "L'AI non usa dati",
-          "L'AI è sempre più accurata dell'umano",
+          "L'AI apprende soprattutto correlazioni e pattern statistici",
+          "L'AI non dipende dai dati",
+          "L'AI è sempre più creativa dell'umano",
         ],
         correct: 1,
-        explanation: "L'AI moderna apprende pattern statistici, non comprensione semantica umana piena."
+        explanation: "L'AI è fortissima nel pattern matching, ma non ha comprensione semantica umana piena."
       },
       {
-        question: "Quale combinazione rappresenta i 3 pilastri dell'AI?",
+        question: "Se un output AI è molto fluido e convincente, qual è il comportamento corretto?",
+        options: [
+          "Pubblicarlo subito perché suona bene",
+          "Verificarne fonti, contesto e coerenza prima di usarlo",
+          "Usarlo solo se è breve",
+          "Scartarlo sempre",
+        ],
+        correct: 1,
+        explanation: "Fluenza linguistica non equivale a verità: serve validazione."
+      },
+      {
+        question: "Un sistema di raccomandazione peggiora per una settimana: quale ipotesi è più utile per iniziare il debug?",
+        options: [
+          "Il brand è cambiato",
+          "Possibile drift nei dati/comportamenti utenti da misurare con KPI",
+          "Il modello è diventato cosciente",
+          "È un problema inevitabile e non monitorabile",
+        ],
+        correct: 1,
+        explanation: "Quando cala la qualità, partire da dati/KPI è più utile che da ipotesi vaghe."
+      },
+      {
+        question: "Quale triade è necessaria per costruire un sistema AI funzionante?",
         options: [
           "Dati + Algoritmo + Potenza di calcolo",
           "Prompt + UI + Branding",
-          "Solo GPU + Internet + API",
-          "Design + Marketing + SEO",
+          "GPU + DNS + CDN",
+          "SEO + Design + Social",
         ],
         correct: 0,
-        explanation: "Senza dati, algoritmo e calcolo il sistema AI non regge in produzione."
+        explanation: "Senza uno dei tre pilastri, la qualità del sistema crolla."
       },
       {
-        question: "Un sistema di raccomandazione (es. Netflix/Spotify) funziona principalmente grazie a:",
+        question: "Hai 2 modelli: A più accurato ma con dati poco rappresentativi, B leggermente meno accurato ma più robusto sui casi reali. In produzione scegli:",
         options: [
-          "Intuizione umana del modello",
-          "Pattern nei comportamenti utente storici",
-          "Scelta casuale dei contenuti",
-          "Regole fisse uguali per tutti",
+          "A, sempre: basta il numero più alto",
+          "B, se regge meglio gli edge-case del dominio reale",
+          "A, ma senza monitoraggio",
+          "Nessuno dei due",
         ],
         correct: 1,
-        explanation: "I recommender usano segnali storici e pattern di comportamento per prevedere preferenze."
+        explanation: "In produzione conta la robustezza sul reale, non solo il picco in test controllato."
       },
       {
-        question: "Qual è l'errore più comune nell'uso pratico dell'AI?",
+        question: "Qual è un segnale che stai trattando l'AI come “oracolo” invece che come “copilot”?",
         options: [
-          "Usarla solo offline",
-          "Considerare l'output sempre vero senza verifica",
-          "Fare prompt troppo specifici",
-          "Usare metriche di controllo",
+          "Definire KPI prima del rilascio",
+          "Confrontare output AI con fonti indipendenti",
+          "Accettare output senza review perché “sembra giusto”",
+          "Documentare limiti e fallback",
         ],
-        correct: 1,
-        explanation: "Trattare l'AI come verità assoluta porta errori: serve sempre validazione."
+        correct: 2,
+        explanation: "Il rischio principale è delegare verità all'AI senza controllo umano."
       },
       {
-        question: "Prima di mettere AI in produzione, qual è la mossa più corretta?",
+        question: "In un MVP startup, dove ha più senso inserire AI per prima?",
         options: [
-          "Rilasciare subito e correggere dopo",
-          "Definire KPI minimi (accuratezza, errore, fallback)",
-          "Valutare solo la velocità dell'interfaccia",
-          "Basarsi solo su una demo riuscita",
+          "In processi ad alto volume e ripetitivi con KPI chiari",
+          "In qualsiasi punto “fa scena”",
+          "Solo in funzionalità non usate dagli utenti",
+          "Solo dopo aver assunto un team ML completo",
+        ],
+        correct: 0,
+        explanation: "L'AI crea valore quando riduce tempo/costo su flussi misurabili."
+      },
+      {
+        question: "Quale combinazione rappresenta una validazione minima sensata di output AI?",
+        options: [
+          "Controllo dati di input + verifica output + metrica di qualità",
+          "Solo rilettura grammaticale",
+          "Solo test su 1 esempio",
+          "Solo benchmark marketing",
+        ],
+        correct: 0,
+        explanation: "La validazione utile copre input, output e criterio misurabile."
+      },
+      {
+        question: "Prima del go-live, quale decisione è più matura?",
+        options: [
+          "Rilasciare e sperare che vada bene",
+          "Definire soglie KPI e regole di fallback/manual review",
+          "Nascondere i log per evitare rumore",
+          "Misurare solo il tempo di caricamento UI",
         ],
         correct: 1,
-        explanation: "Senza KPI operativi non puoi controllare qualità e degrado del sistema nel tempo."
+        explanation: "Soglie e fallback trasformano un prototipo in sistema operativo controllabile."
+      },
+      {
+        question: "Quale affermazione è più corretta sul ruolo umano con l'AI?",
+        options: [
+          "L'umano diventa inutile appena il modello è grande",
+          "Il valore umano cresce su decisioni, verifica e responsabilità",
+          "Basta sapere scrivere prompt lunghi",
+          "L'AI elimina il bisogno di contesto",
+        ],
+        correct: 1,
+        explanation: "L'AI amplifica, ma governance e responsabilità restano umane."
       }
     ]
   },
@@ -215,59 +270,114 @@ export const chapters: Chapter[] = [
     ],
     quiz: [
       {
-        question: "Nel Capitolo 2, quale triade descrive il funzionamento base di un sistema AI?",
+        question: "Quale descrizione rappresenta meglio i 3 pilastri dell'AI?",
         options: [
-          "Dati + Algoritmo + Potenza di calcolo",
-          "Prompt + Interfaccia + SEO",
-          "GPU + DNS + Cloud storage",
-          "UI + Branding + Marketing",
+          "Dati, algoritmo e potenza di calcolo che lavorano insieme",
+          "Solo prompt e interfaccia",
+          "Solo hardware potente",
+          "Solo dataset molto grande",
         ],
         correct: 0,
-        explanation: "I tre pilastri sono dati, algoritmo e potenza di calcolo."
+        explanation: "La qualità emerge dall'equilibrio tra tutti e tre i pilastri."
       },
       {
-        question: "Un algoritmo è definito correttamente come:",
+        question: "Hai tantissimi dati ma rumorosi: cosa è più probabile?",
         options: [
-          "Una sequenza precisa di passi input→output",
-          "Una scelta casuale del sistema",
-          "Una preferenza personale del docente",
-          "Un file grafico del progetto",
-        ],
-        correct: 0,
-        explanation: "Un algoritmo è una procedura ripetibile e definita."
-      },
-      {
-        question: "Se il pilastro 'dati' è debole (rumoroso/sbilanciato), cosa succede di solito?",
-        options: [
-          "Il modello migliora da solo col tempo",
-          "Il modello perde affidabilità e qualità",
-          "Il modello diventa automaticamente etico",
-          "La parte algoritmo non viene più eseguita",
+          "Il modello generalizza meglio automaticamente",
+          "Il modello apprende rumore e peggiora nel reale",
+          "Il modello diventa più etico",
+          "L'algoritmo non serve più",
         ],
         correct: 1,
-        explanation: "Output scadenti derivano spesso da input dati scadenti."
+        explanation: "Quantità senza qualità spesso aumenta errori e instabilità."
       },
       {
-        question: "Le reti neurali sono particolarmente adatte quando serve:",
+        question: "Qual è la definizione più operativa di algoritmo nel capitolo 2?",
         options: [
-          "Apprendere pattern complessi da molti esempi",
-          "Sostituire completamente la validazione umana",
-          "Eseguire solo regole statiche senza training",
-          "Eliminare il bisogno di metriche",
+          "Una sequenza ripetibile di passi per trasformare input in output",
+          "Una scelta artistica del team",
+          "Una scorciatoia casuale",
+          "Un file di configurazione UI",
         ],
         correct: 0,
-        explanation: "Le reti neurali eccellono nell'apprendere rappresentazioni complesse."
+        explanation: "Algoritmo = procedura eseguibile, non intuizione."
       },
       {
-        question: "In produzione, quale scelta è più solida per evitare degrado del modello?",
+        question: "In un e-commerce, se cala la conversione del recommender, quale pilastro controlli per primo?",
         options: [
-          "Affidarsi solo alla demo iniziale",
-          "Monitorare KPI (accuracy proxy, latenza, fallback, errori)",
-          "Cambiare solo il colore dell'interfaccia",
-          "Disattivare il logging per risparmiare risorse",
+          "Dati recenti e loro qualità/rappresentatività",
+          "Solo il font della pagina",
+          "Solo il dominio internet",
+          "Solo il numero di slide della presentazione",
+        ],
+        correct: 0,
+        explanation: "I degradi reali partono spesso da drift o qualità dati."
+      },
+      {
+        question: "Le reti neurali sono più utili quando il problema richiede:",
+        options: [
+          "Pattern complessi difficili da codificare a regole fisse",
+          "Regole statiche e banali",
+          "Zero dati",
+          "Nessuna validazione",
+        ],
+        correct: 0,
+        explanation: "Le NN eccellono su relazioni non lineari e pattern complessi."
+      },
+      {
+        question: "Se aumenti il calcolo ma lasci algoritmo e dati invariati e scadenti, cosa aspettarti?",
+        options: [
+          "Miglioramento strutturale garantito",
+          "Possibile accelerazione, ma qualità non necessariamente migliore",
+          "Risoluzione automatica del bias",
+          "Scomparsa del data drift",
         ],
         correct: 1,
-        explanation: "Senza monitoraggio continuo non intercetti data drift e cali di qualità."
+        explanation: "Più compute non compensa da solo dati/algoritmo deboli."
+      },
+      {
+        question: "Quale scelta è più robusta in produzione dopo il deploy?",
+        options: [
+          "Considerare il modello finito",
+          "Monitorare KPI e aggiornare il sistema su segnali reali",
+          "Bloccare i log",
+          "Valutare solo demo iniziale",
+        ],
+        correct: 1,
+        explanation: "Un modello in produzione va osservato continuamente."
+      },
+      {
+        question: "Nel task “Production Warning”, quale metrica aiuta a capire quante richieste non regge il modello?",
+        options: [
+          "Fallback rate",
+          "Colore card",
+          "Numero capitoli",
+          "Versione browser",
+        ],
+        correct: 0,
+        explanation: "Il fallback rate misura quante volte serve escalation/manuale."
+      },
+      {
+        question: "Qual è il rischio di valutare il modello solo su test statico?",
+        options: [
+          "Nessun rischio se il test è grande",
+          "Non vedere drift e nuovi edge-case reali",
+          "Aumentare automaticamente robustezza",
+          "Ridurre sempre latenza",
+        ],
+        correct: 1,
+        explanation: "La realtà evolve: test statico da solo non basta."
+      },
+      {
+        question: "In ottica decisionale, quale frase è più corretta?",
+        options: [
+          "Un pilastro forte può sostituire gli altri due",
+          "La triade è interdipendente: se cede un pilastro, cede il sistema",
+          "Conta solo il modello",
+          "Conta solo il cloud",
+        ],
+        correct: 1,
+        explanation: "La stabilità AI nasce dall'equilibrio complessivo, non da un singolo elemento."
       }
     ]
   },
@@ -332,55 +442,110 @@ export const chapters: Chapter[] = [
         options: [
           "Decisioni discriminatorie su gruppi sotto-rappresentati",
           "Riduzione automatica dei costi cloud",
-          "Migliore generalizzazione in ogni scenario",
+          "Generalizzazione migliore per definizione",
           "Latenza sempre più bassa",
         ],
         correct: 0,
-        explanation: "Un dataset sbilanciato può introdurre bias sistematici nell'output."
+        explanation: "Squilibri nei dati possono diventare squilibri nelle decisioni."
       },
       {
-        question: "Nel trade-off dati, quale affermazione è più corretta?",
+        question: "Hai 1M record rumorosi vs 100k record puliti e rappresentativi: in genere conviene partire da:",
         options: [
-          "Conta solo la quantità",
-          "Conta solo la GPU",
-          "Servono quantità sufficiente + qualità + rappresentatività",
-          "La qualità dati è irrilevante con modelli moderni",
-        ],
-        correct: 2,
-        explanation: "Performance robuste richiedono dati abbastanza numerosi ma anche puliti e rappresentativi."
-      },
-      {
-        question: "Il caso 'Amazon hiring bias' insegna che:",
-        options: [
-          "I dati storici possono trasferire pregiudizi al modello",
-          "I modelli eliminano sempre i bias umani",
-          "Basta più potenza di calcolo per correggere tutto",
-          "Il bias è solo un problema di UI",
-        ],
-        correct: 0,
-        explanation: "Il modello apprende ciò che trova nei dati, inclusi i pregiudizi."
-      },
-      {
-        question: "Per ridurre il rischio operativo in produzione, quale pratica è più utile?",
-        options: [
-          "Valutare il modello una sola volta su test statico",
-          "Creare edge-case e monitorare failure pattern",
-          "Disattivare i controlli per velocizzare il deploy",
-          "Usare solo metriche aggregate annuali",
+          "1M rumorosi, sempre",
+          "100k puliti, poi scalare qualità e copertura",
+          "È equivalente",
+          "Dipende solo dalla GPU",
         ],
         correct: 1,
-        explanation: "Gli edge-case rivelano fragilità che i test standard spesso non mostrano."
+        explanation: "Qualità e rappresentatività guidano più della quantità grezza."
       },
       {
-        question: "Nel ciclo ML reale, la data cleaning è tipicamente:",
+        question: "Il caso Amazon hiring bias dimostra soprattutto che:",
         options: [
-          "Una parte ampia e continua del lavoro",
-          "Un passaggio opzionale secondario",
-          "Completamente automatica senza supervisione",
-          "Inutile se il modello è grande",
+          "Il modello può amplificare pregiudizi storici presenti nei dati",
+          "I modelli rimuovono automaticamente i bias",
+          "Basta aumentare il calcolo per risolvere fairness",
+          "Il problema è solo legale, non tecnico",
         ],
         correct: 0,
-        explanation: "Pulizia e manutenzione dati sono attività centrali per qualità e stabilità del modello."
+        explanation: "Se i dati sono distorti, il modello tende a replicare quella distorsione."
+      },
+      {
+        question: "Qual è un segnale che il dataset non rappresenta il mondo reale?",
+        options: [
+          "Performance uniforme su tutti i sottogruppi",
+          "Errori concentrati sempre sullo stesso tipo di utenti/casi",
+          "Riduzione del tempo di training",
+          "Numero di feature elevato",
+        ],
+        correct: 1,
+        explanation: "Errori sistematici su sottogruppi indicano gap di rappresentatività."
+      },
+      {
+        question: "In fase di validazione, perché creare edge-case è utile?",
+        options: [
+          "Per ridurre artificialmente la difficoltà del test",
+          "Per trovare failure pattern non visibili nei casi standard",
+          "Per evitare monitoraggio in produzione",
+          "Per sostituire completamente il dataset di training",
+        ],
+        correct: 1,
+        explanation: "Gli edge-case stressano il modello dove è più fragile."
+      },
+      {
+        question: "Se una feature sembra predittiva ma potrebbe essere proxy sensibile (es. zona), cosa fai per prima?",
+        options: [
+          "La lasci invariata perché aumenta accuracy",
+          "Esegui fairness audit per sottogruppi e valuti mitigazioni",
+          "La rimuovi sempre senza analisi",
+          "Ignori il problema finché non arriva un reclamo",
+        ],
+        correct: 1,
+        explanation: "Prima misuri impatto e trade-off, poi applichi mitigazioni consapevoli."
+      },
+      {
+        question: "Quale strategia è più matura per data cleaning?",
+        options: [
+          "Una tantum prima del primo training",
+          "Processo continuo con regole versionate e controlli periodici",
+          "Solo quando il cliente si lamenta",
+          "Delegarla tutta al modello",
+        ],
+        correct: 1,
+        explanation: "La qualità dati in produzione va mantenuta nel tempo, non fatta una sola volta."
+      },
+      {
+        question: "Quale combinazione descrive meglio un buon piano anti-bias?",
+        options: [
+          "Più compute e meno audit",
+          "Dataset bilanciato + metriche fairness + review umana dei casi critici",
+          "Solo policy legale senza test tecnico",
+          "Solo dashboard KPI globale",
+        ],
+        correct: 1,
+        explanation: "Ridurre bias richiede interventi su dati, metriche e processo decisionale."
+      },
+      {
+        question: "In produzione noti aumento segnalazioni utente ma accuracy media stabile: interpretazione più corretta?",
+        options: [
+          "Tutto ok, nessuna azione",
+          "Possibili errori concentrati su casi/sottogruppi: analizzare distribuzione errori",
+          "Basta aumentare batch size",
+          "Disattivare canale segnalazioni",
+        ],
+        correct: 1,
+        explanation: "La media può nascondere regressioni localizzate ma critiche."
+      },
+      {
+        question: "Quale frase sintetizza meglio il Capitolo 3?",
+        options: [
+          "Con abbastanza dati qualunque modello diventa affidabile",
+          "Qualità, rappresentatività e monitoraggio continuo sono la base dell'affidabilità",
+          "Il bias è inevitabile quindi non si può mitigare",
+          "Pulizia dati è secondaria rispetto al design UI",
+        ],
+        correct: 1,
+        explanation: "Affidabilità AI = dati buoni + controlli robusti + osservazione continua."
       }
     ]
   },
