@@ -79,28 +79,44 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {chapters.map((chapter) => (
-              <Card key={chapter.id} className="h-full flex flex-col">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <span className="bg-cyan-400 text-navy-900 px-2 py-0.5 rounded text-xs font-bold">
-                      Cap. {chapter.id}
-                    </span>
-                  </div>
-                  <h3 className="text-base font-bold text-white leading-snug min-h-[3.5rem]">
-                    {chapterEmojis[chapter.id] ?? ''} {chapter.title}
-                  </h3>
-                  <p className="text-gray-300 text-base line-clamp-2 min-h-[3.5rem]">{chapter.description}</p>
-                  <div className="text-xs text-gray-500">
-                    {chapter.sections.length} sezioni · {chapter.keyTakeaways.length} punti chiave
-                  </div>
-                </div>
+            {chapters.map((chapter) => {
+              const chapterInfographic = chapter.media?.find(
+                (m) => m.type === 'infographic' && m.notes?.toLowerCase().includes('ready')
+              );
 
-                <Button href={`/chapters/${chapter.slug}`} className="w-full text-center py-3 mt-auto">
-                  Leggi Capitolo →
-                </Button>
-              </Card>
-            ))}
+              return (
+                <Card key={chapter.id} className="h-full flex flex-col">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-cyan-400 text-navy-900 px-2 py-0.5 rounded text-xs font-bold">
+                        Cap. {chapter.id}
+                      </span>
+                    </div>
+
+                    {chapterInfographic && (
+                      <img
+                        src={`/${chapterInfographic.placeholderPath}`}
+                        alt={`Anteprima infografica ${chapter.title}`}
+                        className="w-full h-32 rounded-lg object-cover bg-black/20 border border-blue-700/40"
+                        loading="lazy"
+                      />
+                    )}
+
+                    <h3 className="text-base font-bold text-white leading-snug min-h-[3.5rem]">
+                      {chapterEmojis[chapter.id] ?? ''} {chapter.title}
+                    </h3>
+                    <p className="text-gray-300 text-base line-clamp-2 min-h-[3.5rem]">{chapter.description}</p>
+                    <div className="text-xs text-gray-500">
+                      {chapter.sections.length} sezioni · {chapter.keyTakeaways.length} punti chiave
+                    </div>
+                  </div>
+
+                  <Button href={`/chapters/${chapter.slug}`} className="w-full text-center py-3 mt-auto">
+                    Leggi Capitolo →
+                  </Button>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
