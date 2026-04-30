@@ -158,8 +158,40 @@ export const chapters: Chapter[] = [
       'Quale dei tre ingredienti (Dati, Algoritmo, Potenza) pensi sia il più importante per l\'AI moderno?',
       'Come cambierebbe il risultato se uno dei tre ingredienti fosse di qualità inferiore?',
       'Puoi pensare a un algoritmo che usi nella vita quotidiana, magari in cucina o nello sport?'
-    ]
-    ,quiz: [
+    ],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Lesson',
+        description: 'Spiegazione visuale del capitolo (8-12 min) con esempi pratici.',
+        estimatedDuration: '8-12 min',
+        placeholderPath: 'media/ch02-how-ai-works/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Deep Dive',
+        description: 'Versione audio con casi reali, errori comuni e takeaway operativi.',
+        estimatedDuration: '10-15 min',
+        placeholderPath: 'media/ch02-how-ai-works/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 2',
+        description: 'Sintesi visuale del capitolo 2: triade, rete neurale e monitoraggio.',
+        placeholderPath: 'media/ch02-how-ai-works/infographic.jpg',
+        notes: 'ready'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Materiale scaricabile per studio e esercitazione guidata.',
+        placeholderPath: 'media/ch02-how-ai-works/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
+    quiz: [
       {
         question: "Algoritmo significa?",
         options: [
