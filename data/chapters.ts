@@ -808,16 +808,16 @@ export const chapters: Chapter[] = [
     ]
     ,exercises: [
       {
-        title: 'Mini Lab — Piccola rete vs rete più profonda',
-        objective: 'Confrontare due architetture sullo stesso dataset e motivare una scelta tecnica in base a generalizzazione, costo e interpretabilità.',
+        title: 'Mini Lab — Scegliere il modello giusto (senza coding)',
+        objective: 'Valutare quando conviene un approccio semplice rispetto a uno più complesso, usando il dataset come base di ragionamento decisionale.',
         duration: '20 min',
         steps: [
-          'Scarica train.csv e validation.csv dal dataset CH5.',
-          'Allena due modelli: uno piccolo (1 hidden layer) e uno più profondo (2+ hidden layer).',
-          'Confronta validation accuracy/loss, tempo di training e stabilità dei risultati.',
-          'Scrivi una decisione finale: quale modello porteresti in produzione e perché.'
+          'Scarica train.csv e validation.csv dal dataset CH5 e osserva i campi principali.',
+          'Identifica quali feature sembrano più utili per prevedere "passed" e quali potrebbero introdurre rumore.',
+          'Confronta due opzioni: Modello A (semplice, più spiegabile) vs Modello B (più complesso, potenzialmente più potente).',
+          'Prendi una decisione motivata: quale modello useresti in una startup early-stage e perché.'
         ],
-        deliverable: 'Una tabella comparativa + 5 righe di raccomandazione tecnica.',
+        deliverable: 'Una tabella decisionale (A vs B) + 5 righe di motivazione su generalizzazione, costo e interpretabilità.',
         resources: [
           { label: 'Dataset train (CSV)', path: '/datasets/ch05-neural-networks/train.csv' },
           { label: 'Dataset validation (CSV)', path: '/datasets/ch05-neural-networks/validation.csv' },
