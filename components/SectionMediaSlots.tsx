@@ -8,6 +8,7 @@ interface Props {
   chapterSlug: string;
   sectionIndex: number;
   sectionTitle: string;
+  sectionContent: string;
   media?: MediaPlaceholder[];
 }
 
@@ -26,18 +27,21 @@ function defaultSectionMedia(chapterId: number, chapterSlug: string, sectionInde
   ];
 }
 
-export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex, sectionTitle, media }: Props) {
+export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex, sectionTitle, sectionContent, media }: Props) {
   const baseSlots = defaultSectionMedia(chapterId, chapterSlug, sectionIndex, sectionTitle);
   const slotMap = new Map(baseSlots.map((s) => [s.type, s]));
   (media ?? []).forEach((m) => slotMap.set(m.type, { ...slotMap.get(m.type), ...m } as MediaPlaceholder));
   const slots = Array.from(slotMap.values()).filter((s) => s.type === 'infographic');
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
+  const [showSource, setShowSource] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const isReady = (slot: MediaPlaceholder) => slot.notes?.toLowerCase().includes('ready');
 
+  const sourceText = `CAPITOLO ${String(chapterId).padStart(2, '0')} — ${chapterSlug}\nSEZIONE ${sectionIndex + 1}: ${sectionTitle}\n\nCONTESTO:\n${sectionContent}\n\nOBIETTIVO:\nGenera un contenuto didattico chiaro, pratico, startup-friendly basato SOLO su questo contesto.\n\nOUTPUT RICHIESTI (scegline uno):\n1) Script video 60-120s\n2) Testo infografica (titolo + 5 bullet + 1 warning + 1 takeaway)\n3) Voiceover breve.\n\nVINCOLI:\n- Linguaggio semplice\n- Niente allucinazioni\n- Coerenza con il contesto fornito`;
   return (
     <>
-      <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="mb-3 grid grid-cols-1 md:grid-cols-2 gap-3">
         {slots.map((slot, idx) => (
           <div
             key={`${slot.type}-${idx}`}
@@ -68,6 +72,34 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
             )}
           </div>
         ))}
+      </div>
+
+      <div className="mb-8">
+        <button
+          onClick={() => setShowSource((v) => !v)}
+          className="text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition mr-2"
+        >
+          {showSource ? 'Nascondi fonte sezione' : 'Mostra fonte sezione'}
+        </button>
+        {showSource && (
+          <div className="mt-2 rounded-lg border border-navy-600 bg-navy-900/70 p-3">
+            <textarea
+              readOnly
+              value={sourceText}
+              className="w-full min-h-[180px] bg-navy-950 text-gray-200 text-xs p-3 rounded-md border border-navy-700"
+            />
+            <button
+              onClick={async () => {
+                await navigator.clipboard.writeText(sourceText);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 1500);
+              }}
+              className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
+            >
+              {copied ? 'Copiato ✓' : 'Copia fonte'}
+            </button>
+          </div>
+        )}
       </div>
 
       {active && (

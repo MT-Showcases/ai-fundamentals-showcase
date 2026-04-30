@@ -53,9 +53,12 @@ const badgeByType: Record<MediaPlaceholder['type'], string> = {
 export default function ChapterMediaSlots({ chapter }: Props) {
   const slots = chapter.media && chapter.media.length > 0 ? chapter.media : defaultSlots(chapter);
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
+  const [showSource, setShowSource] = useState(false);
+  const [copied, setCopied] = useState(false);
   const isReady = (slot: MediaPlaceholder) => slot.notes?.toLowerCase().includes('ready');
   const readyCount = slots.filter(isReady).length;
 
+  const chapterSourceText = `CAPITOLO ${String(chapter.id).padStart(2, '0')} — ${chapter.title}\nSLUG: ${chapter.slug}\n\nDESCRIZIONE:\n${chapter.description}\n\nSEZIONI:\n${chapter.sections.map((s, i) => `${i + 1}) ${s.title}\n${s.content}`).join('\n\n')}\n\nPUNTI CHIAVE:\n- ${chapter.keyTakeaways.join('\n- ')}\n\nOBIETTIVO:\nGenera contenuti media coerenti con il capitolo (video completo / podcast / infografica) senza inventare concetti esterni al contesto.`;
   return (
     <>
       <section className="mb-12 rounded-xl border border-blue-700 bg-blue-900/40 p-6">
@@ -67,9 +70,37 @@ export default function ChapterMediaSlots({ chapter }: Props) {
             <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">{readyCount}/{slots.length} pronti</span>
           )}
         </div>
-        <p className="text-gray-300 text-sm mb-5">
+        <p className="text-gray-300 text-sm mb-3">
           Gli slot con media reale non sono più placeholder; gli altri restano placeholder finché non carichiamo i file.
         </p>
+
+        <div className="mb-4">
+          <button
+            onClick={() => setShowSource((v) => !v)}
+            className="text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition mr-2"
+          >
+            {showSource ? 'Nascondi fonte capitolo' : 'Mostra fonte capitolo'}
+          </button>
+          {showSource && (
+            <div className="mt-2 rounded-lg border border-navy-600 bg-navy-900/70 p-3">
+              <textarea
+                readOnly
+                value={chapterSourceText}
+                className="w-full min-h-[220px] bg-navy-950 text-gray-200 text-xs p-3 rounded-md border border-navy-700"
+              />
+              <button
+                onClick={async () => {
+                  await navigator.clipboard.writeText(chapterSourceText);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 1500);
+                }}
+                className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
+              >
+                {copied ? 'Copiato ✓' : 'Copia fonte capitolo'}
+              </button>
+            </div>
+          )}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {slots.map((slot, idx) => (
