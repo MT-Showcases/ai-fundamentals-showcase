@@ -53,7 +53,14 @@ export default function ChapterExercises({ exercises }: Props) {
 
   return (
     <div className="mb-12">
-      <h3 className="text-cyan-300 font-bold mb-4">🧪 Esercizi Pratici</h3>
+      <h3 className="text-cyan-300 font-bold mb-4 flex items-center gap-2">
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M9 3v5l-4 7a3 3 0 0 0 2.6 4.5h8.8A3 3 0 0 0 19 15l-4-7V3" />
+          <path d="M8 3h8" />
+          <path d="M10 13h4" />
+        </svg>
+        Esercizi Pratici
+      </h3>
       <div className="space-y-4">
         {safeExercises.map((exercise, idx) => (
           <div key={idx} className="bg-navy-800/40 border border-blue-500/30 rounded-xl p-5">
@@ -85,7 +92,12 @@ export default function ChapterExercises({ exercises }: Props) {
                       className="inline-flex items-center px-3 py-2 rounded-lg border border-blue-500/40 text-cyan-300 hover:bg-cyan-400/10 hover:border-cyan-400 transition-all text-sm"
                       target="_blank"
                     >
-                      <span className="mr-2">⬇️</span>{res.label}
+                      <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M12 3v12" />
+                        <path d="m7 10 5 5 5-5" />
+                        <path d="M5 21h14" />
+                      </svg>
+                      {res.label}
                     </Link>
                   ))}
                 </div>
@@ -133,7 +145,7 @@ export default function ChapterExercises({ exercises }: Props) {
                 <span className="font-semibold text-cyan-200">Checkpoint personale:</span> {exercise.deliverable}
               </div>
               <div className="text-xs text-gray-400">
-                Autovalutazione rapida: ✅ Ho capito il concetto · ✅ So riconoscere l&apos;errore comune · ✅ So motivare una decisione pratica
+                Autovalutazione rapida: Ho capito il concetto · So riconoscere l&apos;errore comune · So motivare una decisione pratica
               </div>
             </div>
           </div>
