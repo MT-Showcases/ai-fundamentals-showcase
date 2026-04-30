@@ -80,20 +80,20 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {chapters.map((chapter) => (
-              <Card key={chapter.id}>
+              <Card key={chapter.id} className="h-full flex flex-col">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="bg-cyan-400 text-navy-900 px-2 py-0.5 rounded text-xs font-bold">
                     Cap. {chapter.id}
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-white mb-3 leading-snug">
+                <h3 className="text-base font-bold text-white mb-3 leading-snug min-h-[3.5rem]">
                   {chapterEmojis[chapter.id] ?? ''} {chapter.title}
                 </h3>
-                <p className="text-gray-300 text-base mb-3 line-clamp-2">{chapter.description}</p>
+                <p className="text-gray-300 text-base mb-3 line-clamp-2 min-h-[3.5rem]">{chapter.description}</p>
                 <div className="text-xs text-gray-500 mb-4">
                   {chapter.sections.length} sezioni · {chapter.keyTakeaways.length} punti chiave
                 </div>
-                <Button href={`/chapters/${chapter.slug}`} className="w-full text-center py-3">
+                <Button href={`/chapters/${chapter.slug}`} className="w-full text-center py-3 mt-auto">
                   Leggi Capitolo →
                 </Button>
               </Card>
