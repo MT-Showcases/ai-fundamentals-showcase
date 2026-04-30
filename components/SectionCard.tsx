@@ -5,50 +5,21 @@ interface SectionCardProps {
   content: string;
 }
 
-const KEY_TERMS = [
-  'AI',
-  'Machine Learning',
-  'Deep Learning',
-  'RAG',
-  'fine-tuning',
-  'Transformer',
-  'attention',
-  'bias',
-  'dataset',
-  'algoritmo',
-  'modello',
-  'reti neurali',
-  'prompt',
-  'overfitting',
-  'underfitting'
-];
-
-function highlightKeywords(text: string): React.ReactNode[] {
-  const termsRegex = new RegExp(`(${KEY_TERMS.map((t) => t.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')).join('|')})`, 'gi');
-  const parts = text.split(termsRegex);
-
-  return parts.map((part, idx) => {
-    const isKeyword = KEY_TERMS.some((term) => term.toLowerCase() === part.toLowerCase());
-    if (!isKeyword) return <React.Fragment key={idx}>{part}</React.Fragment>;
-
-    return (
-      <span key={idx} className="text-cyan-300 font-semibold">
-        {part}
-      </span>
-    );
-  });
-}
-
 function renderInlineFormatting(text: string): React.ReactNode[] {
-  // Supports **bold** and *italic*
-  const tokens = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean);
+  // Supports:
+  // **bold**
+  // *italic*
+  // <<highlight>> (yellow accent)
+  const tokens = text
+    .split(/(\*\*[^*]+\*\*|\*[^*]+\*|<<[^>]+>>)/g)
+    .filter(Boolean);
 
   return tokens.map((token, idx) => {
     if (token.startsWith('**') && token.endsWith('**')) {
       const value = token.slice(2, -2);
       return (
         <strong key={idx} className="font-bold text-white">
-          {highlightKeywords(value)}
+          {value}
         </strong>
       );
     }
@@ -57,12 +28,21 @@ function renderInlineFormatting(text: string): React.ReactNode[] {
       const value = token.slice(1, -1);
       return (
         <em key={idx} className="italic text-gray-100">
-          {highlightKeywords(value)}
+          {value}
         </em>
       );
     }
 
-    return <React.Fragment key={idx}>{highlightKeywords(token)}</React.Fragment>;
+    if (token.startsWith('<<') && token.endsWith('>>')) {
+      const value = token.slice(2, -2);
+      return (
+        <span key={idx} className="text-yellow-300 font-medium">
+          {value}
+        </span>
+      );
+    }
+
+    return <React.Fragment key={idx}>{token}</React.Fragment>;
   });
 }
 
