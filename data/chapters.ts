@@ -249,8 +249,40 @@ export const chapters: Chapter[] = [
       'Se un algoritmo fa discriminazioni, è colpa dell\'algoritmo o dei dati di allenamento?',
       'Come potremmo raccogliere dati che non riflettano i bias umani?',
       'Quali conseguenze potrebbe avere un sistema biased usato per assunzioni, prestiti bancari, o sentenze?'
-    ]
-    ,quiz: [
+    ],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Lesson',
+        description: 'Spiegazione visuale del capitolo (8-12 min) con esempi pratici.',
+        estimatedDuration: '8-12 min',
+        placeholderPath: 'media/ch03-data-importance/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 3',
+        description: 'Versione audio completa del Capitolo 3: qualità dati, bias e validazione.',
+        estimatedDuration: '23 min',
+        placeholderPath: 'media/ch03-data-importance/podcast.mp3',
+        notes: 'ready'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica',
+        description: 'Sintesi visuale: 5 punti chiave, 1 warning, 1 mini framework.',
+        placeholderPath: 'media/ch03-data-importance/infographic.png',
+        notes: 'placeholder'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Materiale scaricabile per studio e esercitazione guidata.',
+        placeholderPath: 'media/ch03-data-importance/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
+    quiz: [
       {
         question: "Bias nei dati puo causare?",
         options: [
