@@ -735,10 +735,10 @@ export const chapters: Chapter[] = [
     title: 'Reti Neurali: L\'Architettura dell\'AI Moderna',
     description: 'Come funzionano i neuroni artificiali',
     sections: [
-      { title: 'Struttura di una Rete Neurale', content: 'Una rete neurale è composta da layer: Layer di Input riceve i dati, Hidden Layer (ce ne possono essere molti) elaborano e trasformano i dati, Layer di Output produce il risultato. Ogni neurone è connesso ai neuroni del layer successivo, con un "peso" che indica l\'importanza della connessione. Con più layer, il modello può imparare astrazioni sempre più complesse. Quando progetti una rete parti semplice e aumenta complessita solo se i dati lo giustificano, evitando over engineering. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: I pesi si ottimizzano iterativamente: niente magia, solo training>>.' },
-      { title: 'Il Processo di Backpropagation', content: 'Backpropagation è come l\'algoritmo si corregge. Quando commette un errore, "ritorna" attraverso la rete da destra a sinistra, aggiustando leggermente i **pesi** per ridurre l\'errore. È come dire a uno studente: "Hai fatto un errore qui, quindi studierai un po\' di più questa parte." Dopo migliaia di backprop, i pesi sono ottimizzati. Quando progetti una rete parti semplice e aumenta complessita solo se i dati lo giustificano, evitando over engineering. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: I pesi si ottimizzano iterativamente: niente magia, solo training>>.' },
-      { title: "Startup Lens", content: "Le reti neurali hanno senso quando il pattern e complesso (immagini, linguaggio, segnali). Per problemi semplici, un modello meno complesso e piu economico e piu spiegabile." },
-      { title: "Errore comune + Mini esercizio", content: "Errore comune: aumentare layer senza strategia. Mini esercizio: confronta due architetture (piccola vs piu profonda) su un dataset demo e descrivi differenze su overfitting, tempo training e interpretabilita." },
+      { title: 'Struttura di una Rete Neurale', content: 'Una rete neurale è composta da layer: **input** (riceve i dati), **hidden** (trasformano i segnali) e **output** (produce la previsione finale). Ogni connessione tra neuroni ha un **peso** che regola quanto una informazione influenza il risultato. Aumentare i layer può migliorare la capacità di rappresentare pattern complessi, ma aumenta anche costo e rischio di overfitting. *Nota pratica:* parti con un\'architettura piccola e aggiungi complessità solo se i dati lo richiedono. <<Takeaway: una rete neurale è efficace quando bilancia capacità, costo e generalizzazione>>.', media: [ { type: 'infographic', title: 'Anatomia rete neurale', description: 'Input, hidden e output layer con ruolo dei pesi.', placeholderPath: 'media/ch05-neural-networks/sec-01/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Il Processo di Backpropagation', content: 'La **backpropagation** è il meccanismo con cui la rete si corregge: confronta previsione e valore reale, calcola l\'errore e aggiorna i pesi in direzione che riduce la perdita. In pratica è un ciclo continuo di tentativo, feedback e aggiustamento. Segnale utile: se la loss di training scende ma quella di validation peggiora, stai probabilmente overfittando. *Nota pratica:* monitora sempre training e validation insieme, non un solo numero. <<Takeaway: il training efficace è guidato da feedback misurabile, non da tentativi casuali>>.', media: [ { type: 'video', title: 'Backprop spiegata semplice', description: 'Visual del flusso errore → gradiente → aggiornamento pesi.', placeholderPath: 'media/ch05-neural-networks/sec-02/video.mp4', notes: 'placeholder' } ] },
+      { title: "Startup Lens", content: "Le reti neurali hanno senso quando i pattern sono davvero complessi (immagini, linguaggio, segnali). Se il problema è lineare o il dataset è piccolo, un modello più semplice può dare risultati simili con costi minori, tempi più rapidi e maggiore spiegabilità.", media: [ { type: 'infographic', title: 'Quando usare reti neurali', description: 'Matrice decisionale: complessità problema vs costo operativo.', placeholderPath: 'media/ch05-neural-networks/sec-03/infographic.png', notes: 'placeholder' } ] },
+      { title: "Errore comune + Mini esercizio", content: "**Errore comune:** aumentare layer senza una strategia di validazione. **Mini esercizio (20 min):** confronta due architetture (piccola vs più profonda) sullo stesso dataset e valuta tre aspetti: generalizzazione su validation, tempo di training e facilità di interpretazione.", media: [ { type: 'podcast', title: 'Podcast — Profondità con criterio', description: 'Trade-off pratici tra profondità, costo e robustezza.', placeholderPath: 'media/ch05-neural-networks/sec-04/podcast.mp3', notes: 'placeholder' } ] },
     ],
     keyTakeaways: [
       'Neuroni artificiali imitano il cervello',
@@ -746,6 +746,38 @@ export const chapters: Chapter[] = [
       'Backprop aggiusta i pesi per ridurre errori',
       'Più layer = più capacità di astrazione',
       'Learning outcome: descrivere come i pesi vengono aggiornati durante il training',
+    ],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 5',
+        description: 'Panoramica pratica su architettura, backpropagation e trade-off.',
+        estimatedDuration: '8-10 min',
+        placeholderPath: 'media/ch05-neural-networks/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 5',
+        description: 'Versione audio orientata a decisioni di progetto.',
+        estimatedDuration: '10-15 min',
+        placeholderPath: 'media/ch05-neural-networks/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 5',
+        description: 'Schema layer + flusso backprop + segnali di overfitting.',
+        placeholderPath: 'media/ch05-neural-networks/infographic.png',
+        notes: 'placeholder'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Checklist operativa per scegliere profondità rete e metrica.',
+        placeholderPath: 'media/ch05-neural-networks/handout.pdf',
+        notes: 'placeholder'
+      }
     ],
     codeSnippets: [
       {
@@ -761,37 +793,114 @@ export const chapters: Chapter[] = [
     ]
     ,quiz: [
       {
-        question: "Backpropagation aggiorna?",
+        question: "In una rete neurale, il ruolo principale dei pesi è:",
         options: [
-          "Pesi della rete",
-          "Titolo file",
-          "Tema grafico",
-          "DNS record",
+          "Regolare quanto ogni input influenza la previsione",
+          "Cambiare il colore dei layer",
+          "Ridurre automaticamente il dataset",
+          "Sostituire la funzione di loss",
         ],
         correct: 0,
-        explanation: "Backprop corregge pesi in base errore."
+        explanation: "I pesi determinano il contributo di ogni segnale nel calcolo dell'output."
       },
       {
-        question: "Più layer puo dare?",
+        question: "Se aumenti i layer senza abbastanza dati, quale rischio cresce di più?",
         options: [
-          "Feature più astratte",
-          "Meno dati sempre",
-          "Nessun vantaggio",
-          "Solo bug",
+          "Overfitting",
+          "Compressione lossless",
+          "Riduzione bias di interfaccia",
+          "Migliore spiegabilità",
         ],
         correct: 0,
-        explanation: "Profondita permette rappresentazioni complesse."
+        explanation: "Maggiore complessità con pochi dati spesso porta a memorizzazione e scarsa generalizzazione."
       },
       {
-        question: "Peso neurale rappresenta?",
+        question: "La backpropagation serve principalmente a:",
         options: [
-          "Importanza connessione",
-          "Colore nodo",
-          "Nome layer",
-          "Ora training",
+          "Aggiornare i pesi per ridurre l'errore",
+          "Creare nuove feature manuali",
+          "Aumentare la RAM del server",
+          "Eliminare la validation",
         ],
         correct: 0,
-        explanation: "Peso modula contributo del segnale."
+        explanation: "Backprop usa l'errore per correggere i pesi iterativamente."
+      },
+      {
+        question: "Training loss in calo ma validation loss in aumento indica spesso:",
+        options: [
+          "Overfitting",
+          "Underfitting",
+          "Dataset perfetto",
+          "Convergenza ideale",
+        ],
+        correct: 0,
+        explanation: "Il modello sta imparando troppo i dati visti e peggiora su dati nuovi."
+      },
+      {
+        question: "Quando una startup dovrebbe preferire un modello più semplice a una rete profonda?",
+        options: [
+          "Quando il problema è semplice e i dati sono limitati",
+          "Quando vuole usare più GPU a prescindere",
+          "Quando vuole metriche meno trasparenti",
+          "Quando non deve validare",
+        ],
+        correct: 0,
+        explanation: "Modelli semplici possono essere più economici, rapidi e spiegabili in contesti poco complessi."
+      },
+      {
+        question: "Quale metrica/controllo è più utile durante il training di una rete?",
+        options: [
+          "Monitorare insieme training e validation",
+          "Guardare solo il numero di epoche",
+          "Guardare solo la loss di training",
+          "Guardare solo il tempo di avvio notebook",
+        ],
+        correct: 0,
+        explanation: "Serve confronto continuo tra training e validation per capire se generalizza."
+      },
+      {
+        question: "Quale decisione è più robusta in produzione?",
+        options: [
+          "Scegliere il modello con performance stabili su dati nuovi",
+          "Scegliere sempre il modello più profondo",
+          "Scegliere il modello con training più lungo",
+          "Scegliere il modello con nome più recente",
+        ],
+        correct: 0,
+        explanation: "La stabilità nel mondo reale conta più della complessità fine a sé stessa."
+      },
+      {
+        question: "Se due architetture hanno accuracy simile, quale criterio può guidare la scelta finale?",
+        options: [
+          "Costo computazionale e interpretabilità",
+          "Numero massimo di layer",
+          "Quantità di righe di codice",
+          "Tema UI del dashboard",
+        ],
+        correct: 0,
+        explanation: "A parità di performance, efficienza e manutenibilità fanno la differenza."
+      },
+      {
+        question: "In un mini esperimento piccola vs profonda, quale confronto è corretto?",
+        options: [
+          "Generalizzazione, tempo training, interpretabilità",
+          "Solo numero di parametri",
+          "Solo tempo di inferenza",
+          "Solo punteggio training",
+        ],
+        correct: 0,
+        explanation: "Confronto completo evita decisioni basate su un singolo numero."
+      },
+      {
+        question: "Qual è l'obiettivo reale del training di una rete neurale?",
+        options: [
+          "Generalizzare bene su dati non visti",
+          "Memorizzare tutto il training set",
+          "Massimizzare la profondità",
+          "Ridurre a zero ogni errore sul training",
+        ],
+        correct: 0,
+        explanation: "Un buon modello non ripete il passato: predice bene su nuovi esempi."
       }
     ]
   },
