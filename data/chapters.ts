@@ -1293,55 +1293,54 @@ export const chapters: Chapter[] = [
     title: 'Fine-Tuning e Transfer Learning',
     description: 'Come personalizzare modelli esistenti',
     sections: [
-      { title: 'Transfer Learning', content: '**Transfer Learning** è un trucco intelligente: invece di addestrare un modello da zero (che richiede milioni di immagini e settimane di calcolo), usi un modello già addestrato su dati generali e lo "adatti" ai tuoi dati specifici. Esempio: un modello addestrato su ImageNet (1 milione di immagini di oggetti comuni) può essere adattato per riconoscere malattie in radiografie mediche con solo 10.000 immagini. La scelta tra RAG e fine tuning dipende da frequenza aggiornamento, costo operativo e accuratezza richiesta. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Decidi tra fine-tuning e RAG in base a costo, aggiornamento e accuratezza>>.' },
-      { title: 'Fine-tuning vs Zero-shot', content: '**Fine-tuning** significa addestrare ancora il modello, ma solo leggermente, con i tuoi dati. Zero-shot significa usare il modello senza ulteriore allenamento. Esempio di zero-shot: ChatGPT può scrivere codice senza mai aver visto i tuoi progetti — perché ha visto miliardi di linee di codice. Fine-tuning porterebbe risultati ancora migliori se glielo insegni specificamente. La scelta tra RAG e fine tuning dipende da frequenza aggiornamento, costo operativo e accuratezza richiesta. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Decidi tra fine-tuning e RAG in base a costo, aggiornamento e accuratezza>>.' }
+      { title: 'Transfer Learning', content: "Il **transfer learning** parte da un modello pre-addestrato e lo adatta al dominio target. Riduce tempi e costi rispetto al training da zero.\n\n*Nota pratica:* funziona meglio quando i domini sono abbastanza vicini. <<Takeaway: riuso intelligente > ricostruzione da zero>>.", media: [ { type: 'infographic', title: 'Transfer learning flow', description: 'Base model → adattamento dominio.', placeholderPath: 'media/ch09-fine-tuning/sec-01/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Fine-tuning vs Zero-shot', content: "Zero-shot è rapido da avviare; fine-tuning richiede investimento ma può migliorare consistenza su task specifici.\n\n*Nota pratica:* valuta sempre costo, aggiornabilità e qualità richiesta. <<Takeaway: la scelta tecnica deve avere ROI chiaro>>.", media: [ { type: 'video', title: 'Fine-tuning decision guide', description: 'Quando conviene davvero fare tuning.', placeholderPath: 'media/ch09-fine-tuning/sec-02/video.mp4', notes: 'placeholder' } ] },
+      { title: 'Startup Lens', content: "Spesso conviene partire con RAG + prompt robusti e passare al fine-tuning solo con evidenza di gap persistenti.", media: [ { type: 'infographic', title: 'RAG vs Fine-tuning', description: 'Matrice decisionale pratica.', placeholderPath: 'media/ch09-fine-tuning/sec-03/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** fare tuning troppo presto senza baseline.\n\n**Check rapido (2 min):** indica 2 segnali che mostrano che prompt+RAG non bastano più.", media: [ { type: 'podcast', title: 'Podcast — Tuning con criterio', description: 'Errori frequenti nella fase decisionale.', placeholderPath: 'media/ch09-fine-tuning/sec-04/podcast.mp3', notes: 'placeholder' } ] }
     ],
     keyTakeaways: [
-      'Transfer learning = addestramento più veloce',
-      'Fine-tune su dati specifici per adattare il modello',
-      'Richiede meno data che addestrare da zero',
-      'RAG = alternativa al fine-tuning',
-      'Learning outcome: decidere quando usare fine-tuning o RAG su un caso di prodotto',
+      'Transfer learning accelera go-to-market',
+      'Fine-tuning migliora task specifici se motivato',
+      'RAG è forte su contenuti aggiornabili',
+      'Non esiste una scelta universale',
+      'Learning outcome: scegliere tra zero-shot, RAG e fine-tuning su un caso reale',
     ],
     discussionPrompts: [
-      'Quando sarebbe meglio usare Transfer Learning vs allenare da zero?',
-      'Quali rischi ci sono nel fine-tuning se i tuoi dati sono molto diversi dai dati originali?',
-      'Come potrebbe RAG (Retrieval-Augmented Generation) essere migliore del fine-tuning?'
-    ]
-    ,quiz: [
+      'Quando il costo del fine-tuning è giustificato?',
+      'Quale rischio vedi nel tuning con dati poco curati?',
+      'In quali scenari RAG resta preferibile?'
+    ],
+    media: [
+      { type: 'video', title: 'Video Capitolo 9', description: 'Strategie di adattamento modello in prodotto.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch09-fine-tuning/video.mp4', notes: 'placeholder' },
+      { type: 'podcast', title: 'Podcast Capitolo 9', description: 'Trade-off tecnici ed economici.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch09-fine-tuning/podcast.mp3', notes: 'placeholder' },
+      { type: 'infographic', title: 'Infografica Capitolo 9', description: 'Decision tree: zero-shot vs RAG vs tuning.', placeholderPath: 'media/ch09-fine-tuning/infographic.png', notes: 'placeholder' },
+      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist decisionale strategia modello.', placeholderPath: 'media/ch09-fine-tuning/handout.pdf', notes: 'placeholder' }
+    ],
+    exercises: [
       {
-        question: "Transfer learning conviene quando?",
-        options: [
-          "Adatti modello a dominio specifico",
-          "Hai zero modello e zero dati",
-          "Serve solo UI",
-          "Non fai test",
+        title: 'Mini Lab — Decisione strategia modello (senza coding)',
+        objective: 'Scegliere tra zero-shot, RAG e fine-tuning su base business+tecnica.',
+        duration: '15-20 min',
+        steps: [
+          'Leggi dataset train CH9 con scenari e vincoli.',
+          'Per ogni scenario scegli una strategia e motiva.',
+          'Confronta con validation CH9.',
+          'Definisci 2 KPI per validare la scelta dopo deploy.'
         ],
-        correct: 0,
-        explanation: "Adattare pretrain riduce tempi e costi."
-      },
-      {
-        question: "Fine tuning rispetto zero shot?",
-        options: [
-          "Migliora task specifici",
-          "Sempre peggio",
-          "Nessuna differenza",
-          "Sempre vietato",
-        ],
-        correct: 0,
-        explanation: "Fine tuning allinea a dataset del dominio."
-      },
-      {
-        question: "RAG e utile per?",
-        options: [
-          "Usare fonti aggiornabili senza retraining completo",
-          "Sostituire internet",
-          "Evitare prompt",
-          "Eliminare retrieval",
-        ],
-        correct: 0,
-        explanation: "RAG combina recupero fonti e generazione."
+        deliverable: 'Checkpoint personale: scenario → strategia + motivazione.',
+        resources: [
+          { label: 'Dataset train CH9 (CSV)', path: '/datasets/ch09-strategy-choice/train.csv' },
+          { label: 'Dataset validation CH9 (CSV)', path: '/datasets/ch09-strategy-choice/validation.csv' },
+          { label: 'Schema campi CH9 (JSON)', path: '/datasets/ch09-strategy-choice/schema.json' }
+        ]
       }
+    ],
+    quiz: [
+      { question: 'Transfer learning è utile quando:', options: ['Adatti un modello pre-addestrato', 'Non hai task', 'Vuoi evitare test', 'Vuoi eliminare inferenza'], correct: 0, explanation: 'Riduce costo e tempo in molti scenari.' },
+      { question: 'Zero-shot significa:', options: ['Usare il modello senza ulteriore training', 'Riaddestrare da zero', 'Usare solo retrieval', 'Usare solo embedding statici'], correct: 0, explanation: 'È la modalità più rapida di avvio.' },
+      { question: 'RAG conviene soprattutto quando:', options: ['Le fonti cambiano spesso', 'I dati sono statici', 'Non esistono documenti', 'Non serve accuratezza'], correct: 0, explanation: 'Gestisce meglio aggiornabilità senza retraining continuo.' },
+      { question: 'Errore comune pre-tuning:', options: ['Saltare baseline prompt+RAG', 'Misurare KPI', 'Fare test A/B', 'Valutare costi'], correct: 0, explanation: 'Serve evidenza prima di investire in tuning.' },
+      { question: 'Messaggio chiave:', options: ['Scegli strategia in base a vincoli reali', 'Fine-tuning sempre', 'RAG sempre', 'Zero-shot sempre'], correct: 0, explanation: 'Conta il contesto, non la moda tecnica.' }
     ]
   },
   {

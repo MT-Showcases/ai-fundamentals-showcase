@@ -1,0 +1,7 @@
+scenario_id,domain,data_freshness,accuracy_need,budget_level,time_to_market,recommended_strategy
+S001,customer_support,high,high,medium,fast,rag
+S002,legal_ops,medium,high,high,medium,fine_tuning
+S003,marketing,high,medium,low,fast,zero_shot
+S004,finance,low,high,high,slow,fine_tuning
+S005,education,high,medium,medium,fast,rag
+S006,internal_search,high,medium,low,fast,rag

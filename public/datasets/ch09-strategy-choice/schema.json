@@ -1,0 +1,14 @@
+{
+  "name": "ch09-strategy-choice",
+  "task": "model_strategy_selection",
+  "target": "recommended_strategy",
+  "fields": [
+    { "name": "scenario_id", "type": "string" },
+    { "name": "domain", "type": "string" },
+    { "name": "data_freshness", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "accuracy_need", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "budget_level", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "time_to_market", "type": "category", "values": ["fast", "medium", "slow"] },
+    { "name": "recommended_strategy", "type": "category", "values": ["zero_shot", "rag", "fine_tuning"] }
+  ]
+}
