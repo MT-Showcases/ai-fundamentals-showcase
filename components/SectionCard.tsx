@@ -88,7 +88,7 @@ export default function SectionCard({ title, content }: SectionCardProps) {
           ))}
         </ol>
       ) : (
-        <p className="text-gray-300 leading-relaxed">{renderInlineFormatting(content)}</p>
+        <p className="text-gray-300 leading-relaxed whitespace-pre-line">{renderInlineFormatting(content)}</p>
       )}
     </section>
   );
