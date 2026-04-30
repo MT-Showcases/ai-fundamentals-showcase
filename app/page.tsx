@@ -86,7 +86,7 @@ export default function Home() {
 
               return (
                 <Card key={chapter.id} className="h-full flex flex-col">
-                  <div className="space-y-3 flex-1 pb-4">
+                  <div className="space-y-3 flex-1 pb-6">
                     <div className="flex items-center gap-2">
                       <span className="bg-cyan-400 text-navy-900 px-2 py-0.5 rounded text-xs font-bold">
                         Cap. {chapter.id}
@@ -97,7 +97,7 @@ export default function Home() {
                       <img
                         src={`/${chapterInfographic.placeholderPath}`}
                         alt={`Anteprima infografica ${chapter.title}`}
-                        className="w-full h-32 rounded-lg object-cover bg-black/20 border border-blue-700/40"
+                        className="w-full h-40 rounded-lg object-contain bg-black/20 border border-blue-700/40 p-2"
                         loading="lazy"
                       />
                     )}
