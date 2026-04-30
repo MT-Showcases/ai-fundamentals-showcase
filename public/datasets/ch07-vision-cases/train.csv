@@ -1,0 +1,7 @@
+image_id,lighting,angle,occlusion,motion_blur,expected_class,risk_tag
+I001,good,front,none,low,dog,low
+I002,low_light,front,partial,low,dog,medium
+I003,good,side,none,medium,cat,medium
+I004,backlight,front,partial,high,person,high
+I005,good,top,none,low,bicycle,low
+I006,low_light,side,heavy,high,person,high

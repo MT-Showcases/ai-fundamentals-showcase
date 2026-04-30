@@ -1162,62 +1162,61 @@ export const chapters: Chapter[] = [
     title: 'Computer Vision: La Vista dell\'AI',
     description: 'Come l\'AI vede e analizza immagini',
     sections: [
-      { title: 'Convolutional Neural Networks', content: '**CNN** (Convolutional Neural Networks) sono specializzate per le immagini. Invece di guardare ogni pixel individualmente, usano "filtri" che scansionano piccole aree dell\'immagine. Un filtro potrebbe cercare linee verticali, un altro linee orizzontali, un altro curve. I layer iniziali trovano feature semplici (angoli), i layer profondi trovano feature complesse (occhi, nasi, volti). Prima del deploy testa condizioni reali come luce, angoli e qualita camera per evitare regressioni fuori laboratorio. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Testa in condizioni reali, non solo su dataset da laboratorio>>.' },
-      { title: 'Riconoscimento di Oggetti', content: 'Il processo è semplice: (1) immagine entra come matrice di pixel, (2) filter **CNN** estraggono feature in modo gerarchico, (3) alla fine, il modello produce probabilità per ogni classe. Esempio: "Riconosco un cane con 95% probabilità, un gatto con 3%, nient\'altro con 2%". Ma il sistema può sbagliare: una foto sfocata, un cane in posa strana, condizioni di luce scarsa — questi sono gli edge case che confondono l\'AI. Prima del deploy testa condizioni reali come luce, angoli e qualita camera per evitare regressioni fuori laboratorio. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Testa in condizioni reali, non solo su dataset da laboratorio>>.' }
+      { title: 'Convolutional Neural Networks', content: "Le **CNN** estraggono pattern visivi con filtri locali: bordi, texture e forme. I layer iniziali catturano feature semplici; quelli profondi feature più astratte utili alla classificazione.\n\n*Nota pratica:* validare solo su immagini pulite crea falsa sicurezza. <<Takeaway: Vision affidabile = modello + test realistici>>.", media: [ { type: 'infographic', title: 'CNN a strati', description: 'Dal pixel alle feature complesse.', placeholderPath: 'media/ch07-computer-vision/sec-01/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Riconoscimento di Oggetti', content: "Il modello produce probabilità per classe, ma può degradare su sfocature, controluce, occlusioni e angoli insoliti.\n\n*Nota pratica:* misura errori su edge-case, non solo accuracy media. <<Takeaway: la media può nascondere failure critici>>.", media: [ { type: 'video', title: 'Object detection edge-case', description: 'Errori tipici in luce scarsa e occlusioni.', placeholderPath: 'media/ch07-computer-vision/sec-02/video.mp4', notes: 'placeholder' } ] },
+      { title: 'Startup Lens', content: "In produzione servono soglie di confidence, fallback umano e monitoraggio continuo dei casi ambigui. Senza osservabilità, il sistema sembra buono in demo ma fragile nel reale.", media: [ { type: 'infographic', title: 'Pipeline vision in produzione', description: 'Acquisizione, inferenza, fallback e KPI.', placeholderPath: 'media/ch07-computer-vision/sec-03/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** testare solo immagini perfette da laboratorio.\n\n**Check rapido (2 min):** indica 2 edge-case del tuo dominio e 1 mitigazione operativa.", media: [ { type: 'podcast', title: 'Podcast — Vision robusta', description: 'Come progettare test set realistici.', placeholderPath: 'media/ch07-computer-vision/sec-04/podcast.mp3', notes: 'placeholder' } ] }
     ],
     keyTakeaways: [
-      'Immagine = griglia di pixel (numeri)',
-      'CNN usa filtri per estrarre feature',
-      'Più layer = feature sempre più astratte',
-      'Transfer learning accelera il training',
-      'Learning outcome: valutare un caso vision e identificare almeno un edge-case critico',
+      'Immagine = griglia numerica di pixel',
+      'CNN estrae feature in modo gerarchico',
+      'Gli edge-case contano più della media',
+      'Serve fallback con confidence bassa',
+      'Learning outcome: identificare un failure mode vision e proporre una mitigazione',
     ],
     codeSnippets: [
       {
         lang: 'python',
         label: 'Classificazione immagini con CNN (PyTorch)',
-        code: '# CNN semplice con PyTorch\nimport torch.nn as nn\n\nclass SimpleCNN(nn.Module):\n    def __init__(self, num_classes=10):\n        super().__init__()\n        self.features = nn.Sequential(\n            nn.Conv2d(3, 32, kernel_size=3, padding=1),\n            nn.ReLU(),\n            nn.MaxPool2d(2, 2),\n            nn.Conv2d(32, 64, kernel_size=3, padding=1),\n            nn.ReLU(),\n            nn.MaxPool2d(2, 2)\n        )\n        self.classifier = nn.Linear(64 * 8 * 8, num_classes)\n    \n    def forward(self, x):\n        x = self.features(x)\n        x = x.view(x.size(0), -1)\n        return self.classifier(x)\n\nmodel = SimpleCNN(num_classes=10)\nprint(model)'
+        code: '# CNN semplice con PyTorch\nimport torch.nn as nn\n\nclass SimpleCNN(nn.Module):\n    def __init__(self, num_classes=10):\n        super().__init__()\n        self.features = nn.Sequential(\n            nn.Conv2d(3, 32, kernel_size=3, padding=1),\n            nn.ReLU(),\n            nn.MaxPool2d(2, 2),\n            nn.Conv2d(32, 64, kernel_size=3, padding=1),\n            nn.ReLU(),\n            nn.MaxPool2d(2, 2)\n        )\n        self.classifier = nn.Linear(64 * 8 * 8, num_classes)\n\n    def forward(self, x):\n        x = self.features(x)\n        x = x.view(x.size(0), -1)\n        return self.classifier(x)\n\nmodel = SimpleCNN(num_classes=10)\nprint(model)'
       }
     ],
-        discussionPrompts: [
-      'Perché le CNN funzionano meglio rispetto alle reti neurali normali per le immagini?',
-      'Quali situazioni potrebbero ingannare un sistema di riconoscimento di oggetti?',
-      'Come potrebbe il "Transfer Learning" risparmiare tempo nel training di un nuovo modello?'
-    ]
-    ,quiz: [
+    discussionPrompts: [
+      'Perché le CNN funzionano meglio delle reti dense pure sulle immagini?',
+      'Quale edge-case è più critico nel tuo dominio?',
+      'Quando conviene usare transfer learning in vision?'
+    ],
+    media: [
+      { type: 'video', title: 'Video Capitolo 7', description: 'Panoramica operativa di computer vision.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch07-computer-vision/video.mp4', notes: 'placeholder' },
+      { type: 'podcast', title: 'Podcast Capitolo 7', description: 'Versione audio su failure mode vision.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch07-computer-vision/podcast.mp3', notes: 'placeholder' },
+      { type: 'infographic', title: 'Infografica Capitolo 7', description: 'Schema CNN + robustezza + fallback.', placeholderPath: 'media/ch07-computer-vision/infographic.png', notes: 'placeholder' },
+      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist QA vision su edge-case reali.', placeholderPath: 'media/ch07-computer-vision/handout.pdf', notes: 'placeholder' }
+    ],
+    exercises: [
       {
-        question: "CNN in vision usa?",
-        options: [
-          "Filtri locali su pixel",
-          "Solo regole if",
-          "Nessun parametro",
-          "Solo OCR",
+        title: 'Mini Lab — Test set realistico vision (senza coding)',
+        objective: 'Progettare un mini piano test per stressare un sistema vision prima del deploy.',
+        duration: '15-20 min',
+        steps: [
+          'Leggi il dataset train CH7 e individua pattern principali.',
+          'Definisci 3 edge-case: luce, angolo, occlusione.',
+          'Confronta con validation CH7 e segna dove serve fallback.',
+          'Definisci 2 KPI: errori critici e fallback rate.'
         ],
-        correct: 0,
-        explanation: "Convoluzioni estraggono pattern spaziali."
-      },
-      {
-        question: "Transfer learning in vision?",
-        options: [
-          "Riusa modello pre addestrato",
-          "Parte da zero",
-          "Blocca training",
-          "Rimuove etichette",
-        ],
-        correct: 0,
-        explanation: "Accelera training su nuovi task."
-      },
-      {
-        question: "Edge case vision esempio?",
-        options: [
-          "Luce scarsa o sfocatura",
-          "JSON valido",
-          "Prompt breve",
-          "CPU libera",
-        ],
-        correct: 0,
-        explanation: "Condizioni difficili riducono accuratezza."
+        deliverable: 'Checkpoint personale: 3 edge-case + 1 mitigazione operativa.',
+        resources: [
+          { label: 'Dataset train CH7 (CSV)', path: '/datasets/ch07-vision-cases/train.csv' },
+          { label: 'Dataset validation CH7 (CSV)', path: '/datasets/ch07-vision-cases/validation.csv' },
+          { label: 'Schema campi CH7 (JSON)', path: '/datasets/ch07-vision-cases/schema.json' }
+        ]
       }
+    ],
+    quiz: [
+      { question: 'Le CNN sono efficaci perché:', options: ['Estraggono pattern locali con filtri', 'Eliminano il bisogno di dati', 'Funzionano senza training', 'Non sbagliano mai'], correct: 0, explanation: 'La convoluzione cattura strutture locali rilevanti nelle immagini.' },
+      { question: 'Un edge-case tipico in vision è:', options: ['Foto sfocata o controluce', 'Prompt troppo lungo', 'Errore DNS', 'Tokenizzazione errata'], correct: 0, explanation: 'Condizioni visive difficili riducono affidabilità.' },
+      { question: 'Transfer learning in vision serve a:', options: ['Riutilizzare modelli pre-addestrati', 'Disattivare validazione', 'Evitare etichette', 'Eliminare inferenza'], correct: 0, explanation: 'Riduce tempi e dati necessari in molti casi reali.' },
+      { question: 'Quando attivare fallback?', options: ['Con confidence bassa o scenario ambiguo', 'Mai', 'Solo in training', 'Solo con internet lento'], correct: 0, explanation: 'Fallback riduce rischio nei casi incerti.' },
+      { question: 'Messaggio chiave del capitolo:', options: ['Vision affidabile = modello + test reali + fallback', 'Basta più layer', 'Basta più dati rumorosi', 'Basta una demo'], correct: 0, explanation: 'Affidabilità nasce da tecnica + validazione operativa.' }
     ]
   },
   {

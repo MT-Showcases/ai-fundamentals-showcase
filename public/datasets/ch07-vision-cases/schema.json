@@ -1,0 +1,14 @@
+{
+  "name": "ch07-vision-cases",
+  "task": "image_classification_robustness",
+  "target": "expected_class",
+  "fields": [
+    { "name": "image_id", "type": "string" },
+    { "name": "lighting", "type": "category", "values": ["good", "low_light", "backlight"] },
+    { "name": "angle", "type": "category", "values": ["front", "side", "top"] },
+    { "name": "occlusion", "type": "category", "values": ["none", "partial", "heavy"] },
+    { "name": "motion_blur", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "expected_class", "type": "string" },
+    { "name": "risk_tag", "type": "category", "values": ["low", "medium", "high"] }
+  ]
+}
