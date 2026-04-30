@@ -97,7 +97,7 @@ export default function Home() {
                       <img
                         src={`/${chapterInfographic.placeholderPath}`}
                         alt={`Anteprima infografica ${chapter.title}`}
-                        className="w-full h-40 rounded-lg object-contain bg-black/20 border border-blue-700/40 p-2"
+                        className="w-full max-h-56 rounded-lg object-contain bg-black/20 border border-blue-700/40"
                         loading="lazy"
                       />
                     )}
