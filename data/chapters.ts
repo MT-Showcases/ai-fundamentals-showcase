@@ -170,11 +170,11 @@ export const chapters: Chapter[] = [
       },
       {
         type: 'podcast',
-        title: 'Podcast Deep Dive',
-        description: 'Versione audio con casi reali, errori comuni e takeaway operativi.',
-        estimatedDuration: '10-15 min',
+        title: 'Podcast Capitolo 2',
+        description: 'Versione audio completa del Capitolo 2 con spiegazione e contesto operativo.',
+        estimatedDuration: '16-17 min',
         placeholderPath: 'media/ch02-how-ai-works/podcast.mp3',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'infographic',
