@@ -405,7 +405,7 @@ export const chapters: Chapter[] = [
       { title: 'Quantità vs Qualità', content: 'Non è vero che più dati = meglio. Se raccogli 1 milione di foto blurrate di gatti, un algoritmo le imparerà male. Al contrario, 10.000 foto nitide di gatti diverse porteranno a risultati migliori. I dati devono essere: (1) sufficienti in quantità, (2) di alta qualità, (3) rappresentativi della realtà. Nel lavoro reale creare **dataset** bilanciati e versionati e spesso il fattore che separa una demo da una soluzione affidabile. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Dati puliti e rappresentativi valgono più di grandi volumi rumorosi>>.', media: [ { type: 'infographic', title: 'Quantità vs Qualità dati', description: 'Infografica: confronto visivo tra dataset grande ma rumoroso vs dataset piccolo ma curato.', placeholderPath: 'media/ch03-data-importance/sec-01/infographic.png', notes: 'placeholder' } ] },
       { title: 'Bias nei Dati', content: 'Il **bias** è il problema più grave. Se alleni un algoritmo di riconoscimento facciale usando foto solo di uomini, avrà difficoltà a riconoscere i volti femminili. Amazon ha dovuto buttare il suo sistema di assunzione automatico perché discriminava le donne — i dati storici riflettevano pregiudizi umani, e l\'AI li aveva imparati perfettamente. Nel lavoro reale creare dataset bilanciati e versionati e spesso il fattore che separa una demo da una soluzione affidabile. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Dati puliti e rappresentativi valgono più di grandi volumi rumorosi>>.', media: [ { type: 'video', title: 'Video — Bias nei dati: il caso Amazon', description: 'Mini video narrativo sul bias nei dati, con il caso Amazon hiring.', placeholderPath: 'media/ch03-data-importance/sec-02/video.mp4', notes: 'ready' } ] },
       { title: "Startup Lens", content: "In early-stage product, meglio 5.000 record puliti e bilanciati che 500.000 rumorosi. Introduci versionamento dataset e changelog: ogni modifica ai dati deve essere tracciata." },
-      { title: "Errore comune + Mini esercizio", content: "**Errore comune:** valutare il modello solo su test set statico.\n\n**Mini esercizio (15 min):** crea 5 esempi edge-case e verifica se il modello risponde in modo coerente; annota failure pattern e possibile correzione dati.", media: [ { type: 'podcast', title: 'Podcast — Errore comune: testare solo su dati statici', description: 'Micro-podcast sull\'errore di validation e come costruire edge-case robusti.', placeholderPath: 'media/ch03-data-importance/sec-04/podcast.mp3', notes: 'placeholder' } ] },
+      { title: "Errore comune + Check rapido", content: "**Errore comune:** valutare il modello solo su test set statico.\n\n**Check rapido (2 min):** indica un caso reale in cui un test statico può dare falsa sicurezza e quale controllo aggiungeresti per evitare errori in produzione.", media: [ { type: 'podcast', title: 'Podcast — Errore comune: testare solo su dati statici', description: 'Micro-podcast sull\'errore di validation e come costruire edge-case robusti.', placeholderPath: 'media/ch03-data-importance/sec-04/podcast.mp3', notes: 'placeholder' } ] },
     ],
     keyTakeaways: [
       'Dati di qualità = AI di qualità',
@@ -418,6 +418,25 @@ export const chapters: Chapter[] = [
       'Se un algoritmo fa discriminazioni, è colpa dell\'algoritmo o dei dati di allenamento?',
       'Come potremmo raccogliere dati che non riflettano i bias umani?',
       'Quali conseguenze potrebbe avere un sistema biased usato per assunzioni, prestiti bancari, o sentenze?'
+    ],
+    exercises: [
+      {
+        title: 'Mini Lab — Robustezza dati e edge-case (senza coding)',
+        objective: 'Capire come stressare un modello con casi limite e proporre correzioni dati prima del deploy.',
+        duration: '15-20 min',
+        steps: [
+          'Leggi il dataset CH5 e immagina 5 edge-case realistici che potrebbero mettere in crisi il modello.',
+          'Per ogni edge-case, indica quale tipo di errore potrebbe emergere (bias, confusione classe, mancata generalizzazione).',
+          'Proponi una correzione dati o di processo (raccolta, bilanciamento, labeling, monitoraggio).',
+          'Definisci 2 metriche da osservare per verificare se la correzione migliora davvero il comportamento del modello.'
+        ],
+        deliverable: 'Checkpoint personale: elenco dei 5 edge-case + 1 proposta di miglioramento prioritario con motivazione.',
+        resources: [
+          { label: 'Dataset train (CSV)', path: '/datasets/ch05-neural-networks/train.csv' },
+          { label: 'Dataset validation (CSV)', path: '/datasets/ch05-neural-networks/validation.csv' },
+          { label: 'Schema campi dataset (JSON)', path: '/datasets/ch05-neural-networks/schema.json' }
+        ]
+      }
     ],
     media: [
       {
