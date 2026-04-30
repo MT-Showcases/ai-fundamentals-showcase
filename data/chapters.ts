@@ -162,11 +162,11 @@ export const chapters: Chapter[] = [
     media: [
       {
         type: 'video',
-        title: 'Video Lesson',
-        description: 'Spiegazione visuale del capitolo (8-12 min) con esempi pratici.',
-        estimatedDuration: '8-12 min',
+        title: 'Video Capitolo 2',
+        description: 'Introduzione operativa al Capitolo 2: triade, algoritmi e funzionamento AI.',
+        estimatedDuration: '9-10 min',
         placeholderPath: 'media/ch02-how-ai-works/video.mp4',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
