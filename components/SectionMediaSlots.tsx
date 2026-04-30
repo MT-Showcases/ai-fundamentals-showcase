@@ -17,14 +17,6 @@ function defaultSectionMedia(chapterId: number, chapterSlug: string, sectionInde
 
   return [
     {
-      type: 'video',
-      title: `Mini video — ${sectionTitle}`,
-      description: 'Clip breve per chiarire il concetto appena letto.',
-      estimatedDuration: '1-3 min',
-      placeholderPath: `${base}/video.mp4`,
-      notes: 'placeholder'
-    },
-    {
       type: 'infographic',
       title: `Visual recap — ${sectionTitle}`,
       description: 'Mini infografica con schema e parole chiave della sezione.',
