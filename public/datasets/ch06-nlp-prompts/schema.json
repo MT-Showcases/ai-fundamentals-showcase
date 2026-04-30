@@ -1,0 +1,13 @@
+{
+  "name": "ch06-nlp-prompts",
+  "task": "prompt_quality_evaluation",
+  "target": "expected_behavior",
+  "description": "Dataset didattico per testare robustezza NLP su FAQ, supporto e classificazione ticket.",
+  "fields": [
+    { "name": "prompt_id", "type": "string", "description": "Identificativo prompt" },
+    { "name": "use_case", "type": "category", "values": ["faq", "support", "classification"], "description": "Categoria scenario" },
+    { "name": "user_prompt", "type": "string", "description": "Prompt utente" },
+    { "name": "expected_behavior", "type": "string", "description": "Comportamento atteso del sistema" },
+    { "name": "risk_tag", "type": "category", "values": ["low", "medium", "high"], "description": "Rischio operativo" }
+  ]
+}

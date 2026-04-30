@@ -1,0 +1,7 @@
+prompt_id,use_case,user_prompt,expected_behavior,risk_tag
+P001,faq,"Quali documenti servono per iscriversi?","Risposta breve con lista documenti e link ufficiale",low
+P002,support,"Non riesco ad accedere, mi aiuti?","Chiedere email/account e guidare reset password",medium
+P003,support,"Mi avete addebitato due volte","Empatia + richiesta dati ordine + escalation billing",high
+P004,classification,"Classifica questo ticket: errore pagamento ricorrente","Assegnare categoria billing_critical",high
+P005,faq,"Posso annullare entro 14 giorni?","Citare policy recesso e condizioni",medium
+P006,support,"Il prodotto non funziona e sono arrabbiato","De-escalation tono + passi diagnostici",high

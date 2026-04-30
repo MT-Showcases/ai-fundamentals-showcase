@@ -1,0 +1,5 @@
+prompt_id,use_case,user_prompt,expected_behavior,risk_tag
+V001,support,"Ho perso l'accesso e devo pagare una fattura oggi","Priorità alta + reset guidato + fallback umano se fallisce",high
+V002,faq,"Dove trovo i vostri termini di servizio?","Fornire link ToS aggiornato",low
+V003,support,"Mi rispondi sempre uguale, non capisci nulla","Riconoscere frustrazione + risposta personalizzata + escalation opzionale",medium
+V004,classification,"Ticket: addebito fraudolento su carta","Classificare billing_fraud e attivare procedura sicurezza",high
