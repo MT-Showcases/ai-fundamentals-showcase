@@ -52,7 +52,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
             }
           >
             {isReady(slot) ? (
-              <button onClick={() => setActive(slot)} className="block w-full text-left cursor-pointer">
+              <button onClick={() => setActive(slot)} className="block w-full text-left cursor-pointer" style={{ cursor: 'pointer' }}>
                 <img
                   src={`/${slot.placeholderPath}`}
                   alt={slot.title}

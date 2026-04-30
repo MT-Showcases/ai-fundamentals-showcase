@@ -113,7 +113,7 @@ export default function ChapterMediaSlots({ chapter }: Props) {
               }
             >
               {isReady(slot) && slot.type === 'infographic' ? (
-                <button onClick={() => setActive(slot)} className="block w-full text-left cursor-pointer">
+                <button onClick={() => setActive(slot)} className="block w-full text-left cursor-pointer" style={{ cursor: 'pointer' }}>
                   <img
                     src={`/${slot.placeholderPath}`}
                     alt={slot.title}
@@ -122,7 +122,7 @@ export default function ChapterMediaSlots({ chapter }: Props) {
                   />
                 </button>
               ) : isReady(slot) && slot.type === 'video' ? (
-                <button onClick={() => setActive(slot)} className="relative block w-full text-left cursor-pointer">
+                <button onClick={() => setActive(slot)} className="relative block w-full text-left cursor-pointer" style={{ cursor: 'pointer' }}>
                   <video
                     src={`/${slot.placeholderPath}`}
                     preload="metadata"
