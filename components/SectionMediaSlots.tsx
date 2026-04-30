@@ -130,7 +130,13 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
             {active.type === 'infographic' ? (
               <img src={`/${active.placeholderPath}`} alt={active.title} className="w-full h-auto max-h-[90vh] object-contain" />
             ) : active.type === 'video' ? (
-              <video src={`/${active.placeholderPath}`} controls className="w-full max-h-[90vh] bg-black" />
+              <video
+                src={`/${active.placeholderPath}`}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full max-h-[90vh] bg-black"
+              />
             ) : null}
           </div>
         </div>

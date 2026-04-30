@@ -182,7 +182,13 @@ export default function ChapterMediaSlots({ chapter }: Props) {
             {active.type === 'infographic' ? (
               <img src={`/${active.placeholderPath}`} alt={active.title} className="w-full h-auto max-h-[90vh] object-contain" />
             ) : (
-              <video src={`/${active.placeholderPath}`} controls className="w-full max-h-[90vh] bg-black" />
+              <video
+                src={`/${active.placeholderPath}`}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full max-h-[90vh] bg-black"
+              />
             )}
           </div>
         </div>
