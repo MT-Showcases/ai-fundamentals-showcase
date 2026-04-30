@@ -10,6 +10,7 @@ import ChapterQuiz from '@/components/ChapterQuiz';
 import ChapterMediaSlots from '@/components/ChapterMediaSlots';
 import Breadcrumb from '@/components/Breadcrumb';
 import ChapterSidebar from '@/components/ChapterSidebar';
+import BackToTopButton from '@/components/BackToTopButton';
 import Link from 'next/link';
 
 export const revalidate = 60; // ISR: Revalidate every 60 seconds
@@ -187,6 +188,7 @@ export default async function ChapterPage({ params }: Props) {
           </main>
         </div>
       </div>
+      <BackToTopButton />
     </div>
   );
 }
