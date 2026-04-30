@@ -28,10 +28,11 @@ function defaultSectionMedia(chapterId: number, chapterSlug: string, sectionInde
 }
 
 export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex, sectionTitle, sectionContent, media }: Props) {
-  const baseSlots = defaultSectionMedia(chapterId, chapterSlug, sectionIndex, sectionTitle);
-  const slotMap = new Map(baseSlots.map((s) => [s.type, s]));
-  (media ?? []).forEach((m) => slotMap.set(m.type, { ...slotMap.get(m.type), ...m } as MediaPlaceholder));
-  const slots = Array.from(slotMap.values()).filter((s) => s.type === 'infographic' || s.type === 'podcast' || s.type === 'video');
+  // Se la sezione ha media espliciti, usali direttamente; altrimenti fallback al default (solo infografica)
+  const hasCustomMedia = media && media.length > 0;
+  const slots = hasCustomMedia
+    ? media
+    : defaultSectionMedia(chapterId, chapterSlug, sectionIndex, sectionTitle);
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
   const [showSource, setShowSource] = useState(false);
   const [copied, setCopied] = useState(false);
