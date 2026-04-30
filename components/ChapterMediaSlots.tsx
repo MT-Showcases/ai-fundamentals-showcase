@@ -138,7 +138,6 @@ export default function ChapterMediaSlots({ chapter }: Props) {
                 <div className="rounded-lg bg-navy-900/70 p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-cyan-200 font-semibold">🎙️ Podcast</h4>
-                    <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
                   </div>
                   <audio src={`/${slot.placeholderPath}`} controls className="w-full" preload="none" />
                 </div>
