@@ -215,37 +215,59 @@ export const chapters: Chapter[] = [
     ],
     quiz: [
       {
-        question: "Algoritmo significa?",
+        question: "Nel Capitolo 2, quale triade descrive il funzionamento base di un sistema AI?",
         options: [
-          "Sequenza di passi",
-          "Opinione personale",
-          "File immagine",
-          "Tabella casuale",
+          "Dati + Algoritmo + Potenza di calcolo",
+          "Prompt + Interfaccia + SEO",
+          "GPU + DNS + Cloud storage",
+          "UI + Branding + Marketing",
         ],
         correct: 0,
-        explanation: "Algoritmo e una procedura chiara input output."
+        explanation: "I tre pilastri sono dati, algoritmo e potenza di calcolo."
       },
       {
-        question: "Reti neurali sono utili per?",
+        question: "Un algoritmo è definito correttamente come:",
         options: [
-          "Apprendere pattern complessi",
-          "Stampare PDF",
-          "Gestire DNS",
-          "Fare backup",
+          "Una sequenza precisa di passi input→output",
+          "Una scelta casuale del sistema",
+          "Una preferenza personale del docente",
+          "Un file grafico del progetto",
         ],
         correct: 0,
-        explanation: "Reti neurali apprendono rappresentazioni complesse."
+        explanation: "Un algoritmo è una procedura ripetibile e definita."
       },
       {
-        question: "Senza dati adeguati il modello?",
+        question: "Se il pilastro 'dati' è debole (rumoroso/sbilanciato), cosa succede di solito?",
         options: [
-          "Perde efficacia",
-          "Migliora da solo",
-          "Diventa etico",
-          "Non cambia",
+          "Il modello migliora da solo col tempo",
+          "Il modello perde affidabilità e qualità",
+          "Il modello diventa automaticamente etico",
+          "La parte algoritmo non viene più eseguita",
+        ],
+        correct: 1,
+        explanation: "Output scadenti derivano spesso da input dati scadenti."
+      },
+      {
+        question: "Le reti neurali sono particolarmente adatte quando serve:",
+        options: [
+          "Apprendere pattern complessi da molti esempi",
+          "Sostituire completamente la validazione umana",
+          "Eseguire solo regole statiche senza training",
+          "Eliminare il bisogno di metriche",
         ],
         correct: 0,
-        explanation: "Senza dati adeguati le prestazioni calano."
+        explanation: "Le reti neurali eccellono nell'apprendere rappresentazioni complesse."
+      },
+      {
+        question: "In produzione, quale scelta è più solida per evitare degrado del modello?",
+        options: [
+          "Affidarsi solo alla demo iniziale",
+          "Monitorare KPI (accuracy proxy, latenza, fallback, errori)",
+          "Cambiare solo il colore dell'interfaccia",
+          "Disattivare il logging per risparmiare risorse",
+        ],
+        correct: 1,
+        explanation: "Senza monitoraggio continuo non intercetti data drift e cali di qualità."
       }
     ]
   },
@@ -306,37 +328,59 @@ export const chapters: Chapter[] = [
     ],
     quiz: [
       {
-        question: "Bias nei dati puo causare?",
+        question: "Qual è il rischio principale di un dataset sbilanciato?",
         options: [
-          "Decisioni discriminatorie",
-          "Zero errori",
-          "Costo zero",
-          "Latenza nulla",
+          "Decisioni discriminatorie su gruppi sotto-rappresentati",
+          "Riduzione automatica dei costi cloud",
+          "Migliore generalizzazione in ogni scenario",
+          "Latenza sempre più bassa",
         ],
         correct: 0,
-        explanation: "Il modello replica bias presenti nei dati."
+        explanation: "Un dataset sbilanciato può introdurre bias sistematici nell'output."
       },
       {
-        question: "Meglio quantita o qualita dati?",
+        question: "Nel trade-off dati, quale affermazione è più corretta?",
         options: [
-          "Entrambe con qualita alta",
-          "Solo quantita",
-          "Solo numero GPU",
-          "Nessuna",
+          "Conta solo la quantità",
+          "Conta solo la GPU",
+          "Servono quantità sufficiente + qualità + rappresentatività",
+          "La qualità dati è irrilevante con modelli moderni",
         ],
-        correct: 0,
-        explanation: "Servono dati sufficienti e di buona qualita."
+        correct: 2,
+        explanation: "Performance robuste richiedono dati abbastanza numerosi ma anche puliti e rappresentativi."
       },
       {
-        question: "Pulizia dati in ML e spesso?",
+        question: "Il caso 'Amazon hiring bias' insegna che:",
         options: [
-          "Parte molto ampia del lavoro",
-          "Trascurabile",
-          "Vietata",
-          "Automatica sempre",
+          "I dati storici possono trasferire pregiudizi al modello",
+          "I modelli eliminano sempre i bias umani",
+          "Basta più potenza di calcolo per correggere tutto",
+          "Il bias è solo un problema di UI",
         ],
         correct: 0,
-        explanation: "Data cleaning pesa molto nel ciclo ML."
+        explanation: "Il modello apprende ciò che trova nei dati, inclusi i pregiudizi."
+      },
+      {
+        question: "Per ridurre il rischio operativo in produzione, quale pratica è più utile?",
+        options: [
+          "Valutare il modello una sola volta su test statico",
+          "Creare edge-case e monitorare failure pattern",
+          "Disattivare i controlli per velocizzare il deploy",
+          "Usare solo metriche aggregate annuali",
+        ],
+        correct: 1,
+        explanation: "Gli edge-case rivelano fragilità che i test standard spesso non mostrano."
+      },
+      {
+        question: "Nel ciclo ML reale, la data cleaning è tipicamente:",
+        options: [
+          "Una parte ampia e continua del lavoro",
+          "Un passaggio opzionale secondario",
+          "Completamente automatica senza supervisione",
+          "Inutile se il modello è grande",
+        ],
+        correct: 0,
+        explanation: "Pulizia e manutenzione dati sono attività centrali per qualità e stabilità del modello."
       }
     ]
   },
