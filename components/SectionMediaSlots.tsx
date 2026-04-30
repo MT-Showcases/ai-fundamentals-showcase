@@ -31,7 +31,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
   const baseSlots = defaultSectionMedia(chapterId, chapterSlug, sectionIndex, sectionTitle);
   const slotMap = new Map(baseSlots.map((s) => [s.type, s]));
   (media ?? []).forEach((m) => slotMap.set(m.type, { ...slotMap.get(m.type), ...m } as MediaPlaceholder));
-  const slots = Array.from(slotMap.values()).filter((s) => s.type === 'infographic' || s.type === 'podcast');
+  const slots = Array.from(slotMap.values()).filter((s) => s.type === 'infographic' || s.type === 'podcast' || s.type === 'video');
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
   const [showSource, setShowSource] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -60,6 +60,19 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
                     className="w-full h-64 md:h-72 object-contain rounded-md hover:opacity-90 transition bg-black/20 cursor-pointer"
                     loading="lazy"
                   />
+                </button>
+              ) : slot.type === 'video' ? (
+                <button onClick={() => setActive(slot)} className="relative block w-full text-left cursor-pointer" style={{ cursor: 'pointer' }}>
+                  <video
+                    src={`/${slot.placeholderPath}`}
+                    preload="metadata"
+                    muted
+                    playsInline
+                    className="w-full h-64 md:h-72 object-contain rounded-md bg-black pointer-events-none"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center text-white/90 text-xs bg-black/20">
+                    ▶ Apri video
+                  </span>
                 </button>
               ) : slot.type === 'podcast' ? (
                 <div className="rounded-lg bg-navy-900/70 p-4">
