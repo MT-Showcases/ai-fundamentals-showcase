@@ -49,8 +49,13 @@ export default function ChapterExercises({ exercises }: Props) {
               </div>
             )}
 
-            <div className="text-sm text-gray-300 border-t border-navy-600 pt-3">
-              <span className="font-semibold text-cyan-200">Consegna:</span> {exercise.deliverable}
+            <div className="text-sm text-gray-300 border-t border-navy-600 pt-3 space-y-2">
+              <div>
+                <span className="font-semibold text-cyan-200">Checkpoint personale:</span> {exercise.deliverable}
+              </div>
+              <div className="text-xs text-gray-400">
+                Autovalutazione rapida: ✅ Ho capito il concetto · ✅ So riconoscere l'errore comune · ✅ So motivare una decisione pratica
+              </div>
             </div>
           </div>
         ))}
