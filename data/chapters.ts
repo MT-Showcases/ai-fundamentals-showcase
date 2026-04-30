@@ -139,7 +139,7 @@ export const chapters: Chapter[] = [
     id: 2,
     slug: 'how-ai-works',
     title: 'Come Funziona l\'AI',
-    description: 'I tre ingredienti fondamentali',
+    description: 'I tre pilastri fondamentali',
     sections: [
       { title: 'I Tre Pilastri dell\'AI', content: 'Ogni sistema di AI ha bisogno di **tre pilastri**: (1) **DATI** — esempi da cui imparare, (2) **ALGORITMO** — passi che trasformano input in output, (3) **POTENZA DI CALCOLO** — risorse per processare tutto. Senza uno di questi tre, l\'AI non funziona. In produzione questa triade diventa pipeline: raccolta dati, training controllato e monitoraggio continuo delle metriche. <<Se manca un pilastro, crolla tutta la qualità del sistema>>.', media: [ { type: 'infographic', title: 'I 3 Pilastri Fondamentali', description: 'Infografica: dati, algoritmi e architettura nel funzionamento AI.', placeholderPath: 'media/ch02-how-ai-works/sec-01/infographic.png', notes: 'ready' }, { type: 'video', title: 'Video — I Tre Pilastri dell\'AI', description: 'Mini video sui 3 pilastri fondamentali: dati, algoritmo e potenza di calcolo.', placeholderPath: 'media/ch02-how-ai-works/sec-01/video.mp4', notes: 'ready' } ] },
       { title: 'Cos\'è un Algoritmo', content: 'Un algoritmo è una **ricetta eseguibile**: una sequenza precisa di passi per trasformare un input in output. Esempio: cucinare la pasta. Algoritmo: (1) acqua a ebollizione, (2) sale, (3) pasta, (4) tempo di cottura. Senza ordine e precisione, il risultato peggiora. *Nel software vale lo stesso principio*: <<input chiaro + passi chiari = output affidabile>>.', media: [ { type: 'infographic', title: 'Algoritmo: ricetta AI', description: 'Parallelismo cucina/AI per spiegare gli step algoritmici.', placeholderPath: 'media/ch02-how-ai-works/sec-02/infographic.png', notes: 'ready' } ] },
@@ -155,8 +155,8 @@ export const chapters: Chapter[] = [
       'Learning outcome: spiegare la triade dati-algoritmo-calcolo e mapparla su un caso reale',
     ],
     discussionPrompts: [
-      'Quale dei tre ingredienti (Dati, Algoritmo, Potenza) pensi sia il più importante per l\'AI moderno?',
-      'Come cambierebbe il risultato se uno dei tre ingredienti fosse di qualità inferiore?',
+      'Quale dei tre pilastri (Dati, Algoritmo, Potenza) pensi sia il più importante per l\'AI moderno?',
+      'Come cambierebbe il risultato se uno dei tre pilastri fosse di qualità inferiore?',
       'Puoi pensare a un algoritmo che usi nella vita quotidiana, magari in cucina o nello sport?'
     ],
     media: [
