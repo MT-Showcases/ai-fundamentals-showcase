@@ -134,6 +134,24 @@ export default function ChapterMediaSlots({ chapter }: Props) {
                     ▶ Apri video
                   </span>
                 </button>
+              ) : isReady(slot) && slot.type === 'podcast' ? (
+                <div className="rounded-lg border border-navy-600 bg-navy-900/70 p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-cyan-200 font-semibold">🎙️ Podcast</h4>
+                    <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
+                  </div>
+                  <audio src={`/${slot.placeholderPath}`} controls className="w-full" preload="none" />
+                </div>
+              ) : isReady(slot) && slot.type === 'resource' ? (
+                <div className="rounded-lg border border-navy-600 bg-navy-900/70 p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-cyan-200 font-semibold">📄 Risorsa</h4>
+                    <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Ready</span>
+                  </div>
+                  <a href={`/${slot.placeholderPath}`} target="_blank" rel="noreferrer" className="text-cyan-300 text-sm underline">
+                    Apri risorsa
+                  </a>
+                </div>
               ) : (
                 <>
                   <div className="flex items-center justify-between mb-2">
