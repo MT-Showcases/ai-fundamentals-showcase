@@ -54,7 +54,7 @@ export default function ChapterExercises({ exercises }: Props) {
                 <span className="font-semibold text-cyan-200">Checkpoint personale:</span> {exercise.deliverable}
               </div>
               <div className="text-xs text-gray-400">
-                Autovalutazione rapida: ✅ Ho capito il concetto · ✅ So riconoscere l'errore comune · ✅ So motivare una decisione pratica
+                Autovalutazione rapida: ✅ Ho capito il concetto · ✅ So riconoscere l&apos;errore comune · ✅ So motivare una decisione pratica
               </div>
             </div>
           </div>
