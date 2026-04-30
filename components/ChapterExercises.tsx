@@ -119,19 +119,44 @@ export default function ChapterExercises({ exercises }: Props) {
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {exercise.resources.filter((res) => isValidationResource(res.path)).map((res, rIdx) => (
-                        <Link
-                          key={`val-${rIdx}`}
-                          href={res.path}
-                          className="inline-flex items-center px-3 py-2 rounded-lg border border-amber-400/50 text-amber-200 hover:bg-amber-400/10 transition-all text-sm"
-                          target="_blank"
-                        >
-                          <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <path d="M12 3v12" />
-                            <path d="m7 10 5 5 5-5" />
-                            <path d="M5 21h14" />
-                          </svg>
-                          {res.label}
-                        </Link>
+                        <div key={`val-${rIdx}`} className="w-full space-y-2">
+                          <Link
+                            href={res.path}
+                            className="inline-flex items-center px-3 py-2 rounded-lg border border-amber-400/50 text-amber-200 hover:bg-amber-400/10 transition-all text-sm"
+                            target="_blank"
+                          >
+                            <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                              <path d="M12 3v12" />
+                              <path d="m7 10 5 5 5-5" />
+                              <path d="M5 21h14" />
+                            </svg>
+                            {res.label}
+                          </Link>
+
+                          {previews[res.path] && (
+                            <div className="overflow-x-auto rounded-lg border border-amber-500/30">
+                              <div className="px-3 py-2 text-xs text-amber-200/90 border-b border-amber-600/30">{res.label} (prime 6 righe)</div>
+                              <table className="min-w-full text-xs">
+                                <thead className="bg-amber-900/30 text-amber-200">
+                                  <tr>
+                                    {previews[res.path].headers.map((h) => (
+                                      <th key={`${res.path}-${h}`} className="px-3 py-2 text-left font-semibold whitespace-nowrap">{h}</th>
+                                    ))}
+                                  </tr>
+                                </thead>
+                                <tbody className="text-amber-100/90">
+                                  {previews[res.path].rows.map((row, rowIdx) => (
+                                    <tr key={`${res.path}-${rowIdx}`} className="border-t border-amber-700/20">
+                                      {row.map((cell, cIdx) => (
+                                        <td key={`${res.path}-${rowIdx}-${cIdx}`} className="px-3 py-2 whitespace-nowrap">{cell}</td>
+                                      ))}
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </details>
