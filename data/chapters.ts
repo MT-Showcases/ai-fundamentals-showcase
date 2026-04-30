@@ -77,11 +77,11 @@ export const chapters: Chapter[] = [
       },
       {
         type: 'podcast',
-        title: 'Podcast Deep Dive',
-        description: 'Versione audio con casi reali, errori comuni e takeaway operativi.',
-        estimatedDuration: '10-15 min',
+        title: 'Podcast Capitolo 1',
+        description: 'Versione audio completa del Capitolo 1 con spiegazione e contesto operativo.',
+        estimatedDuration: '12-13 min',
         placeholderPath: 'media/ch01-what-is-ai/podcast.mp3',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'infographic',
