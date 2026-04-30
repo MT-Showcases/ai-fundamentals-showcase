@@ -1,0 +1,15 @@
+{
+  "name": "ch03-data-quality-bias",
+  "task": "screening_classification",
+  "target": "passed_screening",
+  "description": "Dataset didattico per analizzare qualità dati, bias e robustezza su edge-case nel Capitolo 3.",
+  "fields": [
+    { "name": "candidate_id", "type": "string", "description": "Identificativo candidato" },
+    { "name": "experience_years", "type": "number", "range": [0, 10], "description": "Anni di esperienza" },
+    { "name": "portfolio_score", "type": "number", "range": [0, 100], "description": "Valutazione portfolio" },
+    { "name": "english_level", "type": "category", "values": ["A2", "B1", "B2", "C1"], "description": "Livello inglese" },
+    { "name": "region", "type": "category", "values": ["urban", "suburban", "rural"], "description": "Area geografica" },
+    { "name": "gender", "type": "category", "values": ["F", "M"], "description": "Genere (solo per audit bias didattico)" },
+    { "name": "passed_screening", "type": "number", "values": [0, 1], "description": "Esito screening" }
+  ]
+}

@@ -1,0 +1,13 @@
+candidate_id,experience_years,portfolio_score,english_level,region,gender,passed_screening
+C001,1,62,B1,urban,F,1
+C002,4,78,B2,urban,M,1
+C003,2,55,A2,rural,F,0
+C004,5,81,B2,urban,M,1
+C005,3,60,B1,rural,F,0
+C006,6,88,C1,urban,M,1
+C007,2,58,B1,rural,F,0
+C008,4,75,B2,urban,M,1
+C009,1,49,A2,rural,F,0
+C010,5,84,C1,urban,M,1
+C011,3,64,B1,suburban,F,1
+C012,2,57,B1,suburban,F,0

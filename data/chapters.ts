@@ -425,16 +425,16 @@ export const chapters: Chapter[] = [
         objective: 'Capire come stressare un modello con casi limite e proporre correzioni dati prima del deploy.',
         duration: '15-20 min',
         steps: [
-          'Leggi il dataset CH5 e immagina 5 edge-case realistici che potrebbero mettere in crisi il modello.',
+          'Leggi il dataset CH3 (train) e immagina 5 edge-case realistici che potrebbero mettere in crisi il modello.',
           'Per ogni edge-case, indica quale tipo di errore potrebbe emergere (bias, confusione classe, mancata generalizzazione).',
           'Proponi una correzione dati o di processo (raccolta, bilanciamento, labeling, monitoraggio).',
           'Definisci 2 metriche da osservare per verificare se la correzione migliora davvero il comportamento del modello.'
         ],
         deliverable: 'Checkpoint personale: elenco dei 5 edge-case + 1 proposta di miglioramento prioritario con motivazione.',
         resources: [
-          { label: 'Dataset train (CSV)', path: '/datasets/ch05-neural-networks/train.csv' },
-          { label: 'Dataset validation (CSV)', path: '/datasets/ch05-neural-networks/validation.csv' },
-          { label: 'Schema campi dataset (JSON)', path: '/datasets/ch05-neural-networks/schema.json' }
+          { label: 'Dataset train CH3 (CSV)', path: '/datasets/ch03-data-quality/train.csv' },
+          { label: 'Dataset validation CH3 (CSV)', path: '/datasets/ch03-data-quality/validation.csv' },
+          { label: 'Schema campi CH3 (JSON)', path: '/datasets/ch03-data-quality/schema.json' }
         ]
       }
     ],
