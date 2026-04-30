@@ -69,11 +69,11 @@ export const chapters: Chapter[] = [
     media: [
       {
         type: 'video',
-        title: 'Video Lesson',
-        description: 'Spiegazione visuale del capitolo (8-12 min) con esempi pratici.',
-        estimatedDuration: '8-12 min',
+        title: 'Video Capitolo 1',
+        description: 'Introduzione completa al Capitolo 1: AI vs intelligenza umana e basi operative.',
+        estimatedDuration: '7-8 min',
         placeholderPath: 'media/ch01-what-is-ai/video.mp4',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
