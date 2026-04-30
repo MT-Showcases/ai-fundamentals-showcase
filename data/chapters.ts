@@ -253,11 +253,11 @@ export const chapters: Chapter[] = [
     media: [
       {
         type: 'video',
-        title: 'Video Lesson',
-        description: 'Spiegazione visuale del capitolo (8-12 min) con esempi pratici.',
-        estimatedDuration: '8-12 min',
+        title: 'Video Capitolo 3',
+        description: 'Video completo su qualità dei dati, bias e validazione operativa.',
+        estimatedDuration: '8 min',
         placeholderPath: 'media/ch03-data-importance/video.mp4',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
