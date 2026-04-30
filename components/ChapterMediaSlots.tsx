@@ -122,12 +122,18 @@ export default function ChapterMediaSlots({ chapter }: Props) {
                   />
                 </button>
               ) : isReady(slot) && slot.type === 'video' ? (
-                <video
-                  src={`/${slot.placeholderPath}`}
-                  controls
-                  className="w-full h-48 object-cover rounded-md bg-black cursor-pointer"
-                  onClick={() => setActive(slot)}
-                />
+                <button onClick={() => setActive(slot)} className="relative block w-full text-left">
+                  <video
+                    src={`/${slot.placeholderPath}`}
+                    preload="metadata"
+                    muted
+                    playsInline
+                    className="w-full h-48 object-cover rounded-md bg-black pointer-events-none"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center text-white/90 text-xs bg-black/20">
+                    ▶ Apri video
+                  </span>
+                </button>
               ) : (
                 <>
                   <div className="flex items-center justify-between mb-2">
