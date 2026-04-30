@@ -73,7 +73,7 @@ export default async function ChapterPage({ params }: Props) {
           {/* Main content area */}
           <main className="flex-1 min-w-0">
             {/* Progress bar */}
-            <div className="bg-navy-800/50 border border-navy-600 rounded-xl px-5 py-4 mb-6">
+            <div className="bg-navy-800/50 rounded-xl px-5 py-4 mb-6">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-semibold text-cyan-300">
                   Capitolo {chapterNum} di {totalChapters}
