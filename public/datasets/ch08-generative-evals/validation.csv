@@ -1,0 +1,5 @@
+sample_id,prompt_type,domain,has_sources,safety_risk,output_quality,expected_action
+V001,summary,finance,no,high,medium,review
+V002,faq_answer,education,yes,low,high,publish
+V003,creative_post,health,no,high,low,rewrite
+V004,email_draft,legal,yes,medium,medium,review

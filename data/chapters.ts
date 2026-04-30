@@ -1225,15 +1225,17 @@ export const chapters: Chapter[] = [
     title: 'AI Generativa: Quando l\'AI Crea',
     description: 'Da ChatGPT alle immagini generate',
     sections: [
-      { title: 'Come Funziona un LLM', content: '**LLM** (Large Language Model) come ChatGPT predicono la prossima parola basandosi su tutte le parole precedenti. Processo: (1) ricevi un prompt, (2) il modello calcola probabilità per ogni possibile parola successiva (50.000+ possibilità), (3) sceglie la più probabile, (4) aggiunge quella parola al testo, (5) ripete. È come completamento automatico su sterodi. ChatGPT ha 175 miliardi di parametri — numeri che il modello ha imparato dai dati. Framework consigliato: prompt chiaro, verifica fonti, revisione umana e logging delle risposte critiche. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Output fluido non significa output corretto: verifica sempre>>.' },
-      { title: 'Prompt Engineering', content: 'Il prompt è cruciale. Diversi prompt portano a risultati completamente diversi. "Dimmi un articolo su AI" è vago. "Scrivi un articolo di 500 parole su come l\'AI cambierà il marketing, rivolto a CMO di startup" è specifico e dettagliato. Migliore il prompt, migliore il risultato. Questo è diventato una skill: "**Prompt Engineering**". Framework consigliato: prompt chiaro, verifica fonti, revisione umana e logging delle risposte critiche. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Output fluido non significa output corretto: verifica sempre>>.' }
+      { title: 'Come Funziona un LLM', content: "Un **LLM** genera testo predicendo il token successivo in base al contesto. L'output può essere fluido ma non sempre corretto.\n\n*Nota pratica:* separa qualità linguistica da accuratezza fattuale. <<Takeaway: testo convincente non equivale a testo vero>>.", media: [ { type: 'infographic', title: 'Next-token prediction', description: 'Schema del ciclo di generazione token.', placeholderPath: 'media/ch08-generative-ai/sec-01/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Prompt Engineering', content: "Prompt vaghi producono output generici; prompt strutturati aumentano pertinenza, formato e coerenza.\n\n*Nota pratica:* usa template con ruolo, contesto, vincoli e output atteso. <<Takeaway: prompt design è una leva di controllo>>.", media: [ { type: 'video', title: 'Prompt design in pratica', description: 'Confronto prima/dopo su prompt.', placeholderPath: 'media/ch08-generative-ai/sec-02/video.mp4', notes: 'placeholder' } ] },
+      { title: 'Startup Lens', content: "Generative AI in produzione richiede guardrail: verifica fonti, filtri sicurezza, logging e fallback umano sui casi critici.", media: [ { type: 'infographic', title: 'Guardrail generativa', description: 'Pipeline di controllo output.', placeholderPath: 'media/ch08-generative-ai/sec-03/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** pubblicare output AI senza verifica.\n\n**Check rapido (2 min):** prendi un output e indica 2 controlli minimi da fare prima di usarlo.", media: [ { type: 'podcast', title: 'Podcast — Validazione output', description: 'QA rapido su output generativi.', placeholderPath: 'media/ch08-generative-ai/sec-04/podcast.mp3', notes: 'placeholder' } ] }
     ],
     keyTakeaways: [
-      'LLM predice la prossima parola basandosi sul pattern',
-      'ChatGPT ha 175 miliardi di parametri',
-      'Il prompt shape l\'output in modo drammatico',
-      'Context length limita quanto ricorda',
-      'Learning outcome: progettare un prompt robusto e verificare un output generativo',
+      'LLM predice token, non ragiona come un umano',
+      'Prompt specifici migliorano controllo output',
+      'Serve verifica fattuale sui casi critici',
+      'Guardrail e fallback sono parte del prodotto',
+      'Learning outcome: progettare prompt robusti e validare output',
     ],
     codeSnippets: [
       {
@@ -1247,45 +1249,42 @@ export const chapters: Chapter[] = [
         code: '{\n  "model": "gpt-4o-mini",\n  "messages": [\n    {\n      "role": "system",\n      "content": "Sei un esperto di AI con linguaggio accessibile."\n    },\n    {\n      "role": "user", \n      "content": "Scrivi un articolo di 300 parole su come l\'AI cambiera\' il marketing, rivolto a startup founder."\n    }\n  ],\n  "temperature": 0.7,\n  "max_tokens": 500\n}'
       }
     ],
-        discussionPrompts: [
-      'Perché ChatGPT a volte allucinà informazioni false?',
-      'Come differisce generare immagini vs generare testo?',
-      'Qual è il ruolo del "randomness" nel generare diverse risposte dallo stesso prompt?'
-    ]
-    ,quiz: [
+    discussionPrompts: [
+      'Perché un output plausibile può essere comunque sbagliato?',
+      'Quali guardrail minimi metteresti in un chatbot pubblico?',
+      'Quando usare fallback umano in un flusso generativo?'
+    ],
+    media: [
+      { type: 'video', title: 'Video Capitolo 8', description: 'Panoramica su LLM, prompt e validazione.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch08-generative-ai/video.mp4', notes: 'placeholder' },
+      { type: 'podcast', title: 'Podcast Capitolo 8', description: 'Rischi e uso responsabile della generativa.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch08-generative-ai/podcast.mp3', notes: 'placeholder' },
+      { type: 'infographic', title: 'Infografica Capitolo 8', description: 'Prompt framework + guardrail.', placeholderPath: 'media/ch08-generative-ai/infographic.png', notes: 'placeholder' },
+      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist QA output generativi.', placeholderPath: 'media/ch08-generative-ai/handout.pdf', notes: 'placeholder' }
+    ],
+    exercises: [
       {
-        question: "LLM genera testo come?",
-        options: [
-          "Predizione prossimo token",
-          "Ricopia database",
-          "Regole fisse solo",
-          "Hash casuale",
+        title: 'Mini Lab — QA output generativo (senza coding)',
+        objective: 'Valutare output AI con criteri di qualità e rischio prima della pubblicazione.',
+        duration: '15-20 min',
+        steps: [
+          'Apri dataset train CH8 e leggi prompt+output.',
+          'Classifica 3 output: OK / da rivedere / da scartare.',
+          'Confronta con validation CH8 sui casi borderline.',
+          'Definisci un protocollo QA in 3 controlli.'
         ],
-        correct: 0,
-        explanation: "Next token prediction e il core meccanismo."
-      },
-      {
-        question: "Prompt engineering migliora?",
-        options: [
-          "Pertinenza output",
-          "Solo costo rete",
-          "Solo RAM",
-          "Solo deploy",
-        ],
-        correct: 0,
-        explanation: "Prompt chiaro aumenta qualita risposta."
-      },
-      {
-        question: "Allucinazione significa?",
-        options: [
-          "Risposta plausibile ma falsa",
-          "Errore di login",
-          "Token basso",
-          "Crash browser",
-        ],
-        correct: 0,
-        explanation: "LLM puo fornire contenuti non veri."
+        deliverable: 'Checkpoint personale: 3 valutazioni motivate + protocollo QA.',
+        resources: [
+          { label: 'Dataset train CH8 (CSV)', path: '/datasets/ch08-generative-evals/train.csv' },
+          { label: 'Dataset validation CH8 (CSV)', path: '/datasets/ch08-generative-evals/validation.csv' },
+          { label: 'Schema campi CH8 (JSON)', path: '/datasets/ch08-generative-evals/schema.json' }
+        ]
       }
+    ],
+    quiz: [
+      { question: 'Un LLM genera testo principalmente tramite:', options: ['Predizione del token successivo', 'Regole statiche', 'Ricerca SQL diretta', 'Copia cache browser'], correct: 0, explanation: 'Il meccanismo base è probabilistico sul prossimo token.' },
+      { question: 'Prompt engineering serve a:', options: ['Aumentare pertinenza e struttura output', 'Eliminare bias automaticamente', 'Sostituire validazione', 'Ridurre sempre i costi'], correct: 0, explanation: 'Prompt migliori guidano meglio il modello.' },
+      { question: 'Allucinazione indica:', options: ['Contenuto plausibile ma falso', 'Errore di connessione', 'Crash GPU', 'Prompt troppo corto'], correct: 0, explanation: 'È un rischio tipico dei modelli generativi.' },
+      { question: 'Output fluido implica accuratezza?', options: ['No', 'Sì', 'Solo con temperature 0', 'Solo con prompt lunghi'], correct: 0, explanation: 'Fluidità e verità fattuale non coincidono.' },
+      { question: 'Quando attivare fallback umano?', options: ['Richieste sensibili o ambigue', 'Mai', 'Solo in test', 'Solo su input breve'], correct: 0, explanation: 'Fallback riduce rischio nei casi critici.' }
     ]
   },
   {

@@ -1,0 +1,14 @@
+{
+  "name": "ch08-generative-evals",
+  "task": "llm_output_quality_and_risk_review",
+  "target": "expected_action",
+  "fields": [
+    { "name": "sample_id", "type": "string" },
+    { "name": "prompt_type", "type": "category", "values": ["summary", "marketing_copy", "faq_answer", "creative_post", "email_draft", "report_snippet"] },
+    { "name": "domain", "type": "category", "values": ["education", "finance", "health", "legal", "operations"] },
+    { "name": "has_sources", "type": "category", "values": ["yes", "no"] },
+    { "name": "safety_risk", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "output_quality", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "expected_action", "type": "category", "values": ["publish", "review", "rewrite"] }
+  ]
+}
