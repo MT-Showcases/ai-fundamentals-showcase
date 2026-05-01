@@ -1,0 +1,4 @@
+id,label,type,value,explanation
+1,Sample metric,string,baseline,Placeholder row aligned to standard schema
+2,Confidence score,number,0.82,Numeric value encoded as text in CSV
+3,Risk flag,boolean,false,Indicates whether escalation is required
