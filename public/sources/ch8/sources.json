@@ -1,0 +1,29 @@
+{
+  "chapter": "ch8",
+  "title": "Chapter 8 source pack",
+  "sourceIds": [
+    "src-001",
+    "src-011"
+  ],
+  "sources": [
+    {
+      "id": "src-001",
+      "title": "Attention Is All You Need",
+      "origin": "https://arxiv.org/pdf/1706.03762.pdf",
+      "type": "paper",
+      "license": "CC-BY-4.0",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-011",
+      "title": "Hugging Face Course",
+      "origin": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "type": "tutorial",
+      "license": "Apache-2.0",
+      "lastVerified": "2026-05-01"
+    }
+  ],
+  "notebooklmCompatible": true,
+  "uploadPriority": "medium",
+  "notes": "Pacchetto fonti per preparazione NotebookLM e studio guidato."
+}

@@ -1,0 +1,38 @@
+{
+  "chapter": "ch13",
+  "title": "Chapter 13 source pack",
+  "sourceIds": [
+    "src-007",
+    "src-009",
+    "src-011"
+  ],
+  "sources": [
+    {
+      "id": "src-007",
+      "title": "Scikit-learn User Guide",
+      "origin": "https://scikit-learn.org/stable/user_guide.html",
+      "type": "article",
+      "license": "BSD-3-Clause",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-009",
+      "title": "Kaggle Titanic Dataset",
+      "origin": "https://www.kaggle.com/c/titanic/data",
+      "type": "dataset",
+      "license": "CC0-1.0",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-011",
+      "title": "Hugging Face Course",
+      "origin": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "type": "tutorial",
+      "license": "Apache-2.0",
+      "lastVerified": "2026-05-01"
+    }
+  ],
+  "notebooklmCompatible": true,
+  "uploadPriority": "medium",
+  "notes": "Pacchetto fonti per preparazione NotebookLM e studio guidato."
+}

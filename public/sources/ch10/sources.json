@@ -1,0 +1,47 @@
+{
+  "chapter": "ch10",
+  "title": "Chapter 10 source pack",
+  "sourceIds": [
+    "src-005",
+    "src-006",
+    "src-010",
+    "src-012"
+  ],
+  "sources": [
+    {
+      "id": "src-005",
+      "title": "OECD AI Principles Overview",
+      "origin": "https://oecd.ai/en/ai-principles",
+      "type": "article",
+      "license": "proprietary",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-006",
+      "title": "Regulation (EU) 2024/1689 - AI Act",
+      "origin": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
+      "type": "article",
+      "license": "proprietary",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-010",
+      "title": "UCI Adult Dataset",
+      "origin": "https://archive.ics.uci.edu/dataset/2/adult",
+      "type": "dataset",
+      "license": "CC-BY-4.0",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-012",
+      "title": "NIST AI Risk Management Framework 1.0",
+      "origin": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+      "type": "pdf",
+      "license": "CC0-1.0",
+      "lastVerified": "2026-05-01"
+    }
+  ],
+  "notebooklmCompatible": true,
+  "uploadPriority": "high",
+  "notes": "Pacchetto fonti per preparazione NotebookLM e studio guidato."
+}

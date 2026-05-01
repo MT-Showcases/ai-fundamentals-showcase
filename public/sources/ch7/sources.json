@@ -1,0 +1,29 @@
+{
+  "chapter": "ch7",
+  "title": "Chapter 7 source pack",
+  "sourceIds": [
+    "src-002",
+    "src-008"
+  ],
+  "sources": [
+    {
+      "id": "src-002",
+      "title": "Deep Learning (Goodfellow, Bengio, Courville)",
+      "origin": "https://www.deeplearningbook.org/",
+      "type": "article",
+      "license": "MIT",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-008",
+      "title": "3Blue1Brown - But what is a Neural Network?",
+      "origin": "https://www.youtube.com/watch?v=aircAruvnKk",
+      "type": "video",
+      "license": "proprietary",
+      "lastVerified": "2026-05-01"
+    }
+  ],
+  "notebooklmCompatible": true,
+  "uploadPriority": "medium",
+  "notes": "Pacchetto fonti per preparazione NotebookLM e studio guidato."
+}

@@ -1,0 +1,47 @@
+{
+  "chapter": "ch3",
+  "title": "Chapter 3 source pack",
+  "sourceIds": [
+    "src-003",
+    "src-004",
+    "src-007",
+    "src-009"
+  ],
+  "sources": [
+    {
+      "id": "src-003",
+      "title": "Stanford CS229 Lecture Notes",
+      "origin": "https://cs229.stanford.edu/main_notes.pdf",
+      "type": "pdf",
+      "license": "proprietary",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-004",
+      "title": "AI Index Report 2025",
+      "origin": "https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf",
+      "type": "pdf",
+      "license": "CC-BY-4.0",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-007",
+      "title": "Scikit-learn User Guide",
+      "origin": "https://scikit-learn.org/stable/user_guide.html",
+      "type": "article",
+      "license": "BSD-3-Clause",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-009",
+      "title": "Kaggle Titanic Dataset",
+      "origin": "https://www.kaggle.com/c/titanic/data",
+      "type": "dataset",
+      "license": "CC0-1.0",
+      "lastVerified": "2026-05-01"
+    }
+  ],
+  "notebooklmCompatible": true,
+  "uploadPriority": "high",
+  "notes": "Pacchetto fonti per preparazione NotebookLM e studio guidato."
+}

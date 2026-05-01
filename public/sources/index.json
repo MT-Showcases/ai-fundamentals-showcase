@@ -1,0 +1,181 @@
+{
+  "sources": [
+    {
+      "id": "src-001",
+      "title": "Attention Is All You Need",
+      "origin": "https://arxiv.org/pdf/1706.03762.pdf",
+      "type": "paper",
+      "license": "CC-BY-4.0",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch5",
+        "ch8",
+        "ch14"
+      ],
+      "notes": "Paper fondativo sui Transformer, utile per architetture moderne e generative AI."
+    },
+    {
+      "id": "src-002",
+      "title": "Deep Learning (Goodfellow, Bengio, Courville)",
+      "origin": "https://www.deeplearningbook.org/",
+      "type": "article",
+      "license": "MIT",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch5",
+        "ch7",
+        "ch14"
+      ],
+      "notes": "Manuale completo per reti neurali, ottimo per consolidare teoria e pratica."
+    },
+    {
+      "id": "src-003",
+      "title": "Stanford CS229 Lecture Notes",
+      "origin": "https://cs229.stanford.edu/main_notes.pdf",
+      "type": "pdf",
+      "license": "proprietary",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch3",
+        "ch5",
+        "ch9"
+      ],
+      "notes": "Dispensa strutturata su supervised/unsupervised learning e valutazione modelli."
+    },
+    {
+      "id": "src-004",
+      "title": "AI Index Report 2025",
+      "origin": "https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf",
+      "type": "pdf",
+      "license": "CC-BY-4.0",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch3",
+        "ch12",
+        "ch15"
+      ],
+      "notes": "Dati aggiornati su trend, impatto economico e adozione AI a livello globale."
+    },
+    {
+      "id": "src-005",
+      "title": "OECD AI Principles Overview",
+      "origin": "https://oecd.ai/en/ai-principles",
+      "type": "article",
+      "license": "proprietary",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch10",
+        "ch11"
+      ],
+      "notes": "Principi internazionali su AI responsabile per governance e policy."
+    },
+    {
+      "id": "src-006",
+      "title": "Regulation (EU) 2024/1689 - AI Act",
+      "origin": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
+      "type": "article",
+      "license": "proprietary",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch11",
+        "ch10",
+        "ch15"
+      ],
+      "notes": "Testo normativo UE di riferimento per compliance e classificazione rischio."
+    },
+    {
+      "id": "src-007",
+      "title": "Scikit-learn User Guide",
+      "origin": "https://scikit-learn.org/stable/user_guide.html",
+      "type": "article",
+      "license": "BSD-3-Clause",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch3",
+        "ch5",
+        "ch13"
+      ],
+      "notes": "Guida pratica per pipeline ML, preprocessing, training e metriche."
+    },
+    {
+      "id": "src-008",
+      "title": "3Blue1Brown - But what is a Neural Network?",
+      "origin": "https://www.youtube.com/watch?v=aircAruvnKk",
+      "type": "video",
+      "license": "proprietary",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch5",
+        "ch7"
+      ],
+      "notes": "Video introduttivo visuale ideale per studenti su concetti base di reti neurali."
+    },
+    {
+      "id": "src-009",
+      "title": "Kaggle Titanic Dataset",
+      "origin": "https://www.kaggle.com/c/titanic/data",
+      "type": "dataset",
+      "license": "CC0-1.0",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch3",
+        "ch9",
+        "ch13"
+      ],
+      "notes": "Dataset classico per classificazione e feature engineering."
+    },
+    {
+      "id": "src-010",
+      "title": "UCI Adult Dataset",
+      "origin": "https://archive.ics.uci.edu/dataset/2/adult",
+      "type": "dataset",
+      "license": "CC-BY-4.0",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch10",
+        "ch12"
+      ],
+      "notes": "Dataset utile per fairness, bias e valutazioni socio-economiche."
+    },
+    {
+      "id": "src-011",
+      "title": "Hugging Face Course",
+      "origin": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "type": "article",
+      "license": "Apache-2.0",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch8",
+        "ch13",
+        "ch14"
+      ],
+      "notes": "Tutorial pratico per LLM, tokenizzazione e fine-tuning base."
+    },
+    {
+      "id": "src-012",
+      "title": "NIST AI Risk Management Framework 1.0",
+      "origin": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+      "type": "pdf",
+      "license": "CC0-1.0",
+      "version": "1.0",
+      "lastVerified": "2026-05-01",
+      "chapters": [
+        "ch10",
+        "ch11",
+        "ch15"
+      ],
+      "notes": "Framework operativo per gestire rischi AI in progettazione e deployment."
+    }
+  ]
+}

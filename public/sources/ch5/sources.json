@@ -1,0 +1,56 @@
+{
+  "chapter": "ch5",
+  "title": "Chapter 5 source pack",
+  "sourceIds": [
+    "src-001",
+    "src-002",
+    "src-003",
+    "src-007",
+    "src-008"
+  ],
+  "sources": [
+    {
+      "id": "src-001",
+      "title": "Attention Is All You Need",
+      "origin": "https://arxiv.org/pdf/1706.03762.pdf",
+      "type": "paper",
+      "license": "CC-BY-4.0",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-002",
+      "title": "Deep Learning (Goodfellow, Bengio, Courville)",
+      "origin": "https://www.deeplearningbook.org/",
+      "type": "article",
+      "license": "MIT",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-003",
+      "title": "Stanford CS229 Lecture Notes",
+      "origin": "https://cs229.stanford.edu/main_notes.pdf",
+      "type": "pdf",
+      "license": "proprietary",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-007",
+      "title": "Scikit-learn User Guide",
+      "origin": "https://scikit-learn.org/stable/user_guide.html",
+      "type": "article",
+      "license": "BSD-3-Clause",
+      "lastVerified": "2026-05-01"
+    },
+    {
+      "id": "src-008",
+      "title": "3Blue1Brown - But what is a Neural Network?",
+      "origin": "https://www.youtube.com/watch?v=aircAruvnKk",
+      "type": "video",
+      "license": "proprietary",
+      "lastVerified": "2026-05-01"
+    }
+  ],
+  "notebooklmCompatible": true,
+  "uploadPriority": "high",
+  "notes": "Pacchetto fonti per preparazione NotebookLM e studio guidato."
+}
