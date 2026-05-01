@@ -1,0 +1,15 @@
+{
+  "name": "ch11-ai-act-compliance",
+  "task": "risk_and_control_classification",
+  "target": "recommended_control",
+  "fields": [
+    { "name": "case_id", "type": "string" },
+    { "name": "sector", "type": "string" },
+    { "name": "use_case", "type": "string" },
+    { "name": "risk_level", "type": "category", "values": ["prohibited", "high", "limited", "minimal"] },
+    { "name": "affects_rights", "type": "category", "values": ["yes", "no"] },
+    { "name": "transparency_required", "type": "category", "values": ["yes", "no"] },
+    { "name": "human_oversight", "type": "category", "values": ["yes", "no"] },
+    { "name": "recommended_control", "type": "category", "values": ["no_control", "transparency_notice", "human_review", "conformity_assessment"] }
+  ]
+}

@@ -1,0 +1,6 @@
+case_id,sector,use_case,risk_level,affects_rights,transparency_required,human_oversight,recommended_control
+V001,recruiting,candidate_ranking,high,yes,yes,yes,human_review
+V002,entertainment,meme_caption_generator,minimal,no,no,no,no_control
+V003,insurance,claim_pre_assessment,high,yes,yes,yes,conformity_assessment
+V004,retail,shopping_assistant_chatbot,limited,no,yes,no,transparency_notice
+V005,transport,driver_fatigue_alert,high,yes,yes,yes,human_review

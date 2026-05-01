@@ -1,0 +1,9 @@
+case_id,sector,use_case,risk_level,affects_rights,transparency_required,human_oversight,recommended_control
+A001,hiring,cv_screening,high,yes,yes,yes,human_review
+A002,education,exam_proctoring_biometric,high,yes,yes,yes,conformity_assessment
+A003,ecommerce,product_recommendation,minimal,no,no,no,no_control
+A004,banking,loan_eligibility_scoring,high,yes,yes,yes,human_review
+A005,customer_support,faq_chatbot,limited,no,yes,no,transparency_notice
+A006,public_services,welfare_fraud_flagging,high,yes,yes,yes,conformity_assessment
+A007,marketing,ad_copy_generator,minimal,no,no,no,no_control
+A008,healthcare,triage_priority_assistant,high,yes,yes,yes,human_review
