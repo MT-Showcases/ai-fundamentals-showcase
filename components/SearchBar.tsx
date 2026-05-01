@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Fuse from 'fuse.js'
+import Fuse, { type FuseResult } from 'fuse.js'
 import Link from 'next/link'
 import { chapters } from '@/data/chapters'
 import { chapterEmojis } from '@/data/chapterEmojis'
@@ -19,7 +19,8 @@ export default function SearchBar() {
     []
   )
 
-  const results = query.length >= 2 ? fuse.search(query).slice(0, 5) : []
+  const results: FuseResult<(typeof chapters)[number]>[] =
+    query.length >= 2 ? fuse.search(query).slice(0, 5) : []
 
   return (
     <div className="relative w-full max-w-xl mx-auto">
@@ -31,12 +32,12 @@ export default function SearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Cerca un capitolo... (es. 'reti neurali', 'etica', 'GPT')"
-          className="w-full bg-navy-800 border border-navy-600 text-white placeholder-gray-500 rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+          className="w-full min-h-11 bg-navy-800 border border-navy-600 text-white placeholder-gray-500 rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
         />
         {query && (
           <button
             onClick={() => setQuery('')}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+            className="absolute right-2 top-1/2 -translate-y-1/2 min-h-11 min-w-11 inline-flex items-center justify-center text-gray-400 hover:text-white"
           >
             ✕
           </button>

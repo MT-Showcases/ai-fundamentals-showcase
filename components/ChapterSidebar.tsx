@@ -42,7 +42,7 @@ export default function ChapterSidebar({ currentSlug }: ChapterSidebarProps) {
       {/* ─── Mobile hamburger button — fixed top-right, hidden on md+ ─── */}
       <button
         onClick={() => setIsOpen(true)}
-        className="md:hidden fixed top-4 right-4 z-50 bg-[#0a1628] border border-cyan-700 text-cyan-300 p-2 rounded-lg shadow-lg hover:bg-navy-700 hover:text-cyan-100 hover:border-cyan-400 active:scale-95 transition-all duration-200"
+        className="md:hidden fixed top-4 right-4 z-50 bg-[#0a1628] border border-cyan-700 text-cyan-300 min-h-11 min-w-11 inline-flex items-center justify-center rounded-lg shadow-lg hover:bg-navy-700 hover:text-cyan-100 hover:border-cyan-400 active:scale-95 transition-all duration-200"
         aria-label="Apri menu capitoli"
         aria-expanded={isOpen}
         aria-controls="chapter-sidebar"
@@ -102,7 +102,7 @@ export default function ChapterSidebar({ currentSlug }: ChapterSidebarProps) {
               <button
                 ref={closeButtonRef}
                 onClick={() => setIsOpen(false)}
-                className="md:hidden text-gray-400 hover:text-white p-1 rounded-md hover:bg-white/10 transition-colors duration-150"
+                className="md:hidden text-gray-400 hover:text-white min-h-11 min-w-11 inline-flex items-center justify-center rounded-md hover:bg-white/10 transition-colors duration-150"
                 aria-label="Chiudi menu capitoli"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
