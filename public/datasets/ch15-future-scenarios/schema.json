@@ -1,0 +1,77 @@
+{
+  "chapter": 15,
+  "slug": "future-ai",
+  "dataset": "ch15-future-scenarios",
+  "description": "Scenari pratici per valutare priorità, rischi, mitigazioni e KPI nelle iniziative AI future-oriented.",
+  "taskType": "strategy-and-governance-classification",
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv"
+  },
+  "columns": [
+    {
+      "name": "scenario_id",
+      "type": "string",
+      "description": "Identificatore univoco dello scenario"
+    },
+    {
+      "name": "domain",
+      "type": "string",
+      "description": "Settore applicativo"
+    },
+    {
+      "name": "initiative",
+      "type": "string",
+      "description": "Descrizione sintetica dell'iniziativa AI"
+    },
+    {
+      "name": "horizon",
+      "type": "enum",
+      "values": ["1-month", "3-month", "6-month"],
+      "description": "Orizzonte temporale dell'iniziativa"
+    },
+    {
+      "name": "expected_value",
+      "type": "enum",
+      "values": ["medium", "high"],
+      "description": "Valore atteso in termini di impatto"
+    },
+    {
+      "name": "risk_level",
+      "type": "enum",
+      "values": ["low", "medium", "high"],
+      "description": "Rischio operativo/compliance associato"
+    },
+    {
+      "name": "data_readiness",
+      "type": "enum",
+      "values": ["medium", "high"],
+      "description": "Maturità e qualità dei dati disponibili"
+    },
+    {
+      "name": "governance_maturity",
+      "type": "enum",
+      "values": ["low", "medium", "high"],
+      "description": "Capacità del team di gestire controlli e responsabilità"
+    },
+    {
+      "name": "recommended_strategy",
+      "type": "string",
+      "description": "Strategia consigliata per rollout e controllo"
+    },
+    {
+      "name": "primary_kpi",
+      "type": "string",
+      "description": "KPI prioritario per misurare valore reale"
+    },
+    {
+      "name": "primary_mitigation",
+      "type": "string",
+      "description": "Mitigazione operativa principale da applicare"
+    }
+  ],
+  "notes": [
+    "Usare il dataset per esercizi self-paced su prioritizzazione e governance AI.",
+    "Le etichette di strategia e mitigazione sono pensate per discussione in aula e validazione critica."
+  ]
+}

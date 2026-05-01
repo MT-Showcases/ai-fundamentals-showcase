@@ -1,0 +1,13 @@
+scenario_id,domain,initiative,horizon,expected_value,risk_level,data_readiness,governance_maturity,recommended_strategy,primary_kpi,primary_mitigation
+CH15-001,Healthcare,"AI triage support for appointment prioritization",6-month,high,high,medium,medium,"human_in_the_loop + risk segmentation","triage_accuracy_critical_cases","mandatory_clinician_review_for_high_impact"
+CH15-002,E-commerce,"Multimodal product assistant (text+image)",3-month,medium,medium,high,medium,"rag + fallback_human","first_contact_resolution_rate","confidence_threshold_and_escalation"
+CH15-003,Education,"Adaptive learning feedback generator",6-month,high,medium,medium,low,"pilot_with_guardrails","learning_outcome_improvement","teacher_validation_on_assessment_outputs"
+CH15-004,Legal,"Contract clause risk summarization",3-month,high,high,medium,medium,"copilot_not_autopilot","precision_on_high_risk_flags","lawyer_approval_before_external_use"
+CH15-005,Customer-Support,"Email response draft automation",1-month,medium,low,high,high,"assistive_automation","avg_response_time_reduction","qa_sampling_and_error_feedback_loop"
+CH15-006,Finance,"Credit pre-screening assistant",6-month,high,high,medium,medium,"restricted_scope + audit","false_negative_rate_sensitive_group","fairness_audit_and_manual_override"
+CH15-007,Manufacturing,"Predictive maintenance recommendations",6-month,high,medium,high,medium,"phased_rollout","unplanned_downtime_reduction","operator_confirmation_for_shutdown_actions"
+CH15-008,Public-Sector,"Citizen info chatbot",3-month,medium,high,medium,low,"rag_with_verified_sources","answer_verification_rate","source_citation_and_moderation_workflow"
+CH15-009,HR,"Candidate screening copilot",3-month,medium,high,medium,medium,"decision_support_only","shortlist_quality_score","bias_monitoring_and_human_final_decision"
+CH15-010,Media,"Auto-summary for newsroom briefs",1-month,medium,medium,high,medium,"draft_then_review","post_publication_correction_rate","editorial_approval_gate"
+CH15-011,Logistics,"Route exception handling assistant",3-month,medium,medium,high,high,"rules_plus_ai","on_time_recovery_rate","fallback_to_rule_engine_on_low_confidence"
+CH15-012,Cybersecurity,"Incident triage recommendation engine",3-month,high,high,medium,medium,"human_supervised_agent","mean_time_to_triage","mandatory_escalation_for_critical_severity"

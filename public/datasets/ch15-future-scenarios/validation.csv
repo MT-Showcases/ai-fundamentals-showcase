@@ -1,0 +1,7 @@
+scenario_id,domain,initiative,horizon,expected_value,risk_level,data_readiness,governance_maturity,recommended_strategy,primary_kpi,primary_mitigation
+CH15-V01,Healthcare,"AI symptom pre-assessment for telemedicine",3-month,high,high,medium,medium,"human_in_the_loop + strict_scope","critical_error_rate","doctor_review_for_red_flag_cases"
+CH15-V02,E-commerce,"Autonomous pricing agent",6-month,high,high,high,low,"pilot_with_hard_limits","margin_stability_index","approval_required_for_price_changes_above_threshold"
+CH15-V03,Education,"Lesson personalization copilot",3-month,medium,medium,medium,medium,"assistive_automation","student_completion_rate","teacher_override_and_content_review"
+CH15-V04,Finance,"Fraud alert prioritization assistant",3-month,high,high,high,medium,"risk_segmented_rollout","fraud_detection_precision","analyst_validation_on_block_actions"
+CH15-V05,Public-Sector,"Policy Q&A assistant",1-month,medium,high,medium,medium,"rag_with_citations","verified_answer_rate","official_source_binding_and_audit_log"
+CH15-V06,HR,"Interview summary generator",1-month,medium,medium,high,high,"draft_then_review","summary_correction_rate","mandatory_reviewer_signoff"
