@@ -1,0 +1,5 @@
+case_id,domain,decision_type,affects_persons,data_bias_risk,explainability_need,recommended_control
+V001,healthcare,diagnosis_support,yes,high,high,human_review
+V002,insurance,risk_assessment,yes,high,high,human_review
+V003,search_ranking,sorting,no,low,low,automated
+V004,customer_churn,prediction,no,medium,medium,automated

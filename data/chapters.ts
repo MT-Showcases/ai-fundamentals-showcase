@@ -1346,58 +1346,57 @@ export const chapters: Chapter[] = [
   {
     id: 10,
     slug: 'ethics-ai',
-    title: 'Etica e Responsabilità nell\'AI',
-    description: 'Quando l\'AI fa male',
+    title: "Etica e Responsabilità nell'AI",
+    description: "Quando l'AI fa male",
     sections: [
-      { title: 'Bias e Discriminazione', content: 'I **bias** non sono buoni o cattivi intenzionalmente — riflettono semplicemente i dati di training. Se alleni un sistema di approvazione prestiti su dati storici dove le minoranze avevano tassi di default più alti (a causa di discriminazione sistemica passata), il sistema imparerà questa discriminazione e la perpetuerà. È come insegnare a qualcuno usando solo esempi distorti. Operativamente definisci policy esplicite: cosa il sistema decide da solo e dove serve approvazione umana. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Accuratezza senza responsabilità può creare danni reali>>.' },
-      { title: 'Trasparenza e Spiegabilità', content: 'Le persone hanno il diritto di sapere perché l\'AI ha preso una decisione su di loro. Se una banca ti nega un prestito, hai diritto di chiedere perché. Ma le reti neurali sono "black box" — è difficile spiegare quale combinazione di fattori ha portato alla decisione. La GDPR in Europa lo richiede: le aziende devono rendere conto delle decisioni AI. Operativamente definisci policy esplicite: cosa il sistema decide da solo e dove serve approvazione umana. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Accuratezza senza responsabilità può creare danni reali>>.' }
+      { title: 'Bias e Discriminazione', content: "I bias nei dati possono diventare decisioni ingiuste su persone reali.\n\n*Nota pratica:* non basta accuracy globale: analizza l'impatto sui sottogruppi. <<Takeaway: performance senza fairness può creare danni concreti>>.", media: [ { type: 'infographic', title: 'Bias pipeline', description: 'Dove nasce e come si propaga il bias.', placeholderPath: 'media/ch10-ethics-ai/sec-01/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Trasparenza e Spiegabilità', content: "Nei contesti sensibili serve spiegare come e perché il sistema decide.\n\n*Nota pratica:* definisci logging decisionale e revisione umana dove necessario. <<Takeaway: trasparenza è requisito operativo>>.", media: [ { type: 'video', title: 'Explainability in pratica', description: 'Come rendere verificabili decisioni AI.', placeholderPath: 'media/ch10-ethics-ai/sec-02/video.mp4', notes: 'placeholder' } ] },
+      { title: 'Startup Lens', content: "Governance minima: policy d'uso, livelli di rischio, escalation umana, audit periodici e tracciamento incidenti.", media: [ { type: 'infographic', title: 'Governance AI minima', description: 'Policy, audit e controllo continuo.', placeholderPath: 'media/ch10-ethics-ai/sec-03/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** trattare l'etica come documento e non come processo tecnico.\n\n**Check rapido (2 min):** indica una decisione del tuo use case che deve avere revisione umana obbligatoria.", media: [ { type: 'podcast', title: 'Podcast — Etica operativa', description: 'Dal principio etico al controllo pratico.', placeholderPath: 'media/ch10-ethics-ai/sec-04/podcast.mp3', notes: 'placeholder' } ] }
     ],
     keyTakeaways: [
-      'AI riflette i bias nei dati di training',
-      'Amazon hiring system discriminava le donne',
-      'Explainability = capacità di spiegare perché',
-      'La trasparenza è un diritto (GDPR)',
-      'Learning outcome: identificare un rischio etico e proporre una mitigazione operativa',
+      'I dati possono amplificare bias',
+      'Explainability è cruciale nei casi ad alto impatto',
+      'Fairness e accountability vanno misurate',
+      'Serve governance operativa oltre la compliance',
+      'Learning outcome: identificare un rischio etico e definire una mitigazione concreta',
     ],
     discussionPrompts: [
-      'Come potremmo renderci conto dei bias prima che un sistema AI faccia danni?',
-      'Qual è il compromesso tra accuratezza e spiegabilità?',
-      'Se un algorithmo è provabilmente migliore ma meno trasparente, dovremmo usarlo comunque?'
-    ]
-    ,quiz: [
+      'Quale decisione AI nel tuo dominio richiede sempre revisione umana?',
+      'Come bilanciare accuratezza e spiegabilità?',
+      'Quale metrica useresti per monitorare fairness nel tempo?'
+    ],
+    media: [
+      { type: 'video', title: 'Video Capitolo 10', description: 'Etica AI applicata a decisioni reali.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch10-ethics-ai/video.mp4', notes: 'placeholder' },
+      { type: 'podcast', title: 'Podcast Capitolo 10', description: 'Rischi, trade-off e governance operativa.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch10-ethics-ai/podcast.mp3', notes: 'placeholder' },
+      { type: 'infographic', title: 'Infografica Capitolo 10', description: 'Mappa rischi etici + mitigazioni.', placeholderPath: 'media/ch10-ethics-ai/infographic.png', notes: 'placeholder' },
+      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist audit etico pre-deploy.', placeholderPath: 'media/ch10-ethics-ai/handout.pdf', notes: 'placeholder' }
+    ],
+    exercises: [
       {
-        question: "Etica AI serve a?",
-        options: [
-          "Ridurre danni e ingiustizie",
-          "Aumentare token",
-          "Solo marketing",
-          "Cambiare logo",
+        title: 'Mini Lab — Ethical risk review (senza coding)',
+        objective: 'Valutare rischi etici di un sistema AI e proporre mitigazioni operative.',
+        duration: '15-20 min',
+        steps: [
+          'Leggi dataset train CH10 con scenari e possibili impatti.',
+          'Segna per ogni scenario il rischio principale.',
+          'Confronta con validation CH10 e valuta dove serve human-in-the-loop.',
+          'Definisci 2 controlli obbligatori pre-deploy.'
         ],
-        correct: 0,
-        explanation: "Etica mitiga impatti su persone reali."
-      },
-      {
-        question: "Explainability indica?",
-        options: [
-          "Spiegare decisione modello",
-          "Nascondere logica",
-          "Aumentare parametri",
-          "Ridurre prompt",
-        ],
-        correct: 0,
-        explanation: "Trasparenza e cruciale in casi sensibili."
-      },
-      {
-        question: "Dataset storici possono?",
-        options: [
-          "Propagare bias esistenti",
-          "Garantire fairness",
-          "Eliminare errori",
-          "Ridurre costi zero",
-        ],
-        correct: 0,
-        explanation: "Storico distorto porta decisioni distorte."
+        deliverable: 'Checkpoint personale: mappa rischi + 2 mitigazioni prioritarie.',
+        resources: [
+          { label: 'Dataset train CH10 (CSV)', path: '/datasets/ch10-ethics-risks/train.csv' },
+          { label: 'Dataset validation CH10 (CSV)', path: '/datasets/ch10-ethics-risks/validation.csv' },
+          { label: 'Schema campi CH10 (JSON)', path: '/datasets/ch10-ethics-risks/schema.json' }
+        ]
       }
+    ],
+    quiz: [
+      { question: 'Un modello può essere discriminatorio perché:', options: ['Apprende bias presenti nei dati', 'Usa troppe GPU', 'È open-source', 'Risponde velocemente'], correct: 0, explanation: 'I dati storici possono trasferire distorsioni nel modello.' },
+      { question: 'Explainability è importante perché:', options: ['Permette audit e contestazione decisioni', 'Riduce il numero di feature', 'Sostituisce compliance', 'Elimina QA'], correct: 0, explanation: 'Trasparenza e responsabilità richiedono spiegabilità.' },
+      { question: 'In casi ad alto impatto conviene:', options: ['Prevedere human-in-the-loop', 'Automatizzare tutto senza controlli', 'Nascondere logica', 'Ignorare feedback utenti'], correct: 0, explanation: 'Il controllo umano riduce rischio nei casi sensibili.' },
+      { question: 'Errore comune sulla governance AI:', options: ['Trattarla solo come documento', 'Definire escalation', 'Fare audit periodico', 'Monitorare incidenti'], correct: 0, explanation: 'La governance deve essere operativa e continua.' },
+      { question: 'Messaggio chiave:', options: ['AI responsabile = performance + fairness + accountability', 'Basta accuracy', 'Etica è opzionale', 'Compliance sostituisce tecnica'], correct: 0, explanation: 'Affidabilità reale include tecnica e impatto sociale.' }
     ]
   },
   {

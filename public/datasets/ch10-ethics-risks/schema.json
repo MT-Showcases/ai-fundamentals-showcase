@@ -1,0 +1,14 @@
+{
+  "name": "ch10-ethics-risks",
+  "task": "ethical_risk_classification",
+  "target": "recommended_control",
+  "fields": [
+    { "name": "case_id", "type": "string" },
+    { "name": "domain", "type": "string" },
+    { "name": "decision_type", "type": "string" },
+    { "name": "affects_persons", "type": "category", "values": ["yes", "no"] },
+    { "name": "data_bias_risk", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "explainability_need", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "recommended_control", "type": "category", "values": ["automated", "human_review"] }
+  ]
+}
