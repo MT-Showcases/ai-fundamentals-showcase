@@ -7,6 +7,7 @@ import Button from '@/components/Button';
 import SearchBar from '@/components/SearchBar';
 import { useState } from 'react';
 import Image from 'next/image';
+import QuizScoreDashboard from '@/components/QuizScoreDashboard';
 
 export default function Home() {
   const [introVideoError, setIntroVideoError] = useState(false);
@@ -64,6 +65,12 @@ export default function Home() {
               Video non ancora caricato. Inserisci il file in: <span className="text-cyan-300 font-mono">public/media/course-intro.mp4</span>
             </div>
           )}
+        </div>
+      </section>
+
+      <section className="py-8 px-6">
+        <div className="max-w-6xl mx-auto">
+          <QuizScoreDashboard />
         </div>
       </section>
 

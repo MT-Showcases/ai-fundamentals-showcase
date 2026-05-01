@@ -184,7 +184,7 @@ export default async function ChapterPage({ params }: Props) {
             {chapter.quiz && chapter.quiz.length > 0 && (
               <div className="mb-12">
                 <h3 className="text-cyan-300 font-bold mb-4">🧠 Quiz del Capitolo</h3>
-                <ChapterQuiz quiz={chapter.quiz} />
+                <ChapterQuiz quiz={chapter.quiz} chapterId={chapter.id} chapterSlug={chapter.slug} />
               </div>
             )}
 
