@@ -1,0 +1,7 @@
+case_id,tool,scenario,risk_level,output_quality,fact_check_passed,security_impact,recommended_action
+CH13-V01,chat_assistant,"FAQ prodotto con contenuto già approvato dal team",low,high,yes,none,use_direct
+CH13-V02,coding_assistant,"Patch gestione pagamenti proposta da AI senza code review",high,medium,no,critical,reject_and_rework
+CH13-V03,research_assistant,"Confronto tool SaaS con dati parziali ma non sensibili",medium,medium,no,none,review_required
+CH13-V04,chat_assistant,"Bozza post social con dati verificati e rischio basso",low,high,yes,none,use_direct
+CH13-V05,coding_assistant,"Script migrazione DB con successo locale ma senza test rollback",high,medium,yes,critical,review_required
+CH13-V06,research_assistant,"Sintesi report mercato con fonti discordanti",medium,low,no,possible,reject_and_rework

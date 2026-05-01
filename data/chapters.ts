@@ -1761,7 +1761,7 @@ export const chapters: Chapter[] = [
     ],
     codeSnippets: [
       {
-        lang: 'markdown',
+        lang: 'bash',
         label: 'Template prompt operativo per task tecnici',
         code: '# Prompt template\nRuolo: Sei un assistente tecnico per [contesto].\nObiettivo: [task specifico].\nVincoli: [linguaggio, standard, limiti].\nInput: [dati disponibili].\nOutput atteso:\n1) Soluzione proposta\n2) Assunzioni esplicite\n3) Rischi/limiti\n4) Checklist di verifica finale'
       },

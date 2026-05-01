@@ -1,0 +1,15 @@
+{
+  "name": "ch13-practical-tools",
+  "task": "ai_output_release_decision",
+  "target": "recommended_action",
+  "fields": [
+    { "name": "case_id", "type": "string" },
+    { "name": "tool", "type": "category", "values": ["chat_assistant", "coding_assistant", "research_assistant"] },
+    { "name": "scenario", "type": "string" },
+    { "name": "risk_level", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "output_quality", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "fact_check_passed", "type": "category", "values": ["yes", "no"] },
+    { "name": "security_impact", "type": "category", "values": ["none", "possible", "critical"] },
+    { "name": "recommended_action", "type": "category", "values": ["use_direct", "review_required", "reject_and_rework"] }
+  ]
+}
