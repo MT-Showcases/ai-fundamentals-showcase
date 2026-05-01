@@ -1,0 +1,114 @@
+[
+  {
+    "route": "/",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/what-is-ai",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/how-ai-works",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/data-importance",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/machine-learning",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/neural-networks",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/nlp",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/computer-vision",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/generative-ai",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/fine-tuning",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/ethics-ai",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/ai-act",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/ai-at-work",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/practical-tools",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/advanced-patterns",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "route": "/chapters/future-ai",
+    "status": "PASS",
+    "notes": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  }
+]

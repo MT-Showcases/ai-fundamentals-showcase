@@ -1,0 +1,42 @@
+[
+  {
+    "viewport": "375x812",
+    "hasHorizontalScroll": false,
+    "minFontPx": 10,
+    "tapTargets": {
+      "total": 34,
+      "small": 11
+    },
+    "status": "WARN"
+  },
+  {
+    "viewport": "480x900",
+    "hasHorizontalScroll": false,
+    "minFontPx": 10,
+    "tapTargets": {
+      "total": 34,
+      "small": 13
+    },
+    "status": "WARN"
+  },
+  {
+    "viewport": "768x1024",
+    "hasHorizontalScroll": false,
+    "minFontPx": 10,
+    "tapTargets": {
+      "total": 34,
+      "small": 12
+    },
+    "status": "PASS"
+  },
+  {
+    "viewport": "1024x768",
+    "hasHorizontalScroll": false,
+    "minFontPx": 10,
+    "tapTargets": {
+      "total": 34,
+      "small": 14
+    },
+    "status": "PASS"
+  }
+]
