@@ -1,0 +1,6 @@
+case_id,domain,task,task_repetitiveness,impact_if_wrong,needs_human_judgment,data_sensitivity,recommended_operating_mode
+V1201,hr,interview_feedback_summary,medium,medium,yes,medium,assist
+V1202,banking,loan_pre_approval_decision,medium,high,yes,high,human_led
+V1203,ecommerce,return_label_generation,high,low,no,low,automate
+V1204,public_services,benefit_eligibility_scoring,medium,high,yes,high,human_led
+V1205,product,release_note_first_draft,high,low,no,low,automate

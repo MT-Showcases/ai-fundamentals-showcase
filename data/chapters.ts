@@ -1584,56 +1584,160 @@ export const chapters: Chapter[] = [
     id: 12,
     slug: 'ai-at-work',
     title: 'L\'AI nel Lavoro e nel Futuro',
-    description: 'Come l\'AI cambierà il mercato del lavoro',
+    description: 'Come l\'AI trasforma ruoli, competenze e decisioni nel mondo del lavoro',
     sections: [
-      { title: 'Automazione e Nuovi Ruoli', content: 'L\'AI automatizza lavori ripetitivi: data entry, customer service di base, revisione documenti iniziale. Questi ruoli spariranno. Ma nascono nuovi ruoli: prompt engineer (persona che sa scrivere buoni prompt), AI trainer (prepara dati per l\'allenamento), AI ethicist (assicura che l\'AI sia etica), data scientist, ML engineer. Il mercato si trasforma, non scompare. Il vero vantaggio non e usare tool AI, ma orchestrare processi dove AI e competenze umane si completano. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: AI amplifica chi sa pensare criticamente e validare risultati>>.' },
-      { title: 'Competenze Richieste', content: 'Le competenze critiche per il futuro: (1) **Critical Thinking** — l\'AI non pensa criticamente, tu sì, (2) Comunicazione — spiegare bene le cose rimane umano, (3) Creatività — generare nuove idee, (4) Adattabilità — il mondo cambia velocemente. Imparare a usare ChatGPT, Copilot, Cursor non è il futuro — capire come usarli bene per il tuo dominio specifico lo è. Il vero vantaggio non e usare tool AI, ma orchestrare processi dove AI e competenze umane si completano. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: AI amplifica chi sa pensare criticamente e validare risultati>>.' }
+      { title: 'Automazione dei task, non delle persone', content: 'L\'AI eccelle nell\'automatizzare attività ripetitive e ad alto volume: classificazione email, estrazione dati da documenti, triage ticket, reportistica standard. Questo non significa che i ruoli umani spariscono in blocco: significa che cambiano il mix di attività. In molti team, i task operativi diminuiscono e crescono i task di controllo qualità, decisione e relazione con il cliente.\n\n*Nota pratica:* prima di introdurre AI in un flusso, mappa il processo in tre categorie: task da automatizzare, task da assistere e task da mantenere umani. <<Takeaway: la vera unità di trasformazione è il task, non il job title>>.', media: [ { type: 'infographic', title: 'Mappa task: automazione vs supervisione', description: 'Schema operativo per classificare attività in automatiche, assistite e umane.', placeholderPath: 'media/ch12-ai-at-work/sec-01/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Nuovi ruoli e responsabilità operative', content: 'Con l\'adozione AI emergono ruoli ibridi: AI Product Owner, AI Ops Specialist, Prompt Designer, Data Steward, AI Compliance Coordinator. Anche ruoli già esistenti evolvono: recruiter, project manager, marketer e developer usano AI come leva quotidiana, ma con responsabilità nuove su qualità, verificabilità e rischio.\n\nNel lavoro reale conta la capacità di disegnare workflow robusti: input chiari, controlli in uscita, escalation quando la confidenza è bassa. *Nota pratica:* definisci sempre ownership esplicita su "chi valida cosa" prima del rilascio. <<Takeaway: usare AI senza responsabilità definite crea velocità apparente e rischio reale>>.', media: [ { type: 'video', title: 'Ruoli AI-ready in team moderni', description: 'Panoramica su ruoli emergenti, responsabilità e collaborazione uomo-AI.', placeholderPath: 'media/ch12-ai-at-work/sec-02/video.mp4', notes: 'placeholder' } ] },
+      { title: 'Competenze ad alto valore nel mercato AI', content: 'Le competenze che aumentano di valore non sono solo tecniche. Le più richieste combinano: **pensiero critico** (valutare affidabilità), **problem framing** (definire bene il problema), **comunicazione** (spiegare decisioni), **alfabetizzazione dati** (leggere metriche), **adattabilità** (aggiornare metodo e tool).\n\nConoscere un tool specifico aiuta, ma il vantaggio competitivo è saper progettare processi ripetibili e misurabili. *Nota pratica:* costruisci un portfolio di casi concreti in cui mostri come hai ridotto errori o tempo di ciclo usando AI con metriche chiare. <<Takeaway: nel mercato AI vince chi sa misurare impatto, non chi usa più tool>>.', media: [ { type: 'infographic', title: 'Skill stack AI-ready', description: 'Matrice competenze tecniche e trasversali con esempi di impatto misurabile.', placeholderPath: 'media/ch12-ai-at-work/sec-03/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Errore comune + Check rapido', content: '**Errore comune:** introdurre AI per moda, senza baseline e senza KPI di qualità del lavoro.\n\n**Check rapido (2 min):** scegli un processo reale (es. supporto clienti, selezione CV, QA contenuti) e rispondi:\n1) quale task automatizzi per primo?\n2) quale metrica userai per capire se hai migliorato davvero?\n3) quando scatta obbligatoriamente la revisione umana?', media: [ { type: 'podcast', title: 'Podcast — Adozione AI con KPI reali', description: 'Come evitare automazione superficiale e impostare controlli operativi.', placeholderPath: 'media/ch12-ai-at-work/sec-04/podcast.mp3', notes: 'placeholder' } ] }
     ],
     keyTakeaways: [
-      'L\'AI automatizza compiti ripetitivi',
-      'Nuovi ruoli: prompt engineer, AI trainer, ethicist',
-      'Critical thinking rimane insostituibile',
-      'Lifelong learning è obbligatorio',
-      'Learning outcome: mappare task automatizzabili e skill umane ad alto valore',
+      'L\'AI trasforma soprattutto i task ripetitivi, non elimina automaticamente interi ruoli',
+      'Nuovi ruoli e responsabilità emergono su governance, qualità e orchestrazione dei workflow',
+      'Pensiero critico, capacità di framing e literacy dei dati sono skill centrali nel lavoro AI-ready',
+      'Ogni adozione AI va valutata con KPI operativi, qualità e rischio, non solo velocità',
+      'Learning outcome: progettare un mini piano di adozione AI con task, metriche e supervisione umana',
     ],
     discussionPrompts: [
-      'Quali lavori pensi spariranno nei prossimi 10 anni per colpa dell\'AI?',
-      'Come possiamo prepararci ora per lavori che forse non esistono ancora?',
-      'Il diritto al "diritto all\'oblio" dovrebbe applicarsi all\'AI training?'
-    ]
-    ,quiz: [
+      'Nel tuo settore, quali task sono candidati ideali per automazione assistita da AI?',
+      'Quale competenza umana pensi diventerà più preziosa con l\'uso esteso dell\'AI?',
+      'Come bilanceresti velocità operativa e controllo qualità in un workflow AI?'
+    ],
+    media: [
+      { type: 'video', title: 'Video Capitolo 12', description: 'Panoramica su trasformazione del lavoro, skill e governance operativa con AI.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch12-ai-at-work/video.mp4', notes: 'placeholder' },
+      { type: 'podcast', title: 'Podcast Capitolo 12', description: 'Versione audio su adozione AI nei team e impatto sul mercato del lavoro.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch12-ai-at-work/podcast.mp3', notes: 'placeholder' },
+      { type: 'infographic', title: 'Infografica Capitolo 12', description: 'Mappa task, competenze e controlli per una adozione AI sostenibile.', placeholderPath: 'media/ch12-ai-at-work/infographic.png', notes: 'placeholder' },
+      { type: 'resource', title: 'Asset/Dispensa', description: 'Template operativo per piano adozione AI con KPI e responsabilità.', placeholderPath: 'media/ch12-ai-at-work/handout.pdf', notes: 'placeholder' }
+    ],
+    exercises: [
       {
-        question: "AI nel lavoro tende a?",
-        options: [
-          "Automatizzare compiti ripetitivi",
-          "Bloccare ogni ruolo",
-          "Non cambiare nulla",
-          "Ridurre internet",
+        title: 'Mini Lab — Piano self-paced di adozione AI (senza coding)',
+        objective: 'Progettare un piano concreto per introdurre AI in un processo di lavoro mantenendo qualità e controllo rischio.',
+        duration: '20-25 min',
+        steps: [
+          'Apri il dataset train CH12 e seleziona 3 scenari di lavoro diversi (es. supporto, HR, operations).',
+          'Per ogni scenario identifica: task da automatizzare, task da assistere e task da lasciare umani.',
+          'Usa la validation CH12 per verificare la coerenza delle scelte e annota eventuali correzioni.',
+          'Definisci per uno scenario finale 3 KPI (efficienza, qualità, rischio) e una regola di escalation umana.'
         ],
-        correct: 0,
-        explanation: "Trasforma processi e crea nuovi ruoli."
+        deliverable: 'Checkpoint personale: tabella scenario → task split → KPI → regola di supervisione, pronta per discussione in aula.',
+        resources: [
+          { label: 'Dataset train CH12 (CSV)', path: '/datasets/ch12-ai-workforce/train.csv' },
+          { label: 'Dataset validation CH12 (CSV)', path: '/datasets/ch12-ai-workforce/validation.csv' },
+          { label: 'Schema campi CH12 (JSON)', path: '/datasets/ch12-ai-workforce/schema.json' }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: 'In un team operations, quale approccio descrive meglio un\'adozione AI matura?',
+        options: [
+          'Automatizzare tutto subito senza monitoraggio',
+          'Mappare i task, partire da casi ripetitivi e misurare KPI',
+          'Usare AI solo per contenuti marketing',
+          'Delegare l\'intero processo al modello senza review',
+        ],
+        correct: 1,
+        explanation: 'La strategia robusta parte da task chiari, rollout progressivo e metriche misurabili.'
       },
       {
-        question: "Skill centrale era AI?",
+        question: 'Scenario: il tempo medio risposta cala del 40% ma aumentano gli errori critici. Cosa fai?',
         options: [
-          "Pensiero critico",
-          "Solo dattilografia",
-          "Solo grafica",
-          "Solo memoria",
+          'Confermi il rollout perché la velocità è migliorata',
+          'Blocchi AI definitivamente',
+          'Rivedi KPI qualità/rischio e introduci escalation umana sui casi sensibili',
+          'Aumenti solo il numero di prompt',
         ],
-        correct: 0,
-        explanation: "Valutazione critica resta umana."
+        correct: 2,
+        explanation: 'Efficienza senza qualità affidabile è un falso miglioramento operativo.'
       },
       {
-        question: "Formazione continua oggi?",
+        question: 'Quale skill umana cresce di valore quando i task ripetitivi vengono automatizzati?',
         options: [
-          "Necessaria",
-          "Inutile",
-          "Solo accademica",
-          "Vietata",
+          'Pensiero critico e decision making',
+          'Memorizzazione meccanica',
+          'Compilazione manuale ripetitiva',
+          'Esecuzione senza contesto',
         ],
         correct: 0,
-        explanation: "Aggiornarsi e fondamentale."
+        explanation: 'Le attività ad alto giudizio umano diventano il vero differenziale competitivo.'
+      },
+      {
+        question: 'Scenario HR: AI filtra CV ma penalizza profili non standard. Primo intervento corretto?',
+        options: [
+          'Aumentare soltanto la soglia di scarto',
+          'Rimuovere ogni controllo umano',
+          'Audit del dataset e regole di revisione per candidati borderline',
+          'Disattivare i log del sistema',
+        ],
+        correct: 2,
+        explanation: 'Quando emerge rischio di esclusione ingiusta, servono audit dati e supervisione operativa.'
+      },
+      {
+        question: 'Quale metrica è più utile per valutare qualità di un workflow AI di supporto clienti?',
+        options: [
+          'Solo numero ticket processati',
+          'Tasso di risoluzione corretta al primo contatto',
+          'Solo costo mensile cloud',
+          'Numero di prompt per operatore',
+        ],
+        correct: 1,
+        explanation: 'La qualità percepita dal cliente dipende dalla correttezza risolutiva, non solo dal volume.'
+      },
+      {
+        question: 'In ottica carriera, quale scelta è più solida nei prossimi anni?',
+        options: [
+          'Imparare un solo tool e non aggiornarsi più',
+          'Combinare skill di dominio, dati e governance AI',
+          'Evitare qualsiasi esposizione a processi AI',
+          'Concentrarsi solo su velocità di digitazione',
+        ],
+        correct: 1,
+        explanation: 'Il valore professionale cresce con competenze trasferibili e capacità di orchestrazione.'
+      },
+      {
+        question: 'Scenario: il team vuole introdurre AI in 12 processi insieme. Rischio principale?',
+        options: [
+          'Miglioramento troppo rapido della qualità',
+          'Perdita di controllo su priorità, KPI e responsabilità',
+          'Riduzione automatica dei costi di training',
+          'Eliminazione immediata dei bias',
+        ],
+        correct: 1,
+        explanation: 'Senza rollout graduale e ownership chiara, aumenta il rischio di caos operativo.'
+      },
+      {
+        question: 'Quale combinazione descrive meglio una governance minima per AI nel lavoro?',
+        options: [
+          'Prompt lunghi + dashboard estetica',
+          'KPI definiti + revisione umana nei casi critici + logging',
+          'Solo modello più recente disponibile',
+          'Solo formazione iniziale una tantum',
+        ],
+        correct: 1,
+        explanation: 'Governance efficace richiede metriche, controllo umano e tracciabilità decisionale.'
+      },
+      {
+        question: 'Se un task richiede empatia, negoziazione o giudizio contestuale, la scelta migliore è:',
+        options: [
+          'Automazione completa senza eccezioni',
+          'Eliminare l\'interazione umana',
+          'Modello human-in-the-loop con AI di supporto',
+          'Bloccare l\'uso AI in tutto il team',
+        ],
+        correct: 2,
+        explanation: 'Nei task ad alta componente relazionale, AI supporta ma non sostituisce la decisione umana.'
+      },
+      {
+        question: 'Messaggio chiave del Capitolo 12:',
+        options: [
+          'AI sostituisce ogni professione in modo uniforme',
+          'Basta usare più tool per essere competitivi',
+          'Adozione AI efficace = task design + skill umane + KPI + supervisione',
+          'La governance rallenta sempre e va evitata',
+        ],
+        correct: 2,
+        explanation: 'Il valore nasce dall\'integrazione tra tecnologia, processo e responsabilità.'
       }
     ]
   },
@@ -1704,70 +1808,62 @@ export const chapters: Chapter[] = [
   {
     id: 14,
     slug: 'advanced-patterns',
-    title: 'Pattern Avanzati: RAG, Agents, Fine-tuning',
-    description: 'Architetture sofisticate con AI',
+    title: 'Pattern Avanzati: RAG, Agent e Fine-tuning',
+    description: 'Come scegliere e governare architetture AI avanzate in produzione',
     sections: [
-      { title: 'RAG (Retrieval-Augmented Generation)', content: '**RAG** combina due cose: Retrieval (cercare documenti rilevanti da una knowledge base) + Generation (usare quel contenuto per generare una risposta). Esempio: invece di fare fine-tuning di ChatGPT su 10.000 documenti aziendali, usi RAG: dai a ChatGPT il documento rilevante + il prompt, e lui genera la risposta basato su quell\'informazione. È più flessibile e facile da aggiornare. Prima di usare tool sensibili inserisci guardrail, osservabilita e audit trail per limitare rischi operativi. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Agents e tool-use richiedono guardrail e audit trail>>.' },
-      { title: 'AI Agents', content: 'Un AI Agent è un sistema che prende decisioni autonome e usa tool per agire. Esempio: un agent che riceve il task "prenota un volo da Roma a Milano il 15 giugno", e lui: (1) usa uno strumento di ricerca per trovare voli, (2) usa uno strumento di pagamento per prenotare, (3) invia una conferma email. Non hai dato istruzioni step-by-step — l\'agent ha **rag**ionato e agito autonomamente. Prima di usare tool sensibili inserisci guardrail, osservabilita e audit trail per limitare rischi operativi. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Agents e tool-use richiedono guardrail e audit trail>>.' }
+      { title: 'RAG: Retrieval-Augmented Generation', content: "Il **RAG** unisce retrieval e generazione: prima recupera documenti affidabili, poi il modello risponde usando quel contesto. È spesso la scelta migliore quando la conoscenza cambia spesso (policy, cataloghi, procedure interne) perché aggiorni i documenti senza riaddestrare i pesi del modello. In pratica, RAG riduce il rischio di risposte obsolete e offre più controllo su fonti e tracciabilità. *Nota operativa:* ogni risposta dovrebbe includere evidenza delle fonti usate. <<Takeaway: RAG è efficace quando servono aggiornabilità, controllo e auditabilità>>.", media: [ { type: 'infographic', title: 'RAG pipeline operativa', description: 'Flusso: ingestione documenti, retrieval, ranking, generazione con citazioni.', placeholderPath: 'media/ch14-advanced-patterns/sec-01/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Agent AI e Tool-use', content: "Un **agent** non si limita a generare testo: pianifica step, usa strumenti e verifica risultati rispetto a un obiettivo. Questo aumenta il valore operativo, ma anche il rischio: errori di tool-call, azioni non autorizzate, loop non controllati. Per questo servono permessi granulari, limiti di budget/tempo e conferme su azioni sensibili. *Nota operativa:* definisci sempre quali tool sono consentiti, con quali parametri e in quali condizioni. <<Takeaway: un agent affidabile è prima di tutto governato>>.", media: [ { type: 'video', title: 'Agent con tool-use: schema decisionale', description: 'Esempio di pianificazione, esecuzione tool e validazione output.', placeholderPath: 'media/ch14-advanced-patterns/sec-02/video.mp4', notes: 'placeholder' } ] },
+      { title: 'Fine-tuning: quando conviene davvero', content: "Il **fine-tuning** è utile quando hai pattern ricorrenti e mismatch persistente che prompt+RAG non risolvono in modo stabile. Non è il primo passo: richiede dataset curato, valutazioni robuste e ciclo di aggiornamento dei dati. In molti casi, una baseline con prompt strutturato + retrieval ben fatto offre ROI più rapido e meno complessità operativa. *Nota operativa:* scegli tuning solo dopo benchmark comparativi con KPI chiari su qualità, costo e latenza. <<Takeaway: tuning sì, ma solo con evidenza misurabile>>.", media: [ { type: 'infographic', title: 'Decision matrix: Prompt vs RAG vs Fine-tuning', description: 'Matrice per scegliere strategia in base a rischio, aggiornabilità e costo.', placeholderPath: 'media/ch14-advanced-patterns/sec-03/infographic.png', notes: 'placeholder' } ] },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** scegliere l'architettura più complessa senza baseline e senza KPI.\n\n**Check rapido (2 min):** per un caso reale del tuo dominio, rispondi:\n1) quale problema risolvi (qualità, aggiornabilità, automazione)?\n2) quale opzione parte per prima (prompt, RAG o agent) e perché?\n3) quale metrica userai entro 2 settimane per confermare la scelta?", media: [ { type: 'podcast', title: 'Podcast — Complessità con criterio', description: 'Come evitare over-engineering in pattern avanzati AI.', placeholderPath: 'media/ch14-advanced-patterns/sec-04/podcast.mp3', notes: 'placeholder' } ] }
     ],
     keyTakeaways: [
-      'RAG = LLM + knowledge base',
-      'Agents possono usare tool autonomamente',
-      'Orchestrazione di più modelli = power',
-      'Chain-of-thought = reasoning migliore',
-      'Learning outcome: disegnare un flusso RAG/Agent con guardrail essenziali',
+      'RAG migliora aggiornabilità e controllo delle fonti',
+      'Gli agent richiedono governance: permessi, limiti e audit trail',
+      'Fine-tuning è efficace solo con gap persistenti e dati curati',
+      'La scelta architetturale va guidata da KPI, non dall\'hype',
+      'Learning outcome: progettare un flusso avanzato con guardrail e metriche operative',
     ],
-    codeSnippets: [
+    discussionPrompts: [
+      'Nel tuo prodotto, quale parte richiede aggiornabilità continua e quindi favorisce RAG?',
+      'Quali azioni di un agent dovrebbero richiedere approvazione umana obbligatoria?',
+      'Quale segnale concreto ti direbbe che è arrivato il momento del fine-tuning?'
+    ],
+    media: [
+      { type: 'video', title: 'Video Capitolo 14', description: 'Panoramica pratica su RAG, agent e fine-tuning in produzione.', estimatedDuration: '9-11 min', placeholderPath: 'media/ch14-advanced-patterns/video.mp4', notes: 'placeholder' },
+      { type: 'podcast', title: 'Podcast Capitolo 14', description: 'Versione audio con focus su trade-off tecnici e di governance.', estimatedDuration: '12-16 min', placeholderPath: 'media/ch14-advanced-patterns/podcast.mp3', notes: 'placeholder' },
+      { type: 'infographic', title: 'Infografica Capitolo 14', description: 'Schema decisionale completo: quando usare RAG, agent o fine-tuning.', placeholderPath: 'media/ch14-advanced-patterns/infographic.png', notes: 'placeholder' },
+      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist operativa per valutazione architettura e controllo rischio.', placeholderPath: 'media/ch14-advanced-patterns/handout.pdf', notes: 'placeholder' }
+    ],
+    exercises: [
       {
-        lang: 'python',
-        label: 'RAG con LangChain (schema semplificato)',
-        code: '# RAG con LangChain (schema semplificato)\nfrom langchain.chains import RetrievalQA\nfrom langchain_community.vectorstores import FAISS\nfrom langchain_openai import OpenAIEmbeddings, ChatOpenAI\n\n# 1. Crea vector store dai tuoi documenti\nvectorstore = FAISS.from_documents(documents, OpenAIEmbeddings())\n\n# 2. Crea catena RAG\nllm = ChatOpenAI(model="gpt-4o-mini")\nqa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    retriever=vectorstore.as_retriever(search_kwargs={"k": 3})\n)\n\n# 3. Query\nresult = qa_chain.invoke("Cos\'e\' il Transfer Learning?")\nprint(result["result"])'
-      },
-      {
-        lang: 'python',
-        label: 'AI Agent semplice con tool use',
-        code: '# AI Agent con tool use (OpenAI function calling)\nfrom openai import OpenAI\nimport json\n\nclient = OpenAI()\n\n# Definisci i tool disponibili\ntools = [{\n    "type": "function",\n    "function": {\n        "name": "cerca_voli",\n        "description": "Cerca voli disponibili tra due citta\'",\n        "parameters": {\n            "type": "object",\n            "properties": {\n                "origine": {"type": "string"},\n                "destinazione": {"type": "string"},\n                "data": {"type": "string"}\n            },\n            "required": ["origine", "destinazione", "data"]\n        }\n    }\n}]\n\nresponse = client.chat.completions.create(\n    model="gpt-4o-mini",\n    messages=[{"role": "user", "content": "Prenota un volo Roma-Milano il 15 giugno"}],\n    tools=tools\n)\nprint(response.choices[0].message.tool_calls)'
+        title: 'Mini Lab — Scelta architettura avanzata (self-paced, senza coding)',
+        objective: 'Confrontare prompt-only, RAG e agent su uno scenario reale usando criteri tecnici e business.',
+        duration: '20-25 min',
+        steps: [
+          'Apri il dataset train CH14 e scegli 3 scenari con vincoli diversi (qualità, tempo, compliance).',
+          'Per ogni scenario proponi una strategia iniziale: prompt-only, RAG o agent assistito.',
+          'Confronta le tue scelte con il validation CH14 e identifica un caso in cui servirebbe escalation umana.',
+          'Definisci 3 KPI di verifica per le prime 2 settimane: quality pass rate, fallback rate, costo per task.'
+        ],
+        deliverable: 'Checkpoint personale: tabella scenario → strategia → rischio principale → KPI di monitoraggio.',
+        resources: [
+          { label: 'Dataset train CH14 (CSV)', path: '/datasets/ch14-advanced-patterns/train.csv' },
+          { label: 'Dataset validation CH14 (CSV)', path: '/datasets/ch14-advanced-patterns/validation.csv' },
+          { label: 'Schema campi CH14 (JSON)', path: '/datasets/ch14-advanced-patterns/schema.json' }
+        ]
       }
     ],
-        discussionPrompts: [
-      'Quali vantaggi ha RAG rispetto al fine-tuning?',
-      'Quali rischi ci sono nell\'dare ad un AI Agent l\'accesso a tool reali (email, pagamenti)?',
-      'Come potremmo verificare che un Agent non abbia fatto errori prima che causa danni?'
-    ]
-    ,quiz: [
-      {
-        question: "RAG combina?",
-        options: [
-          "Retrieval e generation",
-          "UI e CSS",
-          "Training e backup",
-          "Prompt e cache",
-        ],
-        correct: 0,
-        explanation: "RAG usa documenti rilevanti nel contesto."
-      },
-      {
-        question: "AI agent tipico?",
-        options: [
-          "Usa tool per obiettivo",
-          "Solo chat passiva",
-          "Solo copia testo",
-          "Solo cron",
-        ],
-        correct: 0,
-        explanation: "Agent puo orchestrare azioni con strumenti."
-      },
-      {
-        question: "Rischio con agent tool?",
-        options: [
-          "Azioni sbagliate su sistemi reali",
-          "Sfondo errato",
-          "Poco spazio disco",
-          "Font piccolo",
-        ],
-        correct: 0,
-        explanation: "Servono guardrail e approvazioni."
-      }
+    quiz: [
+      { question: 'Una knowledge base interna cambia ogni giorno. Strategia iniziale più sensata?', options: ['Fine-tuning immediato', 'RAG con retrieval su documenti aggiornati', 'Solo zero-shot senza fonti', 'Agent con accesso completo senza controlli'], correct: 1, explanation: 'Con contenuti dinamici il RAG riduce latenza di aggiornamento e migliora tracciabilità.' },
+      { question: 'Qual è il rischio operativo principale di un agent con tool finanziari?', options: ['Prompt troppo corto', 'Azioni irreversibili non autorizzate', 'Output troppo sintetico', 'Numero basso di token'], correct: 1, explanation: 'Con tool ad alto impatto servono limiti, approvazioni e audit trail.' },
+      { question: 'Quando il fine-tuning è davvero giustificato?', options: ['Sempre, per default', 'Quando prompt+RAG mostrano gap persistenti su KPI critici', 'Quando vuoi ridurre il lavoro di valutazione', 'Quando il dataset è piccolo e rumoroso'], correct: 1, explanation: 'Il tuning va deciso con evidenza misurabile, non per preferenza tecnologica.' },
+      { question: 'Quale set di controlli è più robusto per agent in produzione?', options: ['Permessi granulari + limiti budget/tempo + human approval su azioni sensibili', 'Solo temperature bassa', 'Solo logging UI', 'Nessun fallback per velocità'], correct: 0, explanation: 'La governance operativa riduce rischio tecnico e business.' },
+      { question: 'Scenario: risposte corrette ma senza citazioni fonte. Cosa manca?', options: ['Più GPU', 'Tracciabilità e verificabilità del retrieval', 'Più token in output', 'Cambio linguaggio di programmazione'], correct: 1, explanation: 'In RAG la citazione fonte è parte chiave del controllo qualità.' },
+      { question: 'In una scelta architetturale, quale metrica combina qualità e rischio?', options: ['Solo latenza media', 'Quality pass rate segmentato + incident rate', 'Solo costo mensile cloud', 'Solo numero prompt/giorno'], correct: 1, explanation: 'Valutare segmenti e incidenti evita decisioni basate su medie fuorvianti.' },
+      { question: 'Se un agent entra in loop di retry su API esterna, prima mitigazione?', options: ['Aumentare max token', 'Circuit breaker con retry cap e timeout', 'Aumentare temperatura', 'Eliminare logging'], correct: 1, explanation: 'Limiti di retry/tempo prevengono consumo incontrollato e failure a cascata.' },
+      { question: 'Quale segnale suggerisce di restare su RAG e NON passare a tuning?', options: ['Dati e policy cambiano frequentemente', 'Hai budget alto', 'Vuoi una demo più complessa', 'Il team preferisce modelli custom'], correct: 0, explanation: 'Quando la conoscenza cambia spesso, RAG è più agile e manutenibile.' },
+      { question: 'Scenario compliance: dominio regolato con decisioni ad alto impatto. Cosa è prioritario?', options: ['Rimuovere tutte le approvazioni', 'Definire escalation umana e audit log obbligatori', 'Nascondere i fallimenti agli utenti', 'Usare solo output creativo'], correct: 1, explanation: 'Nei contesti high-stakes conta la governance verificabile oltre alla performance.' },
+      { question: 'Messaggio chiave del capitolo 14:', options: ['Pattern avanzati efficaci = scelta guidata da KPI + guardrail + monitoraggio continuo', 'Più complesso è sempre meglio', 'Basta un modello grande per risolvere tutto', 'Gli agent non hanno bisogno di controlli'], correct: 0, explanation: 'Il valore reale nasce da architettura appropriata e controllo operativo.' }
     ]
   },
   {

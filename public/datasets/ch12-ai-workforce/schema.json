@@ -1,0 +1,15 @@
+{
+  "name": "ch12-ai-workforce",
+  "task": "workflow_adoption_planning",
+  "target": "recommended_operating_mode",
+  "fields": [
+    { "name": "case_id", "type": "string" },
+    { "name": "domain", "type": "string" },
+    { "name": "task", "type": "string" },
+    { "name": "task_repetitiveness", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "impact_if_wrong", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "needs_human_judgment", "type": "category", "values": ["yes", "no"] },
+    { "name": "data_sensitivity", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "recommended_operating_mode", "type": "category", "values": ["automate", "assist", "human_led"] }
+  ]
+}
