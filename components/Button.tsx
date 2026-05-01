@@ -18,8 +18,8 @@ export default function Button({
   const baseStyles = 'px-6 py-3 min-h-11 rounded-lg font-semibold transition-all duration-200 inline-flex items-center justify-center active:scale-95';
   
   const variants = {
-    primary: 'bg-blue-400 text-white hover:bg-cyan-300 hover:text-navy-900 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/40',
-    secondary: 'border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white hover:scale-105 hover:shadow-lg hover:shadow-blue-400/30',
+    primary: 'bg-blue-400 text-navy-900 hover:bg-cyan-300 hover:text-navy-900 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/40',
+    secondary: 'border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-navy-900 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/30',
   };
 
   const finalClassName = `${baseStyles} ${variants[variant]} ${className}`;

@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fondamenti di AI — Showcase
 
-## Getting Started
+Showcase didattica in italiano per il corso **Fondamenti di AI** (15 capitoli), progettata per studenti SJA con approccio pratico, visuale e startup-friendly.
 
-First, run the development server:
+## 🌐 Live
+- Produzione: https://ai-fundamentals-showcase.vercel.app
 
+## ✨ Features
+- 15 capitoli strutturati con:
+  - sezioni didattiche
+  - key takeaways
+  - prompt di discussione
+  - quiz
+  - esercizi pratici
+- Navigazione chapter-by-chapter con progress tracking
+- Ricerca contenuti
+- Tema dark coerente con brand SJA
+- SEO base pronta (metadata, robots, sitemap)
+
+## 🧱 Tech Stack
+- **Framework:** Next.js 15 (App Router)
+- **UI:** React 19 + Tailwind CSS 4
+- **Language:** TypeScript
+- **Deploy target:** Vercel
+
+## 🚀 Avvio locale
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Apri: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Build produzione
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Struttura principale
+- `app/` — routing e pagine (homepage, chapters, metadata routes)
+- `components/` — componenti UI riusabili
+- `data/` — contenuti capitoli e asset metadata
+- `public/` — media statici e dataset
+- `docs/` — report e artefatti tecnici (es. Lighthouse)
 
-## Learn More
+## 🔍 SEO
+- Metadata globali in `app/layout.tsx`
+- Metadata dinamici chapter in `app/chapters/[slug]/page.tsx`
+- Robots in `app/robots.ts`
+- Sitemap in `app/sitemap.ts`
 
-To learn more about Next.js, take a look at the following resources:
+## 📊 Qualità (baseline launch v1.0.0)
+- Lighthouse (local prod):
+  - Performance: 94
+  - Accessibility: 95
+  - Best Practices: 100
+  - SEO: 100
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributi
+Vedi `CONTRIBUTING.md` per linee guida di contribuzione.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 Licenza
+MIT — vedi `LICENSE`.

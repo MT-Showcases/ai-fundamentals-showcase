@@ -6,6 +6,7 @@ import Card from '@/components/Card';
 import Button from '@/components/Button';
 import SearchBar from '@/components/SearchBar';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [introVideoError, setIntroVideoError] = useState(false);
@@ -94,9 +95,11 @@ export default function Home() {
                     </div>
 
                     {chapterInfographic && (
-                      <img
+                      <Image
                         src={`/${chapterInfographic.placeholderPath}`}
                         alt={`Anteprima infografica ${chapter.title}`}
+                        width={800}
+                        height={450}
                         className="w-full max-h-56 rounded-lg object-contain bg-black/20 border border-blue-700/40"
                         loading="lazy"
                       />

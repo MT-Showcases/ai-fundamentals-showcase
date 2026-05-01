@@ -13,9 +13,43 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://ai-fundamentals-showcase.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Fondamenti di AI - Corso di Formazione AI",
-  description: "Corso completo sui Fondamenti di AI: dal machine learning alle reti neurali, dai modelli linguistici alle applicazioni pratiche.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Fondamenti di AI - Corso di Formazione AI",
+    template: "%s | Fondamenti di AI",
+  },
+  description:
+    "Corso completo sui Fondamenti di AI: dal machine learning alle reti neurali, dai modelli linguistici alle applicazioni pratiche.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Fondamenti di AI - Corso di Formazione AI",
+    description:
+      "Corso completo sui Fondamenti di AI: dal machine learning alle reti neurali, dai modelli linguistici alle applicazioni pratiche.",
+    url: siteUrl,
+    siteName: "Fondamenti di AI",
+    locale: "it_IT",
+    type: "website",
+    images: [
+      {
+        url: "/media/og-cover.png",
+        width: 1200,
+        height: 630,
+        alt: "Fondamenti di AI - Showcase corso",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fondamenti di AI - Corso di Formazione AI",
+    description:
+      "Corso completo sui Fondamenti di AI: dal machine learning alle reti neurali, dai modelli linguistici alle applicazioni pratiche.",
+    images: ["/media/og-cover.png"],
+  },
 };
 
 export const viewport: Viewport = {

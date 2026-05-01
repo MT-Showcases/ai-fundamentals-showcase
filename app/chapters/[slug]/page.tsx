@@ -1,4 +1,5 @@
 import { chapters } from '@/data/chapters';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ChapterHeader from '@/components/ChapterHeader';
 import SectionCard from '@/components/SectionCard';
@@ -27,15 +28,47 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const chapter = chapters.find((ch) => ch.slug === slug);
+
+  if (!chapter) {
+    return {
+      title: 'Capitolo non trovato',
+      description: 'Il capitolo richiesto non esiste.',
+    };
+  }
+
+  const title = `Capitolo ${String(chapter.id).padStart(2, '0')} — ${chapter.title}`;
+  const description = chapter.description;
+  const path = `/chapters/${chapter.slug}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      title,
+      description,
+      url: path,
+      type: 'article',
+      images: ['/media/og-cover.png'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/media/og-cover.png'],
+    },
+  };
+}
+
 export default async function ChapterPage({ params }: Props) {
   const { slug } = await params;
-
-  console.log('[Chapter Page] Rendering slug:', slug, 'time:', new Date().toISOString());
 
   const chapter = chapters.find((ch) => ch.slug === slug);
 
   if (!chapter) {
-    console.log('[Chapter Page] Chapter not found for slug:', slug);
     notFound();
   }
 
