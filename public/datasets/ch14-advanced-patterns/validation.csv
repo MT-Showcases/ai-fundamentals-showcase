@@ -1,0 +1,9 @@
+case_id,domain,knowledge_change_rate,action_automation_needed,compliance_risk,response_accuracy_need,budget_level,latency_tolerance,recommended_strategy
+CH14-V01,hr_policy_qa,high,low,medium,high,medium,moderate,rag
+CH14-V02,customer_email_reply,medium,medium,low,medium,low,strict,prompt_only
+CH14-V03,payment_refund_orchestration,medium,high,high,high,medium,strict,agent_assisted
+CH14-V04,regulatory_reporting_labels,low,low,high,high,high,relaxed,fine_tuning
+CH14-V05,sales_playbook_search,high,low,low,medium,low,moderate,rag
+CH14-V06,contract_risk_flagging,low,medium,high,high,high,moderate,fine_tuning
+CH14-V07,it_ticket_routing,medium,high,medium,medium,medium,strict,agent_assisted
+CH14-V08,faq_generation_static,low,low,low,low,low,strict,prompt_only

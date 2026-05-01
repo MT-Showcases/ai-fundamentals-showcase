@@ -1,0 +1,13 @@
+case_id,domain,knowledge_change_rate,action_automation_needed,compliance_risk,response_accuracy_need,budget_level,latency_tolerance,recommended_strategy
+CH14-001,customer_support,high,low,medium,high,medium,moderate,rag
+CH14-002,internal_wiki_qa,high,low,low,medium,low,moderate,rag
+CH14-003,invoice_reconciliation,medium,high,high,high,medium,strict,agent_assisted
+CH14-004,marketing_copy,low,low,low,medium,low,strict,prompt_only
+CH14-005,claims_processing,medium,high,high,high,high,moderate,agent_assisted
+CH14-006,legal_clause_extraction,low,low,high,high,high,relaxed,fine_tuning
+CH14-007,product_catalog_qa,high,medium,medium,high,medium,moderate,rag
+CH14-008,meeting_notes_summary,medium,low,low,medium,low,strict,prompt_only
+CH14-009,fraud_alert_triage,medium,high,high,high,high,strict,agent_assisted
+CH14-010,medical_policy_search,high,low,high,high,medium,moderate,rag
+CH14-011,taxonomy_classification,low,low,medium,high,high,relaxed,fine_tuning
+CH14-012,onboarding_assistant,medium,medium,medium,medium,medium,moderate,rag

@@ -1,0 +1,16 @@
+{
+  "name": "ch14-advanced-patterns",
+  "task": "architecture_strategy_selection",
+  "target": "recommended_strategy",
+  "fields": [
+    { "name": "case_id", "type": "string" },
+    { "name": "domain", "type": "string" },
+    { "name": "knowledge_change_rate", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "action_automation_needed", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "compliance_risk", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "response_accuracy_need", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "budget_level", "type": "category", "values": ["low", "medium", "high"] },
+    { "name": "latency_tolerance", "type": "category", "values": ["strict", "moderate", "relaxed"] },
+    { "name": "recommended_strategy", "type": "category", "values": ["prompt_only", "rag", "agent_assisted", "fine_tuning"] }
+  ]
+}
