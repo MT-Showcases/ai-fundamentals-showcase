@@ -1216,7 +1216,12 @@ export const chapters: Chapter[] = [
       { question: 'Un edge-case tipico in vision è:', options: ['Foto sfocata o controluce', 'Prompt troppo lungo', 'Errore DNS', 'Tokenizzazione errata'], correct: 0, explanation: 'Condizioni visive difficili riducono affidabilità.' },
       { question: 'Transfer learning in vision serve a:', options: ['Riutilizzare modelli pre-addestrati', 'Disattivare validazione', 'Evitare etichette', 'Eliminare inferenza'], correct: 0, explanation: 'Riduce tempi e dati necessari in molti casi reali.' },
       { question: 'Quando attivare fallback?', options: ['Con confidence bassa o scenario ambiguo', 'Mai', 'Solo in training', 'Solo con internet lento'], correct: 0, explanation: 'Fallback riduce rischio nei casi incerti.' },
-      { question: 'Messaggio chiave del capitolo:', options: ['Vision affidabile = modello + test reali + fallback', 'Basta più layer', 'Basta più dati rumorosi', 'Basta una demo'], correct: 0, explanation: 'Affidabilità nasce da tecnica + validazione operativa.' }
+      { question: 'Messaggio chiave del capitolo:', options: ['Vision affidabile = modello + test reali + fallback', 'Basta più layer', 'Basta più dati rumorosi', 'Basta una demo'], correct: 0, explanation: 'Affidabilità nasce da tecnica + validazione operativa.' },
+      { question: 'La convoluzione in una CNN opera su:', options: ['Regioni locali dell\'immagine', 'Tutta l\'immagine contemporaneamente', 'Solo i bordi', 'Solo i colori'], correct: 0, explanation: 'Ogni filtro analizza una piccola area alla volta.' },
+      { question: 'MaxPooling in una CNN serve a:', options: ['Ridurre la dimensione spaziale', 'Aumentare i parametri', 'Normalizzare i pesi', 'Eliminare i layer'], correct: 0, explanation: 'Riduce risoluzione e aumenta robustezza a piccole variazioni.' },
+      { question: 'In quale fase si usa transfer learning su vision?', options: ['Quando si ha poco dato etichettato', 'Quando si ha infinito dato', 'Quando non serve accuracy', 'Solo su testo'], correct: 0, explanation: 'Un modello pre-addestrato porta feature già utili.' },
+      { question: 'Cosa indica confidence score basso?', options: ['Il modello è incerto sulla predizione', 'La predizione è sicuramente corretta', 'Il dataset è grande', 'Il modello è overfit'], correct: 0, explanation: 'Confidence bassa segnala un caso borderline da verificare.' },
+      { question: 'Un sistema vision robusto deve essere testato su:', options: ['Edge-case reali: luce, angoli, occlusioni', 'Solo foto studio perfette', 'Solo video', 'Solo immagini ad alta risoluzione'], correct: 0, explanation: 'Test realistici rivelano failure che i test standard nascondono.' }
     ]
   },
   {
@@ -1284,7 +1289,12 @@ export const chapters: Chapter[] = [
       { question: 'Prompt engineering serve a:', options: ['Aumentare pertinenza e struttura output', 'Eliminare bias automaticamente', 'Sostituire validazione', 'Ridurre sempre i costi'], correct: 0, explanation: 'Prompt migliori guidano meglio il modello.' },
       { question: 'Allucinazione indica:', options: ['Contenuto plausibile ma falso', 'Errore di connessione', 'Crash GPU', 'Prompt troppo corto'], correct: 0, explanation: 'È un rischio tipico dei modelli generativi.' },
       { question: 'Output fluido implica accuratezza?', options: ['No', 'Sì', 'Solo con temperature 0', 'Solo con prompt lunghi'], correct: 0, explanation: 'Fluidità e verità fattuale non coincidono.' },
-      { question: 'Quando attivare fallback umano?', options: ['Richieste sensibili o ambigue', 'Mai', 'Solo in test', 'Solo su input breve'], correct: 0, explanation: 'Fallback riduce rischio nei casi critici.' }
+      { question: 'Quando attivare fallback umano?', options: ['Richieste sensibili o ambigue', 'Mai', 'Solo in test', 'Solo su input breve'], correct: 0, explanation: 'Fallback riduce rischio nei casi critici.' },
+      { question: 'Temperature in un LLM controlla:', options: ['Il grado di casualità dell\'output', 'La dimensione del modello', 'Il numero di layer', 'La velocità di inferenza'], correct: 0, explanation: 'Temperature alta = output più vario, bassa = più deterministico.' },
+      { question: 'RAG (Retrieval Augmented Generation) serve a:', options: ['Ancorare l\'output a fonti verificabili', 'Eliminare il fine-tuning', 'Aumentare la temperatura', 'Ridurre il prompt'], correct: 0, explanation: 'RAG riduce allucinazioni agganciando il modello a documenti reali.' },
+      { question: 'Un guardrail in AI generativa è:', options: ['Un controllo che filtra output problematici', 'Un layer nascosto', 'Un tipo di tokenizer', 'Una metrica di training'], correct: 0, explanation: 'I guardrail proteggono da output dannosi o fuori policy.' },
+      { question: 'Quale approccio riduce le allucinazioni?', options: ['RAG + verifica fattuale', 'Più parametri', 'Temperature più alta', 'Prompt più corti'], correct: 0, explanation: 'Ancorare il modello a fonti reali riduce le invenzioni.' },
+      { question: 'Un sistema generativo in produzione richiede:', options: ['Logging, monitoring e fallback umano', 'Solo una buona GPU', 'Solo un bel prompt', 'Solo un modello grande'], correct: 0, explanation: 'La qualità operativa nasce da governance, non solo da tecnica.' }
     ]
   },
   {
@@ -1340,7 +1350,12 @@ export const chapters: Chapter[] = [
       { question: 'Zero-shot significa:', options: ['Usare il modello senza ulteriore training', 'Riaddestrare da zero', 'Usare solo retrieval', 'Usare solo embedding statici'], correct: 0, explanation: 'È la modalità più rapida di avvio.' },
       { question: 'RAG conviene soprattutto quando:', options: ['Le fonti cambiano spesso', 'I dati sono statici', 'Non esistono documenti', 'Non serve accuratezza'], correct: 0, explanation: 'Gestisce meglio aggiornabilità senza retraining continuo.' },
       { question: 'Errore comune pre-tuning:', options: ['Saltare baseline prompt+RAG', 'Misurare KPI', 'Fare test A/B', 'Valutare costi'], correct: 0, explanation: 'Serve evidenza prima di investire in tuning.' },
-      { question: 'Messaggio chiave:', options: ['Scegli strategia in base a vincoli reali', 'Fine-tuning sempre', 'RAG sempre', 'Zero-shot sempre'], correct: 0, explanation: 'Conta il contesto, non la moda tecnica.' }
+      { question: 'Messaggio chiave:', options: ['Scegli strategia in base a vincoli reali', 'Fine-tuning sempre', 'RAG sempre', 'Zero-shot sempre'], correct: 0, explanation: 'Conta il contesto, non la moda tecnica.' },
+      { question: 'Il fine-tuning richiede:', options: ['Dati etichettati di alta qualità nel dominio target', 'Solo un prompt migliore', 'Un modello da zero', 'Nessun dato'], correct: 0, explanation: 'Dati di qualità nel dominio target sono il prerequisito.' },
+      { question: 'Quando RAG è preferibile al fine-tuning?', options: ['Quando le fonti cambiano frequentemente', 'Quando il dominio è statico', 'Quando non esistono documenti', 'Quando il budget è illimitato'], correct: 0, explanation: 'RAG è più flessibile su contenuti in continua evoluzione.' },
+      { question: 'Il rischio principale del fine-tuning con dati rumorosi è:', options: ['Il modello apprende pattern sbagliati', 'Il modello diventa più lento', 'Il costo del cloud aumenta', 'Il prompt diventa più lungo'], correct: 0, explanation: 'Garbage in, garbage out: i dati determinano la qualità del tuning.' },
+      { question: 'Qual è il vantaggio principale del transfer learning?', options: ['Riusa feature già apprese riducendo dati necessari', 'Elimina il bisogno di validazione', 'Aumenta sempre accuracy a prescindere', 'Rimuove il rischio di overfitting'], correct: 0, explanation: 'Il modello base porta già feature utili per il nuovo task.' },
+      { question: 'Prima di fare fine-tuning si dovrebbe:', options: ['Stabilire una baseline con zero-shot o RAG', 'Comprare subito GPU', 'Raccogliere dati infiniti', 'Eliminare la pipeline esistente'], correct: 0, explanation: 'Servono evidenze che le alternative più semplici non bastino.' }
     ]
   },
   {
@@ -1396,7 +1411,12 @@ export const chapters: Chapter[] = [
       { question: 'Explainability è importante perché:', options: ['Permette audit e contestazione decisioni', 'Riduce il numero di feature', 'Sostituisce compliance', 'Elimina QA'], correct: 0, explanation: 'Trasparenza e responsabilità richiedono spiegabilità.' },
       { question: 'In casi ad alto impatto conviene:', options: ['Prevedere human-in-the-loop', 'Automatizzare tutto senza controlli', 'Nascondere logica', 'Ignorare feedback utenti'], correct: 0, explanation: 'Il controllo umano riduce rischio nei casi sensibili.' },
       { question: 'Errore comune sulla governance AI:', options: ['Trattarla solo come documento', 'Definire escalation', 'Fare audit periodico', 'Monitorare incidenti'], correct: 0, explanation: 'La governance deve essere operativa e continua.' },
-      { question: 'Messaggio chiave:', options: ['AI responsabile = performance + fairness + accountability', 'Basta accuracy', 'Etica è opzionale', 'Compliance sostituisce tecnica'], correct: 0, explanation: 'Affidabilità reale include tecnica e impatto sociale.' }
+      { question: 'Messaggio chiave:', options: ['AI responsabile = performance + fairness + accountability', 'Basta accuracy', 'Etica è opzionale', 'Compliance sostituisce tecnica'], correct: 0, explanation: 'Affidabilità reale include tecnica e impatto sociale.' },
+      { question: 'Fairness in AI significa:', options: ['L\'AI ha impatto equo su tutti i gruppi demografici', 'Il modello ha accuracy del 100%', 'Non ci sono errori nel codice', 'Il dataset è grande'], correct: 0, explanation: 'Equità richiede analisi disaggregata per sottogruppi.' },
+      { question: 'Human-in-the-loop è necessario quando:', options: ['Le decisioni impattano direttamente persone fisiche', 'Il modello è veloce', 'Il dataset è pulito', 'La GPU è potente'], correct: 0, explanation: 'Supervisione umana è essenziale nei casi ad alto impatto.' },
+      { question: 'L\'AI Act europeo classifica i sistemi AI per:', options: ['Livello di rischio', 'Numero di parametri', 'Velocità di inferenza', 'Costo del modello'], correct: 0, explanation: 'La regolamentazione è basata sul rischio che il sistema rappresenta.' },
+      { question: 'Un audit AI periodico serve a:', options: ['Verificare che il sistema rimanga equo e sicuro nel tempo', 'Migliorare le GPU', 'Ridurre i costi', 'Aumentare i parametri'], correct: 0, explanation: 'I sistemi AI possono degradare o sviluppare nuovi bias nel tempo.' },
+      { question: 'Dato personale in un dataset richiede:', options: ['Consenso, anonimizzazione e sicurezza', 'Solo backup', 'Solo cifratura', 'Solo log di accesso'], correct: 0, explanation: 'La privacy è un obbligo legale e un requisito etico.' }
     ]
   },
   {
