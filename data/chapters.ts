@@ -661,6 +661,133 @@ export const chapters: Chapter[] = [
       { title: 'Overfitting e Underfitting', content: '**Overfitting**: quando l\'algoritmo memorizza i dati di training invece di apprendere pattern generali. È come studiare gli esami passati a memoria e andare in crisi quando cambiano le domande.\n\n**Underfitting**: quando il modello è troppo semplice per catturare i pattern rilevanti.\n\nSegnale pratico rapido: training score alto + validation score basso = overfitting; training e validation entrambi bassi = underfitting. La sfida è trovare equilibrio tra semplicità e capacità di generalizzare su dati nuovi. *Nota pratica:* valuta sempre il modello su dati mai visti, non solo su quelli di training. <<Takeaway: scegli il modello che regge meglio nel reale, non quello che "brilla" solo in training>>.', media: [ { type: 'video', title: 'Video — Overfitting vs Underfitting', description: 'Confronto visivo dei due errori con pattern diagnostici training/validation.', placeholderPath: 'media/ch04-machine-learning/sec-02/video.mp4', notes: 'placeholder' } ] },
       { title: "Caso reale", content: "Nel forecasting delle vendite, un modello lineare può battere modelli più complessi quando i dati sono pochi, puliti e relativamente stabili nel tempo. In pratica non scegli il modello più sofisticato, ma quello che mantiene performance stabili sui dati nuovi del tuo scenario reale.", media: [ { type: 'infographic', title: 'Scelta modello nel forecasting', description: 'Mini framework decisionale: semplicità vs complessità in base al contesto dati.', placeholderPath: 'media/ch04-machine-learning/sec-03/infographic.png', notes: 'placeholder' } ] },
       { title: "Production Warning + Task", content: "**Warning:** ottimizzare solo l'accuracy può nascondere errori gravi, soprattutto quando alcune classi sono rare ma importanti.\n\n**Task (20 min):** scegli due metriche aggiuntive — ad esempio precision e recall per classificazione, oppure MAE e MAPE per regressione — e spiega in quale scenario reale le useresti al posto dell'accuracy.", media: [ { type: 'podcast', title: 'Podcast — Accuracy non basta', description: 'Mini deep dive su scelta metrica e trade-off in produzione.', placeholderPath: 'media/ch04-machine-learning/sec-04/podcast.mp3', notes: 'placeholder' } ] },
+      {
+        title: 'ML Workflow Pratico — 5 Step',
+        content: `**Impara facendo.** Scarica il lab e la guida qui sotto, poi leggi gli step.
+
+## Download Risorse
+
+- 📥 **[Scarica ZIP Lab 1 — Regressione Housing](download-button)**
+- 📄 **[Scarica Guida PDF](download-button)**
+
+## Step 1: Carica i Dati
+
+Apri \`main.py\`, linea 25. Vedi questo codice:
+
+\`\`\`python
+from sklearn.datasets import fetch_california_housing
+housing = fetch_california_housing()
+X = pd.DataFrame(housing.data, columns=housing.feature_names)
+y = pd.Series(housing.target * 100000, name='Price')
+\`\`\`
+
+**Cosa fa:** Legge un dataset reale (20.000 case della California con prezzi).
+
+**Prova:** Stampa \`X.head()\` — quante righe? (Risposta: 20.640 righe, 8 colonne)
+
+---
+
+## Step 2: Dividi Training e Test
+
+Linea 35:
+
+\`\`\`python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+\`\`\`
+
+**Cosa fa:** Split 80% training (dati che il modello vede) / 20% test (dati nuovi per valutare).
+
+**Prova:** Cambia \`test_size=0.1\` → esegui → vedi MAE migliorare o peggiorare?
+
+---
+
+## Step 3: Allena il Modello
+
+Linea 45-52:
+
+\`\`\`python
+# Modello 1: Linear Regression (semplice)
+model_lr = LinearRegression()
+model_lr.fit(X_train, y_train)
+
+# Modello 2: Random Forest (complesso)
+model_rf = RandomForestRegressor(n_estimators=100, random_state=42)
+model_rf.fit(X_train, y_train)
+\`\`\`
+
+**Cosa fa:** Crea 2 modelli diversi.
+- Linear: assume \`y = a*x + b\` (semplice)
+- Random Forest: 100 alberi decisionali (complesso)
+
+**Prova:** Aggiungi GradientBoostingRegressor — è più veloce? Più accurato?
+
+---
+
+## Step 4: Valuta Performance
+
+Linea 54-62:
+
+\`\`\`python
+from sklearn.metrics import mean_absolute_error, r2_score
+
+train_mae = mean_absolute_error(y_train, model.predict(X_train))
+test_mae = mean_absolute_error(y_test, model.predict(X_test))
+test_r2 = r2_score(y_test, model.predict(X_test))
+
+print(f"Train MAE: \${train_mae:.0f}")
+print(f"Test MAE: \${test_mae:.0f}")
+print(f"Test R²: {test_r2:.3f}")
+\`\`\`
+
+**Metriche:**
+- **MAE** = errore medio in dollari
+  - Linear Regression: $71,234
+  - Random Forest: $49,123 ✅ (più accurato)
+
+- **R²** = % varianza spiegata
+  - Linear: 0.58 (spiega 58%)
+  - Random Forest: 0.76 ✅ (spiega 76%)
+
+**🚨 OVERFITTING CHECK:**
+- Se \`train_mae << test_mae\` → overfitting
+- Linear: train $70k, test $71k ✅ OK (simili)
+- Se Random Forest: train $10k, test $50k ❌ OVERFITTING!
+
+---
+
+## Step 5: Visualizza Risultati
+
+Linea 65-75:
+
+\`\`\`python
+plt.scatter(y_test, y_pred, alpha=0.3)
+plt.plot([min_val, max_val], [min_val, max_val], 'r--', lw=2, label='Perfect')
+plt.xlabel('Actual Price ($)')
+plt.ylabel('Predicted Price ($)')
+plt.show()
+\`\`\`
+
+**Interpretazione:**
+- Punti sulla linea rossa ✅ = modello bravo
+- Punti dispersi ❌ = modello sbaglia molto
+- Scatter serrato > Linear Regression bravo
+
+**Prova:** Confronta i 2 grafici — Random Forest ha scatter più serrato? Perché?
+
+---
+
+**Esperimenti proposti:**
+1. Cambia \`test_size\` a 0.1 / 0.3 / 0.5 → come varia MAE?
+2. Togli una feature (\`HouseAge\`) → R² cala? Era importante?
+3. Cambia modello → prova GradientBoosting
+4. Modifica \`random_state\` → i risultati cambiano?
+
+**Prossimo:** Scarica il ZIP, esegui \`python main.py\`, sperimenta! 🚀`,
+        media: []
+      },
     ],
     keyTakeaways: [
       'Il modello impara cercando pattern nei dati',
@@ -735,7 +862,8 @@ export const chapters: Chapter[] = [
         resources: [
           { label: 'Script Python (scaricabile)', path: '/scripts/ch04-overfitting-lab.py' },
           { label: 'Dataset CSV', path: '/datasets/ch04-overfitting/data.csv' },
-          { label: 'ML Lab 1 ZIP (scaricabile)', path: '/downloads/ml-lab-01-regression.zip' }
+          { label: 'ML Lab 1 ZIP (scaricabile)', path: '/downloads/ml-lab-01-regression.zip' },
+          { label: 'ML Workflow Guide PDF', path: '/downloads/ml-lab-01-workflow-guide.pdf' }
         ]
       }
     ],
