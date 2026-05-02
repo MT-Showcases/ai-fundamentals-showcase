@@ -8,6 +8,7 @@ import SearchBar from '@/components/SearchBar';
 import { useState } from 'react';
 import Image from 'next/image';
 import QuizScoreDashboard from '@/components/QuizScoreDashboard';
+import Link from 'next/link';
 
 export default function Home() {
   const [introVideoError, setIntroVideoError] = useState(false);
@@ -26,7 +27,7 @@ export default function Home() {
           <p className="text-gray-400 text-base mb-8 max-w-2xl">
             Dal machine learning alle reti neurali, dai modelli linguistici alle applicazioni pratiche: un percorso completo pensato per chi vuole costruire con l&apos;AI, non solo parlarne.
           </p>
-          <div className="flex flex-wrap gap-6 text-sm text-gray-300">
+          <div className="flex flex-wrap gap-6 text-sm text-gray-300 items-center">
             <div className="flex items-center gap-2">
               <span className="text-cyan-400 font-extrabold text-3xl">{chapters.length}</span>
               <span className="text-gray-400 text-sm">Capitoli</span>
@@ -43,6 +44,13 @@ export default function Home() {
               </span>
               <span className="text-gray-400 text-sm">Discussioni</span>
             </div>
+            <div className="w-px bg-blue-700 hidden sm:block" />
+            <Link
+              href="/glossario"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:text-cyan-200 transition-all text-sm font-medium"
+            >
+              📖 Glossario
+            </Link>
           </div>
         </div>
       </header>

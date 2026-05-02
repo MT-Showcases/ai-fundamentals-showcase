@@ -133,9 +133,13 @@ export default async function ChapterPage({ params }: Props) {
 
             {/* Content Sections */}
             <div className="space-y-8 mb-12">
-              {chapter.sections.map((section, idx) => (
+              {/* Glossary tooltips enabled for CH3, CH5, CH8 */}
+              {(() => {
+                const glossaryChapters = ['data-importance', 'neural-networks', 'generative-ai'];
+                const enableGlossary = glossaryChapters.includes(chapter.slug);
+                return chapter.sections.map((section, idx) => (
                 <div key={idx}>
-                  <SectionCard title={section.title} content={section.content} />
+                  <SectionCard title={section.title} content={section.content} enableGlossary={enableGlossary} />
                   <SectionMediaSlots
                     chapterId={chapter.id}
                     chapterSlug={chapter.slug}
@@ -145,7 +149,8 @@ export default async function ChapterPage({ params }: Props) {
                     media={section.media}
                   />
                 </div>
-              ))}
+              ));
+              })()}
             </div>
 
             {/* Key Takeaways */}
