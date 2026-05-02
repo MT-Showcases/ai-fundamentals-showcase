@@ -42,7 +42,7 @@ export default function ChapterSidebar({ currentSlug }: ChapterSidebarProps) {
       {/* ─── Mobile hamburger button — fixed top-right, hidden on md+ ─── */}
       <button
         onClick={() => setIsOpen(true)}
-        className="md:hidden fixed top-4 right-4 z-50 bg-[#0a1628] border border-cyan-700 text-cyan-300 min-h-11 min-w-11 inline-flex items-center justify-center rounded-lg shadow-lg hover:bg-navy-700 hover:text-cyan-100 hover:border-cyan-400 active:scale-95 transition-all duration-200"
+        className="md:hidden fixed top-4 right-4 z-50 bg-navy-900 border border-cyan-700 text-cyan-300 p-3 rounded-lg shadow-lg hover:bg-navy-700 hover:text-cyan-100 hover:border-cyan-400 active:scale-95 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none"
         aria-label="Apri menu capitoli"
         aria-expanded={isOpen}
         aria-controls="chapter-sidebar"
@@ -73,7 +73,7 @@ export default function ChapterSidebar({ currentSlug }: ChapterSidebarProps) {
           top-0 left-0
           h-screen md:h-auto md:top-8
           w-72 md:w-full
-          bg-[#0a1628]
+          bg-navy-900
           border-r border-cyan-900 md:border md:border-navy-600
           md:rounded-xl
           overflow-y-auto
@@ -86,7 +86,7 @@ export default function ChapterSidebar({ currentSlug }: ChapterSidebarProps) {
         aria-label="Navigazione capitoli"
       >
         {/* ─── Sidebar header ─── */}
-        <div className="sticky top-0 bg-[#0a1628] border-b border-cyan-900 px-4 py-4 z-10">
+        <div className="sticky top-0 bg-navy-900 border-b border-cyan-900 px-4 py-4 z-10">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs text-cyan-500 uppercase tracking-wider font-semibold mb-0.5">
@@ -102,7 +102,7 @@ export default function ChapterSidebar({ currentSlug }: ChapterSidebarProps) {
               <button
                 ref={closeButtonRef}
                 onClick={() => setIsOpen(false)}
-                className="md:hidden text-gray-400 hover:text-white min-h-11 min-w-11 inline-flex items-center justify-center rounded-md hover:bg-white/10 transition-colors duration-150"
+                className="md:hidden text-gray-400 hover:text-white p-2 min-h-11 min-w-11 inline-flex items-center justify-center rounded-md hover:bg-white/10 transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none"
                 aria-label="Chiudi menu capitoli"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

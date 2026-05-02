@@ -15,7 +15,7 @@ export default function Button({
   className = '',
   onClick,
 }: ButtonProps) {
-  const baseStyles = 'px-6 py-3 min-h-11 rounded-lg font-semibold transition-all duration-200 inline-flex items-center justify-center active:scale-95';
+  const baseStyles = 'px-6 py-3 min-h-11 rounded-lg font-semibold transition-all duration-200 inline-flex items-center justify-center active:scale-95 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:outline-none';
   
   const variants = {
     primary: 'bg-blue-400 text-navy-900 hover:bg-cyan-300 hover:text-navy-900 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/40',
