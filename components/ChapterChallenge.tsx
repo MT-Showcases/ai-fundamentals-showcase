@@ -4,246 +4,207 @@ import { useMemo, useState } from 'react';
 import Button from '@/components/Button';
 import type { ChapterChallengeBias } from '@/data/chapters';
 
-type ChallengeStatus = 'idle' | 'in-progress' | 'completed';
-
-interface PersistedChallenge {
-  status: ChallengeStatus;
-  selectedOptionIds: string[];
-  openAnswer: string;
-  score: number;
-  matchedChecklistIds: string[];
-  feedbackText: string;
-}
-
 interface ChapterChallengeProps {
   challenge: ChapterChallengeBias;
 }
 
+type RowResult = {
+  rowIdx: number;
+  correct: boolean;
+  explanation: string;
+};
+
+const selectionStorageKey = 'challenge_ch3-find-bias-selections';
+const submittedStorageKey = 'challenge_ch3-find-bias-submitted';
+const resultsStorageKey = 'challenge_ch3-find-bias-results';
+
+const slugifyName = (name: string) =>
+  name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\./g, '')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+
+const biasExplanations: Record<string, string> = {
+  'marco-r': 'Assunto, maschio, Milano → parte del bias di genere e geografico.',
+  'laura-b': 'Non assunta, donna, Roma → parte del bias di genere.',
+  'andrea-c': 'Assunto, maschio, Milano → parte del doppio bias.',
+  'sara-m': 'Non assunta, donna, Napoli → parte del bias di genere.',
+  'luca-p': 'Assunto, maschio, Milano → conferma il bias geografico e di genere.',
+  'elena-v': 'Non assunta, donna, Torino → conferma il bias di genere.',
+  'matteo-g': 'Assunto, maschio, Milano → pattern ripetuto del doppio bias.',
+  'chiara-f': 'Non assunta, donna, Roma → parte del pattern discriminatorio.',
+  'davide-l': 'Assunto, maschio, Milano → ulteriore conferma del pattern.',
+  'giulia-t': 'Non assunta, donna, Napoli → parte del bias di genere.',
+};
+
 export default function ChapterChallenge({ challenge }: ChapterChallengeProps) {
-  const multipleChoice = challenge.questions[0];
-  const openText = challenge.questions[1];
-
-  const storageKey = `challenge_${challenge.id}`;
-
-  const [state, setState] = useState<PersistedChallenge>(() => {
-    if (typeof window === 'undefined') {
-      return {
-        status: 'idle',
-        selectedOptionIds: [],
-        openAnswer: '',
-        score: 0,
-        matchedChecklistIds: [],
-        feedbackText: '',
-      };
-    }
+  const [selectedRows, setSelectedRows] = useState<Set<number>>(() => {
+    if (typeof window === 'undefined') return new Set<number>();
 
     try {
-      const raw = window.localStorage.getItem(storageKey);
-      if (!raw) {
-        return {
-          status: 'idle',
-          selectedOptionIds: [],
-          openAnswer: '',
-          score: 0,
-          matchedChecklistIds: [],
-          feedbackText: '',
-        };
-      }
-
-      const parsed = JSON.parse(raw) as PersistedChallenge;
-      return {
-        status: parsed.status ?? 'idle',
-        selectedOptionIds: parsed.selectedOptionIds ?? [],
-        openAnswer: parsed.openAnswer ?? '',
-        score: parsed.score ?? 0,
-        matchedChecklistIds: parsed.matchedChecklistIds ?? [],
-        feedbackText: parsed.feedbackText ?? '',
-      };
+      const rawSelections = window.localStorage.getItem(selectionStorageKey);
+      if (!rawSelections) return new Set<number>();
+      const parsed = JSON.parse(rawSelections) as number[];
+      return new Set(parsed);
     } catch {
-      return {
-        status: 'idle',
-        selectedOptionIds: [],
-        openAnswer: '',
-        score: 0,
-        matchedChecklistIds: [],
-        feedbackText: '',
-      };
+      return new Set<number>();
     }
   });
 
-  const { status, selectedOptionIds, openAnswer, score, matchedChecklistIds, feedbackText } = state;
+  const [submitted, setSubmitted] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.localStorage.getItem(submittedStorageKey) === 'true';
+  });
 
-  const saveState = (payload: PersistedChallenge) => {
-    localStorage.setItem(storageKey, JSON.stringify(payload));
-    setState(payload);
-  };
+  const [results, setResults] = useState<RowResult[]>(() => {
+    if (typeof window === 'undefined') return [];
 
-  const toggleOption = (id: string) => {
-    setState((prev) => ({
-      ...prev,
-      selectedOptionIds: prev.selectedOptionIds.includes(id)
-        ? prev.selectedOptionIds.filter((item) => item !== id)
-        : [...prev.selectedOptionIds, id],
-    }));
-  };
+    try {
+      const rawResults = window.localStorage.getItem(resultsStorageKey);
+      if (!rawResults) return [];
+      return JSON.parse(rawResults) as RowResult[];
+    } catch {
+      return [];
+    }
+  });
 
-  const matchedIds = useMemo(() => {
-    const normalized = openAnswer.toLowerCase();
-    return openText.checklist
-      .filter((item) => item.keywords.some((kw) => normalized.includes(kw)))
-      .map((item) => item.id);
-  }, [openAnswer, openText.checklist]);
+  const selectedCount = selectedRows.size;
 
-  const submitChallenge = () => {
-    const correctSet = new Set(multipleChoice.correctIds);
-    const selectedSet = new Set(selectedOptionIds);
+  const getExplanation = (rowIdx: number) => {
+    const row = challenge.dataset[rowIdx];
+    const rowKey = slugifyName(row.nome);
+    const base = biasExplanations[rowKey] ?? 'Questa riga contribuisce al pattern di bias nel dataset.';
 
-    const selectedCorrect = selectedOptionIds.filter((id) => correctSet.has(id)).length;
-    const isPerfect =
-      selectedSet.size === correctSet.size &&
-      [...selectedSet].every((id) => correctSet.has(id));
-
-    let mcFeedback = multipleChoice.feedback.wrong;
-    if (isPerfect) {
-      mcFeedback = multipleChoice.feedback.correct;
-    } else if (selectedCorrect > 0) {
-      mcFeedback = multipleChoice.feedback.partial;
+    if (selectedRows.has(rowIdx)) {
+      return `Selezionata correttamente. ${base}`;
     }
 
-    const finalScore = Math.min(matchedIds.length, 3);
+    return `Mancata: anche questa riga è parte del bias. ${base}`;
+  };
 
-    saveState({
-      status: 'completed',
-      selectedOptionIds,
-      openAnswer,
-      score: finalScore,
-      matchedChecklistIds: matchedIds,
-      feedbackText: mcFeedback,
+  const toggleRow = (rowIdx: number) => {
+    if (submitted) return;
+
+    setSelectedRows((prev) => {
+      const next = new Set(prev);
+      if (next.has(rowIdx)) {
+        next.delete(rowIdx);
+      } else {
+        next.add(rowIdx);
+      }
+
+      window.localStorage.setItem(selectionStorageKey, JSON.stringify(Array.from(next)));
+      return next;
     });
   };
 
-  const startChallenge = () => {
-    saveState({
-      status: 'in-progress',
-      selectedOptionIds,
-      openAnswer,
-      score,
-      matchedChecklistIds,
-      feedbackText,
-    });
+  const verifySelections = () => {
+    const correctIndices = challenge.dataset.map((_, idx) => idx);
+
+    const computedResults = challenge.dataset.map((_, idx) => ({
+      rowIdx: idx,
+      correct: selectedRows.has(idx) === correctIndices.includes(idx),
+      explanation: getExplanation(idx),
+    }));
+
+    setResults(computedResults);
+    setSubmitted(true);
+
+    window.localStorage.setItem(submittedStorageKey, 'true');
+    window.localStorage.setItem(resultsStorageKey, JSON.stringify(computedResults));
   };
+
+  const rowLabelSuffix = useMemo(
+    () => 'bias di genere e geografico nel processo di assunzione',
+    []
+  );
 
   return (
     <section className="mb-12 bg-navy-800 border border-cyan-400/30 rounded-xl p-6">
       <header className="mb-4">
-        <h3 className="text-cyan-300 font-bold text-xl">🎯 Challenge: {challenge.title}</h3>
-        <p className="text-gray-300 mt-2">{challenge.intro}</p>
+        <h3 className="text-cyan-300 font-bold text-xl">🎯 Trova il Bias</h3>
+        <p className="text-gray-300 mt-2">Clicca sulle righe che ti sembrano anomale (bias).</p>
       </header>
 
-      {status === 'idle' && (
-        <Button onClick={startChallenge} className="focus-visible:ring-cyan-300">
-          Inizia Challenge
-        </Button>
-      )}
-
-      {status !== 'idle' && (
-        <>
-          <div className="border-t border-b border-navy-600 py-4 my-4" role="group" aria-label="Dataset candidati challenge CH3">
-            <div className="overflow-x-auto rounded-lg border border-navy-700">
-              <table className="w-full text-sm bg-navy-900">
-                <thead className="bg-navy-700 text-cyan-200">
-                  <tr>
-                    <th className="text-left p-3">Nome</th>
-                    <th className="text-left p-3">Genere</th>
-                    <th className="text-left p-3">Età</th>
-                    <th className="text-left p-3">Città</th>
-                    <th className="text-left p-3">Assunto</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {challenge.dataset.map((row) => (
-                    <tr key={row.nome} className="border-t border-navy-800">
-                      <td className="p-3 text-gray-200">{row.nome}</td>
-                      <td className="p-3 text-gray-300">{row.genere}</td>
-                      <td className="p-3 text-gray-300">{row.età}</td>
-                      <td className="p-3 text-gray-300">{row.città}</td>
-                      <td className="p-3 text-gray-300">{row.assunto ? 'Sì' : 'No'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div>
-              <p className="text-cyan-200 font-semibold mb-3">{multipleChoice.text}</p>
-              <div className="space-y-2">
-                {multipleChoice.options.map((option) => {
-                  const checked = selectedOptionIds.includes(option.id);
-                  return (
-                    <label
-                      key={option.id}
-                      className="flex items-start gap-3 bg-navy-900 border border-navy-700 rounded-lg p-3 text-gray-200"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={checked}
-                        onChange={() => toggleOption(option.id)}
-                        className="mt-1 h-4 w-4 accent-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-300"
-                      />
-                      <span>{option.text}</span>
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-cyan-200 font-semibold mb-3">{openText.text}</p>
-                <textarea
-                  value={openAnswer}
-                onChange={(event) =>
-                  setState((prev) => ({
-                    ...prev,
-                    openAnswer: event.target.value.slice(0, openText.maxLength),
-                  }))
-                }
-                placeholder={openText.placeholder}
-                className="w-full min-h-32 bg-navy-900 border border-navy-700 rounded-lg p-3 text-gray-200 placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-              />
-              <p className="text-xs text-gray-400 mt-2">{openAnswer.length}/{openText.maxLength}</p>
-            </div>
-          </div>
-
-          {status === 'in-progress' && (
-            <div className="mt-6">
-              <Button onClick={submitChallenge} className="focus-visible:ring-cyan-300">
-                Invia Risposte
-              </Button>
-            </div>
-          )}
-        </>
-      )}
-
-      {status === 'completed' && (
-        <div className="mt-6 border-t border-navy-600 pt-4" aria-live="polite" aria-atomic="true">
-          <p className="text-cyan-200 font-semibold mb-2">Feedback</p>
-          <p className={feedbackText === multipleChoice.feedback.correct ? 'text-emerald-300' : 'text-red-400'}>
-            {feedbackText === multipleChoice.feedback.correct ? '✅ ' : '❌ '}
-            {feedbackText}
-          </p>
-          <p className="mt-4 text-emerald-300 font-semibold">Score: {score}/3 ✅</p>
-          <ul className="mt-3 space-y-2">
-            {openText.checklist.map((item) => {
-              const done = matchedChecklistIds.includes(item.id);
+      <div className="overflow-x-auto rounded-lg border border-cyan-400/20">
+        <table role="table" className="w-full border-collapse text-sm min-w-[620px]">
+          <thead className="bg-navy-900 text-cyan-200">
+            <tr>
+              <th className="text-left p-3">Nome</th>
+              <th className="text-left p-3">Genere</th>
+              <th className="text-left p-3">Età</th>
+              <th className="text-left p-3">Città</th>
+              <th className="text-left p-3">Assunto</th>
+            </tr>
+          </thead>
+          <tbody>
+            {challenge.dataset.map((row, idx) => {
+              const isSelected = selectedRows.has(idx);
               return (
-                <li key={item.id} className={done ? 'text-emerald-300' : 'text-red-400'}>
-                  {done ? '✅' : '❌'} {item.text}
-                </li>
+                <tr
+                  key={row.nome}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isSelected}
+                  aria-label={`Seleziona ${row.nome} (${rowLabelSuffix})`}
+                  onClick={() => toggleRow(idx)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      toggleRow(idx);
+                    }
+                  }}
+                  className={`border-b border-cyan-400/20 cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 ring-cyan-400 hover:bg-navy-800/60 ${
+                    isSelected
+                      ? 'bg-blue-900/40 border-2 border-blue-400'
+                      : 'bg-navy-900 border border-cyan-400/20'
+                  }`}
+                >
+                  <td className="p-3 text-gray-200 font-medium">{row.nome}</td>
+                  <td className="p-3 text-gray-300">{row.genere}</td>
+                  <td className="p-3 text-gray-300">{row.età}</td>
+                  <td className="p-3 text-gray-300">{row.città}</td>
+                  <td className="p-3 text-gray-300">{row.assunto ? '✅ Sì' : '❌ No'}</td>
+                </tr>
               );
             })}
-          </ul>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-cyan-300 font-semibold">Righe selezionate: {selectedCount}</p>
+        <Button
+          onClick={submitted ? undefined : verifySelections}
+          className={`focus-visible:ring-cyan-300 ${submitted ? 'opacity-60 pointer-events-none' : ''}`}
+        >
+          {submitted ? 'Verifica completata' : 'Verifica le tue scelte'}
+        </Button>
+      </div>
+
+      {submitted && (
+        <div className="bg-navy-900 rounded-lg p-4 mt-6" aria-live="polite" aria-atomic="true">
+          <h4 className="text-cyan-300 mb-3">Risultati:</h4>
+          {results.map((result) => (
+            <div
+              key={result.rowIdx}
+              className={`flex items-start gap-3 p-2 mb-2 rounded ${
+                result.correct ? 'bg-emerald-900/20' : 'bg-red-900/20'
+              }`}
+            >
+              {result.correct ? (
+                <span className="text-emerald-400">✅</span>
+              ) : (
+                <span className="text-red-400">❌</span>
+              )}
+              <div>
+                <p className="font-semibold text-gray-100">{challenge.dataset[result.rowIdx].nome}</p>
+                <p className="text-sm text-gray-300">{result.explanation}</p>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </section>
