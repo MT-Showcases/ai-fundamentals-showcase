@@ -724,18 +724,17 @@ export const chapters: Chapter[] = [
         objective: 'Comprendere concretamente il trade-off tra fitting perfetto e robustezza sui dati nuovi.',
         duration: '25-30 min',
         steps: [
-          'Accedi al notebook interattivo: https://colab.research.google.com/... (o scarica script Python locale)',
+          'Scarica lo script Python locale e avvialo con: python ch04-overfitting-lab.py',
           'Carica il dataset CH4 fornito (50 punti: ore_studio vs voto)',
           'Allena 3 modelli: (1) Linear Regression, (2) Polynomial Degree 3, (3) Polynomial Degree 10',
-          'Misura accuracy su training set e validation set per ognuno',
+          'Misura MAE su training set e validation set per ognuno',
           'Grafica i 3 modelli vs i dati: identifica quale va in overfitting',
           'Scrivi ipotesi: quale modello useresti in produzione e perché?'
         ],
         deliverable: 'Screenshot/CSV con risultati + risposta motivata sulla scelta modello',
         resources: [
-          { label: 'Notebook Google Colab (interattivo)', path: 'https://colab.research.google.com/...' },
-          { label: 'Dataset CSV', path: '/datasets/ch04-overfitting/data.csv' },
-          { label: 'Script Python locale (no Colab)', path: '/scripts/ch04-overfitting-lab.py' }
+          { label: 'Script Python (scaricabile)', path: '/scripts/ch04-overfitting-lab.py' },
+          { label: 'Dataset CSV', path: '/datasets/ch04-overfitting/data.csv' }
         ]
       }
     ],
