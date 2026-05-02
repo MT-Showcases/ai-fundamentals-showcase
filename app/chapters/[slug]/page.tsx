@@ -10,7 +10,6 @@ import CodeSnippet from '@/components/CodeSnippet';
 import ChapterQuiz from '@/components/ChapterQuiz';
 import ChapterExercises from '@/components/ChapterExercises';
 import ChapterMediaSlots from '@/components/ChapterMediaSlots';
-import ChapterChallenge from '@/components/ChapterChallenge';
 import Breadcrumb from '@/components/Breadcrumb';
 import ChapterSidebar from '@/components/ChapterSidebar';
 import BackToTopButton from '@/components/BackToTopButton';
@@ -201,10 +200,6 @@ export default async function ChapterPage({ params }: Props) {
             {/* Practical Exercises */}
             {chapter.exercises && chapter.exercises.length > 0 && (
               <ChapterExercises exercises={chapter.exercises} />
-            )}
-
-            {chapter.challenge && (
-              <ChapterChallenge challenge={chapter.challenge} />
             )}
 
             {/* Quiz */}
