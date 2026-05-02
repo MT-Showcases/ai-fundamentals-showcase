@@ -706,18 +706,6 @@ export const chapters: Chapter[] = [
         notes: 'placeholder'
       }
     ],
-    codeSnippets: [
-      {
-        lang: 'python',
-        label: 'Esempio: Linear Regression con scikit-learn',
-        code: '# Linear Regression con scikit-learn\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\n\n# Dati di training: ore di studio -> voto\nX = np.array([[1], [2], [3], [4], [5]])\ny = np.array([55, 65, 70, 80, 90])\n\nmodel = LinearRegression()\nmodel.fit(X, y)\n\n# Previsione: 6 ore di studio\npred = model.predict([[6]])\nprint(f"Voto previsto: {pred[0]:.1f}")  # -> ~98'
-      },
-      {
-        lang: 'python',
-        label: 'Esempio: Classificazione con Decision Tree',
-        code: '# Decision Tree con scikit-learn\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.model_selection import train_test_split\n\n# Dati: [ore_studio, ore_sonno] -> promosso (1) o no (0)\nX = [[2, 4], [5, 7], [1, 3], [6, 8], [3, 5], [7, 9]]\ny = [0, 1, 0, 1, 0, 1]\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)\nclf = DecisionTreeClassifier(max_depth=3)\nclf.fit(X_train, y_train)\naccuracy = clf.score(X_test, y_test)\nprint(f"Accuratezza test: {accuracy:.0%}")  # valuta sempre su dati non visti'
-      }
-    ],
     discussionPrompts: [
       'Come potremmo testare se un modello sta soffrendo di overfitting?',
       'In quali situazioni reali è più rischioso l\'overfitting vs underfitting?',
