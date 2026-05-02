@@ -341,6 +341,14 @@ export default function GlossarioPage() {
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-blue-800/40 text-center text-xs text-gray-600">
           {totalCount} termini · AI Fundamentals — SJA Catania
+          <span className="mx-2" aria-hidden="true">·</span>
+          <Link href="/privacy" className="hover:text-cyan-300 transition-colors">
+            Privacy Policy
+          </Link>
+          <span className="mx-2" aria-hidden="true">·</span>
+          <Link href="/terms" className="hover:text-cyan-300 transition-colors">
+            Termini di Servizio
+          </Link>
         </div>
       </div>
     </div>

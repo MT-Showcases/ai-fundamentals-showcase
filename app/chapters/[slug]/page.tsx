@@ -233,6 +233,18 @@ export default async function ChapterPage({ params }: Props) {
         </div>
       </div>
       <BackToTopButton />
+      {/* Mini footer with privacy link */}
+      <footer className="bg-navy-800/60 border-t border-blue-800/30 py-4 px-6 text-center text-xs text-gray-600">
+        <span>AI Fundamentals — SJA Catania</span>
+        <span className="mx-2" aria-hidden="true">·</span>
+        <Link href="/privacy" className="hover:text-cyan-300 transition-colors">
+          Privacy Policy
+        </Link>
+        <span className="mx-2" aria-hidden="true">·</span>
+        <Link href="/terms" className="hover:text-cyan-300 transition-colors">
+          Termini di Servizio
+        </Link>
+      </footer>
     </div>
   );
 }

@@ -149,7 +149,17 @@ export default function Home() {
             </div>
             <div className="text-center sm:text-right">
               <p className="text-gray-300 text-sm">Docente: <span className="text-cyan-400 font-medium">Michele Tornello</span></p>
-              <p className="text-gray-500 text-xs mt-0.5">Tutti i diritti riservati</p>
+              <div className="flex items-center justify-center sm:justify-end gap-3 mt-1">
+                <span className="text-gray-500 text-xs">Tutti i diritti riservati</span>
+                <span className="text-gray-700" aria-hidden="true">·</span>
+                <Link href="/privacy" className="text-gray-400 hover:text-cyan-300 text-xs transition-colors">
+                  Privacy Policy
+                </Link>
+                <span className="text-gray-700" aria-hidden="true">·</span>
+                <Link href="/terms" className="text-gray-400 hover:text-cyan-300 text-xs transition-colors">
+                  Termini di Servizio
+                </Link>
+              </div>
             </div>
           </div>
         </div>
