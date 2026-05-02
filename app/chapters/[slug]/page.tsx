@@ -10,6 +10,7 @@ import CodeSnippet from '@/components/CodeSnippet';
 import ChapterQuiz from '@/components/ChapterQuiz';
 import ChapterExercises from '@/components/ChapterExercises';
 import ChapterMediaSlots from '@/components/ChapterMediaSlots';
+import PracticalWorkflow from '@/components/PracticalWorkflow';
 import Breadcrumb from '@/components/Breadcrumb';
 import ChapterSidebar from '@/components/ChapterSidebar';
 import BackToTopButton from '@/components/BackToTopButton';
@@ -169,6 +170,93 @@ export default async function ChapterPage({ params }: Props) {
               ));
               })()}
             </div>
+
+            {chapter.slug === 'machine-learning' && (
+              <PracticalWorkflow
+                title="ML Workflow Pratico — 5 Step"
+                intro="Impara facendo. Scarica il lab e la guida, poi segui gli step."
+                downloadLinks={[
+                  {
+                    label: 'Scarica ZIP Lab 1 — Regressione Housing',
+                    url: '/downloads/ml-lab-01-regression.zip',
+                    icon: 'zip',
+                  },
+                  {
+                    label: 'Scarica Guida PDF',
+                    url: '/downloads/ml-lab-01-workflow-guide.pdf',
+                    icon: 'pdf',
+                  },
+                ]}
+                steps={[
+                  {
+                    number: 1,
+                    title: 'Carica i Dati',
+                    description: 'Legge il dataset California Housing (20k case con prezzi reali).',
+                    code: `from sklearn.datasets import fetch_california_housing
+housing = fetch_california_housing()
+X = pd.DataFrame(housing.data, columns=housing.feature_names)
+y = pd.Series(housing.target * 100000, name='Price')`,
+                    codeLang: 'python',
+                    tryThis: 'Stampa X.head() — quante righe? Quante colonne? (Risposta: 20640 righe, 8 colonne)',
+                  },
+                  {
+                    number: 2,
+                    title: 'Dividi Training e Test',
+                    description: 'Split 80% training (dati che il modello vede) / 20% test (dati nuovi per valutare).',
+                    code: `from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)`,
+                    codeLang: 'python',
+                    tryThis: 'Cambia test_size a 0.1 → esegui → vedi MAE migliorare o peggiorare?',
+                  },
+                  {
+                    number: 3,
+                    title: 'Allena il Modello',
+                    description: 'Crea 2 modelli: Linear Regression (semplice) e Random Forest (complesso).',
+                    code: `# Modello 1: Linear Regression
+model_lr = LinearRegression()
+model_lr.fit(X_train, y_train)
+
+# Modello 2: Random Forest
+model_rf = RandomForestRegressor(n_estimators=100, random_state=42)
+model_rf.fit(X_train, y_train)`,
+                    codeLang: 'python',
+                    tryThis: 'Prova a aggiungere GradientBoostingRegressor — è più veloce? Più accurato?',
+                  },
+                  {
+                    number: 4,
+                    title: 'Valuta Performance',
+                    description: 'Misura errore (MAE) e accuratezza (R²) su training e test.',
+                    code: `from sklearn.metrics import mean_absolute_error, r2_score
+
+train_mae = mean_absolute_error(y_train, model.predict(X_train))
+test_mae = mean_absolute_error(y_test, model.predict(X_test))
+test_r2 = r2_score(y_test, model.predict(X_test))
+
+print(f"Train MAE: \${train_mae:.0f}, Test MAE: \${test_mae:.0f}")
+print(f"Test R²: \${test_r2:.3f}")`,
+                    codeLang: 'python',
+                    tryThis: 'Se test_mae >> train_mae → overfitting! Quale modello è più robusto?',
+                  },
+                  {
+                    number: 5,
+                    title: 'Visualizza Risultati',
+                    description: 'Grafico scatter: previsioni vs realtà. Punti sulla linea rossa = modello bravo.',
+                    code: `import matplotlib.pyplot as plt
+
+plt.scatter(y_test, y_pred, alpha=0.3, s=10)
+plt.plot([min_val, max_val], [min_val, max_val], 'r--', lw=2, label='Perfect')
+plt.xlabel('Actual Price ($)')
+plt.ylabel('Predicted Price ($)')
+plt.title('Predictions vs Reality')
+plt.show()`,
+                    codeLang: 'python',
+                    tryThis: 'Confronta i 2 grafici — Random Forest ha scatter più serrato? Perché?',
+                  },
+                ]}
+              />
+            )}
 
             {/* Key Takeaways */}
             <div className="mb-12">
