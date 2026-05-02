@@ -14,10 +14,6 @@ type RowResult = {
   explanation: string;
 };
 
-const selectionStorageKey = 'challenge_ch3-find-bias-selections';
-const submittedStorageKey = 'challenge_ch3-find-bias-submitted';
-const resultsStorageKey = 'challenge_ch3-find-bias-results';
-
 const slugifyName = (name: string) =>
   name
     .normalize('NFD')
@@ -40,6 +36,30 @@ const biasExplanations: Record<string, string> = {
 };
 
 export default function ChapterChallenge({ challenge }: ChapterChallengeProps) {
+  const selectionStorageKey = `challenge_${challenge.id}_selections`;
+  const submittedStorageKey = `challenge_${challenge.id}_submitted`;
+  const resultsStorageKey = `challenge_${challenge.id}_results`;
+
+  const computeResults = (selections: Set<number>) => {
+    const correctIndices = challenge.dataset.map((_, idx) => idx);
+
+    return challenge.dataset.map((_, idx) => {
+      const row = challenge.dataset[idx];
+      const rowKey = slugifyName(row.nome);
+      const base =
+        biasExplanations[rowKey] ?? 'Questa riga contribuisce al pattern di bias nel dataset.';
+      const isSelected = selections.has(idx);
+
+      return {
+        rowIdx: idx,
+        correct: isSelected === correctIndices.includes(idx),
+        explanation: isSelected
+          ? `Selezionata correttamente. ${base}`
+          : `Mancata: anche questa riga è parte del bias. ${base}`,
+      };
+    });
+  };
+
   const [selectedRows, setSelectedRows] = useState<Set<number>>(() => {
     if (typeof window === 'undefined') return new Set<number>();
 
@@ -72,21 +92,7 @@ export default function ChapterChallenge({ challenge }: ChapterChallengeProps) {
 
   const selectedCount = selectedRows.size;
 
-  const getExplanation = (rowIdx: number) => {
-    const row = challenge.dataset[rowIdx];
-    const rowKey = slugifyName(row.nome);
-    const base = biasExplanations[rowKey] ?? 'Questa riga contribuisce al pattern di bias nel dataset.';
-
-    if (selectedRows.has(rowIdx)) {
-      return `Selezionata correttamente. ${base}`;
-    }
-
-    return `Mancata: anche questa riga è parte del bias. ${base}`;
-  };
-
   const toggleRow = (rowIdx: number) => {
-    if (submitted) return;
-
     setSelectedRows((prev) => {
       const next = new Set(prev);
       if (next.has(rowIdx)) {
@@ -96,24 +102,34 @@ export default function ChapterChallenge({ challenge }: ChapterChallengeProps) {
       }
 
       window.localStorage.setItem(selectionStorageKey, JSON.stringify(Array.from(next)));
+
+      if (submitted) {
+        const liveResults = computeResults(next);
+        setResults(liveResults);
+        window.localStorage.setItem(resultsStorageKey, JSON.stringify(liveResults));
+      }
+
       return next;
     });
   };
 
   const verifySelections = () => {
-    const correctIndices = challenge.dataset.map((_, idx) => idx);
-
-    const computedResults = challenge.dataset.map((_, idx) => ({
-      rowIdx: idx,
-      correct: selectedRows.has(idx) === correctIndices.includes(idx),
-      explanation: getExplanation(idx),
-    }));
+    const computedResults = computeResults(selectedRows);
 
     setResults(computedResults);
     setSubmitted(true);
 
     window.localStorage.setItem(submittedStorageKey, 'true');
     window.localStorage.setItem(resultsStorageKey, JSON.stringify(computedResults));
+  };
+
+  const handleReset = () => {
+    setSelectedRows(new Set());
+    setSubmitted(false);
+    setResults([]);
+    window.localStorage.removeItem(selectionStorageKey);
+    window.localStorage.removeItem(submittedStorageKey);
+    window.localStorage.removeItem(resultsStorageKey);
   };
 
   const rowLabelSuffix = useMemo(
@@ -176,12 +192,22 @@ export default function ChapterChallenge({ challenge }: ChapterChallengeProps) {
 
       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-cyan-300 font-semibold">Righe selezionate: {selectedCount}</p>
-        <Button
-          onClick={submitted ? undefined : verifySelections}
-          className={`focus-visible:ring-cyan-300 ${submitted ? 'opacity-60 pointer-events-none' : ''}`}
-        >
-          {submitted ? 'Verifica completata' : 'Verifica le tue scelte'}
-        </Button>
+        <div className="flex gap-3 mt-2 sm:mt-0">
+          {!submitted ? (
+            <Button onClick={verifySelections} className="focus-visible:ring-cyan-300">
+              Verifica le tue scelte
+            </Button>
+          ) : (
+            <>
+              <Button onClick={handleReset} className="focus-visible:ring-cyan-300 bg-slate-700 hover:bg-slate-600">
+                ↻ Ricomincia
+              </Button>
+              <Button onClick={verifySelections} className="focus-visible:ring-cyan-300">
+                Verifica di nuovo
+              </Button>
+            </>
+          )}
+        </div>
       </div>
 
       {submitted && (
