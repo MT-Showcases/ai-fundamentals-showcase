@@ -734,7 +734,8 @@ export const chapters: Chapter[] = [
         deliverable: 'Screenshot/CSV con risultati + risposta motivata sulla scelta modello',
         resources: [
           { label: 'Script Python (scaricabile)', path: '/scripts/ch04-overfitting-lab.py' },
-          { label: 'Dataset CSV', path: '/datasets/ch04-overfitting/data.csv' }
+          { label: 'Dataset CSV', path: '/datasets/ch04-overfitting/data.csv' },
+          { label: 'ML Lab 1 ZIP (scaricabile)', path: '/downloads/ml-lab-01-regression.zip' }
         ]
       }
     ],
