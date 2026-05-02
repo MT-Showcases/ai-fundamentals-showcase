@@ -130,6 +130,26 @@ export const chapters: Chapter[] = [
       'Puoi fare un esempio di AI che usi regolarmente nella tua vita quotidiana?',
       'Se l\'AI riconosce solo pattern, come può mai essere creativa o innovativa?'
     ],
+    exercises: [
+      {
+        title: 'Validation Lab — Verifica un Output AI',
+        objective: 'Imparare a riconoscere quando un output AI è affidabile e quando richiede verifiche.',
+        duration: '20-25 min',
+        steps: [
+          'Scegli un argomento tecnico che conosci (es: "come funziona una REST API", "differenza tra SQL e NoSQL")',
+          'Poni la domanda a ChatGPT o Claude',
+          'Valuta la risposta su 3 assi: (1) Correttezza fattuale, (2) Completezza, (3) Hallucination/Imprecisioni',
+          'Confronta con 2 fonti indipendenti (documentazione ufficiale, articoli tecnici)',
+          'Marca le parti corrette (✅), incomplete (⚠️) e errate (❌)',
+          'Riscrivi una versione "validata" combinando AI + fonti'
+        ],
+        deliverable: 'Documento: output originale → marcatura → versione corretta + spiegazione delle differenze',
+        resources: [
+          { label: 'Rubrica di valutazione (PDF)', path: '/resources/ch01-validation-rubric.pdf' },
+          { label: 'Template risposta (DOCX)', path: '/resources/ch01-exercise-template.docx' }
+        ]
+      }
+    ],
     media: [
       {
         type: 'video',
@@ -697,8 +717,29 @@ export const chapters: Chapter[] = [
       'Come potremmo testare se un modello sta soffrendo di overfitting?',
       'In quali situazioni reali è più rischioso l\'overfitting vs underfitting?',
       'Se un algoritmo impiega 1000 cicli per imparare, cosa succede al ciclo 1001?'
-    ]
-    ,quiz: [
+    ],
+    exercises: [
+      {
+        title: 'Mini Esperimento — Overfitting vs Generalizzazione',
+        objective: 'Comprendere concretamente il trade-off tra fitting perfetto e robustezza sui dati nuovi.',
+        duration: '25-30 min',
+        steps: [
+          'Accedi al notebook interattivo: https://colab.research.google.com/... (o scarica script Python locale)',
+          'Carica il dataset CH4 fornito (50 punti: ore_studio vs voto)',
+          'Allena 3 modelli: (1) Linear Regression, (2) Polynomial Degree 3, (3) Polynomial Degree 10',
+          'Misura accuracy su training set e validation set per ognuno',
+          'Grafica i 3 modelli vs i dati: identifica quale va in overfitting',
+          'Scrivi ipotesi: quale modello useresti in produzione e perché?'
+        ],
+        deliverable: 'Screenshot/CSV con risultati + risposta motivata sulla scelta modello',
+        resources: [
+          { label: 'Notebook Google Colab (interattivo)', path: 'https://colab.research.google.com/...' },
+          { label: 'Dataset CSV', path: '/datasets/ch04-overfitting/data.csv' },
+          { label: 'Script Python locale (no Colab)', path: '/scripts/ch04-overfitting-lab.py' }
+        ]
+      }
+    ],
+    quiz: [
       {
         question: "Un modello ha score altissimo sul training set ma peggiora molto su dati nuovi. Il problema più probabile è:",
         options: [
