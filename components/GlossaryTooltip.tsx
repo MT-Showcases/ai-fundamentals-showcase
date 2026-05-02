@@ -43,7 +43,7 @@ export default function GlossaryTooltip({ termId, children }: GlossaryTooltipPro
         <button
           type="button"
           onClick={() => setIsDrawerOpen(true)}
-          className="inline-block cursor-pointer text-cyan-300 underline decoration-dashed underline-offset-4 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none rounded transition-colors duration-150 break-inside-avoid"
+          className="inline-block cursor-pointer text-cyan-300 underline decoration-dashed underline-offset-4 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none rounded transition-colors duration-150 whitespace-nowrap"
           aria-label={`Apri definizione di ${term.term}`}
         >
           {children}
@@ -59,7 +59,7 @@ export default function GlossaryTooltip({ termId, children }: GlossaryTooltipPro
       <Popover.Trigger asChild>
         <button
           type="button"
-          className="inline-block cursor-help text-cyan-300 underline decoration-dashed underline-offset-4 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none rounded transition-colors duration-150 hover:text-cyan-200 break-inside-avoid"
+          className="inline-block cursor-help text-cyan-300 underline decoration-dashed underline-offset-4 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none rounded transition-colors duration-150 hover:text-cyan-200 whitespace-nowrap"
           aria-describedby={tooltipId}
         >
           {children}
