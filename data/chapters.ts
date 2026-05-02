@@ -43,6 +43,53 @@ export interface ChapterExercise {
   resources?: ExerciseResource[];
 }
 
+export interface ChallengeOption {
+  id: string;
+  text: string;
+}
+
+export interface ChallengeChecklistItem {
+  id: string;
+  text: string;
+  keywords: string[];
+}
+
+export interface ChallengeQuestionMultipleChoice {
+  id: string;
+  type: 'multiple-choice';
+  text: string;
+  options: ChallengeOption[];
+  correctIds: string[];
+  feedback: {
+    correct: string;
+    partial: string;
+    wrong: string;
+  };
+}
+
+export interface ChallengeQuestionOpenText {
+  id: string;
+  type: 'open-text';
+  text: string;
+  placeholder: string;
+  maxLength: number;
+  checklist: ChallengeChecklistItem[];
+}
+
+export interface ChapterChallengeBias {
+  id: string;
+  title: string;
+  intro: string;
+  dataset: Array<{
+    nome: string;
+    genere: 'M' | 'F';
+    età: number;
+    città: string;
+    assunto: boolean;
+  }>;
+  questions: [ChallengeQuestionMultipleChoice, ChallengeQuestionOpenText];
+}
+
 export interface Chapter {
   id: number;
   slug: string;
@@ -55,6 +102,7 @@ export interface Chapter {
   quiz?: QuizQuestion[];
   media?: MediaPlaceholder[];
   exercises?: ChapterExercise[];
+  challenge?: ChapterChallengeBias;
 }
 
 export const chapters: Chapter[] = [
@@ -407,6 +455,54 @@ export const chapters: Chapter[] = [
       { title: "Startup Lens", content: "In early-stage product, meglio 5.000 record puliti e bilanciati che 500.000 rumorosi. Introduci versionamento dataset e changelog: ogni modifica ai dati deve essere tracciata." },
       { title: "Errore comune + Check rapido", content: "**Errore comune:** valutare il modello solo su test set statico.\n\n**Check rapido (2 min):** indica un caso reale in cui un test statico può dare falsa sicurezza e quale controllo aggiungeresti per evitare errori in produzione.", media: [ { type: 'podcast', title: 'Podcast — Errore comune: testare solo su dati statici', description: 'Micro-podcast sull\'errore di validation e come costruire edge-case robusti.', placeholderPath: 'media/ch03-data-importance/sec-04/podcast.mp3', notes: 'placeholder' } ] },
     ],
+    challenge: {
+      id: 'ch3-trova-bias',
+      title: 'Trova il Bias',
+      intro: 'Questo dataset mostra le assunzioni di un\'azienda tech nell\'ultimo anno. Analizzalo e rispondi alle domande.',
+      dataset: [
+        { nome: 'Marco R.', genere: 'M', età: 28, città: 'Milano', assunto: true },
+        { nome: 'Laura B.', genere: 'F', età: 31, città: 'Roma', assunto: false },
+        { nome: 'Andrea C.', genere: 'M', età: 26, città: 'Milano', assunto: true },
+        { nome: 'Sara M.', genere: 'F', età: 29, città: 'Napoli', assunto: false },
+        { nome: 'Luca P.', genere: 'M', età: 34, città: 'Milano', assunto: true },
+        { nome: 'Elena V.', genere: 'F', età: 27, città: 'Torino', assunto: false },
+        { nome: 'Matteo G.', genere: 'M', età: 30, città: 'Milano', assunto: true },
+        { nome: 'Chiara F.', genere: 'F', età: 32, città: 'Roma', assunto: false },
+        { nome: 'Davide L.', genere: 'M', età: 25, città: 'Milano', assunto: true },
+        { nome: 'Giulia T.', genere: 'F', età: 28, città: 'Napoli', assunto: false },
+      ],
+      questions: [
+        {
+          id: 'q1',
+          type: 'multiple-choice',
+          text: 'Quale bias principale noti in questo dataset?',
+          options: [
+            { id: 'a', text: 'Bias di genere (favorisce gli uomini)' },
+            { id: 'b', text: 'Bias di età (favorisce i più giovani)' },
+            { id: 'c', text: 'Bias geografico (favorisce Milano)' },
+            { id: 'd', text: 'Nessun bias evidente' },
+          ],
+          correctIds: ['a', 'c'],
+          feedback: {
+            correct: 'Esatto! Il dataset mostra bias di genere (100% degli assunti sono uomini) e geografico (tutti gli assunti sono di Milano).',
+            partial: 'Hai trovato parte del problema. Nota anche: tutti gli assunti sono di Milano (bias geografico) e tutti sono uomini (bias di genere).',
+            wrong: 'Guarda più attentamente: tutti gli assunti sono uomini (M) e tutti vivono a Milano. Doppio bias!',
+          },
+        },
+        {
+          id: 'q2',
+          type: 'open-text',
+          text: 'Come correggeresti questo dataset per renderlo più equo?',
+          placeholder: 'Es: bilanciare le assunzioni per genere, includere candidati da diverse città...',
+          maxLength: 300,
+          checklist: [
+            { id: 'c1', text: 'Hai menzionato il bilanciamento per genere', keywords: ['genere', 'donna', 'donne', 'femmin', 'uomin', 'parit'] },
+            { id: 'c2', text: 'Hai menzionato la diversità geografica', keywords: ['citt', 'geografic', 'region', 'localit', 'diversit'] },
+            { id: 'c3', text: 'Hai proposto una soluzione pratica', keywords: ['bilanc', 'corregger', 'rimuover', 'aggiung', 'sostitu', 'anonimiz'] },
+          ],
+        },
+      ],
+    },
     keyTakeaways: [
       'Dati di qualità = AI di qualità',
       'Bias nei dati = discriminazione nell\'output',

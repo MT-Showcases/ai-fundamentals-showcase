@@ -10,6 +10,7 @@ import CodeSnippet from '@/components/CodeSnippet';
 import ChapterQuiz from '@/components/ChapterQuiz';
 import ChapterExercises from '@/components/ChapterExercises';
 import ChapterMediaSlots from '@/components/ChapterMediaSlots';
+import ChapterChallenge from '@/components/ChapterChallenge';
 import Breadcrumb from '@/components/Breadcrumb';
 import ChapterSidebar from '@/components/ChapterSidebar';
 import BackToTopButton from '@/components/BackToTopButton';
@@ -79,6 +80,18 @@ export default async function ChapterPage({ params }: Props) {
   const totalChapters = chapters.length;
   const progressPercent = (chapterNum / totalChapters) * 100;
 
+  const chapterGlossaryTerms: Record<string, string[]> = {
+    'data-importance': [
+      'algoritmo', 'dataset', 'bias', 'training', 'supervised-learning', 'label', 'data-quality', 'validation', 'test-set',
+    ],
+    'how-ai-works': [
+      'neural-network', 'backpropagation', 'gradient-descent', 'learning-rate', 'loss-function', 'layer', 'peso', 'overfitting', 'regolarizzazione', 'dropout',
+    ],
+    'generative-ai': [
+      'generative-ai', 'llm', 'transformer', 'attention-mechanism', 'fine-tuning', 'prompt-engineering', 'tokenizzazione', 'context-window', 'allucinazione', 'rlhf',
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
@@ -139,7 +152,12 @@ export default async function ChapterPage({ params }: Props) {
                 const enableGlossary = glossaryChapters.includes(chapter.slug);
                 return chapter.sections.map((section, idx) => (
                 <div key={idx}>
-                  <SectionCard title={section.title} content={section.content} enableGlossary={enableGlossary} />
+                  <SectionCard
+                    title={section.title}
+                    content={section.content}
+                    enableGlossary={enableGlossary}
+                    glossaryTermIds={chapterGlossaryTerms[chapter.slug]}
+                  />
                   <SectionMediaSlots
                     chapterId={chapter.id}
                     chapterSlug={chapter.slug}
@@ -183,6 +201,10 @@ export default async function ChapterPage({ params }: Props) {
             {/* Practical Exercises */}
             {chapter.exercises && chapter.exercises.length > 0 && (
               <ChapterExercises exercises={chapter.exercises} />
+            )}
+
+            {chapter.challenge && (
+              <ChapterChallenge challenge={chapter.challenge} />
             )}
 
             {/* Quiz */}
