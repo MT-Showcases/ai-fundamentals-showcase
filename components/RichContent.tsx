@@ -51,7 +51,7 @@ function wrapGlossaryTerms(text: string, keyPrefix: string): React.ReactNode[] {
   const escapedTerms = SORTED_TERMS.map((t) => t.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   if (escapedTerms.length === 0) return [text];
 
-  const regex = new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+  const regex = new RegExp(`\\b(${escapedTerms.join('|')})\\b`, 'gi');
   const parts = text.split(regex);
 
   const nodes: React.ReactNode[] = [];
