@@ -4,6 +4,7 @@ interface SectionCardProps {
   title: string;
   content: string;
   enableGlossary?: boolean;
+  glossaryTermIds?: string[];
 }
 
 function getSectionIcon(title: string): string {
@@ -19,7 +20,7 @@ function getSectionIcon(title: string): string {
 }
 
 
-export default function SectionCard({ title, content, enableGlossary = false }: SectionCardProps) {
+export default function SectionCard({ title, content, enableGlossary = false, glossaryTermIds }: SectionCardProps) {
   return (
     <section className="bg-blue-900 p-6 rounded-lg mb-6 border border-blue-700">
       <h2 className="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-2">
