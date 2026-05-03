@@ -517,7 +517,7 @@ Usa questa fonte per generare:
                       description: 'Trasforma il testo in numeri: ogni parola diventa una feature pesata per rarità.',
                       code: 'from sklearn.feature_extraction.text import TfidfVectorizer\n\nvectorizer = TfidfVectorizer(max_features=1000)\nX = vectorizer.fit_transform(texts_clean)',
                       codeLang: 'python',
-                      tryThis: 'Cambia max_features=500 — cambia l&apos;accuracy?',
+                      tryThis: 'Cambia max_features=500 — cambia l\'accuracy?',
                     },
                     {
                       number: 4,
