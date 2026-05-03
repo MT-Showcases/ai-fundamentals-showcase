@@ -71,9 +71,9 @@ export default function PracticalWorkflow({
       <h3 className="text-2xl font-bold text-cyan-300 mb-2">{title}</h3>
       {intro && <p className="text-gray-300 mb-6">{intro}</p>}
 
-      <div className="bg-navy-800 rounded-lg p-6 mb-8 border border-blue-400/30">
-        <p className="text-sm text-gray-400 mb-4">📥 Scarica risorse:</p>
-        <div className="flex flex-wrap gap-3">
+      <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8">
+        <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup</h4>
+        <div className="flex flex-wrap gap-3 mb-6">
           {downloadLinks.map((link, idx) => (
             <a key={idx} href={link.url} download className="inline-block">
               <Button variant="primary" className="px-4 py-2 min-h-0 text-sm">
@@ -82,14 +82,8 @@ export default function PracticalWorkflow({
             </a>
           ))}
         </div>
+        {setupContent && <div>{setupContent}</div>}
       </div>
-
-      {setupContent && (
-        <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8">
-          <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup Locale</h4>
-          {setupContent}
-        </div>
-      )}
 
       {media && media.length > 0 && chapterId && chapterSlug && (
         <div className="mb-8">

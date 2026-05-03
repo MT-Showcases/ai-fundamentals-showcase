@@ -456,7 +456,37 @@ Usa questa fonte per generare:
               <div className="mb-12">
                 <PracticalWorkflow
                   title="NLP Workflow Pratico — 5 Step"
-                  
+                  setupContent={
+                    <div className="space-y-4">
+                      <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
+                        <p className="text-sm text-gray-300 font-semibold mb-1">Cosa imparerai in questo lab:</p>
+                        <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc">
+                          <li>Costruire un dataset testuale inline e pre-processarlo</li>
+                          <li>Trasformare il testo in numeri con TF-IDF</li>
+                          <li>Confrontare Logistic Regression vs Naive Bayes su testo</li>
+                          <li>Visualizzare la confusion matrix e le parole pi&ugrave; discriminanti</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-300 mb-2">Prerequisiti:</p>
+                        <ul className="text-sm text-gray-400 space-y-1 ml-4">
+                          <li>&#x2705; Python 3.7+</li>
+                          <li>&#x2705; pip installato</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-300 mb-2">Comandi di avvio:</p>
+                        <div className="bg-navy-900 rounded-lg p-4 border border-cyan-400/20 font-mono text-xs text-cyan-300 space-y-1">
+                          <p className="text-gray-400"># 1. Estrai lo ZIP e accedi</p>
+                          <p>$ cd ml-lab-03-nlp/</p>
+                          <p className="text-gray-400"># 2. Installa le dipendenze</p>
+                          <p>$ pip install -r requirements.txt</p>
+                          <p className="text-gray-400"># 3. Esegui il lab</p>
+                          <p>$ python main.py</p>
+                        </div>
+                      </div>
+                    </div>
+                  }
                   downloadLinks={[
                     {
                       label: 'Scarica ZIP Lab 3 — NLP Sentiment Analysis',
