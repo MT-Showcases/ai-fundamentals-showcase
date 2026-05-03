@@ -627,6 +627,18 @@ Risultato atteso per lo studente: Vengono creati due livelli nascosti. La backpr
 
 ---
 
+FLUSSO DIDATTICO (Come si svolge il Lab):
+Questo è l'esperienza concreta dello studente durante il laboratorio del Capitolo 5.
+1. Lo studente scarica lo ZIP Lab 2 (\`ml-lab-02-neural-networks.zip\`) dal sito.
+2. Estrae lo ZIP e naviga nella cartella: \`cd ml-lab-02-neural-networks/\`
+3. Installa le dipendenze: \`pip install -r requirements.txt\` (include numpy, scikit-learn, matplotlib, seaborn).
+4. Esegue lo script principale: \`python main.py\`
+5. Alla prima esecuzione, il dataset MNIST viene scaricato automaticamente via \`fetch_openml\` (operazione una tantum).
+6. Il risultato finale è una griglia 2x5 con 10 cifre del Test Set: i titoli in verde indicano predizioni corrette, in rosso gli errori della rete.
+7. Lo studente sperimenta modificando \`hidden_layer_sizes\` in main.py e re-eseguendo per vedere l'impatto dell'architettura sull'accuracy.
+
+---
+
 OBIETTIVO GENERAZIONE CONTENUTI DA QUESTO PROMPT:
 Usa questo intero workflow didattico per generare materiali di approfondimento per gli studenti. 
 Esempi di utilizzo:
