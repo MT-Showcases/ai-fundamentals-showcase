@@ -429,13 +429,12 @@ Output ideale:
 
             {chapter.slug === 'machine-learning' && (
               <>
-              {/* Extra media slots just for the ML Workflow section that got omitted above */}
-              <SectionMediaSlots
+              <div className="mt-12">
+                <PracticalWorkflow
+                title="ML Workflow Pratico — 5 Step"
+                intro="Impara facendo. Scarica il lab e la guida, poi segui gli step."
                 chapterId={chapter.id}
                 chapterSlug={chapter.slug}
-                sectionIndex={4}
-                sectionTitle="ML Workflow Pratico — 5 Step"
-                sectionContent="Impara facendo con la guida e lo ZIP lab. Scarica, leggi gli step qui sotto, esegui main.py e sperimenta."
                 media={[
                   {
                     type: 'infographic',
@@ -453,11 +452,7 @@ Output ideale:
                     notes: 'ready'
                   }
                 ]}
-              />
-
-              <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8 mt-8">
-                  <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup Locale</h4>
-                  
+                setupContent={
                   <div className="space-y-4">
                     <div>
                       <p className="text-sm font-semibold text-gray-300 mb-2">Prerequisiti:</p>
@@ -486,11 +481,7 @@ Output ideale:
                       </p>
                     </div>
                   </div>
-                </div>
-
-                <PracticalWorkflow
-                title="ML Workflow Pratico — 5 Step"
-                intro="Impara facendo. Scarica il lab e la guida, poi segui gli step."
+                }
                 downloadLinks={[
                   {
                     label: 'Scarica ZIP Lab 1 — Regressione Housing',
@@ -706,6 +697,7 @@ Perché: il grafico rende visiva la qualità del modello e aiuta a individuare p
                   },
                 ]}
               />
+              </div>
               </>
             )}
 

@@ -3,6 +3,8 @@
 import { useState, type ReactNode } from 'react';
 import Button from '@/components/Button';
 import CodeSnippet from '@/components/CodeSnippet';
+import SectionMediaSlots from '@/components/SectionMediaSlots';
+import { MediaPlaceholder } from '@/data/types';
 
 interface ModificationExample {
   lineNumber: number;
@@ -42,6 +44,10 @@ interface PracticalWorkflowProps {
   downloadLinks: WorkflowDownloadLink[];
   steps: WorkflowStep[];
   workflowCompleteSource?: string;
+  media?: MediaPlaceholder[];
+  chapterId?: number;
+  chapterSlug?: string;
+  setupContent?: ReactNode;
 }
 
 export default function PracticalWorkflow({
@@ -50,6 +56,10 @@ export default function PracticalWorkflow({
   downloadLinks,
   steps,
   workflowCompleteSource,
+  media,
+  chapterId,
+  chapterSlug,
+  setupContent
 }: PracticalWorkflowProps) {
   const [expandedSources, setExpandedSources] = useState<Record<number, boolean>>({});
   const [copiedStep, setCopiedStep] = useState<number | null>(null);
@@ -73,6 +83,26 @@ export default function PracticalWorkflow({
           ))}
         </div>
       </div>
+
+      {setupContent && (
+        <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8">
+          <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup Locale</h4>
+          {setupContent}
+        </div>
+      )}
+
+      {media && media.length > 0 && chapterId && chapterSlug && (
+        <div className="mb-8">
+          <SectionMediaSlots
+            chapterId={chapterId}
+            chapterSlug={chapterSlug}
+            sectionIndex={999}
+            sectionTitle={title}
+            sectionContent={intro || ''}
+            media={media}
+          />
+        </div>
+      )}
 
       <div className="space-y-8">
         {steps.map((step) => {
