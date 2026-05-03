@@ -805,7 +805,67 @@ plt.show()`,
                       tryThis: 'Guarda l\'immagine generata: gli errori del modello sono giustificati? (Numeri scritti male e ambigui).',
                     }
                   ]}
-                  workflowCompleteSource="Nel Lab 02 l'utente crea la sua prima rete neurale. Lo script (main.py) scarica 10k immagini MNIST. Usa StandardScaler per appiattire i valori dei pixel (che altrimenti andrebbero da 0 a 255 mandando fuori scala i gradienti). Poi crea un MLPClassifier di scikit-learn con 50 neuroni in un layer nascosto. Traina il modello, fa predizioni e chiude generando una griglia 2x5 matplotlib che mostra l'immagine del numero scritto a mano, colorando il titolo di verde se la previsione è corretta, rosso se errata."
+                  workflowCompleteSource={`CAPITOLO 5 — RETI NEURALI: RICONOSCIMENTO CIFRE (MNIST)
+======================================================
+
+CONTESTO DEL LABORATORIO:
+Questo workflow guida gli studenti nella costruzione, addestramento e analisi della loro prima Rete Neurale Artificiale. Il laboratorio mira a smitizzare le reti neurali, trattandole come modelli matematici accessibili piuttosto che come "scatole magiche" incomprensibili.
+
+DATASET UTILIZZATO: 
+- MNIST (Modified National Institute of Standards and Technology).
+- E' considerato lo "Hello World" del Machine Learning.
+- Consiste in immagini 28x28 pixel in scala di grigi raffiguranti numeri scritti a mano (da 0 a 9).
+- Per questioni di performance nel lab viene caricato un subset di 10.000 immagini.
+- Ogni immagine viene "appiattita" in un array 1D di 784 valori (28 * 28 = 784 features).
+
+TECNOLOGIE:
+- Scikit-learn (MLPClassifier). Viene scelto deliberatamente al posto di framework industriali (TensorFlow/PyTorch) per permettere allo studente di focalizzarsi sull'architettura dei layer e della backpropagation, senza doversi scontrare con l'ingegneria del calcolo su GPU, tensori, o cicli manuali di loss.backward().
+- Matplotlib e Seaborn per la visualizzazione.
+
+---
+
+I 5 STEP DEL WORKFLOW:
+
+[Step 1] Caricamento Dati (MNIST)
+Il codice scarica il dataset MNIST via fetch_openml. I dati grezzi vengono affettati per estrarre 10.000 campioni (X) e le rispettive etichette (y). 
+L'obiettivo qui è far capire allo studente che un'immagine per il computer è solo una lunga fila di 784 numeri.
+
+[Step 2] Preprocessing e Scaling
+Questo è un passaggio cruciale per le reti neurali. I pixel originali hanno valori da 0 a 255. Passare valori così alti e sparsi a una rete neurale causa esplosioni dei gradienti e convergenza lentissima.
+Viene applicato uno \`StandardScaler\` che porta la media dei valori a 0 e la deviazione standard a 1. La normalizzazione accelera e stabilizza l'addestramento.
+
+[Step 3] Architettura e Addestramento (Multi-Layer Perceptron)
+Viene istanziato un classificatore neurale (\`MLPClassifier\`) configurato così:
+- \`hidden_layer_sizes=(50,)\`: Un singolo strato nascosto con 50 neuroni.
+- \`solver='sgd'\`: Discesa Stocastica del Gradiente.
+- \`max_iter=20\`: Numero limitato di epoche (volutamente basso per rapidità didattica, causerà un normale warning di convergenza).
+L'addestramento avviene chiamando il classico \`nn_model.fit(X_train_scaled, y_train)\`.
+
+[Step 4] Valutazione del Modello
+La rete fa predizioni sul set di test e ne calcoliamo l'accuratezza. Generalmente, anche un MLP semplice e allenato per sole 20 epoche riesce a ottenere un'accuratezza superiore al 90% su MNIST, dando un feedback molto positivo allo studente.
+
+[Step 5] Visualizzazione delle Predizioni
+Vengono estratti i primi 10 numeri dal Test Set. Ogni array di 784 pixel viene rimescolato (reshaped) in una matrice 28x28 per essere renderizzato a schermo.
+Matplotlib genera una griglia 2x5:
+- In verde i titoli con le predizioni corrette.
+- In rosso i titoli dove la rete neurale ha commesso un errore.
+
+---
+
+ESERCIZIO PRATICO DI MODIFICA (Sperimentazione dell'Architettura):
+Il workflow spinge lo studente a esplorare l'architettura aprendo main.py e modificando il parametro dell'MLP.
+PRIMA: \`hidden_layer_sizes=(50,)\` (1 livello, 50 neuroni)
+DOPO: \`hidden_layer_sizes=(50, 50,)\` (2 livelli, 50 neuroni ciascuno, rete "Deep").
+Risultato atteso per lo studente: Vengono creati due livelli nascosti. La backpropagation diventerà matematicamente più costosa, il tempo di addestramento si allungherà, ma il modello acquisirà la capacità (in teoria) di mappare relazioni non lineari più complesse e migliorare l'accuracy finale.
+
+---
+
+OBIETTIVO GENERAZIONE CONTENUTI DA QUESTO PROMPT:
+Usa questo intero workflow didattico per generare materiali di approfondimento per gli studenti. 
+Esempi di utilizzo:
+1) Script per video tutorial che mostra lo schermo mentre si spiega perché normalizzare MNIST.
+2) Infografica animabile che mostra il passaggio dai 784 input, ai 50 nodi nascosti, ai 10 nodi in output.
+3) Quiz di rinforzo sui motivi tecnici della scelta di Scikit-Learn invece di PyTorch per questo specifico lab.`}
                 />
               </div>
             )}
