@@ -1,7 +1,9 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import Button from '@/components/Button';
 import CodeSnippet from '@/components/CodeSnippet';
+import NotebookLMSource from '@/components/NotebookLMSource';
 
 interface ModificationExample {
   lineNumber: number;
@@ -14,11 +16,19 @@ interface ModificationExample {
 interface WorkflowStep {
   number: number;
   title: string;
-  description: string;
+  description: ReactNode;
   code: string;
   codeLang?: 'python' | 'javascript' | 'sql' | 'json' | 'bash';
-  tryThis: string;
+  tryThis: ReactNode;
+  fileReference?: FileReference;
   modificationExample?: ModificationExample;
+  notebookLmSource?: string;
+}
+
+interface FileReference {
+  filename: string;
+  lines?: string;
+  description: string;
 }
 
 interface WorkflowDownloadLink {
@@ -84,6 +94,16 @@ export default function PracticalWorkflow({
                 />
               </div>
 
+              {step.fileReference && (
+                <div className="mt-3 p-3 bg-navy-700/50 rounded border-l-2 border-cyan-400 text-sm text-gray-300">
+                  <p className="font-mono text-xs text-cyan-300 mb-1">
+                    📁 {step.fileReference.filename}
+                    {step.fileReference.lines && ` (righe ${step.fileReference.lines})`}
+                  </p>
+                  <p>{step.fileReference.description}</p>
+                </div>
+              )}
+
               <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
                 <p className="text-sm text-gray-300">
                   <strong>🎯 Prova:</strong> {step.tryThis}
@@ -125,6 +145,10 @@ export default function PracticalWorkflow({
                     </p>
                   </div>
                 </div>
+              )}
+
+              {step.notebookLmSource && (
+                <NotebookLMSource source={step.notebookLmSource} />
               )}
             </div>
           );
