@@ -436,7 +436,8 @@ plt.show()`,
 X, y = fetch_openml('mnist_784', version=1, return_X_y=True, as_frame=False)
 X, y = X[:10000], y[:10000] # Subset per velocità`,
                       codeLang: 'python',
-                      tryThis: 'Prova a stampare X.shape. Cosa rappresentano quei 784 valori?'
+                      tryThis: 'Prova a stampare X.shape. Cosa rappresentano quei 784 valori?',
+
                     },
                     {
                       number: 2,
@@ -485,3 +486,88 @@ plt.show()`,
 
             <div className="mb-12">
               <KeyTakeaway items={chapter.keyTakeaways} />
+            </div>
+
+            {chapter.discussionPrompts && chapter.discussionPrompts.length > 0 && (
+              <div className="mb-12">
+                <DiscussionPrompt prompts={chapter.discussionPrompts} />
+              </div>
+            )}
+
+            <ChapterMediaSlots chapter={chapter} />
+
+            {chapter.codeSnippets && chapter.codeSnippets.length > 0 && (
+              <div className="mb-12">
+                <h3 className="text-cyan-300 font-bold mb-4">💻 Code Snippets</h3>
+                <div className="space-y-4">
+                  {chapter.codeSnippets.map((snippet, idx) => (
+                    <CodeSnippet key={idx} code={snippet.code} lang={snippet.lang} label={snippet.label} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {chapter.exercises && chapter.exercises.length > 0 && (
+              <ChapterExercises exercises={chapter.exercises} />
+            )}
+
+            {chapter.quiz && chapter.quiz.length > 0 && (
+              <div className="mb-12">
+                <h3 className="text-cyan-300 font-bold mb-4">🧠 Quiz del Capitolo</h3>
+                <ChapterQuiz quiz={chapter.quiz} chapterId={chapter.id} chapterSlug={chapter.slug} />
+              </div>
+            )}
+
+            <div className="flex justify-between items-center mt-16 pt-8 border-t border-navy-600 gap-4">
+              {previousChapter ? (
+                <Link
+                  href={`/chapters/${previousChapter.slug}`}
+                  className="group flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-blue-500/40 text-cyan-300 hover:border-cyan-400 hover:bg-cyan-400/10 hover:text-cyan-200 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-200 font-medium text-base"
+                >
+                  <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span className="hidden sm:inline">← Capitolo Precedente</span>
+                  <span className="sm:hidden">Precedente</span>
+                </Link>
+              ) : (
+                <div />
+              )}
+
+              <div className="text-xs text-gray-500 font-mono text-center flex-shrink-0">
+                {chapterNum} / {totalChapters}
+              </div>
+
+              {nextChapter ? (
+                <Link
+                  href={`/chapters/${nextChapter.slug}`}
+                  className="group flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-blue-500/40 text-cyan-300 hover:border-cyan-400 hover:bg-cyan-400/10 hover:text-cyan-200 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-200 font-medium text-base"
+                >
+                  <span className="hidden sm:inline">Capitolo Successivo →</span>
+                  <span className="sm:hidden">Successivo</span>
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              ) : (
+                <div />
+              )}
+            </div>
+          </main>
+        </div>
+      </div>
+      <BackToTopButton />
+      <footer className="bg-navy-800/60 border-t border-blue-800/30 py-4 px-6 text-center text-xs text-gray-600">
+        <span>AI Fundamentals — SJA Catania</span>
+        <span className="mx-2" aria-hidden="true">·</span>
+        <Link href="/privacy" className="hover:text-cyan-300 transition-colors">
+          Privacy Policy
+        </Link>
+        <span className="mx-2" aria-hidden="true">·</span>
+        <Link href="/terms" className="hover:text-cyan-300 transition-colors">
+          Termini di Servizio
+        </Link>
+      </footer>
+    </div>
+  );
+}
