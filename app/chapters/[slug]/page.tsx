@@ -436,4 +436,52 @@ plt.show()`,
 X, y = fetch_openml('mnist_784', version=1, return_X_y=True, as_frame=False)
 X, y = X[:10000], y[:10000] # Subset per velocità`,
                       codeLang: 'python',
-                      tryThis: 'Prova a stampare X.shape. Cosa rappresentano quei 784 valori?',
+                      tryThis: 'Prova a stampare X.shape. Cosa rappresentano quei 784 valori?'
+                    },
+                    {
+                      number: 2,
+                      title: 'Preprocessing (Scaling)',
+                      description: 'Le reti neurali lavorano male con valori grandi (es. pixel da 0 a 255). Scalare i dati verso lo zero accelera enormemente l\'apprendimento.',
+                      code: `from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)`,
+                      codeLang: 'python',
+                      tryThis: 'Se non scalassi i dati, il processo di discesa del gradiente farebbe enormi balzi a vuoto, rallentando la convergenza.'
+                    },
+                    {
+                      number: 3,
+                      title: 'Definisci e Allena l\'Architettura',
+                      description: 'Creiamo un Multi-Layer Perceptron (MLP) con un singolo layer nascosto da 50 neuroni.',
+                      code: `from sklearn.neural_network import MLPClassifier
+nn_model = MLPClassifier(hidden_layer_sizes=(50,), max_iter=20, solver='sgd')
+nn_model.fit(X_train_scaled, y_train)`,
+                      codeLang: 'python',
+                      tryThis: 'Qui avviene la magia: la backpropagation aggiusta i pesi tra i 784 input, i 50 neuroni nascosti e i 10 output finali.',
+                      modificationExample: {
+                        lineNumber: 2,
+                        description: 'Cosa succede se la rete diventa più profonda?',
+                        before: 'hidden_layer_sizes=(50,)',
+                        after: 'hidden_layer_sizes=(50, 50,)',
+                        expectedResult: 'Vengono creati DUE layer nascosti da 50 neuroni. L\'apprendimento sarà leggermente più lento ma il modello potrà imparare pattern più complessi.'
+                      }
+                    },
+                    {
+                      number: 4,
+                      title: 'Visualizza le Predizioni',
+                      description: 'Il modello prevede il numero basandosi sui pixel. Mostriamo i primi 10 risultati visivamente per capire dove sbaglia.',
+                      code: `import matplotlib.pyplot as plt
+img = X_test[0].reshape(28, 28)
+plt.imshow(img, cmap='gray')
+plt.title(f"Pred: {y_pred[0]} | Reale: {y_test[0]}")
+plt.show()`,
+                      codeLang: 'python',
+                      tryThis: 'Guarda l\'immagine generata: gli errori del modello sono giustificati? (Numeri scritti male e ambigui).'
+                    }
+                  ]}
+                />
+              </div>
+            )}
+
+            <div className="mb-12">
+              <KeyTakeaway items={chapter.keyTakeaways} />
