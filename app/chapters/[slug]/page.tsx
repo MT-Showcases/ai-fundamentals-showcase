@@ -744,6 +744,13 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: 'Uno sguardo alla struttura della rete: da 784 pixel in input a 10 classi in output.',
                       placeholderPath: 'media/ch05-neural-networks/lab/infographic.jpg',
                       notes: 'ready'
+                    },
+                    {
+                      type: 'video',
+                      title: 'Video Lab — Reti Neurali con MNIST',
+                      description: 'Guida pratica al lab: dal caricamento MNIST al riconoscimento cifre con MLP.',
+                      placeholderPath: 'media/ch05-neural-networks/lab/video.mp4',
+                      notes: 'ready'
                     }
                   ]}
                   setupContent={
