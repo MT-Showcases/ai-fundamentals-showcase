@@ -456,7 +456,7 @@ Usa questa fonte per generare:
               <div className="mb-12">
                 <PracticalWorkflow
                   title="NLP Workflow Pratico — 5 Step"
-                  intro="Costruisci un analizzatore di sentiment in Python. Scarica lo ZIP Lab 3 e segui gli step."
+                  
                   downloadLinks={[
                     {
                       label: 'Scarica ZIP Lab 3 — NLP Sentiment Analysis',
@@ -560,7 +560,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
               <div className="mt-12">
                 <PracticalWorkflow
                   title="Mini Lab — La Tua Prima Rete Neurale"
-                  intro="Costruisci e analizza una rete neurale in Python per il riconoscimento ottico dei caratteri (MNIST)."
+                  
                   chapterId={chapter.id}
                   chapterSlug={chapter.slug}
                   media={[
