@@ -401,7 +401,10 @@ Output ideale:
                 const enableGlossary = glossaryChapters.includes(chapter.slug);
                 return chapter.sections.map((section, idx) => {
                   // Skip rendering the workflow section as a standard card since we render it via PracticalWorkflow below
-                  if (chapter.slug === 'machine-learning' && section.title === 'ML Workflow Pratico — 5 Step') {
+                  if (
+                    (chapter.slug === 'machine-learning' && section.title === 'ML Workflow Pratico — 5 Step') ||
+                    (chapter.slug === 'neural-networks' && section.title === 'Mini Lab — Costruire e Analizzare la Prima Rete Neurale')
+                  ) {
                     return null;
                   }
 
@@ -699,6 +702,112 @@ Perché: il grafico rende visiva la qualità del modello e aiuta a individuare p
               />
               </div>
               </>
+            )}
+
+            {chapter.slug === 'neural-networks' && (
+              <div className="mt-12">
+                <PracticalWorkflow
+                  title="Mini Lab — La Tua Prima Rete Neurale"
+                  intro="Costruisci e analizza una rete neurale in Python per il riconoscimento ottico dei caratteri (MNIST)."
+                  chapterId={chapter.id}
+                  chapterSlug={chapter.slug}
+                  media={[
+                    {
+                      type: 'infographic',
+                      title: 'L\'Architettura del Modello',
+                      description: 'Uno sguardo alla struttura della rete: da 784 pixel in input a 10 classi in output.',
+                      placeholderPath: 'media/ch05-neural-networks/lab/infographic.png',
+                      notes: 'ready'
+                    }
+                  ]}
+                  setupContent={
+                    <div className="space-y-4">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-300 mb-2">Prerequisiti:</p>
+                        <ul className="text-sm text-gray-400 space-y-1 ml-4">
+                          <li>✅ Python 3.7+</li>
+                          <li>✅ Scikit-Learn installato</li>
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <p className="text-sm font-semibold text-gray-300 mb-2">Comandi di avvio:</p>
+                        <div className="bg-navy-900 rounded-lg p-4 border border-cyan-400/20 font-mono text-xs text-cyan-300 space-y-1">
+                          <p className="text-gray-400"># 1. Estrai lo ZIP Lab 2 e accedi</p>
+                          <p>$ cd ml-lab-02-neural-networks/</p>
+                          <p className="text-gray-400"># 2. Installa le dipendenze</p>
+                          <p>$ pip install -r requirements.txt</p>
+                          <p className="text-gray-400"># 3. Esegui il lab (scaricherà MNIST la prima volta)</p>
+                          <p>$ python main.py</p>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                  downloadLinks={[
+                    {
+                      label: 'Scarica ZIP Lab 2 — Neural Networks',
+                      url: '/downloads/ml-lab-02-neural-networks.zip',
+                      icon: 'zip',
+                    },
+                  ]}
+                  steps={[
+                    {
+                      number: 1,
+                      title: 'Scarica i Dati (MNIST)',
+                      description: 'Carichiamo un subset di MNIST: 10.000 immagini di numeri scritti a mano (28x28 pixel = 784 feature per immagine).',
+                      code: `from sklearn.datasets import fetch_openml
+X, y = fetch_openml('mnist_784', version=1, return_X_y=True, as_frame=False)
+X, y = X[:10000], y[:10000] # Subset per velocità`,
+                      codeLang: 'python',
+                      tryThis: 'Prova a stampare X.shape. Cosa rappresentano quei 784 valori?',
+                      notebookLmSource: 'Il dataset MNIST è lo "Hello World" del Machine Learning: 70.000 immagini (qui usiamo le prime 10.000). Ogni immagine è srotolata in un array di 784 valori.'
+                    },
+                    {
+                      number: 2,
+                      title: 'Preprocessing (Scaling)',
+                      description: 'Le reti neurali lavorano male con valori grandi (es. pixel da 0 a 255). Scalare i dati verso lo zero accelera enormemente l\'apprendimento.',
+                      code: `from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)`,
+                      codeLang: 'python',
+                      tryThis: 'Se non scalassi i dati, il processo di discesa del gradiente farebbe enormi balzi a vuoto, rallentando la convergenza.',
+                      notebookLmSource: 'Lo StandardScaler sposta la media dei pixel a 0 e la deviazione standard a 1. È fondamentale per la stabilità matematica della rete.'
+                    },
+                    {
+                      number: 3,
+                      title: 'Definisci e Allena l\'Architettura',
+                      description: 'Creiamo un Multi-Layer Perceptron (MLP) con un singolo layer nascosto da 50 neuroni.',
+                      code: `from sklearn.neural_network import MLPClassifier
+nn_model = MLPClassifier(hidden_layer_sizes=(50,), max_iter=20, solver='sgd')
+nn_model.fit(X_train_scaled, y_train)`,
+                      codeLang: 'python',
+                      tryThis: 'Qui avviene la magia: la backpropagation aggiusta i pesi tra i 784 input, i 50 neuroni nascosti e i 10 output finali.',
+                      modificationExample: {
+                        lineNumber: 2,
+                        description: 'Cosa succede se la rete diventa più profonda?',
+                        before: 'hidden_layer_sizes=(50,)',
+                        after: 'hidden_layer_sizes=(50, 50,)',
+                        expectedResult: 'Vengono creati DUE layer nascosti da 50 neuroni. L\'apprendimento sarà leggermente più lento ma il modello potrà imparare pattern più complessi.'
+                      },
+                      notebookLmSource: 'Architettura scelta: 1 Hidden Layer, 50 neuroni, Stochastic Gradient Descent come solver e massimo 20 epoche per finire in fretta.'
+                    },
+                    {
+                      number: 4,
+                      title: 'Visualizza le Predizioni',
+                      description: 'Il modello prevede il numero basandosi sui pixel. Mostriamo i primi 10 risultati visivamente per capire dove sbaglia.',
+                      code: `import matplotlib.pyplot as plt
+img = X_test[0].reshape(28, 28)
+plt.imshow(img, cmap='gray')
+plt.title(f"Pred: {y_pred[0]} | Reale: {y_test[0]}")
+plt.show()`,
+                      codeLang: 'python',
+                      tryThis: 'Guarda l\'immagine generata: gli errori del modello sono giustificati? (Numeri scritti male e ambigui).',
+                    }
+                  ]}
+                  workflowCompleteSource="Nel Lab 02 l'utente crea la sua prima rete neurale. Lo script (main.py) scarica 10k immagini MNIST. Usa StandardScaler per appiattire i valori dei pixel (che altrimenti andrebbero da 0 a 255 mandando fuori scala i gradienti). Poi crea un MLPClassifier di scikit-learn con 50 neuroni in un layer nascosto. Traina il modello, fa predizioni e chiude generando una griglia 2x5 matplotlib che mostra l'immagine del numero scritto a mano, colorando il titolo di verde se la previsione è corretta, rosso se errata."
+                />
+              </div>
             )}
 
             {/* Key Takeaways */}

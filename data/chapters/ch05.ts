@@ -41,13 +41,6 @@ export const ch05: Chapter = {
         description: 'Schema layer + flusso backprop + segnali di overfitting.',
         placeholderPath: 'media/ch05-neural-networks/infographic.png',
         notes: 'placeholder'
-      },
-      {
-        type: 'resource',
-        title: 'Asset/Dispensa',
-        description: 'Checklist operativa per scegliere profondità rete e metrica.',
-        placeholderPath: 'media/ch05-neural-networks/handout.pdf',
-        notes: 'placeholder'
       }
     ],
     codeSnippets: [
@@ -64,20 +57,18 @@ export const ch05: Chapter = {
     ],
     exercises: [
       {
-        title: 'Mini Lab — Scegliere il modello giusto (senza coding)',
-        objective: 'Valutare quando conviene un approccio semplice rispetto a uno più complesso, usando il dataset come base di ragionamento decisionale.',
-        duration: '20 min',
+        title: 'Mini Lab — Costruire e Analizzare la Prima Rete Neurale',
+        objective: 'Comprendere come i parametri di una rete (layer, neuroni, epoche) influenzano il processo di apprendimento (Overfitting vs Convergenza).',
+        duration: '25 min',
         steps: [
-          'Scarica train.csv e validation.csv dal dataset CH5 e osserva i campi principali.',
-          'Identifica quali feature sembrano più utili per prevedere "passed" e quali potrebbero introdurre rumore.',
-          'Confronta due opzioni: Modello A (semplice, più spiegabile) vs Modello B (più complesso, potenzialmente più potente).',
-          'Prendi una decisione motivata: quale modello useresti in una startup early-stage e perché.'
+          'Scarica ed estrai lo ZIP Lab 2.',
+          'Esamina main.py: individua dove i dati MNIST vengono normalizzati.',
+          'Esegui main.py e osserva la curva di apprendimento (loss che scende).',
+          'Nel codice, modifica il parametro "hidden_layer_sizes=(50,)" a "(50, 50,)" per aggiungere un layer. Riesegui.',
+          'Annota cosa succede all\'accuracy e ai tempi di addestramento: una rete più profonda impara sempre meglio?'
         ],
-        deliverable: 'Compila una tabella decisionale (A vs B) e scrivi 5 righe di motivazione su generalizzazione, costo e interpretabilità.',
+        deliverable: 'Il codice python che traina un classificatore sul dataset MNIST, più l\'immagine predictions.png salvata e un\'analisi di due righe su "aumentare i layer".',
         resources: [
-          { label: 'Dataset train (CSV)', path: '/datasets/ch05-neural-networks/train.csv' },
-          { label: 'Dataset validation (CSV)', path: '/datasets/ch05-neural-networks/validation.csv' },
-          { label: 'Schema campi dataset (JSON)', path: '/datasets/ch05-neural-networks/schema.json' }
         ]
       }
     ],
