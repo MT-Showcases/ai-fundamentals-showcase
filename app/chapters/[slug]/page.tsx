@@ -399,31 +399,36 @@ Output ideale:
               {(() => {
                 const glossaryChapters = ['data-importance', 'neural-networks', 'generative-ai'];
                 const enableGlossary = glossaryChapters.includes(chapter.slug);
-                return chapter.sections.map((section, idx) => (
-                <div key={idx}>
-                  <SectionCard
-                    title={section.title}
-                    content={section.content}
-                    enableGlossary={enableGlossary}
-                    glossaryTermIds={chapterGlossaryTerms[chapter.slug]}
-                  />
-                  <SectionMediaSlots
-                    chapterId={chapter.id}
-                    chapterSlug={chapter.slug}
-                    sectionIndex={idx}
-                    sectionTitle={section.title}
-                    sectionContent={section.content}
-                    media={section.media}
-                  />
-                </div>
-              ));
+                return chapter.sections.map((section, idx) => {
+                  // Skip rendering the workflow section as a standard card since we render it via PracticalWorkflow below
+                  if (chapter.slug === 'machine-learning' && section.title === 'ML Workflow Pratico — 5 Step') {
+                    return null;
+                  }
+
+                  return (
+                    <div key={idx}>
+                      <SectionCard
+                        title={section.title}
+                        content={section.content}
+                        enableGlossary={enableGlossary}
+                        glossaryTermIds={chapterGlossaryTerms[chapter.slug]}
+                      />
+                      <SectionMediaSlots
+                        chapterId={chapter.id}
+                        chapterSlug={chapter.slug}
+                        sectionIndex={idx}
+                        sectionTitle={section.title}
+                        sectionContent={section.content}
+                        media={section.media}
+                      />
+                    </div>
+                  );
+                });
               })()}
             </div>
 
             {chapter.slug === 'machine-learning' && (
               <>
-                <SourceToggle source={workflowCompleteSource} />
-
                 <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8">
                   <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup Locale</h4>
                   
