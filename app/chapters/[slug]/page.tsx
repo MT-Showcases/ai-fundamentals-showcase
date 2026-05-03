@@ -210,7 +210,20 @@ export default async function ChapterPage({ params }: Props) {
                   }
                 ]}
                 setupContent={
-                  <div className="space-y-4">
+                  <div className="space-y-6">
+                    <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
+                      <p className="text-sm text-gray-300 font-semibold mb-1">Obiettivo del Laboratorio:</p>
+                      <p className="text-xs text-gray-400 leading-relaxed mb-2">
+                        Imparerai il ciclo di vita completo di un modello di Machine Learning usando dati reali (i prezzi delle case in California). Non è solo teoria: prenderai dei dati grezzi, allenerai due modelli diversi e misurerai in dollari veri quant'è l'errore delle tue predizioni.
+                      </p>
+                      <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc">
+                        <li>Usare Pandas per esplorare un dataset da 20.640 righe</li>
+                        <li>Il concetto fondamentale di split <GlossaryTerm term="training">Training</GlossaryTerm> vs <GlossaryTerm term="validation">Test</GlossaryTerm></li>
+                        <li>Confrontare un modello semplice (Linear Regression) con uno complesso (Random Forest)</li>
+                        <li>Leggere le metriche d'errore (MAE e R²) e tracciare un grafico</li>
+                      </ul>
+                    </div>
+
                     <div>
                       <p className="text-sm font-semibold text-gray-300 mb-2">Prerequisiti:</p>
                       <ul className="text-sm text-gray-400 space-y-1 ml-4">
@@ -222,19 +235,18 @@ export default async function ChapterPage({ params }: Props) {
                     <div>
                       <p className="text-sm font-semibold text-gray-300 mb-2">Comandi di avvio:</p>
                       <div className="bg-navy-900 rounded-lg p-4 border border-cyan-400/20 font-mono text-xs text-cyan-300 space-y-1">
-                        <p className="text-gray-400"># 1. Estrai lo ZIP</p>
-                        <p className="text-gray-400"># 2. Accedi alla cartella</p>
+                        <p className="text-gray-400"># 1. Estrai lo ZIP e accedi</p>
                         <p>$ cd ml-lab-01-regression/</p>
-                        <p className="text-gray-400"># 3. Installa dipendenze</p>
+                        <p className="text-gray-400"># 2. Installa dipendenze</p>
                         <p>$ pip install -r requirements.txt</p>
-                        <p className="text-gray-400"># 4. Esegui il lab</p>
+                        <p className="text-gray-400"># 3. Esegui il lab</p>
                         <p>$ python main.py</p>
                       </div>
                     </div>
                     
-                    <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
+                    <div className="bg-navy-800 rounded-lg p-4 border border-navy-600">
                       <p className="text-xs text-gray-300">
-                        <strong>💡 Tip:</strong> Se <code className="text-red-300 bg-navy-900 px-1 rounded text-xs">pip install</code> fallisce, prova <code className="text-red-300 bg-navy-900 px-1 rounded text-xs">pip3</code> o crea un virtual environment: <code className="text-cyan-300 bg-navy-900 px-1 rounded text-xs">python -m venv venv</code>
+                        <strong>💡 Tip:</strong> Se <code className="text-red-300 bg-navy-900 px-1 rounded text-xs">pip install</code> fallisce, prova <code className="text-red-300 bg-navy-900 px-1 rounded text-xs">pip3</code> o usa un virtual environment.
                       </p>
                     </div>
                   </div>
