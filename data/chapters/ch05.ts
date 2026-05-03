@@ -43,13 +43,6 @@ export const ch05: Chapter = {
         notes: 'placeholder'
       }
     ],
-    codeSnippets: [
-      {
-        lang: 'python',
-        label: 'Rete neurale semplice con PyTorch',
-        code: '# Rete neurale semplice con PyTorch\nimport torch\nimport torch.nn as nn\n\nclass SimpleNN(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.layers = nn.Sequential(\n            nn.Linear(2, 4),\n            nn.ReLU(),\n            nn.Linear(4, 1),\n            nn.Sigmoid()\n        )\n    \n    def forward(self, x):\n        return self.layers(x)\n\nmodel = SimpleNN()\nprint(model)\n# Output: SimpleNN(\n#   (layers): Sequential(\n#     (0): Linear(in_features=2, out_features=4, bias=True)\n#     (1): ReLU()\n#     (2): Linear(in_features=4, out_features=1, bias=True)\n#     (3): Sigmoid()\n#   )\n# )'
-      }
-    ],
     discussionPrompts: [
       'Perché una rete neurale con 100 layer sarebbe diversa da una con 2 layer?',
       'Come è simile Backpropagation al processo di imparare dai propri errori?',
