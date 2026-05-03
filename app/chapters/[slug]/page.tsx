@@ -175,17 +175,12 @@ export default async function ChapterPage({ params }: Props) {
             {chapter.slug === 'machine-learning' && (
               <PracticalWorkflow
                 title="ML Workflow Pratico — 5 Step"
-                intro="Impara facendo. Scarica il lab e la guida, poi segui gli step."
+                intro="Impara facendo. Scarica il lab, poi segui gli step."
                 downloadLinks={[
                   {
                     label: 'Scarica ZIP Lab 1 — Regressione Housing',
                     url: '/downloads/ml-lab-01-regression.zip',
                     icon: 'zip',
-                  },
-                  {
-                    label: 'Scarica Guida PDF',
-                    url: '/downloads/ml-lab-01-workflow-guide.pdf',
-                    icon: 'pdf',
                   },
                 ]}
                 steps={[

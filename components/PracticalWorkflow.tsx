@@ -1,9 +1,8 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import Button from '@/components/Button';
 import CodeSnippet from '@/components/CodeSnippet';
-import NotebookLMSource from '@/components/NotebookLMSource';
 
 interface ModificationExample {
   lineNumber: number;
@@ -50,6 +49,8 @@ export default function PracticalWorkflow({
   downloadLinks,
   steps,
 }: PracticalWorkflowProps) {
+  const [expandedSources, setExpandedSources] = useState<Record<number, boolean>>({});
+
   return (
     <div className="bg-navy-900 border border-cyan-400/20 rounded-xl p-8 mb-8">
       <h3 className="text-2xl font-bold text-cyan-300 mb-2">{title}</h3>
@@ -148,7 +149,35 @@ export default function PracticalWorkflow({
               )}
 
               {step.notebookLmSource && (
-                <NotebookLMSource source={step.notebookLmSource} />
+                <div className="mt-6 mb-6">
+                  <button
+                    onClick={() => {
+                      setExpandedSources((prev) => ({
+                        ...prev,
+                        [step.number]: !prev[step.number],
+                      }));
+                    }}
+                    className="text-xs px-3 py-1.5 rounded-lg border border-blue-500/40 text-blue-300 hover:bg-blue-500/10 transition mr-2"
+                  >
+                    {expandedSources[step.number] ? 'Nascondi fonte NotebookLM' : 'Mostra fonte NotebookLM'}
+                  </button>
+                  {expandedSources[step.number] && (
+                    <div className="mt-2 rounded-lg border border-navy-600 bg-navy-900/70 p-3">
+                      <pre className="text-xs text-gray-300 overflow-auto max-h-48 font-mono whitespace-pre-wrap break-words mb-3">
+                        {step.notebookLmSource}
+                      </pre>
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(step.notebookLmSource as string);
+                          alert('✅ Fonte copiata!');
+                        }}
+                        className="text-xs px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition w-full"
+                      >
+                        📋 Copia Fonte
+                      </button>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           );
