@@ -40,7 +40,7 @@ export const ch05: Chapter = {
         title: 'Infografica Capitolo 5',
         description: 'Schema layer + flusso backprop + segnali di overfitting.',
         placeholderPath: 'media/ch05-neural-networks/infographic.png',
-        notes: 'placeholder'
+        notes: 'ready'
       }
     ],
     discussionPrompts: [
