@@ -46,7 +46,7 @@ export const ch04: Chapter = {
         description: 'Panoramica operativa su apprendimento, overfitting e scelta metriche.',
         estimatedDuration: '8-10 min',
         placeholderPath: 'media/ch04-machine-learning/video.mp4',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
@@ -61,7 +61,7 @@ export const ch04: Chapter = {
         title: 'Infografica Capitolo 4',
         description: 'Schema visuale ML pipeline + overfitting/underfitting + metriche.',
         placeholderPath: 'media/ch04-machine-learning/infographic.png',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'resource',
