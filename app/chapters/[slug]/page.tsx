@@ -420,7 +420,41 @@ Output ideale:
             </div>
 
             {chapter.slug === 'machine-learning' && (
-              <PracticalWorkflow
+              <>
+                <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8">
+                  <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup Locale</h4>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-sm font-semibold text-gray-300 mb-2">Prerequisiti:</p>
+                      <ul className="text-sm text-gray-400 space-y-1 ml-4">
+                        <li>✅ Python 3.7+ (scarica da <a href="https://python.org" target="_blank" rel="noopener" className="text-blue-300 hover:underline">python.org</a>)</li>
+                        <li>✅ pip (incluso in Python)</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <p className="text-sm font-semibold text-gray-300 mb-2">Comandi di avvio:</p>
+                      <div className="bg-navy-900 rounded-lg p-4 border border-cyan-400/20 font-mono text-xs text-cyan-300 space-y-1">
+                        <p className="text-gray-400"># 1. Estrai lo ZIP</p>
+                        <p className="text-gray-400"># 2. Accedi alla cartella</p>
+                        <p>$ cd ml-lab-01-regression/</p>
+                        <p className="text-gray-400"># 3. Installa dipendenze</p>
+                        <p>$ pip install -r requirements.txt</p>
+                        <p className="text-gray-400"># 4. Esegui il lab</p>
+                        <p>$ python main.py</p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
+                      <p className="text-xs text-gray-300">
+                        <strong>💡 Tip:</strong> Se <code className="text-red-300 bg-navy-900 px-1 rounded text-xs">pip install</code> fallisce, prova <code className="text-red-300 bg-navy-900 px-1 rounded text-xs">pip3</code> o crea un virtual environment: <code className="text-cyan-300 bg-navy-900 px-1 rounded text-xs">python -m venv venv</code>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <PracticalWorkflow
                 title="ML Workflow Pratico — 5 Step"
                 intro="Impara facendo. Scarica il lab e la guida, poi segui gli step."
                 downloadLinks={[
@@ -639,6 +673,7 @@ Perché: il grafico rende visiva la qualità del modello e aiuta a individuare p
                 ]}
                 workflowCompleteSource={workflowCompleteSource}
               />
+              </>
             )}
 
             {/* Key Takeaways */}

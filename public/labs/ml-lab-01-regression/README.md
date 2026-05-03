@@ -1,25 +1,46 @@
 # ML Lab 1 — Regressione: Predire Prezzi Case
 
+## Setup Locale
+
+### Prerequisiti
+- ✅ Python 3.7+ (scarica da [python.org](https://python.org))
+- ✅ pip (incluso in Python)
+
+### Comandi di avvio
+
+```bash
+# 1. Estrai lo ZIP
+
+# 2. Accedi alla cartella
+cd ml-lab-01-regression/
+
+# 3. Installa dipendenze
+pip install -r requirements.txt
+
+# 4. Esegui il lab
+python main.py
+```
+
+**💡 Troubleshooting:**
+- Se `pip install` fallisce: prova `pip3`
+- Virtual environment (consigliato):
+  ```bash
+  python -m venv venv
+  source venv/bin/activate          # Mac/Linux
+  # oppure
+  venv\Scripts\activate             # Windows
+  pip install -r requirements.txt
+  python main.py
+  ```
+
+---
+
 ## Cosa Imparerai
 - Caricare dataset reale (California Housing)
 - Esplorare dati (statistiche base)
 - Allenare modelli: Linear Regression + Random Forest
 - Valutare performance con MAE, RMSE, R²
 - Visualizzare previsioni vs realtà
-
----
-
-## Setup (2 min)
-
-### 1. Installa dipendenze
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Esegui il lab
-```bash
-python main.py
-```
 
 ---
 
