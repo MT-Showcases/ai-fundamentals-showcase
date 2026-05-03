@@ -41,6 +41,7 @@ interface PracticalWorkflowProps {
   intro?: string;
   downloadLinks: WorkflowDownloadLink[];
   steps: WorkflowStep[];
+  workflowCompleteSource?: string;
 }
 
 export default function PracticalWorkflow({
@@ -48,8 +49,10 @@ export default function PracticalWorkflow({
   intro,
   downloadLinks,
   steps,
+  workflowCompleteSource,
 }: PracticalWorkflowProps) {
   const [expandedSources, setExpandedSources] = useState<Record<number, boolean>>({});
+  const [showCompleteSource, setShowCompleteSource] = useState(false);
 
   return (
     <div className="bg-navy-900 border border-cyan-400/20 rounded-xl p-8 mb-8">
@@ -182,6 +185,44 @@ export default function PracticalWorkflow({
             </div>
           );
         })}
+
+        {workflowCompleteSource && (
+          <div className="mt-8 border-t border-cyan-400/20 pt-8">
+            <h4 className="text-lg font-semibold text-cyan-300 mb-4">
+              📽️ Fonte Completa — Video + Infografica Workflow
+            </h4>
+            <p className="text-sm text-gray-300 mb-4">
+              Carica questa fonte in NotebookLM per generare un video unificato o infografica con
+              l&apos;intero workflow da Step 1 a 5.
+            </p>
+
+            <div className="mb-4">
+              <button
+                onClick={() => setShowCompleteSource(!showCompleteSource)}
+                className="text-xs px-3 py-1.5 rounded-lg border border-blue-500/40 text-blue-300 hover:bg-blue-500/10 transition mr-2"
+              >
+                {showCompleteSource ? 'Nascondi fonte workflow' : 'Mostra fonte workflow'}
+              </button>
+            </div>
+
+            {showCompleteSource && (
+              <div className="rounded-lg border border-navy-600 bg-navy-900/70 p-3">
+                <pre className="text-xs text-gray-300 overflow-auto max-h-60 font-mono whitespace-pre-wrap break-words mb-3">
+                  {workflowCompleteSource}
+                </pre>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(workflowCompleteSource);
+                    alert('✅ Fonte workflow copiata!');
+                  }}
+                  className="text-xs px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition w-full"
+                >
+                  📋 Copia Fonte
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

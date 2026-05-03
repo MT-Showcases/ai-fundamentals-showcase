@@ -93,6 +93,253 @@ export default async function ChapterPage({ params }: Props) {
     ],
   };
 
+  const workflowCompleteSource = `CAPITOLO 4 — ML WORKFLOW PRATICO COMPLETO
+============================================
+
+CONTESTO:
+Questo workflow guida gli studenti attraverso 5 step per allenare modelli di Machine Learning su dati reali (California Housing). L'obiettivo è imparare il ciclo completo: carica → split → allena → valuta → visualizza.
+
+DATASET: California Housing (20,640 case, 8 features, prezzi reali).
+MODELLI: Linear Regression (semplice) vs Random Forest (complesso).
+METRICA: MAE (Mean Absolute Error) + R² (coefficient of determination).
+
+---
+
+STEP 1: CARICA I DATI
+File: main.py (linee 1-10)
+
+Obiettivo: Caricare dataset reale e prepararlo.
+
+Codice:
+\`\`\`python
+from sklearn.datasets import fetch_california_housing
+import pandas as pd
+housing = fetch_california_housing()
+X = pd.DataFrame(housing.data, columns=housing.feature_names)
+y = pd.Series(housing.target * 100000, name='Price')
+print(f"Dataset shape: {X.shape}")
+print(f"Price range: \${y.min():,.0f} - \${y.max():,.0f}")
+\`\`\`
+
+Output atteso:
+- Dataset shape: (20640, 8)
+- Price range: $14,999 - $500,001
+
+Learning outcome:
+- Come caricare dataset scikit-learn
+- Come esplorare shape e range del dataset
+- Come preparare features (X) e target (y)
+
+---
+
+STEP 2: DIVIDI IN TRAINING E VALIDATION
+File: main.py (linee 35-38)
+
+Obiettivo: Separare dati di allenamento da dati di valutazione per evitare overfitting.
+
+Codice:
+\`\`\`python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+print(f"Train: {len(X_train)}, Test: {len(X_test)}")
+\`\`\`
+
+Spiegazione:
+- test_size=0.2: 20% test, 80% training
+- random_state=42: garantisce risultati riproducibili
+- X_train/y_train: dati che il modello "vede" durante allenamento
+- X_test/y_test: dati "mai visti" per valutare generalizzazione
+
+Output atteso:
+- Train: 16512, Test: 4128
+
+Learning outcome:
+- Perché è cruciale il test set
+- Cos'è overfitting e come rilevarlo
+- Ruolo di random_state per riproducibilità
+
+---
+
+STEP 3: ALLENA IL MODELLO
+File: main.py (linee 45-52)
+
+Obiettivo: Allenare 2 modelli con diversa complessità e confrontarli.
+
+Codice:
+\`\`\`python
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+
+# Modello 1: Linear Regression (semplice, veloce)
+model_lr = LinearRegression()
+model_lr.fit(X_train, y_train)
+
+# Modello 2: Random Forest (complesso, più accurato)
+model_rf = RandomForestRegressor(n_estimators=100, random_state=42)
+model_rf.fit(X_train, y_train)
+\`\`\`
+
+Differenze:
+- Linear Regression: assume y = a*x + b (lineare, ~10 parametri)
+- Random Forest: crea 100 alberi (non-lineare, ~1000 parametri)
+
+Learning outcome:
+- Trade-off tra semplicità e accuratezza
+- Quando usare modelli semplici vs complessi
+- Concetto di n_estimators in ensemble methods
+
+---
+
+STEP 4: VALUTA PERFORMANCE
+File: main.py (linee 54-62)
+
+Obiettivo: Misurare errore su training e test. Diagnosi overfitting.
+
+Codice:
+\`\`\`python
+from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error
+import numpy as np
+
+# Linear Regression
+train_mae_lr = mean_absolute_error(y_train, model_lr.predict(X_train))
+test_mae_lr = mean_absolute_error(y_test, model_lr.predict(X_test))
+r2_lr = r2_score(y_test, model_lr.predict(X_test))
+
+# Random Forest
+train_mae_rf = mean_absolute_error(y_train, model_rf.predict(X_train))
+test_mae_rf = mean_absolute_error(y_test, model_rf.predict(X_test))
+r2_rf = r2_score(y_test, model_rf.predict(X_test))
+
+print(f"Linear Regression - Train MAE: \${train_mae_lr:,.0f}, Test MAE: \${test_mae_lr:,.0f}, R²: {r2_lr:.3f}")
+print(f"Random Forest - Train MAE: \${train_mae_rf:,.0f}, Test MAE: \${test_mae_rf:,.0f}, R²: {r2_rf:.3f}")
+\`\`\`
+
+Output atteso:
+\`\`\`
+Linear Regression - Train MAE: $70,234, Test MAE: $71,234, R²: 0.580
+Random Forest - Train MAE: $10,123, Test MAE: $49,123, R²: 0.760
+\`\`\`
+
+Diagnostica overfitting:
+- Linear: train ~= test ✅ Buona generalizzazione
+- Random Forest: train << test ⚠️ Segnale overfitting (ma R² test ancora buono)
+
+Metriche spiegate:
+- MAE: errore medio in dollari (più basso = meglio)
+- R²: % varianza spiegata (0-1, più alto = meglio)
+- train_mae vs test_mae: rivela overfitting
+
+Learning outcome:
+- Come interpretare MAE e R²
+- Riconoscere segnali di overfitting
+- Quando un modello "complesso" non significa "migliore"
+
+---
+
+STEP 5: VISUALIZZA RISULTATI
+File: main.py (linee 65-75)
+
+Obiettivo: Grafico scatter per visualizzare bontà previsioni.
+
+Codice:
+\`\`\`python
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# Linear Regression
+ax = axes[0]
+ax.scatter(y_test, model_lr.predict(X_test), alpha=0.3, s=10)
+min_val = min(y_test.min(), model_lr.predict(X_test).min())
+max_val = max(y_test.max(), model_lr.predict(X_test).max())
+ax.plot([min_val, max_val], [min_val, max_val], 'r--', lw=2, label='Perfect')
+ax.set_xlabel('Actual Price ($)')
+ax.set_ylabel('Predicted Price ($)')
+ax.set_title(f'Linear Regression (R²: {r2_lr:.3f})')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Random Forest
+ax = axes[1]
+ax.scatter(y_test, model_rf.predict(X_test), alpha=0.3, s=10)
+min_val = min(y_test.min(), model_rf.predict(X_test).min())
+max_val = max(y_test.max(), model_rf.predict(X_test).max())
+ax.plot([min_val, max_val], [min_val, max_val], 'r--', lw=2, label='Perfect')
+ax.set_xlabel('Actual Price ($)')
+ax.set_ylabel('Predicted Price ($)')
+ax.set_title(f'Random Forest (R²: {r2_rf:.3f})')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.savefig('housing-predictions.png', dpi=100)
+plt.show()
+\`\`\`
+
+Interpretazione grafico:
+- Punti sulla linea rossa = previsioni perfette
+- Scatter serrato = modello bravo
+- Scatter disperso = modello sbaglia molto
+
+Confronto modelli:
+- Linear: scatter più disperso (meno accurato)
+- Random Forest: scatter più serrato (più accurato)
+
+Learning outcome:
+- Visualizzazione come strumento diagnostico
+- Come riconoscere pattern di errore
+- Differenza visuale tra modelli
+
+---
+
+WORKFLOW COMPLETO — FLUSSO DIDATTICO
+============================================
+
+Sequenza consigliata:
+1. Studente scarica ZIP Lab 1
+2. Esegue python main.py
+3. Legge gli step sul sito (glossario interattivo, file structure)
+4. Modifica parametri (test_size, n_estimators) e re-esegue
+5. Carica questa fonte in NotebookLM → genera video/infografica workflow
+
+Concetti chiave:
+- Machine Learning = imparare pattern dai dati
+- Training set = dati per "insegnare"
+- Test set = dati per verificare che generalizza
+- Overfitting = memorizzazione (male)
+- Generalizzazione = apprendimento (bene)
+- MAE + R² = metriche complementari
+
+Esperimenti proposti (per approfondimento):
+1. Cambia test_size (0.1, 0.3, 0.5) → MAE cambia?
+2. Riduci n_estimators (10, 50) → velocità vs accuratezza
+3. Aggiungi feature nuove → R² migliora?
+4. Prova GradientBoostingRegressor → confronto con Random Forest
+
+Output atteso complessivo:
+- Screenshot grafico previsioni
+- Console con MAE + R² per entrambi i modelli
+- Comprensione del workflow completo
+- Capacità di estendere il lab con varianti proprie
+
+Tempo totale: 30-45 minuti (setup + esecuzione + esperimenti + lettura)
+
+---
+
+FONTE PER NOTEBOOKLM — ISTRUZIONI:
+1. Copia questo testo
+2. Vai a https://notebooklm.google.com
+3. Crea notebook nuovo
+4. Incolla il testo come fonte
+5. Genera: video (60-120s) oppure infografica (5 bullet + warning + takeaway)
+
+Output ideale:
+- Video: "ML Workflow: Da Housing Dataset a Previsioni Accurate"
+- Infografica: "5 Step per Allenare Modelli ML Efficaci"
+`;
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
@@ -175,7 +422,7 @@ export default async function ChapterPage({ params }: Props) {
             {chapter.slug === 'machine-learning' && (
               <PracticalWorkflow
                 title="ML Workflow Pratico — 5 Step"
-                intro="Impara facendo. Scarica il lab, poi segui gli step."
+                intro="Impara facendo. Scarica il lab e la guida, poi segui gli step."
                 downloadLinks={[
                   {
                     label: 'Scarica ZIP Lab 1 — Regressione Housing',
@@ -390,6 +637,7 @@ Spiegazione:
 Perché: il grafico rende visiva la qualità del modello e aiuta a individuare pattern di errore e outlier.`,
                   },
                 ]}
+                workflowCompleteSource={workflowCompleteSource}
               />
             )}
 
