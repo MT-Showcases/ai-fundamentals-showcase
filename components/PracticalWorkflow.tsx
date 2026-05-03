@@ -79,7 +79,7 @@ export default function PracticalWorkflow({
           return (
             <div
               key={step.number}
-              className="bg-navy-800 rounded-lg p-3 md:p-6 border border-cyan-400/20"
+              className="bg-navy-800 rounded-lg p-4 md:p-6 border border-cyan-400/20"
             >
               <div className="flex items-baseline gap-3 mb-4">
                 <div className="bg-cyan-400/20 text-cyan-300 font-bold px-3 py-1 rounded text-sm">
