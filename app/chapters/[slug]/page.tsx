@@ -270,19 +270,6 @@ y = pd.Series(housing.target * 100000, name='Price')`,
 print(y.describe())  # media, std, min, max`,
                       expectedResult: 'Vedrai statistiche del dataset: media ~$2.07M, std ~$1.15M, min/max range',
                     },
-                    notebookLmSource: `File: main.py (righe 28-32)
-
-from sklearn.datasets import fetch_california_housing
-housing = fetch_california_housing()
-X = pd.DataFrame(housing.data, columns=housing.feature_names)
-y = pd.Series(housing.target * 100000, name='Price')
-
-Spiegazione:
-- fetch_california_housing(): scarica dataset reale di case in California
-- X: tabella con le feature (es. stanze medie, reddito area, popolazione)
-- y: prezzo target in dollari (target originale * 100000)
-
-Perché: senza separare chiaramente feature e target non puoi addestrare né valutare un modello di regressione.`,
                   },
                   {
                     number: 2,
@@ -306,20 +293,6 @@ X_train, X_test, y_train, y_test = train_test_split(
                       after: `test_size=0.1  # 90% train, 10% test`,
                       expectedResult: 'MAE su test potrebbe migliorare (più training), ma validazione meno rigorosa',
                     },
-                    notebookLmSource: `File: main.py (righe 35-38)
-
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
-)
-
-Spiegazione:
-- test_size=0.2: 20% dei dati va al test, 80% al training
-- random_state=42: rende lo split riproducibile
-- X_train/X_test: features per training e test
-- y_train/y_test: target (prezzi) per training e test
-
-Perché: il test set rappresenta dati mai visti. Se il modello va bene solo su training ma male su test, c'è overfitting.`,
                   },
                   {
                     number: 3,
@@ -346,22 +319,6 @@ model_rf.fit(X_train, y_train)`,
                       after: `model_rf = RandomForestRegressor(n_estimators=10, random_state=42)  # 10 alberi`,
                       expectedResult: 'Addestramento più veloce (~10x), ma MAE potrebbe calare leggermente (meno accurato)',
                     },
-                    notebookLmSource: `File: main.py (righe 41-48)
-
-# Modello 1: Linear Regression
-model_lr = LinearRegression()
-model_lr.fit(X_train, y_train)
-
-# Modello 2: Random Forest
-model_rf = RandomForestRegressor(n_estimators=100, random_state=42)
-model_rf.fit(X_train, y_train)
-
-Spiegazione:
-- LinearRegression: baseline semplice e interpretabile
-- RandomForestRegressor: insieme di alberi che cattura relazioni non lineari
-- fit(...): fase di training sui dati già separati
-
-Perché: confrontare modelli diversi aiuta a scegliere il compromesso migliore tra semplicità, velocità e accuratezza.`,
                   },
                   {
                     number: 4,
@@ -390,23 +347,6 @@ print(f"Test R²: \${test_r2:.3f}")`,
 print(f"Train MAE: \${train_mae:.0f}, Test MAE: \${test_mae:.0f}, RMSE: \${test_rmse:.0f}")`,
                       expectedResult: 'RMSE solitamente è più alto di MAE (penalizza outlier). Tipo MAE $49k, RMSE $73k',
                     },
-                    notebookLmSource: `File: main.py (righe 51-60)
-
-from sklearn.metrics import mean_absolute_error, r2_score
-
-train_mae = mean_absolute_error(y_train, model.predict(X_train))
-test_mae = mean_absolute_error(y_test, model.predict(X_test))
-test_r2 = r2_score(y_test, model.predict(X_test))
-
-print(f"Train MAE: \${train_mae:.0f}, Test MAE: \${test_mae:.0f}")
-print(f"Test R²: \${test_r2:.3f}")
-
-Spiegazione:
-- MAE: errore medio assoluto (in dollari)
-- R²: quota di varianza spiegata dal modello
-- confronto train vs test: controllo della generalizzazione
-
-Perché: metriche su dati mai visti sono il test reale di affidabilità del modello.`,
                   },
                   {
                     number: 5,
@@ -434,23 +374,6 @@ plt.show()`,
                       after: `plt.scatter(y_test, y_pred, alpha=0.5, s=20, c='cyan', edgecolors='blue', linewidth=0.5)`,
                       expectedResult: 'Scatter più leggibile con bordi blu e colore ciano. Punti più grandi (s=20) = più visibilità',
                     },
-                    notebookLmSource: `File: main.py (righe 63-71)
-
-import matplotlib.pyplot as plt
-
-plt.scatter(y_test, y_pred, alpha=0.3, s=10)
-plt.plot([min_val, max_val], [min_val, max_val], 'r--', lw=2, label='Perfect')
-plt.xlabel('Actual Price ($)')
-plt.ylabel('Predicted Price ($)')
-plt.title('Predictions vs Reality')
-plt.show()
-
-Spiegazione:
-- scatter: ogni punto è una casa (reale vs predetto)
-- linea rossa tratteggiata: predizione perfetta (y = x)
-- distanza dalla linea = errore della previsione
-
-Perché: il grafico rende visiva la qualità del modello e aiuta a individuare pattern di errore e outlier.`,
                   },
                 ]}
               />
@@ -514,208 +437,3 @@ X, y = fetch_openml('mnist_784', version=1, return_X_y=True, as_frame=False)
 X, y = X[:10000], y[:10000] # Subset per velocità`,
                       codeLang: 'python',
                       tryThis: 'Prova a stampare X.shape. Cosa rappresentano quei 784 valori?',
-                      notebookLmSource: 'Il dataset MNIST è lo "Hello World" del Machine Learning: 70.000 immagini (qui usiamo le prime 10.000). Ogni immagine è srotolata in un array di 784 valori.'
-                    },
-                    {
-                      number: 2,
-                      title: 'Preprocessing (Scaling)',
-                      description: 'Le reti neurali lavorano male con valori grandi (es. pixel da 0 a 255). Scalare i dati verso lo zero accelera enormemente l\'apprendimento.',
-                      code: `from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)`,
-                      codeLang: 'python',
-                      tryThis: 'Se non scalassi i dati, il processo di discesa del gradiente farebbe enormi balzi a vuoto, rallentando la convergenza.',
-                      notebookLmSource: 'Lo StandardScaler sposta la media dei pixel a 0 e la deviazione standard a 1. È fondamentale per la stabilità matematica della rete.'
-                    },
-                    {
-                      number: 3,
-                      title: 'Definisci e Allena l\'Architettura',
-                      description: 'Creiamo un Multi-Layer Perceptron (MLP) con un singolo layer nascosto da 50 neuroni.',
-                      code: `from sklearn.neural_network import MLPClassifier
-nn_model = MLPClassifier(hidden_layer_sizes=(50,), max_iter=20, solver='sgd')
-nn_model.fit(X_train_scaled, y_train)`,
-                      codeLang: 'python',
-                      tryThis: 'Qui avviene la magia: la backpropagation aggiusta i pesi tra i 784 input, i 50 neuroni nascosti e i 10 output finali.',
-                      modificationExample: {
-                        lineNumber: 2,
-                        description: 'Cosa succede se la rete diventa più profonda?',
-                        before: 'hidden_layer_sizes=(50,)',
-                        after: 'hidden_layer_sizes=(50, 50,)',
-                        expectedResult: 'Vengono creati DUE layer nascosti da 50 neuroni. L\'apprendimento sarà leggermente più lento ma il modello potrà imparare pattern più complessi.'
-                      },
-                      notebookLmSource: 'Architettura scelta: 1 Hidden Layer, 50 neuroni, Stochastic Gradient Descent come solver e massimo 20 epoche per finire in fretta.'
-                    },
-                    {
-                      number: 4,
-                      title: 'Visualizza le Predizioni',
-                      description: 'Il modello prevede il numero basandosi sui pixel. Mostriamo i primi 10 risultati visivamente per capire dove sbaglia.',
-                      code: `import matplotlib.pyplot as plt
-img = X_test[0].reshape(28, 28)
-plt.imshow(img, cmap='gray')
-plt.title(f"Pred: {y_pred[0]} | Reale: {y_test[0]}")
-plt.show()`,
-                      codeLang: 'python',
-                      tryThis: 'Guarda l\'immagine generata: gli errori del modello sono giustificati? (Numeri scritti male e ambigui).',
-                    }
-                  ]}
-                  workflowCompleteSource={`CAPITOLO 5 — RETI NEURALI: RICONOSCIMENTO CIFRE (MNIST)
-======================================================
-
-CONTESTO DEL LABORATORIO:
-Questo workflow guida gli studenti nella costruzione, addestramento e analisi della loro prima Rete Neurale Artificiale. Il laboratorio mira a smitizzare le reti neurali, trattandole come modelli matematici accessibili piuttosto che come "scatole magiche" incomprensibili.
-
-DATASET UTILIZZATO: 
-- MNIST (Modified National Institute of Standards and Technology).
-- E' considerato lo "Hello World" del Machine Learning.
-- Consiste in immagini 28x28 pixel in scala di grigi raffiguranti numeri scritti a mano (da 0 a 9).
-- Per questioni di performance nel lab viene caricato un subset di 10.000 immagini.
-- Ogni immagine viene "appiattita" in un array 1D di 784 valori (28 * 28 = 784 features).
-
-TECNOLOGIE:
-- Scikit-learn (MLPClassifier). Viene scelto deliberatamente al posto di framework industriali (TensorFlow/PyTorch) per permettere allo studente di focalizzarsi sull'architettura dei layer e della backpropagation, senza doversi scontrare con l'ingegneria del calcolo su GPU, tensori, o cicli manuali di loss.backward().
-- Matplotlib e Seaborn per la visualizzazione.
-
----
-
-I 5 STEP DEL WORKFLOW:
-
-[Step 1] Caricamento Dati (MNIST)
-Il codice scarica il dataset MNIST via fetch_openml. I dati grezzi vengono affettati per estrarre 10.000 campioni (X) e le rispettive etichette (y). 
-L'obiettivo qui è far capire allo studente che un'immagine per il computer è solo una lunga fila di 784 numeri.
-
-[Step 2] Preprocessing e Scaling
-Questo è un passaggio cruciale per le reti neurali. I pixel originali hanno valori da 0 a 255. Passare valori così alti e sparsi a una rete neurale causa esplosioni dei gradienti e convergenza lentissima.
-Viene applicato uno \`StandardScaler\` che porta la media dei valori a 0 e la deviazione standard a 1. La normalizzazione accelera e stabilizza l'addestramento.
-
-[Step 3] Architettura e Addestramento (Multi-Layer Perceptron)
-Viene istanziato un classificatore neurale (\`MLPClassifier\`) configurato così:
-- \`hidden_layer_sizes=(50,)\`: Un singolo strato nascosto con 50 neuroni.
-- \`solver='sgd'\`: Discesa Stocastica del Gradiente.
-- \`max_iter=20\`: Numero limitato di epoche (volutamente basso per rapidità didattica, causerà un normale warning di convergenza).
-L'addestramento avviene chiamando il classico \`nn_model.fit(X_train_scaled, y_train)\`.
-
-[Step 4] Valutazione del Modello
-La rete fa predizioni sul set di test e ne calcoliamo l'accuratezza. Generalmente, anche un MLP semplice e allenato per sole 20 epoche riesce a ottenere un'accuratezza superiore al 90% su MNIST, dando un feedback molto positivo allo studente.
-
-[Step 5] Visualizzazione delle Predizioni
-Vengono estratti i primi 10 numeri dal Test Set. Ogni array di 784 pixel viene rimescolato (reshaped) in una matrice 28x28 per essere renderizzato a schermo.
-Matplotlib genera una griglia 2x5:
-- In verde i titoli con le predizioni corrette.
-- In rosso i titoli dove la rete neurale ha commesso un errore.
-
----
-
-ESERCIZIO PRATICO DI MODIFICA (Sperimentazione dell'Architettura):
-Il workflow spinge lo studente a esplorare l'architettura aprendo main.py e modificando il parametro dell'MLP.
-PRIMA: \`hidden_layer_sizes=(50,)\` (1 livello, 50 neuroni)
-DOPO: \`hidden_layer_sizes=(50, 50,)\` (2 livelli, 50 neuroni ciascuno, rete "Deep").
-Risultato atteso per lo studente: Vengono creati due livelli nascosti. La backpropagation diventerà matematicamente più costosa, il tempo di addestramento si allungherà, ma il modello acquisirà la capacità (in teoria) di mappare relazioni non lineari più complesse e migliorare l'accuracy finale.
-
----
-
-OBIETTIVO GENERAZIONE CONTENUTI DA QUESTO PROMPT:
-Usa questo intero workflow didattico per generare materiali di approfondimento per gli studenti. 
-Esempi di utilizzo:
-1) Script per video tutorial che mostra lo schermo mentre si spiega perché normalizzare MNIST.
-2) Infografica animabile che mostra il passaggio dai 784 input, ai 50 nodi nascosti, ai 10 nodi in output.
-3) Quiz di rinforzo sui motivi tecnici della scelta di Scikit-Learn invece di PyTorch per questo specifico lab.`}
-                />
-              </div>
-            )}
-
-            {/* Key Takeaways */}
-            <div className="mb-12">
-              <KeyTakeaway items={chapter.keyTakeaways} />
-            </div>
-
-            {/* Discussion Prompts */}
-            {chapter.discussionPrompts && chapter.discussionPrompts.length > 0 && (
-              <div className="mb-12">
-                <DiscussionPrompt prompts={chapter.discussionPrompts} />
-              </div>
-            )}
-
-            {/* Media Placeholders */}
-            <ChapterMediaSlots chapter={chapter} />
-
-            {/* Code Snippets */}
-            {chapter.codeSnippets && chapter.codeSnippets.length > 0 && (
-              <div className="mb-12">
-                <h3 className="text-cyan-300 font-bold mb-4">💻 Code Snippets</h3>
-                <div className="space-y-4">
-                  {chapter.codeSnippets.map((snippet, idx) => (
-                    <CodeSnippet key={idx} code={snippet.code} lang={snippet.lang} label={snippet.label} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Practical Exercises */}
-            {chapter.exercises && chapter.exercises.length > 0 && (
-              <ChapterExercises exercises={chapter.exercises} />
-            )}
-
-            {/* Quiz */}
-            {chapter.quiz && chapter.quiz.length > 0 && (
-              <div className="mb-12">
-                <h3 className="text-cyan-300 font-bold mb-4">🧠 Quiz del Capitolo</h3>
-                <ChapterQuiz quiz={chapter.quiz} chapterId={chapter.id} chapterSlug={chapter.slug} />
-              </div>
-            )}
-
-            {/* Navigation buttons */}
-            <div className="flex justify-between items-center mt-16 pt-8 border-t border-navy-600 gap-4">
-              {previousChapter ? (
-                <Link
-                  href={`/chapters/${previousChapter.slug}`}
-                  className="group flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-blue-500/40 text-cyan-300 hover:border-cyan-400 hover:bg-cyan-400/10 hover:text-cyan-200 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-200 font-medium text-base"
-                >
-                  <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                  <span className="hidden sm:inline">← Capitolo Precedente</span>
-                  <span className="sm:hidden">Precedente</span>
-                </Link>
-              ) : (
-                <div />
-              )}
-
-              <div className="text-xs text-gray-500 font-mono text-center flex-shrink-0">
-                {chapterNum} / {totalChapters}
-              </div>
-
-              {nextChapter ? (
-                <Link
-                  href={`/chapters/${nextChapter.slug}`}
-                  className="group flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-blue-500/40 text-cyan-300 hover:border-cyan-400 hover:bg-cyan-400/10 hover:text-cyan-200 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-200 font-medium text-base"
-                >
-                  <span className="hidden sm:inline">Capitolo Successivo →</span>
-                  <span className="sm:hidden">Successivo</span>
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              ) : (
-                <div />
-              )}
-            </div>
-          </main>
-        </div>
-      </div>
-      <BackToTopButton />
-      {/* Mini footer with privacy link */}
-      <footer className="bg-navy-800/60 border-t border-blue-800/30 py-4 px-6 text-center text-xs text-gray-600">
-        <span>AI Fundamentals — SJA Catania</span>
-        <span className="mx-2" aria-hidden="true">·</span>
-        <Link href="/privacy" className="hover:text-cyan-300 transition-colors">
-          Privacy Policy
-        </Link>
-        <span className="mx-2" aria-hidden="true">·</span>
-        <Link href="/terms" className="hover:text-cyan-300 transition-colors">
-          Termini di Servizio
-        </Link>
-      </footer>
-    </div>
-  );
-}
