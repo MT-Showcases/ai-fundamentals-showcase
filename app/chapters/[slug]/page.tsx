@@ -429,7 +429,33 @@ Output ideale:
 
             {chapter.slug === 'machine-learning' && (
               <>
-                <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8">
+              {/* Extra media slots just for the ML Workflow section that got omitted above */}
+              <SectionMediaSlots
+                chapterId={chapter.id}
+                chapterSlug={chapter.slug}
+                sectionIndex={4}
+                sectionTitle="ML Workflow Pratico — 5 Step"
+                sectionContent="Impara facendo con la guida e lo ZIP lab. Scarica, leggi gli step qui sotto, esegui main.py e sperimenta."
+                media={[
+                  {
+                    type: 'infographic',
+                    title: 'Infografica — ML Workflow 5 Step',
+                    description: 'Workflow visuale del processo ML applicato al dataset California Housing: dati, preprocessing, training, validazione e metriche.',
+                    placeholderPath: 'media/ch04-machine-learning/lab/infographic.png',
+                    notes: 'ready'
+                  },
+                  {
+                    type: 'video',
+                    title: 'Video — ML Workflow California Housing',
+                    description: 'Guida pratica ai 5 step del workflow ML: dal dataset al modello validato, con focus su metriche e decisioni operative.',
+                    estimatedDuration: '8 min',
+                    placeholderPath: 'media/ch04-machine-learning/lab/video.mp4',
+                    notes: 'ready'
+                  }
+                ]}
+              />
+
+              <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8 mt-8">
                   <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup Locale</h4>
                   
                   <div className="space-y-4">
