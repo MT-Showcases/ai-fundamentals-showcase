@@ -30,6 +30,7 @@ export const ch08: Chapter = {
         code: '{\n  "model": "gpt-4o-mini",\n  "messages": [\n    {\n      "role": "system",\n      "content": "Sei un esperto di AI con linguaggio accessibile."\n    },\n    {\n      "role": "user", \n      "content": "Scrivi un articolo di 300 parole su come l\'AI cambiera\' il marketing, rivolto a startup founder."\n    }\n  ],\n  "temperature": 0.7,\n  "max_tokens": 500\n}'
       }
     ],
+    labNote: 'Lab 4 — Generative AI con Groq API (ZIP scaricabile: ml-lab-04-generative-ai.zip). Account Groq gratuito, no carta. Modello: llama-3.1-8b-instant. Step: setup chiave API da .env, prima chiamata semplice, confronto prompt vago vs strutturato, uso system prompt, valutazione qualità output. Esperimento guidato con temperature e few-shot prompting.',
     discussionPrompts: [
       'Perché un output plausibile può essere comunque sbagliato?',
       'Quali guardrail minimi metteresti in un chatbot pubblico?',

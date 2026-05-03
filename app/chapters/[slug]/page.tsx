@@ -586,6 +586,150 @@ OBIETTIVO GENERAZIONE CONTENUTI:
               </div>
             )}
 
+            {chapter.slug === 'generative-ai' && (
+              <div className="mb-12">
+                <PracticalWorkflow
+                  title="Generative AI Workflow — Prompt Engineering"
+                  setupContent={
+                    <div className="space-y-4">
+                      <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
+                        <p className="text-sm text-gray-300 font-semibold mb-1">Cosa imparerai in questo lab:</p>
+                        <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc">
+                          <li>Connetterti a un LLM reale via API (gratis, senza carta)</li>
+                          <li>Confrontare prompt vaghi vs strutturati sullo stesso obiettivo</li>
+                          <li>Usare il system prompt per controllare il comportamento del modello</li>
+                          <li>Valutare la qualit&agrave; dell&apos;output con criteri pratici</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-300 mb-2">Prerequisiti:</p>
+                        <ul className="text-sm text-gray-400 space-y-1 ml-4">
+                          <li>&#x2705; Python 3.7+</li>
+                          <li>&#x2705; pip installato</li>
+                          <li>&#x2705; Account Groq gratuito — <a href="https://console.groq.com" target="_blank" rel="noopener" className="text-blue-300 hover:underline">console.groq.com</a> (no carta)</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-300 mb-2">Comandi di avvio:</p>
+                        <div className="bg-navy-900 rounded-lg p-4 border border-cyan-400/20 font-mono text-xs text-cyan-300 space-y-1">
+                          <p className="text-gray-400"># 1. Estrai lo ZIP e accedi</p>
+                          <p>$ cd ml-lab-04-generative-ai/</p>
+                          <p className="text-gray-400"># 2. Installa le dipendenze</p>
+                          <p>$ pip install -r requirements.txt</p>
+                          <p className="text-gray-400"># 3. Crea file .env con la tua chiave Groq</p>
+                          <p>$ echo &quot;GROQ_API_KEY=gsk_...&quot; &gt; .env</p>
+                          <p className="text-gray-400"># 4. Esegui il lab</p>
+                          <p>$ python main.py</p>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                  downloadLinks={[
+                    {
+                      label: 'Scarica ZIP Lab 4 — Generative AI',
+                      url: '/downloads/ml-lab-04-generative-ai.zip',
+                      icon: 'zip',
+                    },
+                  ]}
+                  steps={[
+                    {
+                      number: 1,
+                      title: 'Setup e connessione API',
+                      description: 'Carica la chiave Groq dal file .env e verifica la connessione con una chiamata test.',
+                      code: 'from dotenv import load_dotenv\nfrom groq import Groq\nimport os\n\nload_dotenv()\nclient = Groq(api_key=os.getenv("GROQ_API_KEY"))\n\n# Test connessione\nrisposta, tokens = call_llm(client, "Rispondi solo con: OK")\nprint(f"Connessione OK — token test: {tokens}")',
+                      codeLang: 'python',
+                      tryThis: 'Se vedi un errore 401, controlla che la chiave nel file .env sia corretta.',
+                    },
+                    {
+                      number: 2,
+                      title: 'Prima chiamata — prompt semplice',
+                      description: 'Chiedi al modello di spiegare un concetto AI in 2 righe.',
+                      code: 'prompt = "Spiega cos&apos;\u00e8 il Machine Learning in 2 righe."\nrisposta, tokens = call_llm(client, prompt)\nprint(risposta)\nprint(f"Token usati: {tokens}")',
+                      codeLang: 'python',
+                      tryThis: 'Cambia il concetto — prova con "deep learning" o "overfitting". La risposta cambia?',
+                    },
+                    {
+                      number: 3,
+                      title: 'Prompt vago vs Prompt strutturato',
+                      description: 'Stesso obiettivo, due prompt diversi: osserva come cambia la qualit&agrave; della risposta.',
+                      code: '# Prompt A: vago\nprompt_a = "Cos&apos;\u00e8 l&apos;overfitting?"\n\n# Prompt B: strutturato (ruolo + vincoli + formato)\nprompt_b = (\n    "Sei un docente AI per studenti di primo anno. "\n    "Spiega overfitting in max 3 bullet point "\n    "usando un&apos;analogia pratica."\n)',
+                      codeLang: 'python',
+                      tryThis: 'Qualè la differenza tra le due risposte? Il prompt B è sempre migliore?',
+                    },
+                    {
+                      number: 4,
+                      title: 'System Prompt — controllo comportamento',
+                      description: 'Il system prompt definisce il ruolo e i vincoli globali del modello per tutta la conversazione.',
+                      code: 'system = (\n    "Sei un assistente tecnico per startup AI. "\n    "Rispondi sempre in max 5 righe, "\n    "con linguaggio pratico e orientato al business."\n)\nrisposta, _ = call_llm(client, domanda, system_prompt=system)',
+                      codeLang: 'python',
+                      tryThis: 'Cambia il ruolo nel system prompt — prova "Sei uno studente universitario scettico". Come cambia il tono?',
+                    },
+                    {
+                      number: 5,
+                      title: 'Valutazione qualità output',
+                      description: 'Confronta le risposte con una scorecard: lunghezza, struttura, coerenza con il prompt.',
+                      code: 'def valuta(risposta):\n    parole = len(risposta.split())\n    ha_struttura = any(c in risposta for c in ["\u2022", "-", "1.", "\\n-"])\n    print(f"Parole: {parole}")\n    print(f"Struttura: {\u2705 if ha_struttura else \u274c}")\n\nvaluta(risposta_a)  # prompt vago\nvaluta(risposta_b)  # prompt strutturato',
+                      codeLang: 'python',
+                      tryThis: 'Sblocca la sezione ESPERIMENTO in fondo al main.py e testa il tuo prompt preferito!',
+                    },
+                  ]}
+                  workflowCompleteSource={`CAPITOLO 8 — GENERATIVE AI: PROMPT ENGINEERING CON GROQ API
+=============================================================
+
+CONTESTO DEL LABORATORIO:
+Questo lab porta gli studenti a interagire con un LLM reale per la prima volta. L'obiettivo non è usare l'AI come una chat, ma capire come costruire prompt controllati, come il system prompt modifica il comportamento del modello e come valutare la qualità dell'output in modo sistematico.
+
+TECNOLOGIE:
+- Groq API: provider gratuito (no carta di credito) con modelli LLaMA 3.1 open-source
+- llama-3.1-8b-instant: modello veloce e gratuito, compatibile con lo standard OpenAI
+- python-dotenv: gestione sicura della chiave API tramite file .env
+- Scelta deliberata: Groq invece di OpenAI per accessibilità totale degli studenti
+
+PERCHÉ GROQ E NON OPENAI:
+- Account gratuito, nessuna carta di credito, limiti generosi
+- Stesso standard API (il codice funziona su OpenAI cambiando 3 righe)
+- Modelli open-source (LLaMA 3 di Meta) — nessun vendor lock-in
+- Velocità estrema (hardware LPU specializzato)
+
+I 5 STEP DEL WORKFLOW:
+
+[Step 1] Setup e connessione API
+Lo studente carica la chiave Groq dal file .env tramite python-dotenv. Il client Groq viene inizializzato e testato con una chiamata minima. Se la chiave è assente o errata, il codice guida lo studente con istruzioni chiare.
+
+[Step 2] Prima chiamata — prompt semplice
+Una singola domanda semplice al modello (spiegare ML in 2 righe). Mostra il meccanismo base: prompt → risposta + conteggio token. Introduce il concetto di "token" come unità di costo/misura.
+
+[Step 3] Prompt vago vs Prompt strutturato
+Il cuore del lab. Stesso obiettivo (spiegare overfitting) con due prompt:
+- Prompt A vago: risposta generica, poco controllata
+- Prompt B strutturato (ruolo + vincoli + formato): risposta organizzata, coerente, utile
+Dimostra che il modello non è "intelligente" — segue istruzioni. Più istruzioni dai, più controllo hai.
+
+[Step 4] System Prompt
+Introduce il system prompt come livello di controllo superiore: definisce il ruolo e i vincoli validi per tutta la conversazione. Esempio: assistente tecnico per startup, risponde in 5 righe, linguaggio business.
+
+[Step 5] Valutazione qualità
+Scorecard automatica: lunghezza risposta, presenza struttura (bullet/numeri), coerenza con il prompt. Mostra che anche l'output AI si può valutare con metriche oggettive, non solo "mi piace/non mi piace".
+
+FLUSSO DIDATTICO:
+1. Vai su console.groq.com e crea account gratuito (2 minuti, no carta)
+2. Crea API Key → copia la chiave (inizia con gsk_...)
+3. Scarica ZIP Lab 4 (ml-lab-04-generative-ai.zip)
+4. cd ml-lab-04-generative-ai/
+5. pip install -r requirements.txt
+6. Crea file .env: GROQ_API_KEY=gsk_la_tua_chiave
+7. python main.py
+8. Osserva: connessione OK → prima risposta → confronto A/B → scorecard
+9. Sblocca la sezione ESPERIMENTO in fondo al main.py e testa prompt personalizzati
+
+OBIETTIVO GENERAZIONE CONTENUTI:
+1) Video: "Come costruire un prompt efficace — da vago a strutturato in 3 step"
+2) Infografica: anatomia di un prompt strutturato (ruolo + contesto + vincoli + formato)
+3) Quiz: differenza prompt vs system prompt, cosa sono i token, quando usare temperature alta vs bassa`}
+                />
+              </div>
+            )}
+
             {chapter.slug === 'neural-networks' && (
               <div className="mt-12">
                 <PracticalWorkflow
