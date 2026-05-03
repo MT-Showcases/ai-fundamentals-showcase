@@ -376,6 +376,65 @@ plt.show()`,
                     },
                   },
                 ]}
+                workflowCompleteSource={`CAPITOLO 4 — WORKFLOW DI MACHINE LEARNING (PREDIZIONE PREZZI CASE)
+================================================================
+
+CONTESTO DEL LABORATORIO:
+Questo workflow guida gli studenti attraverso i 5 passaggi fondamentali per allenare modelli di Machine Learning su dati reali. L'obiettivo è imparare il ciclo completo e rigoroso dell'addestramento, allontanandosi dalla teoria astratta e concentrandosi su risultati e metriche concrete.
+
+DATASET UTILIZZATO: 
+- California Housing Dataset.
+- Consiste in 20.640 record rappresentanti distretti californiani.
+- Ogni record ha 8 feature (es. reddito mediano, età media della casa, numero stanze).
+- Il target è il prezzo mediano della casa nel distretto.
+
+TECNOLOGIE E MODELLI:
+- Linguaggio: Python 3.
+- Librerie: Scikit-Learn per il Machine Learning, Pandas per manipolazione dati, Matplotlib per i grafici.
+- Modelli confrontati: Linear Regression (modello base/lineare) vs Random Forest Regressor (modello ensemble, alberi decisionali multipli).
+- Metriche: Mean Absolute Error (MAE) e R² (Coefficiente di Determinazione).
+
+---
+
+I 5 STEP DEL WORKFLOW:
+
+[Step 1] Estrazione e Caricamento Dati
+Il codice usa \`fetch_california_housing\` di scikit-learn. I dati vengono trasformati in un DataFrame Pandas per la massima chiarezza e manipolabilità. Questo step insegna l'importanza dell'esplorazione esplorativa dei dati (EDA), stampando il range dei prezzi per capire con cosa si sta lavorando (da ~$15k a ~$500k).
+
+[Step 2] Split dei Dati (Train/Test)
+Concetto fondamentale del ML: non testare mai il modello sui dati con cui ha studiato.
+Viene applicato \`train_test_split\` dividendo il dataset 80% (Training, per far imparare l'algoritmo) e 20% (Testing, come esame finale su dati mai visti per simulare l'ambiente reale).
+
+[Step 3] Addestramento (Training di 2 Modelli)
+Qui avviene il confronto didattico. Vengono istanziati e allenati in sequenza:
+1. Una \`LinearRegression()\`: Veloce, interpretabile, ma limitata. Traccia una singola linea matematica.
+2. Un \`RandomForestRegressor(n_estimators=100)\`: Pesante, black-box, ma potente. Usa 100 alberi decisionali che votano insieme.
+Questo step dimostra che la vera "intelligenza" algoritmica risiede nel comando \`.fit()\`.
+
+[Step 4] Valutazione e Metriche
+Sui dati di test (il 20% isolato), i due modelli fanno le loro predizioni.
+I risultati vengono misurati col MAE (l'errore in dollari reale: di quanto sbaglia in media?) e l'R² (da 0 a 1, quanto variano i dati spiegati dal modello?).
+Tipicamente il Random Forest schiaccia la Regressione Lineare, dimostrando il concetto di "Sotto-adattamento (Underfitting)" del modello lineare su dati complessi.
+
+[Step 5] Visualizzazione delle Predizioni
+I numeri nudi e crudi non bastano per comunicare con gli stakeholder. Il codice genera uno scatter plot (grafico a dispersione) confrontando sull'asse X i Prezzi Reali e sull'asse Y le Predizioni del Modello. Viene tracciata una riga rossa perfetta diagonale: più i puntini blu seguono la riga rossa, più il modello è preciso.
+
+---
+
+ESERCIZIO PRATICO DI MODIFICA (Ottimizzazione Parametri):
+Agli studenti viene chiesto di toccare con mano un iperparametro per capire il trade-off velocità/precisione.
+PRIMA: \`RandomForestRegressor(n_estimators=100)\`
+DOPO: \`RandomForestRegressor(n_estimators=10)\`
+Risultato atteso per lo studente: Riducendo drasticamente il numero di alberi, il training del modello diventerà fulmineo (10 volte più veloce), ma il MAE (l'errore in dollari) peggiorerà sensibilmente e il grafico sarà più "sparpagliato" rispetto alla riga rossa perfetta.
+
+---
+
+OBIETTIVO GENERAZIONE CONTENUTI DA QUESTO PROMPT:
+Questo documento racchiude l'esperienza olistica del primo lab di Machine Learning degli studenti.
+Usa questa fonte per generare:
+1) Script video per introdurre il concetto di Train/Test Split basato sull'analogia della "scuola vs esame finale".
+2) Infografiche riassuntive che comparino visivamente Linear Regression vs Random Forest in termini di pro/contro usando il caso California Housing.
+3) Riassunti didattici sulle metriche (spiegando il MAE e l'R²).`}
               />
               </div>
               </>
@@ -480,6 +539,67 @@ plt.show()`,
                       tryThis: 'Guarda l\'immagine generata: gli errori del modello sono giustificati? (Numeri scritti male e ambigui).'
                     }
                   ]}
+                  workflowCompleteSource={`CAPITOLO 5 — RETI NEURALI: RICONOSCIMENTO CIFRE (MNIST)
+======================================================
+
+CONTESTO DEL LABORATORIO:
+Questo workflow guida gli studenti nella costruzione, addestramento e analisi della loro prima Rete Neurale Artificiale. Il laboratorio mira a smitizzare le reti neurali, trattandole come modelli matematici accessibili piuttosto che come "scatole magiche" incomprensibili.
+
+DATASET UTILIZZATO: 
+- MNIST (Modified National Institute of Standards and Technology).
+- E' considerato lo "Hello World" del Machine Learning.
+- Consiste in immagini 28x28 pixel in scala di grigi raffiguranti numeri scritti a mano (da 0 a 9).
+- Per questioni di performance nel lab viene caricato un subset di 10.000 immagini.
+- Ogni immagine viene "appiattita" in un array 1D di 784 valori (28 * 28 = 784 features).
+
+TECNOLOGIE:
+- Scikit-learn (MLPClassifier). Viene scelto deliberatamente al posto di framework industriali (TensorFlow/PyTorch) per permettere allo studente di focalizzarsi sull'architettura dei layer e della backpropagation, senza doversi scontrare con l'ingegneria del calcolo su GPU, tensori, o cicli manuali di loss.backward().
+- Matplotlib e Seaborn per la visualizzazione.
+
+---
+
+I 5 STEP DEL WORKFLOW:
+
+[Step 1] Caricamento Dati (MNIST)
+Il codice scarica il dataset MNIST via fetch_openml. I dati grezzi vengono affettati per estrarre 10.000 campioni (X) e le rispettive etichette (y). 
+L'obiettivo qui è far capire allo studente che un'immagine per il computer è solo una lunga fila di 784 numeri.
+
+[Step 2] Preprocessing e Scaling
+Questo è un passaggio cruciale per le reti neurali. I pixel originali hanno valori da 0 a 255. Passare valori così alti e sparsi a una rete neurale causa esplosioni dei gradienti e convergenza lentissima.
+Viene applicato uno \`StandardScaler\` che porta la media dei valori a 0 e la deviazione standard a 1. La normalizzazione accelera e stabilizza l'addestramento.
+
+[Step 3] Architettura e Addestramento (Multi-Layer Perceptron)
+Viene istanziato un classificatore neurale (\`MLPClassifier\`) configurato così:
+- \`hidden_layer_sizes=(50,)\`: Un singolo strato nascosto con 50 neuroni.
+- \`solver='sgd'\`: Discesa Stocastica del Gradiente.
+- \`max_iter=20\`: Numero limitato di epoche (volutamente basso per rapidità didattica, causerà un normale warning di convergenza).
+L'addestramento avviene chiamando il classico \`nn_model.fit(X_train_scaled, y_train)\`.
+
+[Step 4] Valutazione del Modello
+La rete fa predizioni sul set di test e ne calcoliamo l'accuratezza. Generalmente, anche un MLP semplice e allenato per sole 20 epoche riesce a ottenere un'accuratezza superiore al 90% su MNIST, dando un feedback molto positivo allo studente.
+
+[Step 5] Visualizzazione delle Predizioni
+Vengono estratti i primi 10 numeri dal Test Set. Ogni array di 784 pixel viene rimescolato (reshaped) in una matrice 28x28 per essere renderizzato a schermo.
+Matplotlib genera una griglia 2x5:
+- In verde i titoli con le predizioni corrette.
+- In rosso i titoli dove la rete neurale ha commesso un errore.
+
+---
+
+ESERCIZIO PRATICO DI MODIFICA (Sperimentazione dell'Architettura):
+Il workflow spinge lo studente a esplorare l'architettura aprendo main.py e modificando il parametro dell'MLP.
+PRIMA: \`hidden_layer_sizes=(50,)\` (1 livello, 50 neuroni)
+DOPO: \`hidden_layer_sizes=(50, 50,)\` (2 livelli, 50 neuroni ciascuno, rete "Deep").
+Risultato atteso per lo studente: Vengono creati due livelli nascosti. La backpropagation diventerà matematicamente più costosa, il tempo di addestramento si allungherà, ma il modello acquisirà la capacità (in teoria) di mappare relazioni non lineari più complesse e migliorare l'accuracy finale.
+
+---
+
+OBIETTIVO GENERAZIONE CONTENUTI DA QUESTO PROMPT:
+Usa questo intero workflow didattico per generare materiali di approfondimento per gli studenti. 
+Esempi di utilizzo:
+1) Script per video tutorial che mostra lo schermo mentre si spiega perché normalizzare MNIST.
+2) Infografica animabile che mostra il passaggio dai 784 input, ai 50 nodi nascosti, ai 10 nodi in output.
+3) Quiz di rinforzo sui motivi tecnici della scelta di Scikit-Learn invece di PyTorch per questo specifico lab.`}
                 />
               </div>
             )}
