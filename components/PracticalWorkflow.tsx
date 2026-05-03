@@ -99,11 +99,11 @@ export default function PracticalWorkflow({
                     {step.modificationExample.description}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="space-y-4 mb-4">
                     <div>
                       <p className="text-xs text-gray-400 mb-2 font-mono">PRIMA:</p>
                       <CodeSnippet
-                        lang={lang}
+                        lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
                         code={step.modificationExample.before}
                         label="Originale"
                       />
@@ -112,7 +112,7 @@ export default function PracticalWorkflow({
                     <div>
                       <p className="text-xs text-gray-400 mb-2 font-mono">DOPO (Prova):</p>
                       <CodeSnippet
-                        lang={lang}
+                        lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
                         code={step.modificationExample.after}
                         label="Modificato"
                       />
