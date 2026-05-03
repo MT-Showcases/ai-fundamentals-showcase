@@ -8,31 +8,19 @@ export const ch15: Chapter = {
     sections: [
       {
         title: 'Da Narrow AI a AGI: cosa è realistico oggi',
-        content: 'La maggior parte dei sistemi attuali è **narrow AI**: molto forte in compiti specifici, fragile fuori contesto. L\'idea di **AGI** (Artificial General Intelligence) descrive invece un sistema capace di adattarsi trasversalmente a domini diversi con ragionamento robusto. Oggi non siamo a quel livello: abbiamo progressi rapidi, ma anche limiti chiari su affidabilità, causalità e autonomia decisionale in ambienti complessi.\n\n*Nota pratica:* per valutare roadmap e investimenti, distingui sempre "demo impressionante" da "capacità stabile in produzione". <<Takeaway: il futuro si costruisce su evidenze misurabili, non su hype>>.',
-        media: [
-          { type: 'infographic', title: 'Narrow AI vs AGI', description: 'Confronto visivo tra capacità specialistiche attuali e ipotesi di intelligenza generale.', placeholderPath: 'media/ch15-future-ai/sec-01/infographic.png', notes: 'placeholder' }
-        ]
+        content: 'La maggior parte dei sistemi attuali è **narrow AI**: molto forte in compiti specifici, fragile fuori contesto. L\'idea di **AGI** (Artificial General Intelligence) descrive invece un sistema capace di adattarsi trasversalmente a domini diversi con ragionamento robusto. Oggi non siamo a quel livello: abbiamo progressi rapidi, ma anche limiti chiari su affidabilità, causalità e autonomia decisionale in ambienti complessi.\n\n*Nota pratica:* per valutare roadmap e investimenti, distingui sempre "demo impressionante" da "capacità stabile in produzione". <<Takeaway: il futuro si costruisce su evidenze misurabili, non su hype>>.'
       },
       {
         title: 'Trend 2026-2030: cosa cambia davvero nei prodotti',
-        content: 'Nei prossimi anni vedremo soprattutto tre direttrici: (1) **copilot verticali** integrati nei workflow, (2) **agent orchestrati** con limiti e approvazioni, (3) **automazione multimodale** (testo, voce, immagini, documenti) nei processi operativi. Il vantaggio competitivo non verrà da "avere l\'AI", ma da come la integri con dati, processi e responsabilità chiare.\n\n*Nota pratica:* ogni iniziativa AI dovrebbe avere baseline, KPI e piano di fallback prima del rilascio. <<Takeaway: scalano i team che trasformano l\'AI in processo, non solo in feature>>.',
-        media: [
-          { type: 'video', title: 'Trend AI di prodotto 2026-2030', description: 'Panoramica sui pattern emergenti: copilot verticali, agent governati e multimodalità.', placeholderPath: 'media/ch15-future-ai/sec-02/video.mp4', notes: 'placeholder' }
-        ]
+        content: 'Nei prossimi anni vedremo soprattutto tre direttrici: (1) **copilot verticali** integrati nei workflow, (2) **agent orchestrati** con limiti e approvazioni, (3) **automazione multimodale** (testo, voce, immagini, documenti) nei processi operativi. Il vantaggio competitivo non verrà da "avere l\'AI", ma da come la integri con dati, processi e responsabilità chiare.\n\n*Nota pratica:* ogni iniziativa AI dovrebbe avere baseline, KPI e piano di fallback prima del rilascio. <<Takeaway: scalano i team che trasformano l\'AI in processo, non solo in feature>>.'
       },
       {
         title: 'Opportunità, rischi e governance nel lungo periodo',
-        content: 'Le opportunità sono enormi: ricerca scientifica accelerata, salute più personalizzata, formazione adattiva, produttività diffusa. I rischi sono altrettanto concreti: concentrazione di potere, automazione senza tutele, disinformazione scalabile, errori ad alto impatto in settori sensibili.\n\nLa domanda utile non è "AI sì o no", ma **quale AI, con quali controlli, per quali decisioni**. Struttura minima di governance: classificazione rischio, human-in-the-loop nei casi critici, audit trail, monitoraggio continuo e revisione periodica delle policy.',
-        media: [
-          { type: 'infographic', title: 'Matrice Opportunità-Rischio-Mitigation', description: 'Framework pratico per valutare valore, impatto e controlli necessari.', placeholderPath: 'media/ch15-future-ai/sec-03/infographic.png', notes: 'placeholder' }
-        ]
+        content: 'Le opportunità sono enormi: ricerca scientifica accelerata, salute più personalizzata, formazione adattiva, produttività diffusa. I rischi sono altrettanto concreti: concentrazione di potere, automazione senza tutele, disinformazione scalabile, errori ad alto impatto in settori sensibili.\n\nLa domanda utile non è "AI sì o no", ma **quale AI, con quali controlli, per quali decisioni**. Struttura minima di governance: classificazione rischio, human-in-the-loop nei casi critici, audit trail, monitoraggio continuo e revisione periodica delle policy.'
       },
       {
         title: 'Errore comune + Check rapido',
-        content: '**Errore comune:** confondere trend mediatico con priorità strategica del proprio contesto.\n\n**Check rapido (2 min):** scegli un caso AI del tuo dominio e rispondi:\n1) quale problema reale risolve?\n2) quale rischio operativo introduce?\n3) quale controllo metti prima del rollout?',
-        media: [
-          { type: 'podcast', title: 'Podcast — Strategia AI senza hype', description: 'Come tradurre trend futuri in scelte operative sostenibili.', placeholderPath: 'media/ch15-future-ai/sec-04/podcast.mp3', notes: 'placeholder' }
-        ]
+        content: '**Errore comune:** confondere trend mediatico con priorità strategica del proprio contesto.\n\n**Check rapido (2 min):** scegli un caso AI del tuo dominio e rispondi:\n1) quale problema reale risolve?\n2) quale rischio operativo introduce?\n3) quale controllo metti prima del rollout?'
       }
     ],
     keyTakeaways: [
@@ -46,12 +34,6 @@ export const ch15: Chapter = {
       'Nel tuo settore, quale attività cambierà prima con AI: analisi, decisione o esecuzione?',
       'Quali decisioni non automatizzeresti mai senza revisione umana obbligatoria?',
       'Come misureresti se un progetto AI "futuro-oriented" sta creando valore reale oggi?'
-    ],
-    media: [
-      { type: 'video', title: 'Video Capitolo 15', description: 'Scenari futuri AI e scelte strategiche per i prossimi anni.', estimatedDuration: '9-11 min', placeholderPath: 'media/ch15-future-ai/video.mp4', notes: 'placeholder' },
-      { type: 'podcast', title: 'Podcast Capitolo 15', description: 'Versione audio su trend, impatti e governance del futuro AI.', estimatedDuration: '12-16 min', placeholderPath: 'media/ch15-future-ai/podcast.mp3', notes: 'placeholder' },
-      { type: 'infographic', title: 'Infografica Capitolo 15', description: 'Mappa scenari 2026-2030 con opportunità, rischi e controlli consigliati.', placeholderPath: 'media/ch15-future-ai/infographic.png', notes: 'placeholder' },
-      { type: 'resource', title: 'Asset/Dispensa', description: 'Template roadmap AI con KPI, rischi e azioni di mitigazione.', placeholderPath: 'media/ch15-future-ai/handout.pdf', notes: 'placeholder' }
     ],
     exercises: [
       {

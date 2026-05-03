@@ -6,10 +6,10 @@ export const ch08: Chapter = {
     title: 'AI Generativa: Quando l\'AI Crea',
     description: 'Da ChatGPT alle immagini generate',
     sections: [
-      { title: 'Come Funziona un LLM', content: "Un **LLM** genera testo predicendo il token successivo in base al contesto. L'output può essere fluido ma non sempre corretto.\n\n*Nota pratica:* separa qualità linguistica da accuratezza fattuale. <<Takeaway: testo convincente non equivale a testo vero>>.", media: [ { type: 'infographic', title: 'Next-token prediction', description: 'Schema del ciclo di generazione token.', placeholderPath: 'media/ch08-generative-ai/sec-01/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Prompt Engineering', content: "Prompt vaghi producono output generici; prompt strutturati aumentano pertinenza, formato e coerenza.\n\n*Nota pratica:* usa template con ruolo, contesto, vincoli e output atteso. <<Takeaway: prompt design è una leva di controllo>>.", media: [ { type: 'video', title: 'Prompt design in pratica', description: 'Confronto prima/dopo su prompt.', placeholderPath: 'media/ch08-generative-ai/sec-02/video.mp4', notes: 'placeholder' } ] },
-      { title: 'Startup Lens', content: "Generative AI in produzione richiede guardrail: verifica fonti, filtri sicurezza, logging e fallback umano sui casi critici.", media: [ { type: 'infographic', title: 'Guardrail generativa', description: 'Pipeline di controllo output.', placeholderPath: 'media/ch08-generative-ai/sec-03/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Errore comune + Check rapido', content: "**Errore comune:** pubblicare output AI senza verifica.\n\n**Check rapido (2 min):** prendi un output e indica 2 controlli minimi da fare prima di usarlo.", media: [ { type: 'podcast', title: 'Podcast — Validazione output', description: 'QA rapido su output generativi.', placeholderPath: 'media/ch08-generative-ai/sec-04/podcast.mp3', notes: 'placeholder' } ] }
+      { title: 'Come Funziona un LLM', content: "Un **LLM** genera testo predicendo il token successivo in base al contesto. L'output può essere fluido ma non sempre corretto.\n\n*Nota pratica:* separa qualità linguistica da accuratezza fattuale. <<Takeaway: testo convincente non equivale a testo vero>>." },
+      { title: 'Prompt Engineering', content: "Prompt vaghi producono output generici; prompt strutturati aumentano pertinenza, formato e coerenza.\n\n*Nota pratica:* usa template con ruolo, contesto, vincoli e output atteso. <<Takeaway: prompt design è una leva di controllo>>." },
+      { title: 'Startup Lens', content: "Generative AI in produzione richiede guardrail: verifica fonti, filtri sicurezza, logging e fallback umano sui casi critici." },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** pubblicare output AI senza verifica.\n\n**Check rapido (2 min):** prendi un output e indica 2 controlli minimi da fare prima di usarlo." }
     ],
     keyTakeaways: [
       'LLM predice token, non ragiona come un umano',
@@ -35,12 +35,6 @@ export const ch08: Chapter = {
       'Perché un output plausibile può essere comunque sbagliato?',
       'Quali guardrail minimi metteresti in un chatbot pubblico?',
       'Quando usare fallback umano in un flusso generativo?'
-    ],
-    media: [
-      { type: 'video', title: 'Video Capitolo 8', description: 'Panoramica su LLM, prompt e validazione.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch08-generative-ai/video.mp4', notes: 'placeholder' },
-      { type: 'podcast', title: 'Podcast Capitolo 8', description: 'Rischi e uso responsabile della generativa.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch08-generative-ai/podcast.mp3', notes: 'placeholder' },
-      { type: 'infographic', title: 'Infografica Capitolo 8', description: 'Prompt framework + guardrail.', placeholderPath: 'media/ch08-generative-ai/infographic.png', notes: 'placeholder' },
-      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist QA output generativi.', placeholderPath: 'media/ch08-generative-ai/handout.pdf', notes: 'placeholder' }
     ],
     exercises: [
       {

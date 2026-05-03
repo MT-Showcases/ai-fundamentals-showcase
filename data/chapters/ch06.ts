@@ -6,10 +6,10 @@ export const ch06: Chapter = {
     title: 'NLP: Processamento del Linguaggio Naturale',
     description: 'Come l\'AI capisce il linguaggio umano',
     sections: [
-      { title: 'Da Testo a Numeri', content: 'I computer non capiscono le parole come gli esseri umani: devono trasformarle in numeri.\n\nIl processo base ha due step: **tokenizzazione** (spezza il testo in unità) e **embedding** (trasforma ogni token in un vettore numerico). Parole e frasi con significato vicino tendono ad avere vettori vicini nello spazio semantico.\n\n*Nota pratica:* se la tokenizzazione è sbagliata, anche il miglior modello produrrà risposte incoerenti. <<Takeaway: NLP parte dalla qualità della rappresentazione numerica del testo>>.', media: [ { type: 'infographic', title: 'Token e embedding', description: 'Schema visuale: testo → token → vettori.', placeholderPath: 'media/ch06-nlp/sec-01/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Transformer e Attention', content: 'I **Transformer** sono l\'architettura alla base dei moderni LLM. Il meccanismo chiave è l\'**attention**: il modello pesa dinamicamente quali parti del testo sono più rilevanti nel contesto attuale.\n\nEsempio: in una frase lunga, attention permette di collegare parole distanti ma semanticamente legate, migliorando coerenza e comprensione.\n\n*Nota pratica:* l\'attention migliora il focus, ma non elimina errori fattuali: serve sempre validazione output. <<Takeaway: attenzione al contesto > semplice sequenza di parole>>.', media: [ { type: 'video', title: 'Transformer in pratica', description: 'Spiegazione visiva di attention su frasi reali.', placeholderPath: 'media/ch06-nlp/sec-02/video.mp4', notes: 'placeholder' } ] },
-      { title: 'Startup Lens', content: 'In un prodotto reale NLP non significa solo "prompt": significa pipeline completa con fallback, moderazione, monitoraggio qualità e controllo costi token.\n\nSe non tracci latenza, tasso fallback e qualità percepita, il sistema sembra funzionare in demo ma degrada in produzione.', media: [ { type: 'infographic', title: 'NLP pipeline prodotto', description: 'Prompt, guardrail, fallback e KPI di qualità.', placeholderPath: 'media/ch06-nlp/sec-03/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Errore comune + Check rapido', content: '**Errore comune:** valutare il sistema NLP solo su 2-3 prompt "fortunati".\n\n**Check rapido (2 min):** scegli un caso d\'uso (chat supporto, FAQ, classificazione) e indica 2 prompt edge-case che potrebbero rompere il comportamento atteso.', media: [ { type: 'podcast', title: 'Podcast — Prompt edge-case', description: 'Come testare robustezza NLP con casi limite.', placeholderPath: 'media/ch06-nlp/sec-04/podcast.mp3', notes: 'placeholder' } ] }
+      { title: 'Da Testo a Numeri', content: 'I computer non capiscono le parole come gli esseri umani: devono trasformarle in numeri.\n\nIl processo base ha due step: **tokenizzazione** (spezza il testo in unità) e **embedding** (trasforma ogni token in un vettore numerico). Parole e frasi con significato vicino tendono ad avere vettori vicini nello spazio semantico.\n\n*Nota pratica:* se la tokenizzazione è sbagliata, anche il miglior modello produrrà risposte incoerenti. <<Takeaway: NLP parte dalla qualità della rappresentazione numerica del testo>>.' },
+      { title: 'Transformer e Attention', content: 'I **Transformer** sono l\'architettura alla base dei moderni LLM. Il meccanismo chiave è l\'**attention**: il modello pesa dinamicamente quali parti del testo sono più rilevanti nel contesto attuale.\n\nEsempio: in una frase lunga, attention permette di collegare parole distanti ma semanticamente legate, migliorando coerenza e comprensione.\n\n*Nota pratica:* l\'attention migliora il focus, ma non elimina errori fattuali: serve sempre validazione output. <<Takeaway: attenzione al contesto > semplice sequenza di parole>>.' },
+      { title: 'Startup Lens', content: 'In un prodotto reale NLP non significa solo "prompt": significa pipeline completa con fallback, moderazione, monitoraggio qualità e controllo costi token.\n\nSe non tracci latenza, tasso fallback e qualità percepita, il sistema sembra funzionare in demo ma degrada in produzione.' },
+      { title: 'Errore comune + Check rapido', content: '**Errore comune:** valutare il sistema NLP solo su 2-3 prompt "fortunati".\n\n**Check rapido (2 min):** scegli un caso d\'uso (chat supporto, FAQ, classificazione) e indica 2 prompt edge-case che potrebbero rompere il comportamento atteso.' }
     ],
     keyTakeaways: [
       'Il linguaggio deve essere convertito in numeri',
@@ -35,38 +35,6 @@ export const ch06: Chapter = {
       'Come cambierebbe ChatGPT se non avesse Attention mechanism?',
       'Qual è il limite della context window e come potrebbe impattare la comprensione?',
       'Se due parole hanno embedding molto simili, cosa significa?'
-    ],
-    media: [
-      {
-        type: 'video',
-        title: 'Video Capitolo 6',
-        description: 'Panoramica NLP: token, embedding, attention e uso in prodotto.',
-        estimatedDuration: '8-10 min',
-        placeholderPath: 'media/ch06-nlp/video.mp4',
-        notes: 'placeholder'
-      },
-      {
-        type: 'podcast',
-        title: 'Podcast Capitolo 6',
-        description: 'Versione audio su NLP pratico e failure mode comuni.',
-        estimatedDuration: '10-15 min',
-        placeholderPath: 'media/ch06-nlp/podcast.mp3',
-        notes: 'placeholder'
-      },
-      {
-        type: 'infographic',
-        title: 'Infografica Capitolo 6',
-        description: 'Schema completo pipeline NLP + prompt QA.',
-        placeholderPath: 'media/ch06-nlp/infographic.png',
-        notes: 'placeholder'
-      },
-      {
-        type: 'resource',
-        title: 'Asset/Dispensa',
-        description: 'Checklist di test prompt e qualità output NLP.',
-        placeholderPath: 'media/ch06-nlp/handout.pdf',
-        notes: 'placeholder'
-      }
     ],
     exercises: [
       {

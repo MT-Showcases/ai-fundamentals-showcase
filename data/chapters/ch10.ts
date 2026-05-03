@@ -6,10 +6,10 @@ export const ch10: Chapter = {
     title: "Etica e Responsabilità nell'AI",
     description: "Quando l\'AI fa male",
     sections: [
-      { title: 'Bias e Discriminazione', content: "I bias nei dati possono diventare decisioni ingiuste su persone reali.\n\n*Nota pratica:* non basta accuracy globale: analizza l\'impatto sui sottogruppi. <<Takeaway: performance senza fairness può creare danni concreti>>.", media: [ { type: 'infographic', title: 'Bias pipeline', description: 'Dove nasce e come si propaga il bias.', placeholderPath: 'media/ch10-ethics-ai/sec-01/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Trasparenza e Spiegabilità', content: "Nei contesti sensibili serve spiegare come e perché il sistema decide.\n\n*Nota pratica:* definisci logging decisionale e revisione umana dove necessario. <<Takeaway: trasparenza è requisito operativo>>.", media: [ { type: 'video', title: 'Explainability in pratica', description: 'Come rendere verificabili decisioni AI.', placeholderPath: 'media/ch10-ethics-ai/sec-02/video.mp4', notes: 'placeholder' } ] },
-      { title: 'Startup Lens', content: "Governance minima: policy d\'uso, livelli di rischio, escalation umana, audit periodici e tracciamento incidenti.", media: [ { type: 'infographic', title: 'Governance AI minima', description: 'Policy, audit e controllo continuo.', placeholderPath: 'media/ch10-ethics-ai/sec-03/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Errore comune + Check rapido', content: "**Errore comune:** trattare l\'etica come documento e non come processo tecnico.\n\n**Check rapido (2 min):** indica una decisione del tuo use case che deve avere revisione umana obbligatoria.", media: [ { type: 'podcast', title: 'Podcast — Etica operativa', description: 'Dal principio etico al controllo pratico.', placeholderPath: 'media/ch10-ethics-ai/sec-04/podcast.mp3', notes: 'placeholder' } ] }
+      { title: 'Bias e Discriminazione', content: "I bias nei dati possono diventare decisioni ingiuste su persone reali.\n\n*Nota pratica:* non basta accuracy globale: analizza l\'impatto sui sottogruppi. <<Takeaway: performance senza fairness può creare danni concreti>>." },
+      { title: 'Trasparenza e Spiegabilità', content: "Nei contesti sensibili serve spiegare come e perché il sistema decide.\n\n*Nota pratica:* definisci logging decisionale e revisione umana dove necessario. <<Takeaway: trasparenza è requisito operativo>>." },
+      { title: 'Startup Lens', content: "Governance minima: policy d\'uso, livelli di rischio, escalation umana, audit periodici e tracciamento incidenti." },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** trattare l\'etica come documento e non come processo tecnico.\n\n**Check rapido (2 min):** indica una decisione del tuo use case che deve avere revisione umana obbligatoria." }
     ],
     keyTakeaways: [
       'I dati possono amplificare bias',
@@ -22,12 +22,6 @@ export const ch10: Chapter = {
       'Quale decisione AI nel tuo dominio richiede sempre revisione umana?',
       'Come bilanciare accuratezza e spiegabilità?',
       'Quale metrica useresti per monitorare fairness nel tempo?'
-    ],
-    media: [
-      { type: 'video', title: 'Video Capitolo 10', description: 'Etica AI applicata a decisioni reali.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch10-ethics-ai/video.mp4', notes: 'placeholder' },
-      { type: 'podcast', title: 'Podcast Capitolo 10', description: 'Rischi, trade-off e governance operativa.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch10-ethics-ai/podcast.mp3', notes: 'placeholder' },
-      { type: 'infographic', title: 'Infografica Capitolo 10', description: 'Mappa rischi etici + mitigazioni.', placeholderPath: 'media/ch10-ethics-ai/infographic.png', notes: 'placeholder' },
-      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist audit etico pre-deploy.', placeholderPath: 'media/ch10-ethics-ai/handout.pdf', notes: 'placeholder' }
     ],
     exercises: [
       {

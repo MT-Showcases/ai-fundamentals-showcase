@@ -6,10 +6,10 @@ export const ch07: Chapter = {
     title: 'Computer Vision: La Vista dell\'AI',
     description: 'Come l\'AI vede e analizza immagini',
     sections: [
-      { title: 'Convolutional Neural Networks', content: "Le **CNN** estraggono pattern visivi con filtri locali: bordi, texture e forme. I layer iniziali catturano feature semplici; quelli profondi feature più astratte utili alla classificazione.\n\n*Nota pratica:* validare solo su immagini pulite crea falsa sicurezza. <<Takeaway: Vision affidabile = modello + test realistici>>.", media: [ { type: 'infographic', title: 'CNN a strati', description: 'Dal pixel alle feature complesse.', placeholderPath: 'media/ch07-computer-vision/sec-01/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Riconoscimento di Oggetti', content: "Il modello produce probabilità per classe, ma può degradare su sfocature, controluce, occlusioni e angoli insoliti.\n\n*Nota pratica:* misura errori su edge-case, non solo accuracy media. <<Takeaway: la media può nascondere failure critici>>.", media: [ { type: 'video', title: 'Object detection edge-case', description: 'Errori tipici in luce scarsa e occlusioni.', placeholderPath: 'media/ch07-computer-vision/sec-02/video.mp4', notes: 'placeholder' } ] },
-      { title: 'Startup Lens', content: "In produzione servono soglie di confidence, fallback umano e monitoraggio continuo dei casi ambigui. Senza osservabilità, il sistema sembra buono in demo ma fragile nel reale.", media: [ { type: 'infographic', title: 'Pipeline vision in produzione', description: 'Acquisizione, inferenza, fallback e KPI.', placeholderPath: 'media/ch07-computer-vision/sec-03/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Errore comune + Check rapido', content: "**Errore comune:** testare solo immagini perfette da laboratorio.\n\n**Check rapido (2 min):** indica 2 edge-case del tuo dominio e 1 mitigazione operativa.", media: [ { type: 'podcast', title: 'Podcast — Vision robusta', description: 'Come progettare test set realistici.', placeholderPath: 'media/ch07-computer-vision/sec-04/podcast.mp3', notes: 'placeholder' } ] }
+      { title: 'Convolutional Neural Networks', content: "Le **CNN** estraggono pattern visivi con filtri locali: bordi, texture e forme. I layer iniziali catturano feature semplici; quelli profondi feature più astratte utili alla classificazione.\n\n*Nota pratica:* validare solo su immagini pulite crea falsa sicurezza. <<Takeaway: Vision affidabile = modello + test realistici>>." },
+      { title: 'Riconoscimento di Oggetti', content: "Il modello produce probabilità per classe, ma può degradare su sfocature, controluce, occlusioni e angoli insoliti.\n\n*Nota pratica:* misura errori su edge-case, non solo accuracy media. <<Takeaway: la media può nascondere failure critici>>." },
+      { title: 'Startup Lens', content: "In produzione servono soglie di confidence, fallback umano e monitoraggio continuo dei casi ambigui. Senza osservabilità, il sistema sembra buono in demo ma fragile nel reale." },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** testare solo immagini perfette da laboratorio.\n\n**Check rapido (2 min):** indica 2 edge-case del tuo dominio e 1 mitigazione operativa." }
     ],
     keyTakeaways: [
       'Immagine = griglia numerica di pixel',
@@ -29,12 +29,6 @@ export const ch07: Chapter = {
       'Perché le CNN funzionano meglio delle reti dense pure sulle immagini?',
       'Quale edge-case è più critico nel tuo dominio?',
       'Quando conviene usare transfer learning in vision?'
-    ],
-    media: [
-      { type: 'video', title: 'Video Capitolo 7', description: 'Panoramica operativa di computer vision.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch07-computer-vision/video.mp4', notes: 'placeholder' },
-      { type: 'podcast', title: 'Podcast Capitolo 7', description: 'Versione audio su failure mode vision.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch07-computer-vision/podcast.mp3', notes: 'placeholder' },
-      { type: 'infographic', title: 'Infografica Capitolo 7', description: 'Schema CNN + robustezza + fallback.', placeholderPath: 'media/ch07-computer-vision/infographic.png', notes: 'placeholder' },
-      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist QA vision su edge-case reali.', placeholderPath: 'media/ch07-computer-vision/handout.pdf', notes: 'placeholder' }
     ],
     exercises: [
       {

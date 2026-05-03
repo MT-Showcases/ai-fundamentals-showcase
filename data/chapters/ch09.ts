@@ -6,10 +6,10 @@ export const ch09: Chapter = {
     title: 'Fine-Tuning e Transfer Learning',
     description: 'Come personalizzare modelli esistenti',
     sections: [
-      { title: 'Transfer Learning', content: "Il **transfer learning** parte da un modello pre-addestrato e lo adatta al dominio target. Riduce tempi e costi rispetto al training da zero.\n\n*Nota pratica:* funziona meglio quando i domini sono abbastanza vicini. <<Takeaway: riuso intelligente > ricostruzione da zero>>.", media: [ { type: 'infographic', title: 'Transfer learning flow', description: 'Base model → adattamento dominio.', placeholderPath: 'media/ch09-fine-tuning/sec-01/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Fine-tuning vs Zero-shot', content: "Zero-shot è rapido da avviare; fine-tuning richiede investimento ma può migliorare consistenza su task specifici.\n\n*Nota pratica:* valuta sempre costo, aggiornabilità e qualità richiesta. <<Takeaway: la scelta tecnica deve avere ROI chiaro>>.", media: [ { type: 'video', title: 'Fine-tuning decision guide', description: 'Quando conviene davvero fare tuning.', placeholderPath: 'media/ch09-fine-tuning/sec-02/video.mp4', notes: 'placeholder' } ] },
-      { title: 'Startup Lens', content: "Spesso conviene partire con RAG + prompt robusti e passare al fine-tuning solo con evidenza di gap persistenti.", media: [ { type: 'infographic', title: 'RAG vs Fine-tuning', description: 'Matrice decisionale pratica.', placeholderPath: 'media/ch09-fine-tuning/sec-03/infographic.png', notes: 'placeholder' } ] },
-      { title: 'Errore comune + Check rapido', content: "**Errore comune:** fare tuning troppo presto senza baseline.\n\n**Check rapido (2 min):** indica 2 segnali che mostrano che prompt+RAG non bastano più.", media: [ { type: 'podcast', title: 'Podcast — Tuning con criterio', description: 'Errori frequenti nella fase decisionale.', placeholderPath: 'media/ch09-fine-tuning/sec-04/podcast.mp3', notes: 'placeholder' } ] }
+      { title: 'Transfer Learning', content: "Il **transfer learning** parte da un modello pre-addestrato e lo adatta al dominio target. Riduce tempi e costi rispetto al training da zero.\n\n*Nota pratica:* funziona meglio quando i domini sono abbastanza vicini. <<Takeaway: riuso intelligente > ricostruzione da zero>>." },
+      { title: 'Fine-tuning vs Zero-shot', content: "Zero-shot è rapido da avviare; fine-tuning richiede investimento ma può migliorare consistenza su task specifici.\n\n*Nota pratica:* valuta sempre costo, aggiornabilità e qualità richiesta. <<Takeaway: la scelta tecnica deve avere ROI chiaro>>." },
+      { title: 'Startup Lens', content: "Spesso conviene partire con RAG + prompt robusti e passare al fine-tuning solo con evidenza di gap persistenti." },
+      { title: 'Errore comune + Check rapido', content: "**Errore comune:** fare tuning troppo presto senza baseline.\n\n**Check rapido (2 min):** indica 2 segnali che mostrano che prompt+RAG non bastano più." }
     ],
     keyTakeaways: [
       'Transfer learning accelera go-to-market',
@@ -22,12 +22,6 @@ export const ch09: Chapter = {
       'Quando il costo del fine-tuning è giustificato?',
       'Quale rischio vedi nel tuning con dati poco curati?',
       'In quali scenari RAG resta preferibile?'
-    ],
-    media: [
-      { type: 'video', title: 'Video Capitolo 9', description: 'Strategie di adattamento modello in prodotto.', estimatedDuration: '8-10 min', placeholderPath: 'media/ch09-fine-tuning/video.mp4', notes: 'placeholder' },
-      { type: 'podcast', title: 'Podcast Capitolo 9', description: 'Trade-off tecnici ed economici.', estimatedDuration: '10-15 min', placeholderPath: 'media/ch09-fine-tuning/podcast.mp3', notes: 'placeholder' },
-      { type: 'infographic', title: 'Infografica Capitolo 9', description: 'Decision tree: zero-shot vs RAG vs tuning.', placeholderPath: 'media/ch09-fine-tuning/infographic.png', notes: 'placeholder' },
-      { type: 'resource', title: 'Asset/Dispensa', description: 'Checklist decisionale strategia modello.', placeholderPath: 'media/ch09-fine-tuning/handout.pdf', notes: 'placeholder' }
     ],
     exercises: [
       {
