@@ -1,61 +1,61 @@
-# QA Didattico Finale — CH3, CH5–CH15
+# Final Didactic QA — CH3, CH5–CH15
 
-Data audit: 2026-05-01  
+Audit date: 2026-05-01  
 Repo: `ai-fundamentals-showcase`
 
-## Metodo
-- Revisione contenuti in `data/chapters.ts` per capitoli CH3 e CH5–CH15
-- Verifica su 4 criteri:
-  1. Accuratezza scientifica
-  2. Coerenza con learning outcomes
-  3. Chiarezza linguaggio (target SJA)
-  4. Pattern lesson flow (errore comune → check rapido → task)
+## Method
+- Content review in `data/chapters.ts` for chapters CH3 and CH5–CH15
+- Verification against 4 criteria:
+  1. Scientific accuracy
+  2. Alignment with learning outcomes
+  3. Language clarity (SJA target audience)
+  4. Lesson flow pattern (common mistake → quick check → task)
 
 ---
 
-## Esito sintetico per capitolo
+## Chapter-level summary
 
-| Capitolo | Tema | Accuratezza | Coerenza LO | Chiarezza SJA | Flow pattern | Note |
+| Chapter | Topic | Accuracy | LO alignment | SJA clarity | Flow pattern | Notes |
 |---|---|---|---|---|---|---|
-| CH3 | Data importance | ✅ | ✅ | ✅ | ⚠️ parziale | Solida distinzione qualità/quantità dati; utile KPI framing |
-| CH5 | Neural networks | ✅ | ✅ | ✅ | ⚠️ parziale | Spiegazioni corrette sui concetti base, esempi applicativi chiari |
-| CH6 | NLP | ✅ | ✅ | ✅ | ⚠️ parziale | Terminologia comprensibile, buon ponte teoria→tooling |
-| CH7 | Computer Vision | ✅ | ✅ | ✅ | ✅ | Flow completo presente e coerente |
-| CH8 | Generative AI | ✅ | ✅ | ✅ | ✅ | Buon bilanciamento opportunità/limiti |
-| CH9 | Fine-tuning | ✅ | ✅ | ✅ | ✅ | Corretto focus su dominio-specific tuning e valutazione |
-| CH10 | Ethics AI | ✅ | ✅ | ✅ | ⚠️ parziale | Corretto impianto etico; task pratici migliorabili su rubriche |
-| CH11 | AI Act | ✅ | ✅ | ✅ | ⚠️ parziale | Contenuto normativo allineato a livello introduttivo |
-| CH12 | AI at work | ✅ | ✅ | ✅ | ✅ | Forte orientamento operativo per contesti reali |
-| CH13 | Practical tools | ✅ | ✅ | ✅ | ✅ | Molto adatto a target startup/studenti junior |
-| CH14 | Advanced patterns | ✅ | ✅ | ✅ | ✅ | Buona progressione verso casi avanzati |
-| CH15 | Future AI | ✅ | ✅ | ✅ | ✅ | Chiusura coerente e prospettica, senza hype eccessivo |
+| CH3 | Data importance | ✅ | ✅ | ✅ | ⚠️ partial | Solid quality/quantity distinction; useful KPI framing |
+| CH5 | Neural networks | ✅ | ✅ | ✅ | ⚠️ partial | Correct core concepts, clear applied examples |
+| CH6 | NLP | ✅ | ✅ | ✅ | ⚠️ partial | Accessible terminology, good theory→tooling bridge |
+| CH7 | Computer Vision | ✅ | ✅ | ✅ | ✅ | Full flow present and consistent |
+| CH8 | Generative AI | ✅ | ✅ | ✅ | ✅ | Good balance of opportunities and limitations |
+| CH9 | Fine-tuning | ✅ | ✅ | ✅ | ✅ | Correct focus on domain-specific tuning and evaluation |
+| CH10 | Ethics AI | ✅ | ✅ | ✅ | ⚠️ partial | Sound ethical framing; practical tasks improvable with rubrics |
+| CH11 | AI Act | ✅ | ✅ | ✅ | ⚠️ partial | Regulatory content aligned to introductory level |
+| CH12 | AI at work | ✅ | ✅ | ✅ | ✅ | Strong operational orientation for real-world contexts |
+| CH13 | Practical tools | ✅ | ✅ | ✅ | ✅ | Well suited for startup/junior student audience |
+| CH14 | Advanced patterns | ✅ | ✅ | ✅ | ✅ | Good progression towards advanced use cases |
+| CH15 | Future AI | ✅ | ✅ | ✅ | ✅ | Consistent and forward-looking closure, no excessive hype |
 
 ---
 
-## Verifica checklist didattica
+## Didactic checklist
 
-- CH3: Fondamenti IA — spiegazioni corrette ✅
-- CH5: Algoritmi / reti neurali — esempi chiari ✅
-- CH6-CH15: Continuità tematica ✅
-- Linguaggio target (SJA) ✅
-- Lesson flow pattern (errore comune → check rapido → task) ⚠️ **non uniforme in tutti i capitoli**
+- CH3: AI fundamentals — correct explanations ✅
+- CH5: Algorithms / neural networks — clear examples ✅
+- CH6–CH15: Thematic continuity ✅
+- Target language (SJA) ✅
+- Lesson flow pattern (common mistake → quick check → task) ⚠️ **not uniform across all chapters**
 
 ---
 
-## Osservazioni principali
+## Main observations
 
-### Punti forti
-- Linguaggio pragmatico e orientato al “fare” (coerente con studenti SJA).
-- Ricorrenza di KPI, validazione, casi reali e anti-pattern.
-- Quiz numerosi e in linea con obiettivi formativi.
+### Strengths
+- Pragmatic language oriented towards doing (consistent with SJA students).
+- Recurring KPIs, validation, real-world cases, and anti-patterns.
+- Numerous quizzes aligned with learning objectives.
 
-### Warning minori (non bloccanti)
-1. **Flow lesson non sempre esplicito** in CH3/CH5/CH6/CH10/CH11 (presente nel contenuto, ma non sempre nel formato dichiarato).
-2. In alcuni punti conviene standardizzare micro-template didattico con etichette fisse:
-   - Errore comune
-   - Check rapido
-   - Task operativo
+### Minor warnings (non-blocking)
+1. **Lesson flow not always explicit** in CH3/CH5/CH6/CH10/CH11 (present in content, but not always in the declared format).
+2. Some sections would benefit from standardising the micro-template with fixed labels:
+   - Common mistake
+   - Quick check
+   - Operational task
 
-## Conclusione
-✅ **QA Didattico complessivo PASS**  
-Nessun blocco critico su accuratezza o coerenza pedagogica. Solo miglioramenti di uniformità editoriale.
+## Conclusion
+✅ **Overall Didactic QA: PASS**  
+No critical blocks on accuracy or pedagogical consistency. Only minor editorial uniformity improvements recommended.

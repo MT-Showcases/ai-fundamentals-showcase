@@ -1,37 +1,37 @@
 # Sources Coverage Plan
 
 ## Ready ✅
-- CH3: 3 fonti (paper/tutorial/dataset) complete per data quality e evaluation (100%)
-- CH5: 5 fonti (paper + tutorial + video) complete per fondamentali ML/DL (100%)
-- CH10: 5 fonti (article + dataset + framework PDF) complete per etica e risk management (100%)
-- CH11: 4 fonti (normativa + framework + policy) complete per compliance (100%)
+- CH3: 3 sources (paper/tutorial/dataset) complete for data quality and evaluation (100%)
+- CH5: 5 sources (paper + tutorial + video) complete for ML/DL fundamentals (100%)
+- CH10: 5 sources (article + dataset + framework PDF) complete for ethics and risk management (100%)
+- CH11: 4 sources (regulation + framework + policy) complete for compliance (100%)
 
 ## Partial ⚠️
-- CH6: 1 fonte di base (CS229) — manca tutorial NLP dedicato (50%)
-- CH7: 2 fonti (book + video) — manca dataset vision locale pronto per upload (67%)
-- CH8: 2 fonti (Transformer + HF Course) — manca benchmark/eval dataset (67%)
-- CH9: 2 fonti (CS229 + Titanic) — manca paper decision strategy specifico (67%)
-- CH12: 2 fonti (AI Index + UCI Adult) — manca report workforce europeo dedicato (67%)
-- CH13: 3 fonti (sklearn + HF + Titanic) — manca case study enterprise con KPI (75%)
-- CH14: 3 fonti (Transformer + DL Book + HF) — manca asset video avanzato su RAG/agents (75%)
-- CH15: 3 fonti (AI Index + AI Act + NIST) — manca scenario report 2030+ verticale education (75%)
+- CH6: 1 base source (CS229) — dedicated NLP tutorial missing (50%)
+- CH7: 2 sources (book + video) — local vision dataset ready for upload missing (67%)
+- CH8: 2 sources (Transformer + HF Course) — benchmark/eval dataset missing (67%)
+- CH9: 2 sources (CS229 + Titanic) — specific decision strategy paper missing (67%)
+- CH12: 2 sources (AI Index + UCI Adult) — dedicated European workforce report missing (67%)
+- CH13: 3 sources (sklearn + HF + Titanic) — enterprise case study with KPIs missing (75%)
+- CH14: 3 sources (Transformer + DL Book + HF) — advanced video asset on RAG/agents missing (75%)
+- CH15: 3 sources (AI Index + AI Act + NIST) — 2030+ vertical scenario report for education missing (75%)
 
 ## Todo ❌
-- CH4: 0 risorse nel nuovo pack (fuori perimetro card) — richiede ricerca attiva e creazione cartella dedicata
+- CH4: 0 resources in new pack (out of card scope) — requires active research and dedicated folder creation
 
 Total Coverage: 79% (19/24 target)
 Target: 100% by Phase 6
 
 ## NotebookLM Compatibility Check
-Formati presenti nel registry:
-- PDF/Paper: compatibili direttamente
-- Article/Web: compatibili via URL o conversione PDF
-- Dataset: usare descrizione + schema CSV; opzionale allegare sample in PDF/Markdown
-- Video: allegare URL + trascrizione sintetica (consigliato)
+Formats present in registry:
+- PDF/Paper: compatible directly
+- Article/Web: compatible via URL or PDF conversion
+- Dataset: use description + CSV schema; optionally attach sample as PDF/Markdown
+- Video: attach URL + brief transcript (recommended)
 
-Esito: **Nessun blocco tecnico**. Tutte le fonti sono caricabili direttamente o con conversione leggera.
+Result: **No technical blockers**. All sources are loadable directly or with light conversion.
 
-## Upload List (percorsi relativi)
+## Upload List (relative paths)
 - `public/sources/index.json`
 - `public/sources/ch3/sources.json`
 - `public/sources/ch5/sources.json`
@@ -47,9 +47,9 @@ Esito: **Nessun blocco tecnico**. Tutte le fonti sono caricabili direttamente o 
 - `public/sources/ch15/sources.json`
 
 ## Sync Workflow
-1. Aggiorna `public/sources/index.json` con nuove fonti e `lastVerified`.
-2. Allinea i singoli `ch*/sources.json` usando solo `sourceIds` presenti nel registry.
-3. Verifica link (HTTP 200/301) prima del merge.
-4. Commit atomico con messaggio standard del pacchetto fonti.
-5. In NotebookLM, ricarica solo i chapter pack variati.
-6. Logga gap residui in questo file sotto sezione Partial/Todo.
+1. Update `public/sources/index.json` with new sources and `lastVerified`.
+2. Align individual `ch*/sources.json` using only `sourceIds` present in the registry.
+3. Verify links (HTTP 200/301) before merge.
+4. Atomic commit with standard sources pack message.
+5. In NotebookLM, reload only the changed chapter packs.
+6. Log remaining gaps in this file under the Partial/Todo sections.

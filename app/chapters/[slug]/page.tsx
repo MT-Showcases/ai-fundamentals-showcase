@@ -11,6 +11,7 @@ import ChapterQuiz from '@/components/ChapterQuiz';
 import ChapterExercises from '@/components/ChapterExercises';
 import ChapterMediaSlots from '@/components/ChapterMediaSlots';
 import PracticalWorkflow from '@/components/PracticalWorkflow';
+import SourceToggle from '@/components/SourceToggle';
 import Breadcrumb from '@/components/Breadcrumb';
 import ChapterSidebar from '@/components/ChapterSidebar';
 import BackToTopButton from '@/components/BackToTopButton';
@@ -421,6 +422,8 @@ Output ideale:
 
             {chapter.slug === 'machine-learning' && (
               <>
+                <SourceToggle source={workflowCompleteSource} />
+
                 <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8">
                   <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup Locale</h4>
                   
@@ -671,7 +674,6 @@ Spiegazione:
 Perché: il grafico rende visiva la qualità del modello e aiuta a individuare pattern di errore e outlier.`,
                   },
                 ]}
-                workflowCompleteSource={workflowCompleteSource}
               />
               </>
             )}

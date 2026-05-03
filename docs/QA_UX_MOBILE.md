@@ -1,62 +1,62 @@
-# QA UX Mobile Finale — Responsive + Touch
+# Final Mobile UX QA — Responsive + Touch
 
-Data audit: 2026-05-01  
+Audit date: 2026-05-01  
 Repo: `ai-fundamentals-showcase`
 
-## Scope viewport
-- 375px (mobile small)
-- 480px (mobile standard)
+## Viewport scope
+- 375px (small mobile)
+- 480px (standard mobile)
 - 768px (tablet)
 - 1024px (desktop)
 
-Fonte misure: `docs/ux-mobile.json`  
-Screenshot: `docs/screenshots/ux-375.png`, `ux-480.png`, `ux-768.png`, `ux-1024.png`
+Source data: `docs/ux-mobile.json`  
+Screenshots: `docs/screenshots/ux-375.png`, `ux-480.png`, `ux-768.png`, `ux-1024.png`
 
 ---
 
-## Esito per viewport
+## Results per viewport
 
-| Viewport | Horizontal scroll | Font leggibile (>=16 mobile) | Tap target >=44x44 | Touch/scroll/click | Images load | Stato |
+| Viewport | Horizontal scroll | Readable font (>=16 mobile) | Tap target >=44x44 | Touch/scroll/click | Images load | Status |
 |---|---:|---:|---:|---:|---:|---|
-| 375x812 | ✅ no | ⚠️ parziale | ⚠️ 11 elementi piccoli | ✅ | ✅ | PASS con warning |
-| 480x900 | ✅ no | ⚠️ parziale | ⚠️ 13 elementi piccoli | ✅ | ✅ | PASS con warning |
-| 768x1024 | ✅ no | ✅ | ⚠️ 12 elementi piccoli | ✅ | ✅ | PASS |
-| 1024x768 | ✅ no | ✅ | ⚠️ 14 elementi piccoli | ✅ | ✅ | PASS |
+| 375x812 | ✅ none | ⚠️ partial | ⚠️ 11 small elements | ✅ | ✅ | PASS with warnings |
+| 480x900 | ✅ none | ⚠️ partial | ⚠️ 13 small elements | ✅ | ✅ | PASS with warnings |
+| 768x1024 | ✅ none | ✅ | ⚠️ 12 small elements | ✅ | ✅ | PASS |
+| 1024x768 | ✅ none | ✅ | ⚠️ 14 small elements | ✅ | ✅ | PASS |
 
-> Nota: il check automatico sul font minimo rileva anche micro-testi di badge/metadata; il corpo principale risulta leggibile. Warning mantenuto per hardening UI mobile.
+> Note: the automated minimum font check also detects micro-text in badges/metadata; main body text is readable. Warning kept for mobile UI hardening.
 
 ---
 
-## Dettagli osservati
+## Observed details
 
-### Punti OK
-- Nessun layout break critico ai 4 breakpoint.
-- Nessun overflow orizzontale globale.
-- Scroll e click touch coerenti.
-- Asset immagine caricati correttamente nelle pagine testate.
+### OK points
+- No critical layout breaks at the 4 breakpoints.
+- No global horizontal overflow.
+- Consistent touch scroll and click behaviour.
+- Image assets loaded correctly on tested pages.
 
-### Warning minori (non bloccanti)
-1. Alcuni elementi interattivi risultano sotto soglia 44x44 px (micro-controls/links secondari).
-2. Alcuni testi secondari hanno font-size piccolo (non critico, ma da uniformare in mobile).
+### Minor warnings (non-blocking)
+1. Some interactive elements are below the 44x44 px threshold (micro-controls/secondary links).
+2. Some secondary text has small font-size (not critical, but should be unified on mobile).
 
-### Raccomandazioni veloci
-- Applicare `min-height/min-width: 44px` ai controlli principali su mobile.
-- Portare i testi secondari a base 14–16px su viewport <=480px.
-- Eventuale spacing extra tra controls adiacenti in sezioni quiz/media.
+### Quick recommendations
+- Apply `min-height/min-width: 44px` to primary controls on mobile.
+- Bring secondary text to 14–16px base on viewport <=480px.
+- Optional extra spacing between adjacent controls in quiz/media sections.
 
 ---
 
 ## Lighthouse Accessibility
 - Score: **95/100** ✅
-- Requisito `>=90`: ✅ PASS
+- Requirement `>=90`: ✅ PASS
 
-## Checklist mobile
+## Mobile checklist
 - 375px: PASS ✅
 - 480px: PASS ✅
 - 768px: PASS ✅
 - 1024px: PASS ✅
 - Lighthouse AA ≥90: PASS ✅
 
-## Conclusione
-✅ **QA UX Mobile complessivo PASS**  
-Nessun blocco critico, solo miglioramenti minori consigliati su dimensioni target touch e tipografia secondaria.
+## Conclusion
+✅ **Overall Mobile UX QA: PASS**  
+No critical blocks. Only minor improvements recommended for touch target sizes and secondary typography.

@@ -1,48 +1,48 @@
-# QA Tecnico Finale — Build + Runtime
+# Final Technical QA — Build + Runtime
 
-Data audit: 2026-05-01  
+Audit date: 2026-05-01  
 Repo: `ai-fundamentals-showcase`
 
 ## Scope
 - Build: `npm run build`
-- Runtime route-check su 15 capitoli + home
+- Runtime route check across 15 chapters + home
 - Console/page errors
 - Quiz interaction smoke test (next/previous)
-- Dataset load (render contenuti da `chapters.ts`)
+- Dataset load (content render from `chapters.ts`)
 
-## Nota ambiente
-URL live fornita (`https://ai-fundamentals-showcase.vercel.app`) al momento del test restituisce `DEPLOYMENT_NOT_FOUND (404)` da Vercel.  
-Per completare il QA runtime è stato eseguito smoke test su istanza locale (`npm run start`, `http://127.0.0.1:3000`).
+## Environment note
+Live URL (`https://ai-fundamentals-showcase.vercel.app`) returned `DEPLOYMENT_NOT_FOUND (404)` at test time.  
+Runtime QA was completed via smoke test on local instance (`npm run start`, `http://127.0.0.1:3000`).
 
 ---
 
 ## 1) Build verification
 
-**Comando:** `npm run build`  
-**Esito:** ✅ PASS
+**Command:** `npm run build`  
+**Result:** ✅ PASS
 
-Dettagli:
-- Compilazione OK
-- Generazione statica OK (20/20)
-- Type check OK
-- Warning non bloccanti ESLint presenti (img tag / hook deps)
+Details:
+- Compilation: OK
+- Static generation: OK (20/20)
+- Type check: OK
+- Non-blocking ESLint warnings present (img tag / hook deps)
 
-Warning principali:
-- `@next/next/no-img-element` in alcune componenti media
+Main warnings:
+- `@next/next/no-img-element` in some media components
 - `react-hooks/exhaustive-deps` in `ChapterExercises.tsx`
 
 ---
 
 ## 2) Runtime checks (local)
 
-Fonte: `docs/runtime-local.json`
+Source: `docs/runtime-local.json`
 
-- Route navigation (16 route totali): ✅ PASS
-- Component render senza crash: ✅ PASS
+- Route navigation (16 total routes): ✅ PASS
+- Component render without crash: ✅ PASS
 - Console errors: ✅ ZERO
 - Page runtime errors: ✅ ZERO
 - Quiz smoke interactions (next/previous): ✅ PASS
-- Dataset load (capitoli renderizzati correttamente): ✅ PASS
+- Dataset load (chapters rendered correctly): ✅ PASS
 
 ### Route coverage
 - `/`
@@ -66,18 +66,18 @@ Fonte: `docs/runtime-local.json`
 
 ## 3) Lighthouse Accessibility
 
-Comando:
+Command:
 `lighthouse http://127.0.0.1:3000 --only-categories=accessibility`
 
-Risultato:
+Result:
 - **Accessibility score: 95/100** ✅
-- Requisito (`>=90`): ✅ PASS
+- Requirement (`>=90`): ✅ PASS
 
-File report raw: `docs/lighthouse-accessibility.json`
+Raw report file: `docs/lighthouse-accessibility.json`
 
 ---
 
-## Checklist tecnico
+## Technical checklist
 
 - npm run build: PASS ✅
 - Route navigation: PASS ✅
@@ -85,6 +85,6 @@ File report raw: `docs/lighthouse-accessibility.json`
 - Quiz functional: PASS ✅
 - Dataset loads: PASS ✅
 
-## Conclusione
-✅ **QA Tecnico complessivo PASS**  
-Nessun blocco critico rilevato. Solo warning di qualità codice/UI non bloccanti.
+## Conclusion
+✅ **Overall Technical QA: PASS**  
+No critical blocks detected. Only non-blocking code/UI quality warnings.
