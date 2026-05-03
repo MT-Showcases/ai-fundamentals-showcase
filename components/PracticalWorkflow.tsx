@@ -184,6 +184,36 @@ export default function PracticalWorkflow({
         })}
 
       </div>
+
+      {workflowCompleteSource && (
+        <div className="mt-8 pt-6 border-t border-navy-700">
+          <button
+            onClick={() => setShowCompleteSource((v) => !v)}
+            className="text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition mr-2"
+          >
+            {showCompleteSource ? 'Nascondi fonte lab' : 'Mostra fonte lab'}
+          </button>
+          {showCompleteSource && (
+            <div className="mt-3 rounded-lg border border-navy-600 bg-navy-900/70 p-3">
+              <textarea
+                readOnly
+                value={workflowCompleteSource}
+                className="w-full min-h-[220px] bg-navy-950 text-gray-200 text-xs p-3 rounded-md border border-navy-700"
+              />
+              <button
+                onClick={async () => {
+                  await navigator.clipboard.writeText(workflowCompleteSource);
+                  setCopiedComplete(true);
+                  setTimeout(() => setCopiedComplete(false), 1500);
+                }}
+                className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
+              >
+                {copiedComplete ? 'Copiato ✓' : 'Copia fonte lab'}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
