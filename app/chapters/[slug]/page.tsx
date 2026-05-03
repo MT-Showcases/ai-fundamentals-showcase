@@ -464,7 +464,7 @@ Usa questa fonte per generare:
                       type: 'infographic',
                       title: 'L\'Architettura del Modello',
                       description: 'Uno sguardo alla struttura della rete: da 784 pixel in input a 10 classi in output.',
-                      placeholderPath: '/media/ch05-neural-networks/lab/infographic.jpg',
+                      placeholderPath: 'media/ch05-neural-networks/lab/infographic.jpg',
                       notes: 'ready'
                     }
                   ]}
