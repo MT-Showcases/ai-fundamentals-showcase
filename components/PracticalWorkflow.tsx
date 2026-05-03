@@ -3,6 +3,14 @@
 import Button from '@/components/Button';
 import CodeSnippet from '@/components/CodeSnippet';
 
+interface ModificationExample {
+  lineNumber: number;
+  description: string;
+  before: string;
+  after: string;
+  expectedResult: string;
+}
+
 interface WorkflowStep {
   number: number;
   title: string;
@@ -10,6 +18,7 @@ interface WorkflowStep {
   code: string;
   codeLang?: 'python' | 'javascript' | 'sql' | 'json' | 'bash';
   tryThis: string;
+  modificationExample?: ModificationExample;
 }
 
 interface WorkflowDownloadLink {
@@ -80,6 +89,43 @@ export default function PracticalWorkflow({
                   <strong>🎯 Prova:</strong> {step.tryThis}
                 </p>
               </div>
+
+              {step.modificationExample && (
+                <div className="mt-6 bg-blue-900/10 rounded-lg p-6 border border-blue-400/20">
+                  <p className="text-sm font-semibold text-blue-300 mb-4">
+                    📝 MODIFICA ESEMPIO — Riga {step.modificationExample.lineNumber}
+                  </p>
+                  <p className="text-sm text-gray-300 mb-4">
+                    {step.modificationExample.description}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <p className="text-xs text-gray-400 mb-2 font-mono">PRIMA:</p>
+                      <CodeSnippet
+                        lang={lang}
+                        code={step.modificationExample.before}
+                        label="Originale"
+                      />
+                    </div>
+
+                    <div>
+                      <p className="text-xs text-gray-400 mb-2 font-mono">DOPO (Prova):</p>
+                      <CodeSnippet
+                        lang={lang}
+                        code={step.modificationExample.after}
+                        label="Modificato"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="bg-cyan-900/20 border-l-2 border-cyan-400 pl-4 py-3">
+                    <p className="text-sm text-gray-300">
+                      <strong>Risultato atteso:</strong> {step.modificationExample.expectedResult}
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           );
         })}

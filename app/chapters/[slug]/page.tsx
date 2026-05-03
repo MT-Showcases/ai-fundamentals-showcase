@@ -197,23 +197,38 @@ housing = fetch_california_housing()
 X = pd.DataFrame(housing.data, columns=housing.feature_names)
 y = pd.Series(housing.target * 100000, name='Price')`,
                     codeLang: 'python',
-                    tryThis: 'Stampa X.head() — quante righe? Quante colonne? (Risposta: 20640 righe, 8 colonne)',
+                    tryThis: 'Stampa X.head() — quante righe? Quante colonne?',
+                    modificationExample: {
+                      lineNumber: 4,
+                      description: 'Prova a stampare le statistiche del dataset anziché il prezzo in dollari.',
+                      before: `y = pd.Series(housing.target * 100000, name='Price')`,
+                      after: `y = pd.Series(housing.target, name='Price_Normalized')
+print(y.describe())  # media, std, min, max`,
+                      expectedResult: 'Vedrai statistiche del dataset: media ~$2.07M, std ~$1.15M, min/max range',
+                    },
                   },
                   {
                     number: 2,
                     title: 'Dividi Training e Test',
-                    description: 'Split 80% training (dati che il modello vede) / 20% test (dati nuovi per valutare).',
+                    description: 'Split 80% training / 20% test.',
                     code: `from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )`,
                     codeLang: 'python',
-                    tryThis: 'Cambia test_size a 0.1 → esegui → vedi MAE migliorare o peggiorare?',
+                    tryThis: 'Cambia test_size a 0.1 — vedi MAE migliorare?',
+                    modificationExample: {
+                      lineNumber: 3,
+                      description: 'Cambia il rapporto train/test per vedere come cambia l\'allenamento.',
+                      before: `test_size=0.2  # 80% train, 20% test`,
+                      after: `test_size=0.1  # 90% train, 10% test`,
+                      expectedResult: 'MAE su test potrebbe migliorare (più training), ma validazione meno rigorosa',
+                    },
                   },
                   {
                     number: 3,
                     title: 'Allena il Modello',
-                    description: 'Crea 2 modelli: Linear Regression (semplice) e Random Forest (complesso).',
+                    description: 'Crea 2 modelli: Linear Regression + Random Forest.',
                     code: `# Modello 1: Linear Regression
 model_lr = LinearRegression()
 model_lr.fit(X_train, y_train)
@@ -222,12 +237,19 @@ model_lr.fit(X_train, y_train)
 model_rf = RandomForestRegressor(n_estimators=100, random_state=42)
 model_rf.fit(X_train, y_train)`,
                     codeLang: 'python',
-                    tryThis: 'Prova a aggiungere GradientBoostingRegressor — è più veloce? Più accurato?',
+                    tryThis: 'Aggiungi GradientBoostingRegressor — è più veloce?',
+                    modificationExample: {
+                      lineNumber: 7,
+                      description: 'Prova a ridurre il numero di alberi (n_estimators) per vedere il trade-off velocità/accuratezza.',
+                      before: `model_rf = RandomForestRegressor(n_estimators=100, random_state=42)`,
+                      after: `model_rf = RandomForestRegressor(n_estimators=10, random_state=42)  # 10 alberi`,
+                      expectedResult: 'Addestramento più veloce (~10x), ma MAE potrebbe calare leggermente (meno accurato)',
+                    },
                   },
                   {
                     number: 4,
                     title: 'Valuta Performance',
-                    description: 'Misura errore (MAE) e accuratezza (R²) su training e test.',
+                    description: 'Misura MAE e R² su training e test.',
                     code: `from sklearn.metrics import mean_absolute_error, r2_score
 
 train_mae = mean_absolute_error(y_train, model.predict(X_train))
@@ -238,11 +260,19 @@ print(f"Train MAE: \${train_mae:.0f}, Test MAE: \${test_mae:.0f}")
 print(f"Test R²: \${test_r2:.3f}")`,
                     codeLang: 'python',
                     tryThis: 'Se test_mae >> train_mae → overfitting! Quale modello è più robusto?',
+                    modificationExample: {
+                      lineNumber: 7,
+                      description: 'Aggiungi una metrica extra (RMSE) per capire meglio gli errori grandi.',
+                      before: `print(f"Train MAE: \${train_mae:.0f}, Test MAE: \${test_mae:.0f}")`,
+                      after: `test_rmse = np.sqrt(mean_squared_error(y_test, model.predict(X_test)))
+print(f"Train MAE: \${train_mae:.0f}, Test MAE: \${test_mae:.0f}, RMSE: \${test_rmse:.0f}")`,
+                      expectedResult: 'RMSE solitamente è più alto di MAE (penalizza outlier). Tipo MAE $49k, RMSE $73k',
+                    },
                   },
                   {
                     number: 5,
                     title: 'Visualizza Risultati',
-                    description: 'Grafico scatter: previsioni vs realtà. Punti sulla linea rossa = modello bravo.',
+                    description: 'Grafico scatter: previsioni vs realtà.',
                     code: `import matplotlib.pyplot as plt
 
 plt.scatter(y_test, y_pred, alpha=0.3, s=10)
@@ -252,7 +282,14 @@ plt.ylabel('Predicted Price ($)')
 plt.title('Predictions vs Reality')
 plt.show()`,
                     codeLang: 'python',
-                    tryThis: 'Confronta i 2 grafici — Random Forest ha scatter più serrato? Perché?',
+                    tryThis: 'Random Forest scatter più serrato che Linear? Perché?',
+                    modificationExample: {
+                      lineNumber: 3,
+                      description: 'Cambia il colore e la trasparenza per visualizzare meglio i cluster di punti.',
+                      before: `plt.scatter(y_test, y_pred, alpha=0.3, s=10)`,
+                      after: `plt.scatter(y_test, y_pred, alpha=0.5, s=20, c='cyan', edgecolors='blue', linewidth=0.5)`,
+                      expectedResult: 'Scatter più leggibile con bordi blu e colore ciano. Punti più grandi (s=20) = più visibilità',
+                    },
                   },
                 ]}
               />
