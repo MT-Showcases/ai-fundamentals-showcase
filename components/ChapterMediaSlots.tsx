@@ -58,7 +58,7 @@ export default function ChapterMediaSlots({ chapter }: Props) {
   const isReady = (slot: MediaPlaceholder) => slot.notes?.toLowerCase().includes('ready');
   const readyCount = slots.filter(isReady).length;
 
-  const chapterSourceText = `CAPITOLO ${String(chapter.id).padStart(2, '0')} — ${chapter.title}\nSLUG: ${chapter.slug}\n\nDESCRIZIONE:\n${chapter.description}\n\nSEZIONI:\n${chapter.sections.map((s, i) => `${i + 1}) ${s.title}\n${s.content}`).join('\n\n')}\n\nPUNTI CHIAVE:\n- ${chapter.keyTakeaways.join('\n- ')}\n\nOBIETTIVO:\nGenera contenuti media coerenti con il capitolo (video completo / podcast / infografica) senza inventare concetti esterni al contesto.`;
+  const chapterSourceText = `CAPITOLO ${String(chapter.id).padStart(2, '0')} — ${chapter.title}\nSLUG: ${chapter.slug}\n\nDESCRIZIONE:\n${chapter.description}\n\nSEZIONI:\n${chapter.sections.map((s, i) => `${i + 1}) ${s.title}\n${s.content}`).join('\n\n')}\n\nPUNTI CHIAVE:\n- ${chapter.keyTakeaways.join('\n- ')}${chapter.labNote ? `\n\nLABORATORIO PRATICO:\n${chapter.labNote}` : ''}\n\nOBIETTIVO:\nGenera contenuti media coerenti con il capitolo (video completo / podcast / infografica) senza inventare concetti esterni al contesto.`;
   return (
     <>
       <section className="mb-12 rounded-xl border border-blue-700 bg-blue-900/40 p-6">

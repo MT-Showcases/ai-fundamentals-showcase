@@ -100,4 +100,5 @@ export interface Chapter {
   media?: MediaPlaceholder[];
   exercises?: ChapterExercise[];
   challenge?: ChapterChallengeBias;
+  labNote?: string;
 }
