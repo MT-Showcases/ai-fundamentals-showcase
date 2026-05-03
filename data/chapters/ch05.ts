@@ -25,7 +25,7 @@ export const ch05: Chapter = {
         description: 'Panoramica pratica su architettura, backpropagation e trade-off.',
         estimatedDuration: '8-10 min',
         placeholderPath: 'media/ch05-neural-networks/video.mp4',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
