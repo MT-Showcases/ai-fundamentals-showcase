@@ -100,6 +100,8 @@ export default function PracticalWorkflow({
             sectionTitle={title}
             sectionContent={intro || ''}
             media={media}
+            isWorkflow={true}
+            customSourceText={workflowCompleteSource}
           />
         </div>
       )}

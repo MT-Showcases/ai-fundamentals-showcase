@@ -19,7 +19,7 @@ const badgeByType: Record<MediaPlaceholder['type'], string> = {
   resource: '📄 Risorsa'
 };
 
-export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex, sectionTitle, sectionContent, media }: Props) {
+export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex, sectionTitle, sectionContent, media, isWorkflow = false, customSourceText }: Props & { isWorkflow?: boolean; customSourceText?: string }) {
   // Regola: nessun media definito => nessun placeholder automatico
   const slots = media ?? [];
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
@@ -28,7 +28,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
 
   const isReady = (slot: MediaPlaceholder) => slot.notes?.toLowerCase().includes('ready');
 
-  const sourceText = `CAPITOLO ${String(chapterId).padStart(2, '0')} — ${chapterSlug}\nSEZIONE ${sectionIndex + 1}: ${sectionTitle}\n\nCONTESTO:\n${sectionContent}\n\nOBIETTIVO:\nGenera un contenuto didattico chiaro, pratico, startup-friendly basato SOLO su questo contesto.\n\nOUTPUT RICHIESTI (scegline uno):\n1) Script video 60-120s\n2) Testo infografica (titolo + 5 bullet + 1 warning + 1 takeaway)\n3) Voiceover breve.\n\nVINCOLI:\n- Linguaggio semplice\n- Niente allucinazioni\n- Coerenza con il contesto fornito`;
+  const sourceText = customSourceText || `CAPITOLO ${String(chapterId).padStart(2, '0')} — ${chapterSlug}\nSEZIONE ${sectionIndex + 1}: ${sectionTitle}\n\nCONTESTO:\n${sectionContent}\n\nOBIETTIVO:\nGenera un contenuto didattico chiaro, pratico, startup-friendly basato SOLO su questo contesto.\n\nOUTPUT RICHIESTI (scegline uno):\n1) Script video 60-120s\n2) Testo infografica (titolo + 5 bullet + 1 warning + 1 takeaway)\n3) Voiceover breve.\n\nVINCOLI:\n- Linguaggio semplice\n- Niente allucinazioni\n- Coerenza con il contesto fornito`;
 
   if (slots.length === 0) return null;
 
@@ -94,7 +94,9 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
           onClick={() => setShowSource((v) => !v)}
           className="text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition mr-2"
         >
-          {showSource ? 'Nascondi fonte sezione' : 'Mostra fonte sezione'}
+          {showSource 
+            ? (isWorkflow ? 'Nascondi fonte workflow' : 'Nascondi fonte sezione') 
+            : (isWorkflow ? 'Mostra fonte workflow' : 'Mostra fonte sezione')}
         </button>
         {showSource && (
           <div className="mt-2 rounded-lg border border-navy-600 bg-navy-900/70 p-3">
