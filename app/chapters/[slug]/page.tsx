@@ -457,12 +457,33 @@ Usa questa fonte per generare:
                     }
                   ]}
                   setupContent={
-                    <div className="space-y-4">
+                    <div className="space-y-6">
+                      <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
+                        <p className="text-sm text-gray-300 font-semibold mb-1">Cosa imparerai in questo lab:</p>
+                        <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc">
+                          <li>Caricare e visualizzare il dataset MNIST (immagini da 28x28 pixel)</li>
+                          <li>Pre-processare i dati (Scaling) per accelerare l'apprendimento</li>
+                          <li>Costruire un Multi-Layer Perceptron (MLP)</li>
+                          <li>Valutare le predizioni visualizzando i numeri scritti a mano</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-navy-800 rounded-lg p-4 border border-navy-600">
+                        <p className="text-sm font-semibold text-cyan-300 mb-2">🛠️ Perché Scikit-Learn e non PyTorch?</p>
+                        <p className="text-xs text-gray-400 leading-relaxed mb-2">
+                          Nell'industria moderna si usano framework giganti come PyTorch o TensorFlow. Tuttavia in questo lab useremo Scikit-Learn. Perché?
+                        </p>
+                        <ul className="text-xs text-gray-400 space-y-1 ml-4 list-decimal">
+                          <li><strong>Nessuna GPU richiesta:</strong> non devi installare 1GB+ di roba. Gira sul tuo PC in 5 secondi.</li>
+                          <li><strong>Focus sulla teoria:</strong> con PyTorch dovresti scrivere tu i cicli per i gradienti. Qui chiami <code>.fit()</code> e ti concentri sui livelli della rete, non sull'ingegneria del calcolo.</li>
+                        </ul>
+                      </div>
+
                       <div>
                         <p className="text-sm font-semibold text-gray-300 mb-2">Prerequisiti:</p>
                         <ul className="text-sm text-gray-400 space-y-1 ml-4">
                           <li>✅ Python 3.7+</li>
-                          <li>✅ Scikit-Learn installato</li>
+                          <li>✅ pip installato</li>
                         </ul>
                       </div>
                       
