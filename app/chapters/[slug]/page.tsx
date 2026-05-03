@@ -214,13 +214,13 @@ export default async function ChapterPage({ params }: Props) {
                     <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
                       <p className="text-sm text-gray-300 font-semibold mb-1">Obiettivo del Laboratorio:</p>
                       <p className="text-xs text-gray-400 leading-relaxed mb-2">
-                        Imparerai il ciclo di vita completo di un modello di Machine Learning usando dati reali (i prezzi delle case in California). Non è solo teoria: prenderai dei dati grezzi, allenerai due modelli diversi e misurerai in dollari veri quant'è l'errore delle tue predizioni.
+                        Imparerai il ciclo di vita completo di un modello di Machine Learning usando dati reali (i prezzi delle case in California). Non è solo teoria: prenderai dei dati grezzi, allenerai due modelli diversi e misurerai in dollari veri quant&apos;è l&apos;errore delle tue predizioni.
                       </p>
                       <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc">
                         <li>Usare Pandas per esplorare un dataset da 20.640 righe</li>
                         <li>Il concetto fondamentale di split <GlossaryTerm term="training">Training</GlossaryTerm> vs <GlossaryTerm term="validation">Test</GlossaryTerm></li>
                         <li>Confrontare un modello semplice (Linear Regression) con uno complesso (Random Forest)</li>
-                        <li>Leggere le metriche d'errore (MAE e R²) e tracciare un grafico</li>
+                        <li>Leggere le metriche d&apos;errore (MAE e R²) e tracciare un grafico</li>
                       </ul>
                     </div>
 
@@ -759,7 +759,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                         <p className="text-sm text-gray-300 font-semibold mb-1">Cosa imparerai in questo lab:</p>
                         <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc">
                           <li>Caricare e visualizzare il dataset MNIST (immagini da 28x28 pixel)</li>
-                          <li>Pre-processare i dati (Scaling) per accelerare l'apprendimento</li>
+                          <li>Pre-processare i dati (Scaling) per accelerare l&apos;apprendimento</li>
                           <li>Costruire un Multi-Layer Perceptron (MLP)</li>
                           <li>Valutare le predizioni visualizzando i numeri scritti a mano</li>
                         </ul>
@@ -768,11 +768,11 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       <div className="bg-navy-800 rounded-lg p-4 border border-navy-600">
                         <p className="text-sm font-semibold text-cyan-300 mb-2">🛠️ Perché Scikit-Learn e non PyTorch?</p>
                         <p className="text-xs text-gray-400 leading-relaxed mb-2">
-                          Nell'industria moderna si usano framework giganti come PyTorch o TensorFlow. Tuttavia in questo lab useremo Scikit-Learn. Perché?
+                          Nell&apos;industria moderna si usano framework giganti come PyTorch o TensorFlow. Tuttavia in questo lab useremo Scikit-Learn. Perché?
                         </p>
                         <ul className="text-xs text-gray-400 space-y-1 ml-4 list-decimal">
                           <li><strong>Nessuna GPU richiesta:</strong> non devi installare 1GB+ di roba. Gira sul tuo PC in 5 secondi.</li>
-                          <li><strong>Focus sulla teoria:</strong> con PyTorch dovresti scrivere tu i cicli per i gradienti. Qui chiami <code>.fit()</code> e ti concentri sui livelli della rete, non sull'ingegneria del calcolo.</li>
+                          <li><strong>Focus sulla teoria:</strong> con PyTorch dovresti scrivere tu i cicli per i gradienti. Qui chiami <code>.fit()</code> e ti concentri sui livelli della rete, non sull&apos;ingegneria del calcolo.</li>
                         </ul>
                       </div>
 
