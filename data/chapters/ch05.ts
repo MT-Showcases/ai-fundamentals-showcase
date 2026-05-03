@@ -55,23 +55,6 @@ export const ch05: Chapter = {
       'Come è simile Backpropagation al processo di imparare dai propri errori?',
       'Cosa succederebbe se i pesi iniziali non fossero random ma zero?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Costruire e Analizzare la Prima Rete Neurale',
-        objective: 'Comprendere come i parametri di una rete (layer, neuroni, epoche) influenzano il processo di apprendimento (Overfitting vs Convergenza).',
-        duration: '25 min',
-        steps: [
-          'Scarica ed estrai lo ZIP Lab 2.',
-          'Esamina main.py: individua dove i dati MNIST vengono normalizzati.',
-          'Esegui main.py e osserva la curva di apprendimento (loss che scende).',
-          'Nel codice, modifica il parametro "hidden_layer_sizes=(50,)" a "(50, 50,)" per aggiungere un layer. Riesegui.',
-          'Annota cosa succede all\'accuracy e ai tempi di addestramento: una rete più profonda impara sempre meglio?'
-        ],
-        deliverable: 'Il codice python che traina un classificatore sul dataset MNIST, più l\'immagine predictions.png salvata e un\'analisi di due righe su "aumentare i layer".',
-        resources: [
-        ]
-      }
-    ],
     quiz: [
       {
         question: "In una rete neurale, il ruolo principale dei pesi è:",
