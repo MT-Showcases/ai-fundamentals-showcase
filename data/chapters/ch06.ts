@@ -166,5 +166,30 @@ export const ch06: Chapter = {
         correct: 0,
         explanation: "La qualità NLP nasce da basi tecniche solide e validazione continua nel mondo reale."
       }
+    ],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 6',
+        description: 'Panoramica NLP: token, embedding, attention e uso in prodotto.',
+        estimatedDuration: '8-10 min',
+        placeholderPath: 'media/ch06-nlp/video.mp4',
+        notes: 'ready'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 6',
+        description: 'Come l\'AI capisce il linguaggio: tokenizzazione, embedding e attention.',
+        placeholderPath: 'media/ch06-nlp/infographic.png',
+        notes: 'ready'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 6',
+        description: 'NLP in produzione: pipeline, guardrail e fallback.',
+        estimatedDuration: '10-15 min',
+        placeholderPath: 'media/ch06-nlp/podcast.mp3',
+        notes: 'placeholder'
+      }
     ]
 };
