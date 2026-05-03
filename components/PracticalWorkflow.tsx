@@ -52,7 +52,9 @@ export default function PracticalWorkflow({
   workflowCompleteSource,
 }: PracticalWorkflowProps) {
   const [expandedSources, setExpandedSources] = useState<Record<number, boolean>>({});
+  const [copiedStep, setCopiedStep] = useState<number | null>(null);
   const [showCompleteSource, setShowCompleteSource] = useState(false);
+  const [copiedComplete, setCopiedComplete] = useState(false);
 
   return (
     <div className="bg-navy-900 border border-cyan-400/20 rounded-xl p-8 mb-8">
@@ -160,23 +162,26 @@ export default function PracticalWorkflow({
                         [step.number]: !prev[step.number],
                       }));
                     }}
-                    className="text-xs px-3 py-1.5 rounded-lg border border-blue-500/40 text-blue-300 hover:bg-blue-500/10 transition mr-2"
+                    className="text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition mr-2"
                   >
                     {expandedSources[step.number] ? 'Nascondi fonte NotebookLM' : 'Mostra fonte NotebookLM'}
                   </button>
                   {expandedSources[step.number] && (
                     <div className="mt-2 rounded-lg border border-navy-600 bg-navy-900/70 p-3">
-                      <pre className="text-xs text-gray-300 overflow-auto max-h-48 font-mono whitespace-pre-wrap break-words mb-3">
-                        {step.notebookLmSource}
-                      </pre>
+                      <textarea
+                        readOnly
+                        value={step.notebookLmSource}
+                        className="w-full min-h-[180px] bg-navy-950 text-gray-200 text-xs p-3 rounded-md border border-navy-700"
+                      />
                       <button
-                        onClick={() => {
-                          navigator.clipboard.writeText(step.notebookLmSource as string);
-                          alert('✅ Fonte copiata!');
+                        onClick={async () => {
+                          await navigator.clipboard.writeText(step.notebookLmSource as string);
+                          setCopiedStep(step.number);
+                          setTimeout(() => setCopiedStep(null), 1500);
                         }}
-                        className="text-xs px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition w-full"
+                        className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
                       >
-                        📋 Copia Fonte
+                        {copiedStep === step.number ? 'Copiato ✓' : 'Copia fonte'}
                       </button>
                     </div>
                   )}
@@ -199,7 +204,7 @@ export default function PracticalWorkflow({
             <div className="mb-4">
               <button
                 onClick={() => setShowCompleteSource(!showCompleteSource)}
-                className="text-xs px-3 py-1.5 rounded-lg border border-blue-500/40 text-blue-300 hover:bg-blue-500/10 transition mr-2"
+                className="text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition mr-2"
               >
                 {showCompleteSource ? 'Nascondi fonte workflow' : 'Mostra fonte workflow'}
               </button>
@@ -207,17 +212,20 @@ export default function PracticalWorkflow({
 
             {showCompleteSource && (
               <div className="rounded-lg border border-navy-600 bg-navy-900/70 p-3">
-                <pre className="text-xs text-gray-300 overflow-auto max-h-60 font-mono whitespace-pre-wrap break-words mb-3">
-                  {workflowCompleteSource}
-                </pre>
+                <textarea
+                  readOnly
+                  value={workflowCompleteSource}
+                  className="w-full min-h-[180px] bg-navy-950 text-gray-200 text-xs p-3 rounded-md border border-navy-700"
+                />
                 <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(workflowCompleteSource);
-                    alert('✅ Fonte workflow copiata!');
+                  onClick={async () => {
+                    await navigator.clipboard.writeText(workflowCompleteSource);
+                    setCopiedComplete(true);
+                    setTimeout(() => setCopiedComplete(false), 1500);
                   }}
-                  className="text-xs px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition w-full"
+                  className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
                 >
-                  📋 Copia Fonte
+                  {copiedComplete ? 'Copiato ✓' : 'Copia fonte'}
                 </button>
               </div>
             )}
