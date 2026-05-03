@@ -221,46 +221,6 @@ export default function PracticalWorkflow({
           );
         })}
 
-        {workflowCompleteSource && (
-          <div className="mt-8 border-t border-cyan-400/20 pt-8">
-            <h4 className="text-lg font-semibold text-cyan-300 mb-4">
-              📽️ Fonte Completa — Video + Infografica Workflow
-            </h4>
-            <p className="text-sm text-gray-300 mb-4">
-              Carica questa fonte in NotebookLM per generare un video unificato o infografica con
-              l&apos;intero workflow da Step 1 a 5.
-            </p>
-
-            <div className="mb-4">
-              <button
-                onClick={() => setShowCompleteSource(!showCompleteSource)}
-                className="text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition mr-2"
-              >
-                {showCompleteSource ? 'Nascondi fonte workflow' : 'Mostra fonte workflow'}
-              </button>
-            </div>
-
-            {showCompleteSource && (
-              <div className="rounded-lg border border-navy-600 bg-navy-900/70 p-3">
-                <textarea
-                  readOnly
-                  value={workflowCompleteSource}
-                  className="w-full min-h-[180px] bg-navy-950 text-gray-200 text-xs p-3 rounded-md border border-navy-700"
-                />
-                <button
-                  onClick={async () => {
-                    await navigator.clipboard.writeText(workflowCompleteSource);
-                    setCopiedComplete(true);
-                    setTimeout(() => setCopiedComplete(false), 1500);
-                  }}
-                  className="mt-2 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition"
-                >
-                  {copiedComplete ? 'Copiato ✓' : 'Copia fonte'}
-                </button>
-              </div>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
