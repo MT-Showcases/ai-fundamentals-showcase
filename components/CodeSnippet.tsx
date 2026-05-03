@@ -33,7 +33,7 @@ export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
   const height = Math.min(Math.max(lines * 22 + 28, 180), 520);
 
   return (
-    <div className="rounded-xl border border-navy-600 overflow-hidden bg-navy-900/70">
+    <div className="h-auto rounded-xl border border-navy-600 overflow-hidden bg-navy-900/70">
       <div className="flex items-center justify-between px-4 py-3 border-b border-navy-600 bg-navy-800/80">
         <div>
           <p className="text-cyan-300 font-semibold text-sm">{label}</p>
