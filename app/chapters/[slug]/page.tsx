@@ -452,6 +452,110 @@ Usa questa fonte per generare:
               </>
             )}
 
+            {chapter.slug === 'nlp' && (
+              <div className="mb-12">
+                <PracticalWorkflow
+                  title="NLP Workflow Pratico — 5 Step"
+                  intro="Costruisci un analizzatore di sentiment in Python. Scarica lo ZIP Lab 3 e segui gli step."
+                  downloadLinks={[
+                    {
+                      label: 'Scarica ZIP Lab 3 — NLP Sentiment Analysis',
+                      url: '/downloads/ml-lab-03-nlp.zip',
+                      icon: 'zip',
+                    },
+                  ]}
+                  steps={[
+                    {
+                      number: 1,
+                      title: 'Carica i Dati',
+                      description: 'Dataset inline di 30 recensioni (15 positive + 15 negative) — nessun download richiesto.',
+                      code: 'texts = [\n  "Prodotto fantastico, lo consiglio!",\n  "Pessima qualità, deluso.",\n  # ... 28 altre frasi\n]\nlabels = [1, 0, ...]',
+                      codeLang: 'python',
+                      tryThis: 'Aggiungi 5 tue frasi al dataset — il modello le include nel training.',
+                    },
+                    {
+                      number: 2,
+                      title: 'Preprocessing',
+                      description: 'Lowercase + rimozione punteggiatura con regex. Nessuna libreria esterna.',
+                      code: 'import re\n\ndef preprocess(text):\n    text = text.lower()\n    text = re.sub(r"[^\\w\\s]", "", text)\n    return text',
+                      codeLang: 'python',
+                      tryThis: 'Prova a rimuovere anche i numeri — migliora o peggiora l&apos;accuracy?',
+                    },
+                    {
+                      number: 3,
+                      title: 'TF-IDF Vectorization',
+                      description: 'Trasforma il testo in numeri: ogni parola diventa una feature pesata per rarità.',
+                      code: 'from sklearn.feature_extraction.text import TfidfVectorizer\n\nvectorizer = TfidfVectorizer(max_features=1000)\nX = vectorizer.fit_transform(texts_clean)',
+                      codeLang: 'python',
+                      tryThis: 'Cambia max_features=500 — cambia l&apos;accuracy?',
+                    },
+                    {
+                      number: 4,
+                      title: 'Training — LR vs Naive Bayes',
+                      description: 'Allena e confronta Logistic Regression vs Multinomial Naive Bayes.',
+                      code: 'from sklearn.linear_model import LogisticRegression\nfrom sklearn.naive_bayes import MultinomialNB\n\nlr = LogisticRegression(random_state=42)\nnb = MultinomialNB()\nlr.fit(X_train, y_train)\nnb.fit(X_train, y_train)',
+                      codeLang: 'python',
+                      tryThis: 'Quale modello ha accuracy più alta? Perché Naive Bayes funziona bene con testo?',
+                    },
+                    {
+                      number: 5,
+                      title: 'Visualizzazione',
+                      description: 'Confusion matrix con seaborn + top 10 parole più positive e negative.',
+                      code: 'import seaborn as sns\nfrom sklearn.metrics import confusion_matrix\n\ncm = confusion_matrix(y_test, y_pred)\nsns.heatmap(cm, annot=True, fmt="d")\nplt.savefig("sentiment-analysis.png")',
+                      codeLang: 'python',
+                      tryThis: 'Aggiungi la tua frase nella sezione ESPERIMENTO in fondo al main.py!',
+                    },
+                  ]}
+                  workflowCompleteSource={`CAPITOLO 6 — NLP WORKFLOW PRATICO COMPLETO: ANALISI DEL SENTIMENT
+============================================================
+
+CONTESTO DEL LABORATORIO:
+Questo workflow guida gli studenti nella costruzione di un analizzatore di sentiment in Python — il loro primo sistema NLP funzionante. L'obiettivo è demistificare l'elaborazione del linguaggio naturale, mostrando che dietro ogni AI che "capisce" il testo c'è una pipeline matematica accessibile.
+
+DATASET:
+- 30 frasi inline in italiano (15 positive + 15 negative). Nessun download, nessuna API, nessun account.
+
+TECNOLOGIE:
+- TF-IDF: rappresentazione numerica del testo basata su rarità/frequenza parole
+- Logistic Regression: modello lineare interpretabile
+- Multinomial Naive Bayes: classificatore probabilistico, efficace su testo
+- Seaborn/Matplotlib: confusion matrix e top parole
+- Scelta deliberata: NO BERT, NO Transformers — focus sulla teoria
+
+I 5 STEP:
+
+[Step 1] Caricamento Dati
+Dataset inline: 30 frasi con etichette 0/1. Lo studente può aggiungere le proprie frasi e vedere l'impatto immediato.
+
+[Step 2] Preprocessing
+Lowercase + rimozione punteggiatura con regex. Mostra che anche i sistemi AI avanzati partono da trasformazioni elementari.
+
+[Step 3] TF-IDF Vectorization
+TfidfVectorizer trasforma frasi in vettori numerici. Parole rare ma frequenti in un testo hanno peso alto. max_features=1000.
+
+[Step 4] Training e Confronto
+Logistic Regression vs Multinomial Naive Bayes sullo stesso train set. random_state=42 per riproducibilità.
+
+[Step 5] Visualizzazione
+Confusion matrix + top 10 parole positive/negative dai coefficienti LR. Grafico: sentiment-analysis.png.
+
+FLUSSO DIDATTICO:
+1. Scarica ZIP Lab 3 (ml-lab-03-nlp.zip)
+2. cd ml-lab-03-nlp/
+3. pip install -r requirements.txt
+4. python main.py
+5. Legge output: accuracy LR vs NB + top 10 parole
+6. Apre sentiment-analysis.png
+7. Modifica mia_recensione e re-esegue
+
+OBIETTIVO GENERAZIONE CONTENUTI:
+1) Video: "Come un computer legge il testo — da parole a numeri con TF-IDF"
+2) Infografica: pipeline NLP in 5 step
+3) Quiz: TF-IDF vs word count, NB vs LR, confusion matrix`}
+                />
+              </div>
+            )}
+
             {chapter.slug === 'neural-networks' && (
               <div className="mt-12">
                 <PracticalWorkflow

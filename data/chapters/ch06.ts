@@ -30,6 +30,7 @@ export const ch06: Chapter = {
         code: '# Word Embeddings con gensim\nfrom gensim.models import Word2Vec\n\n# Corpus di frasi\nsentences = [\n    ["il", "gatto", "dorme"],\n    ["il", "cane", "corre"],\n    ["l-intelligenza", "artificiale", "impara"]\n]\n\n# Addestra il modello\nmodel = Word2Vec(sentences, vector_size=50, window=3, min_count=1)\n\n# Parole simili\nsimilar = model.wv.most_similar("gatto", topn=3)\nprint(similar)\n# [("cane", 0.85), ...]'
       }
     ],
+    labNote: 'Lab 3 — NLP Sentiment Analysis (ZIP scaricabile: ml-lab-03-nlp.zip). Dataset inline 30 frasi italiane (15 positive + 15 negative), nessun download esterno. Step: preprocessing regex, TF-IDF vectorization, confronto Logistic Regression vs Naive Bayes, confusion matrix seaborn + top 10 parole sentiment. Esperimento: modifica mia_recensione in fondo al main.py per testare frasi personalizzate.',
     discussionPrompts: [
       'Come cambierebbe ChatGPT se non avesse Attention mechanism?',
       'Qual è il limite della context window e come potrebbe impattare la comprensione?',
