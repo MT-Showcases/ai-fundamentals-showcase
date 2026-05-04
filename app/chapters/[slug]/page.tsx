@@ -83,14 +83,50 @@ export default async function ChapterPage({ params }: Props) {
   const progressPercent = (chapterNum / totalChapters) * 100;
 
   const chapterGlossaryTerms: Record<string, string[]> = {
-    'data-importance': [
-      'algoritmo', 'dataset', 'bias', 'training', 'supervised-learning', 'label', 'data-quality', 'validation', 'test-set',
+    'intro-to-ai': [
+      'intelligenza-artificiale', 'machine-learning', 'algoritmo', 'pattern-recognition', 'modello', 'deep-learning',
     ],
     'how-ai-works': [
-      'neural-network', 'backpropagation', 'gradient-descent', 'learning-rate', 'loss-function', 'layer', 'peso', 'overfitting', 'regolarizzazione', 'dropout',
+      'neural-network', 'backpropagation', 'gradient-descent', 'learning-rate', 'loss-function', 'layer', 'peso', 'overfitting', 'regolarizzazione', 'dropout', 'data-drift',
+    ],
+    'data-importance': [
+      'algoritmo', 'dataset', 'bias', 'training', 'supervised-learning', 'label', 'data-quality', 'validation', 'test-set', 'preprocessing', 'edge-case',
+    ],
+    'machine-learning': [
+      'machine-learning', 'supervised-learning', 'overfitting', 'underfitting', 'training', 'validation', 'test-set', 'accuracy', 'precision', 'recall', 'f1-score', 'dataset', 'iperparametro', 'preprocessing', 'feature-engineering',
+    ],
+    'neural-networks': [
+      'neural-network', 'deep-learning', 'backpropagation', 'gradient-descent', 'layer', 'peso', 'overfitting', 'dropout', 'learning-rate', 'loss-function', 'regolarizzazione',
+    ],
+    'nlp': [
+      'nlp', 'tokenizzazione', 'embedding', 'transformer', 'attention-mechanism', 'llm', 'context-window', 'preprocessing', 'edge-case',
+    ],
+    'computer-vision': [
+      'computer-vision', 'cnn', 'deep-learning', 'overfitting', 'transfer-learning', 'dataset', 'edge-case', 'produzione',
     ],
     'generative-ai': [
-      'generative-ai', 'llm', 'transformer', 'attention-mechanism', 'fine-tuning', 'prompt-engineering', 'tokenizzazione', 'context-window', 'allucinazione', 'rlhf',
+      'generative-ai', 'llm', 'transformer', 'attention-mechanism', 'fine-tuning', 'prompt-engineering', 'tokenizzazione', 'context-window', 'allucinazione', 'rlhf', 'temperatura', 'guardrail',
+    ],
+    'fine-tuning': [
+      'fine-tuning', 'transfer-learning', 'rag', 'llm', 'zero-shot', 'pre-training', 'iperparametro', 'overfitting',
+    ],
+    'ai-ethics': [
+      'bias', 'fairness', 'explainability', 'etica-ai', 'produzione', 'edge-case', 'guardrail',
+    ],
+    'ai-regulation': [
+      'ai-act', 'etica-ai', 'fairness', 'explainability', 'produzione', 'guardrail',
+    ],
+    'ai-and-work': [
+      'machine-learning', 'algoritmo', 'kpi', 'produzione', 'autonomous-agent',
+    ],
+    'ai-tools': [
+      'llm', 'prompt-engineering', 'allucinazione', 'api', 'guardrail', 'produzione',
+    ],
+    'advanced-patterns': [
+      'rag', 'autonomous-agent', 'fine-tuning', 'llm', 'api', 'guardrail', 'context-window',
+    ],
+    'future-of-ai': [
+      'deep-learning', 'autonomous-agent', 'reinforcement-learning', 'rlhf', 'generative-ai', 'etica-ai',
     ],
   };
 
@@ -519,7 +555,7 @@ Usa questa fonte per generare:
                       description: 'Dataset inline di 30 recensioni (15 positive + 15 negative) — nessun download richiesto.',
                       code: 'texts = [\n  "Prodotto fantastico, lo consiglio!",\n  "Pessima qualità, deluso.",\n  # ... 28 altre frasi\n]\nlabels = [1, 0, ...]',
                       codeLang: 'python',
-                      tryThis: 'Aggiungi 5 tue frasi al dataset — il modello le include nel training.',
+                      tryThis: <><strong>Prova:</strong> aggiungi 5 tue frasi al dataset — il modello le include nel <em>training</em>. Una frase ironica viene classificata correttamente?</>,
                     },
                     {
                       number: 2,
@@ -527,7 +563,7 @@ Usa questa fonte per generare:
                       description: 'Lowercase + rimozione punteggiatura con regex. Nessuna libreria esterna.',
                       code: 'import re\n\ndef preprocess(text):\n    text = text.lower()\n    text = re.sub(r"[^\\w\\s]", "", text)\n    return text',
                       codeLang: 'python',
-                      tryThis: 'Prova a rimuovere anche i numeri — migliora o peggiora l\'accuracy?',
+                      tryThis: <><strong>Sperimenta:</strong> aggiungi <code>re.sub(r&apos;\d+&apos;, &apos;&apos;, text)</code> per rimuovere i numeri — migliora o peggiora l&apos;<em>accuracy</em>?</>,
                     },
                     {
                       number: 3,
@@ -535,7 +571,7 @@ Usa questa fonte per generare:
                       description: 'Trasforma il testo in numeri: ogni parola diventa una feature pesata per rarità.',
                       code: 'from sklearn.feature_extraction.text import TfidfVectorizer\n\nvectorizer = TfidfVectorizer(max_features=1000)\nX = vectorizer.fit_transform(texts_clean)',
                       codeLang: 'python',
-                      tryThis: 'Cambia max_features=500 — cambia l\'accuracy?',
+                      tryThis: <><strong>Prova:</strong> cambia <code>max_features=500</code> — l&apos;<em>accuracy</em> cambia? Con meno feature il modello è più veloce ma meno preciso.</>,
                     },
                     {
                       number: 4,
@@ -543,7 +579,7 @@ Usa questa fonte per generare:
                       description: 'Allena e confronta Logistic Regression vs Multinomial Naive Bayes.',
                       code: 'from sklearn.linear_model import LogisticRegression\nfrom sklearn.naive_bayes import MultinomialNB\n\nlr = LogisticRegression(random_state=42)\nnb = MultinomialNB()\nlr.fit(X_train, y_train)\nnb.fit(X_train, y_train)',
                       codeLang: 'python',
-                      tryThis: 'Quale modello ha accuracy più alta? Perché Naive Bayes funziona bene con testo?',
+                      tryThis: <><strong>Rifletti:</strong> quale modello ha <em>accuracy</em> più alta? Perché <strong>Naive Bayes</strong> funziona spesso bene con il testo nonostante le sue assunzioni semplificate?</>,
                     },
                     {
                       number: 5,
@@ -551,7 +587,7 @@ Usa questa fonte per generare:
                       description: 'Confusion matrix con seaborn + top 10 parole più positive e negative.',
                       code: 'import seaborn as sns\nfrom sklearn.metrics import confusion_matrix\n\ncm = confusion_matrix(y_test, y_pred)\nsns.heatmap(cm, annot=True, fmt="d")\nplt.savefig("sentiment-analysis.png")',
                       codeLang: 'python',
-                      tryThis: 'Aggiungi la tua frase nella sezione ESPERIMENTO in fondo al main.py!',
+                      tryThis: <><strong>Sperimenta:</strong> aggiungi la tua frase nella sezione <code>ESPERIMENTO</code> in fondo al <code>main.py</code> — il modello la classifica correttamente?</>,
                     },
                   ]}
                   workflowCompleteSource={`CAPITOLO 6 — NLP WORKFLOW PRATICO COMPLETO: ANALISI DEL SENTIMENT
@@ -656,7 +692,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: 'Carica la chiave Groq dal file .env e verifica la connessione con una chiamata test.',
                       code: 'from dotenv import load_dotenv\nfrom groq import Groq\nimport os\n\nload_dotenv()\nclient = Groq(api_key=os.getenv("GROQ_API_KEY"))\n\n# Test connessione\nrisposta, tokens = call_llm(client, "Rispondi solo con: OK")\nprint(f"Connessione OK — token test: {tokens}")',
                       codeLang: 'python',
-                      tryThis: 'Se vedi un errore 401, controlla che la chiave nel file .env sia corretta.',
+                      tryThis: <><strong>Attenzione:</strong> se vedi un errore <code>401</code>, controlla che la chiave <strong>API</strong> nel file <code>.env</code> sia corretta e che l&apos;account Groq sia attivo.</>,
                     },
                     {
                       number: 2,
@@ -664,7 +700,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: 'Chiedi al modello di spiegare un concetto AI in 2 righe.',
                       code: 'prompt = "Spiega cos\'\u00e8 il Machine Learning in 2 righe."\nrisposta, tokens = call_llm(client, prompt)\nprint(risposta)\nprint(f"Token usati: {tokens}")',
                       codeLang: 'python',
-                      tryThis: 'Cambia il concetto — prova con "deep learning" o "overfitting". La risposta cambia?',
+                      tryThis: <><strong>Prova:</strong> cambia il concetto &mdash; usa <em>&ldquo;deep learning&rdquo;</em> o <em>&ldquo;overfitting&rdquo;</em>. La risposta cambia? Nota come il modello adatta il linguaggio.</>,
                     },
                     {
                       number: 3,
@@ -672,7 +708,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: 'Stesso obiettivo, due prompt diversi: osserva come cambia la qualità della risposta.',
                       code: '# Prompt A: vago\nprompt_a = "Cos\'\u00e8 l\'overfitting?"\n\n# Prompt B: strutturato (ruolo + vincoli + formato)\nprompt_b = (\n    "Sei un docente AI per studenti di primo anno. "\n    "Spiega overfitting in max 3 bullet point "\n    "usando un\'analogia pratica."\n)',
                       codeLang: 'python',
-                      tryThis: 'Qualè la differenza tra le due risposte? Il prompt B è sempre migliore?',
+                      tryThis: <><strong>Analizza:</strong> qual è la differenza tra le due risposte? Il <em>prompt strutturato</em> è <strong>sempre</strong> migliore, o dipende dal contesto?</>,
                     },
                     {
                       number: 4,
@@ -680,7 +716,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: 'Il system prompt definisce il ruolo e i vincoli globali del modello per tutta la conversazione.',
                       code: 'system = (\n    "Sei un assistente tecnico per startup AI. "\n    "Rispondi sempre in max 5 righe, "\n    "con linguaggio pratico e orientato al business."\n)\nrisposta, _ = call_llm(client, domanda, system_prompt=system)',
                       codeLang: 'python',
-                      tryThis: 'Cambia il ruolo nel system prompt — prova "Sei uno studente universitario scettico". Come cambia il tono?',
+                      tryThis: <><strong>Sperimenta:</strong> cambia il ruolo nel <em>system prompt</em> &mdash; prova <em>&ldquo;Sei uno studente universitario scettico&rdquo;</em>. Come cambia il tono della risposta?</>,
                     },
                     {
                       number: 5,
@@ -688,7 +724,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: 'Confronta le risposte con una scorecard: lunghezza, struttura, coerenza con il prompt.',
                       code: 'def valuta(risposta):\n    parole = len(risposta.split())\n    ha_struttura = any(c in risposta for c in ["\u2022", "-", "1.", "\\n-"])\n    print(f"Parole: {parole}")\n    print(f"Struttura: {\u2705 if ha_struttura else \u274c}")\n\nvaluta(risposta_a)  # prompt vago\nvaluta(risposta_b)  # prompt strutturato',
                       codeLang: 'python',
-                      tryThis: 'Sblocca la sezione ESPERIMENTO in fondo al main.py e testa il tuo prompt preferito!',
+                      tryThis: <><strong>Crea:</strong> sblocca la sezione <code>ESPERIMENTO</code> in fondo al <code>main.py</code> e testa il tuo <em>prompt</em> preferito — cosa riesci a far fare al modello?</>,
                     },
                   ]}
                   workflowCompleteSource={`CAPITOLO 8 — GENERATIVE AI: PROMPT ENGINEERING CON GROQ API
@@ -831,7 +867,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
 X, y = fetch_openml('mnist_784', version=1, return_X_y=True, as_frame=False)
 X, y = X[:10000], y[:10000] # Subset per velocità`,
                       codeLang: 'python',
-                      tryThis: 'Prova a stampare X.shape. Cosa rappresentano quei 784 valori?',
+                      tryThis: <><strong>Prova:</strong> stampa <code>X.shape</code> — cosa rappresentano quei <strong>784 valori</strong>? (suggerimento: 28×28 pixel)</>,
 
                     },
                     {
@@ -843,7 +879,7 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)`,
                       codeLang: 'python',
-                      tryThis: 'Se non scalassi i dati, il processo di discesa del gradiente farebbe enormi balzi a vuoto, rallentando la convergenza.'
+                      tryThis: <><strong>Rifletti:</strong> se non scalassi i dati, la <em>discesa del gradiente</em> farebbe balzi enormi — prova a commentare lo <code>StandardScaler</code> e confronta i risultati.</>
                     },
                     {
                       number: 3,
@@ -853,7 +889,7 @@ X_test_scaled = scaler.transform(X_test)`,
 nn_model = MLPClassifier(hidden_layer_sizes=(50,), max_iter=20, solver='sgd')
 nn_model.fit(X_train_scaled, y_train)`,
                       codeLang: 'python',
-                      tryThis: 'Qui avviene la magia: la backpropagation aggiusta i pesi tra i 784 input, i 50 neuroni nascosti e i 10 output finali.',
+                      tryThis: <><strong>Sperimenta:</strong> cambia <code>hidden_layer_sizes=(50,)</code> in <code>(100, 50)</code> — aggiungi un layer. L&apos;accuracy migliora?</>,
                       modificationExample: {
                         lineNumber: 2,
                         description: 'Cosa succede se la rete diventa più profonda?',
@@ -872,7 +908,7 @@ plt.imshow(img, cmap='gray')
 plt.title(f"Pred: {y_pred[0]} | Reale: {y_test[0]}")
 plt.show()`,
                       codeLang: 'python',
-                      tryThis: 'Guarda l\'immagine: gli errori sono su numeri scritti male? Per vedere numeri diversi, apri main.py e cambia random_state=42 nello Step 2 (es. random_state=7 o random_state=99) — ogni valore mostra un set completamente diverso.'
+                      tryThis: <>Guarda l&apos;immagine: gli errori sono su numeri scritti male? Per vedere <strong>numeri diversi</strong>, apri <code>main.py</code> e cambia <code>random_state=42</code> nello Step 2 (es. <code>random_state=7</code> o <code>random_state=99</code>) — ogni valore mostra un set completamente diverso.</>
                     }
                   ]}
                   workflowCompleteSource={`CAPITOLO 5 — RETI NEURALI: RICONOSCIMENTO CIFRE (MNIST)
