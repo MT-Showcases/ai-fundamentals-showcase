@@ -51,114 +51,114 @@ export const ch05: Chapter = {
     labNote: 'Lab 2 — Reti Neurali con MNIST (ZIP scaricabile: ml-lab-02-neural-networks.zip). Il lab usa il dataset MNIST — 10.000 immagini di cifre scritte a mano (28x28 pixel = 784 feature) — e addestra un MLP (Multi-Layer Perceptron) via Scikit-learn con un singolo hidden layer da 50 neuroni. Lo studente installa le dipendenze (numpy, scikit-learn, matplotlib, seaborn) ed esegue python main.py. Alla fine viene visualizzata una griglia 2x5: titoli in verde = predizioni corrette, in rosso = errori della rete. Esperimento guidato: modificare hidden_layer_sizes=(50,) in hidden_layer_sizes=(50, 50,) per aggiungere profondità e osservare l\'impatto su tempo di training e accuracy.',
     quiz: [
       {
-        question: "In una rete neurale, il ruolo principale dei pesi è:",
+        question: "Un MLP con hidden_layer_sizes=(50, 50) ha due layer nascosti da 50 neuroni ciascuno. Cosa succede rispetto a (50,) con lo stesso dataset?",
         options: [
-          "Regolare quanto ogni input influenza la previsione",
-          "Cambiare il colore dei layer",
-          "Ridurre automaticamente il dataset",
-          "Sostituire la funzione di loss",
+          "Training più lento, potenzialmente più accurato",
+          "Training più veloce, sicuramente più accurato",
+          "Stesso comportamento, cambia solo la sintassi",
+          "Errore: non si possono usare due layer in Scikit-learn",
         ],
         correct: 0,
-        explanation: "I pesi determinano il contributo di ogni segnale nel calcolo dell'output."
+        explanation: "Più layer = più parametri = più capacità di apprendere pattern complessi, ma anche più calcolo e rischio overfitting. Non è automaticamente migliore."
       },
       {
-        question: "Se aumenti i layer senza abbastanza dati, quale rischio cresce di più?",
+        question: "Nel lab MNIST, ogni immagine ha 28×28 pixel. Quante feature riceve il primo layer del MLP?",
         options: [
-          "Overfitting",
-          "Compressione lossless",
-          "Riduzione bias di interfaccia",
-          "Migliore spiegabilità",
+          "28",
+          "784",
+          "256",
+          "28²=784, ma Scikit-learn le riduce a 28",
         ],
-        correct: 0,
-        explanation: "Maggiore complessità con pochi dati spesso porta a memorizzazione e scarsa generalizzazione."
+        correct: 1,
+        explanation: "28×28 = 784 pixel, ognuno è una feature. Il MLP appiattisce l'immagine in un vettore 1D di 784 valori prima di elaborarla."
       },
       {
-        question: "La backpropagation serve principalmente a:",
+        question: "La backpropagation aggiorna i pesi in quale direzione?",
         options: [
-          "Aggiornare i pesi per ridurre l\'errore",
-          "Creare nuove feature manuali",
-          "Aumentare la RAM del server",
-          "Eliminare la validation",
+          "Casuale, per evitare minimi locali",
+          "Opposta al gradiente della loss (discesa del gradiente)",
+          "Nella direzione del gradiente crescente",
+          "Uguale per tutti i layer indipendentemente dall'errore",
         ],
-        correct: 0,
-        explanation: "Backprop usa l\'errore per correggere i pesi iterativamente."
+        correct: 1,
+        explanation: "Backprop calcola il gradiente (quanto ogni peso contribuisce all'errore) e si muove nella direzione opposta — riducendo la loss ad ogni passo."
       },
       {
-        question: "Training loss in calo ma validation loss in aumento indica spesso:",
+        question: "Training loss = 0.05, Validation loss = 0.51 dopo 100 epoche. Cosa sta succedendo?",
         options: [
-          "Overfitting",
-          "Underfitting",
-          "Dataset perfetto",
-          "Convergenza ideale",
+          "Underfitting — il modello è troppo semplice",
+          "Convergenza ottimale — entrambe le loss sono accettabili",
+          "Overfitting — il modello ha memorizzato il training set",
+          "Niente di strano, è un gap normale in ogni rete",
         ],
-        correct: 0,
-        explanation: "Il modello sta imparando troppo i dati visti e peggiora su dati nuovi."
+        correct: 2,
+        explanation: "Un gap enorme tra training loss (quasi zero) e validation loss (alta) è il segnale classico di overfitting: il modello ha imparato a memoria i dati di training, ma non generalizza su dati nuovi."
       },
       {
-        question: "Quando una startup dovrebbe preferire un modello più semplice a una rete profonda?",
+        question: "Perché lo StandardScaler è importante prima di addestrare un MLP?",
         options: [
-          "Quando il problema è semplice e i dati sono limitati",
-          "Quando vuole usare più GPU a prescindere",
-          "Quando vuole metriche meno trasparenti",
-          "Quando non deve validare",
+          "Perché Scikit-learn non accetta valori negativi senza scaling",
+          "Per ridurre il numero di feature automaticamente",
+          "Perché le reti neurali convergono male con feature su scale molto diverse",
+          "Per aumentare artificialmente la dimensione del dataset",
         ],
-        correct: 0,
-        explanation: "Modelli semplici possono essere più economici, rapidi e spiegabili in contesti poco complessi."
+        correct: 2,
+        explanation: "Le reti neurali usano la discesa del gradiente: se una feature vale 0–1 e un'altra 0–10000, i gradienti hanno magnitudini molto diverse e il training diventa instabile o lentissimo."
       },
       {
-        question: "Quale metrica/controllo è più utile durante il training di una rete?",
+        question: "Nel lab MNIST usi 10.000 immagini con test_size=0.2. Quante immagini restano per il training?",
         options: [
-          "Monitorare insieme training e validation",
-          "Guardare solo il numero di epoche",
-          "Guardare solo la loss di training",
-          "Guardare solo il tempo di avvio notebook",
+          "2.000",
+          "10.000 — il test set è separato dal conteggio",
+          "8.000",
+          "5.000",
         ],
-        correct: 0,
-        explanation: "Serve confronto continuo tra training e validation per capire se generalizza."
+        correct: 2,
+        explanation: "80% di 10.000 = 8.000 immagini per il training. Il restante 20% (2.000 immagini) rimane nascosto durante il training e serve solo per valutare la generalizzazione finale."
       },
       {
-        question: "Quale decisione è più robusta in produzione?",
+        question: "Una startup ha 500 esempi etichettati e vuole classificare immagini. Qual è la scelta più pragmatica?",
         options: [
-          "Scegliere il modello con performance stabili su dati nuovi",
-          "Scegliere sempre il modello più profondo",
-          "Scegliere il modello con training più lungo",
-          "Scegliere il modello con nome più recente",
+          "ResNet-152 addestrata da zero sui 500 esempi",
+          "MLP con 5 layer profondi e 1000 neuroni per layer",
+          "Modello pre-addestrato con fine-tuning sui 500 esempi",
+          "GPT-4 fine-tuned sulla classificazione visiva",
         ],
-        correct: 0,
-        explanation: "La stabilità nel mondo reale conta più della complessità fine a sé stessa."
+        correct: 2,
+        explanation: "Con pochi dati, addestrare una rete profonda da zero porta quasi certamente a overfitting. Un modello pre-addestrato (transfer learning) porta già una rappresentazione visiva ricca — basta adattare l'ultimo layer."
       },
       {
-        question: "Se due architetture hanno accuracy simile, quale criterio può guidare la scelta finale?",
+        question: "Quale curva di training indica un modello che sta imparando correttamente?",
         options: [
-          "Costo computazionale e interpretabilità",
-          "Numero massimo di layer",
-          "Quantità di righe di codice",
-          "Tema UI del dashboard",
+          "Training loss stabile, validation loss in calo rapido",
+          "Training loss e validation loss entrambe in calo e vicine tra loro",
+          "Training loss in calo, validation loss completamente piatta",
+          "Entrambe le loss a zero dopo 5 epoche su dati reali",
         ],
-        correct: 0,
-        explanation: "A parità di performance, efficienza e manutenibilità fanno la differenza."
+        correct: 1,
+        explanation: "Il segnale sano è: entrambe le loss scendono e rimangono vicine. Divergenza = overfitting. Validation piatta = modello troppo semplice o learning rate errato. Loss a zero dopo 5 epoche su dati reali = quasi certamente un bug."
       },
       {
-        question: "In un mini esperimento piccola vs profonda, quale confronto è corretto?",
+        question: "Nel grafico finale del lab MNIST, un titolo in rosso significa:",
         options: [
-          "Generalizzazione, tempo training, interpretabilità",
-          "Solo numero di parametri",
-          "Solo tempo di inferenza",
-          "Solo punteggio training",
+          "Il modello ha classificato correttamente quella cifra",
+          "Il pixel è corrotto nel dataset originale",
+          "Il numero è scritto in modo troppo chiaro e confonde il modello",
+          "Il modello ha sbagliato la predizione su quella immagine",
         ],
-        correct: 0,
-        explanation: "Confronto completo evita decisioni basate su un singolo numero."
+        correct: 3,
+        explanation: "Nel lab, verde = predizione corretta, rosso = errore. Guardare le immagini con titolo rosso aiuta a capire quali cifre confonde di più il modello (tipicamente 4 vs 9, 3 vs 8, 5 vs 6)."
       },
       {
-        question: "Qual è l\'obiettivo reale del training di una rete neurale?",
+        question: "Accuracy del 90% su MNIST sembra ottima. In quale scenario potrebbe essere fuorviante?",
         options: [
-          "Generalizzare bene su dati non visti",
-          "Memorizzare tutto il training set",
-          "Massimizzare la profondità",
-          "Ridurre a zero ogni errore sul training",
+          "Sempre — l'accuracy è una metrica inutile per le reti neurali",
+          "Se il dataset avesse il 90% di una sola classe, un modello che predice sempre quella raggiungerebbe il 90% senza imparare nulla",
+          "Se l'accuracy supera l'85%, il modello è sicuramente in overfitting",
+          "Mai — il 90% è sempre un risultato affidabile su qualsiasi dataset",
         ],
-        correct: 0,
-        explanation: "Un buon modello non ripete il passato: predice bene su nuovi esempi."
+        correct: 1,
+        explanation: "L'accuracy è fuorviante con dataset sbilanciati. Su MNIST le 10 cifre sono bilanciate (~10% ciascuna), quindi il 90% è reale. Ma su fraud detection (1% di frodi), un modello che dice sempre 'non frode' raggiunge il 99% — completamente inutile."
       }
     ]
 };
