@@ -802,6 +802,39 @@ export const glossaryTerms: GlossaryTerm[] = [
     relatedTerms: ['guardrail', 'etica-ai', 'autonomous-agent'],
     relatedChapters: ['ethics-ai'],
   },
+  {
+    id: 'MAE',
+    term: 'MAE',
+    shortDef: 'Mean Absolute Error — errore medio in valore assoluto tra previsione e realtà.',
+    definition:
+      "Il Mean Absolute Error (MAE) misura in media di quanto sbaglia un modello di regressione. Se il MAE è $45.000, il modello prevede il prezzo delle case con un errore medio di 45 mila dollari. A differenza dell'RMSE, il MAE pesa tutti gli errori allo stesso modo — non penalizza gli errori grandi più di quelli piccoli. Un MAE basso significa previsioni più precise.",
+    category: 'ML',
+    synonyms: ['Mean Absolute Error', 'errore medio assoluto'],
+    relatedTerms: ['R²', 'RMSE', 'overfitting'],
+    relatedChapters: ['supervised-learning-regression'],
+  },
+  {
+    id: 'R²',
+    term: 'R²',
+    shortDef: 'Coefficiente di determinazione — quanto bene il modello spiega la variabilità dei dati (0 = niente, 1 = perfetto).',
+    definition:
+      "R² (R quadro, o coefficiente di determinazione) misura la proporzione di variabilità nei dati che il modello riesce a spiegare. Va da 0 a 1: R²=1 significa previsione perfetta, R²=0 significa che il modello non spiega nulla (pari a predire sempre la media). In pratica, un R²=0.85 significa che l'85% delle variazioni di prezzo è spiegato dalle feature. Più alto è, meglio il modello cattura i pattern reali.",
+    category: 'ML',
+    synonyms: ['R quadro', 'coefficiente di determinazione', 'R-squared'],
+    relatedTerms: ['MAE', 'RMSE', 'overfitting'],
+    relatedChapters: ['supervised-learning-regression'],
+  },
+  {
+    id: 'RMSE',
+    term: 'RMSE',
+    shortDef: 'Root Mean Square Error — come il MAE ma penalizza di più gli errori grandi.',
+    definition:
+      "Il Root Mean Square Error (RMSE) è simile al MAE ma prima eleva al quadrato ogni errore, poi fa la radice quadrata. Questo significa che penalizza molto di più gli errori grandi rispetto a quelli piccoli. Se il modello fa un errore enorme su poche case, l'RMSE cresce molto, mentre il MAE lo nota meno. Tipicamente RMSE > MAE: la differenza tra i due dice quanto il modello fa errori 'a macchia di leopardo' su casi difficili.",
+    category: 'ML',
+    synonyms: ['Root Mean Square Error', 'errore quadratico medio'],
+    relatedTerms: ['MAE', 'R²', 'overfitting'],
+    relatedChapters: ['supervised-learning-regression'],
+  },
 ];
 
 // Helper: get term by id

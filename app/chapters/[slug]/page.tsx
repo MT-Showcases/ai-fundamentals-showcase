@@ -249,7 +249,7 @@ export default async function ChapterPage({ params }: Props) {
                         <li>Usare Pandas per esplorare un dataset da 20.640 righe</li>
                         <li>Il concetto fondamentale di split <GlossaryTerm term="training">Training</GlossaryTerm> vs <GlossaryTerm term="validation">Test</GlossaryTerm></li>
                         <li>Confrontare un modello semplice (Linear Regression) con uno complesso (Random Forest)</li>
-                        <li>Leggere le metriche d&apos;errore (MAE e R²) e tracciare un grafico</li>
+                        <li>Leggere le metriche d&apos;errore (<GlossaryTerm term="MAE">MAE</GlossaryTerm> e <GlossaryTerm term="R²">R²</GlossaryTerm>) e tracciare un grafico</li>
                       </ul>
                     </div>
 
@@ -403,7 +403,7 @@ plt.ylabel('Predicted Price ($)')
 plt.title('Predictions vs Reality')
 plt.show()`,
                     codeLang: 'python',
-                    tryThis: <>Confronta il grafico dei due modelli: chi ha dispersione minore e MAE più basso?</>,
+                    tryThis: <>Confronta il grafico dei due modelli: chi ha dispersione minore e <GlossaryTerm term="MAE">MAE</GlossaryTerm> più basso?</>,
                     fileReference: {
                       filename: 'main.py',
                       lines: '63-71',
