@@ -24,25 +24,7 @@ export const ch06: Chapter = {
       'Qual è il limite della context window e come potrebbe impattare la comprensione?',
       'Se due parole hanno embedding molto simili, cosa significa?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Prompt test set (senza coding)',
-        objective: 'Valutare la robustezza di un flusso NLP usando prompt normali ed edge-case prima del rilascio.',
-        duration: '15-20 min',
-        steps: [
-          'Apri il dataset train CH6 e leggi i prompt base con output atteso.',
-          'Scegli 3 prompt difficili e spiega perché potrebbero creare ambiguità.',
-          'Usa la validation CH6 come confronto finale e identifica dove il sistema dovrebbe avere fallback.',
-          'Definisci 2 metriche operative: qualità risposta percepita e fallback rate.'
-        ],
-        deliverable: 'Checkpoint personale: 3 prompt critici + 1 proposta concreta di guardrail.',
-        resources: [
-          { label: 'Dataset train CH6 (CSV)', path: '/datasets/ch06-nlp-prompts/train.csv' },
-          { label: 'Dataset validation CH6 (CSV)', path: '/datasets/ch06-nlp-prompts/validation.csv' },
-          { label: 'Schema campi CH6 (JSON)', path: '/datasets/ch06-nlp-prompts/schema.json' }
-        ]
-      }
-    ],
+
     quiz: [
       {
         question: 'Cos\'è la tokenizzazione nel NLP?',
