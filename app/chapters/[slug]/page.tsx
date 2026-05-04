@@ -456,6 +456,17 @@ Usa questa fonte per generare:
               <div className="mb-12">
                 <PracticalWorkflow
                   title="NLP Workflow Pratico — 5 Step"
+                  chapterId={chapter.id}
+                  chapterSlug={chapter.slug}
+                  media={[
+                    {
+                      type: 'infographic',
+                      title: 'Workflow NLP in 5 Step',
+                      description: 'Pipeline completa del lab: dal caricamento dati al preprocessing TF-IDF, fino al confronto Logistic Regression vs Naive Bayes e la confusion matrix.',
+                      placeholderPath: 'media/ch06-nlp/lab/infographic.jpg',
+                      notes: 'ready'
+                    }
+                  ]}
                   setupContent={
                     <div className="space-y-4">
                       <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
