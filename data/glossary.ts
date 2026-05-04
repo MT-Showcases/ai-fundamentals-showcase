@@ -835,6 +835,28 @@ export const glossaryTerms: GlossaryTerm[] = [
     relatedTerms: ['MAE', 'R²', 'overfitting'],
     relatedChapters: ['supervised-learning-regression'],
   },
+  {
+    id: 'logistic-regression',
+    term: 'LogisticRegression',
+    shortDef: 'Classificatore lineare per problemi di classificazione binaria o multi-classe.',
+    definition:
+      "Logistic Regression è un modello lineare usato per classificazione. Invece di predire un numero continuo, stima la probabilità che un esempio appartenga a una classe (es. positivo/negativo). Nel lab NLP funziona bene con feature TF-IDF perché è veloce, stabile e i coefficienti sono interpretabili (puoi capire quali parole spingono la predizione).",
+    category: 'ML',
+    synonyms: ['Logistic Regression', 'regressione logistica'],
+    relatedTerms: ['MultinomialNB', 'training', 'validation'],
+    relatedChapters: ['nlp'],
+  },
+  {
+    id: 'multinomial-nb',
+    term: 'MultinomialNB',
+    shortDef: 'Classificatore probabilistico Naive Bayes molto usato nel text classification.',
+    definition:
+      "Multinomial Naive Bayes è un modello probabilistico che assume indipendenza condizionata tra feature. Nel testo (bag-of-words o TF-IDF) spesso offre baseline eccellenti: è rapido, semplice e robusto con pochi dati. Pur con assunzioni semplificate, in molte pipeline NLP pratiche resta un benchmark forte contro modelli più complessi.",
+    category: 'NLP',
+    synonyms: ['Multinomial Naive Bayes', 'Naive Bayes'],
+    relatedTerms: ['LogisticRegression', 'TF-IDF', 'training'],
+    relatedChapters: ['nlp'],
+  },
 ];
 
 // Helper: get term by id

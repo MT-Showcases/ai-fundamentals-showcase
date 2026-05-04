@@ -520,7 +520,7 @@ Usa questa fonte per generare:
                         <p className="text-sm font-semibold text-cyan-300 mb-2">🛠️ Scelte Tecniche</p>
                         <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc leading-relaxed">
                           <li><code>TF-IDF</code> invece di embedding deep: visibile, interpretabile e perfetto per capire i fondamentali NLP.</li>
-                          <li><code>LogisticRegression</code> + <code>MultinomialNB</code>: confronto lineare vs probabilistico sullo stesso dataset.</li>
+                          <li><GlossaryTerm term="LogisticRegression"><code>LogisticRegression</code></GlossaryTerm> + <GlossaryTerm term="MultinomialNB"><code>MultinomialNB</code></GlossaryTerm>: confronto lineare vs probabilistico sullo stesso dataset.</li>
                           <li><code>random_state=42</code> per risultati riproducibili durante la lezione.</li>
                           <li><code>seaborn</code> + confusion matrix per mostrare errori reali (falsi positivi/negativi), non solo accuracy.</li>
                         </ul>
