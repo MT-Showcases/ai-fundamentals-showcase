@@ -872,7 +872,7 @@ plt.imshow(img, cmap='gray')
 plt.title(f"Pred: {y_pred[0]} | Reale: {y_test[0]}")
 plt.show()`,
                       codeLang: 'python',
-                      tryThis: 'Guarda l\'immagine generata: gli errori del modello sono giustificati? (Numeri scritti male e ambigui).'
+                      tryThis: 'Guarda l\'immagine: gli errori sono su numeri scritti male? Per vedere numeri diversi, apri main.py e cambia random_state=42 nello Step 2 (es. random_state=7 o random_state=99) — ogni valore mostra un set completamente diverso.'
                     }
                   ]}
                   workflowCompleteSource={`CAPITOLO 5 — RETI NEURALI: RICONOSCIMENTO CIFRE (MNIST)
