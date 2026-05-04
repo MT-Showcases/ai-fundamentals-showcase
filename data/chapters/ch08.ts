@@ -36,25 +36,7 @@ export const ch08: Chapter = {
       'Quali guardrail minimi metteresti in un chatbot pubblico?',
       'Quando usare fallback umano in un flusso generativo?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — QA output generativo (senza coding)',
-        objective: 'Valutare output AI con criteri di qualità e rischio prima della pubblicazione.',
-        duration: '15-20 min',
-        steps: [
-          'Apri dataset train CH8 e leggi prompt+output.',
-          'Classifica 3 output: OK / da rivedere / da scartare.',
-          'Confronta con validation CH8 sui casi borderline.',
-          'Definisci un protocollo QA in 3 controlli.'
-        ],
-        deliverable: 'Checkpoint personale: 3 valutazioni motivate + protocollo QA.',
-        resources: [
-          { label: 'Dataset train CH8 (CSV)', path: '/datasets/ch08-generative-evals/train.csv' },
-          { label: 'Dataset validation CH8 (CSV)', path: '/datasets/ch08-generative-evals/validation.csv' },
-          { label: 'Schema campi CH8 (JSON)', path: '/datasets/ch08-generative-evals/schema.json' }
-        ]
-      }
-    ],
+    exercises: [],
     quiz: [
       { question: 'Un output LLM sembra credibile ma cita dati inventati. Come lo classifichi?', options: ['Buono, perché è scritto bene', 'Allucinazione con rischio fattuale', 'Errore di rete', 'Normale variabilità stilistica'], correct: 1, explanation: 'Forma fluida non garantisce veridicità del contenuto.' },
       { question: 'Quale prompt è più robusto per ottenere una risposta verificabile?', options: ['"Parlami di AI"', '"Spiega in modo creativo"', '"Rispondi in 5 punti, cita fonti, separa fatti da ipotesi"', '"Rispondi velocemente"'], correct: 2, explanation: 'Vincoli su formato e fonti migliorano controllo e auditabilità.' },
