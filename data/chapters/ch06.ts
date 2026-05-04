@@ -18,18 +18,6 @@ export const ch06: Chapter = {
       'Context window = quante parole ricorda il modello',
       'Learning outcome: spiegare token/embedding/attention su un esempio pratico',
     ],
-    codeSnippets: [
-      {
-        lang: 'python',
-        label: 'Tokenizzazione con HuggingFace Transformers',
-        code: '# Tokenizzazione con HuggingFace\nfrom transformers import AutoTokenizer\n\ntokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")\ntext = "L intelligenza artificiale sta cambiando il mondo"\ntokens = tokenizer(text, return_tensors="pt")\nprint(tokens["input_ids"])\n# tensor([[  101,  1048,  9932,  ... ,   102]])\n\n# Visualizza i token come stringhe\ntoken_strings = tokenizer.convert_ids_to_tokens(tokens["input_ids"][0])\nprint(token_strings)'
-      },
-      {
-        lang: 'python',
-        label: 'Word Embeddings con Word2Vec',
-        code: '# Word Embeddings con gensim\nfrom gensim.models import Word2Vec\n\n# Corpus di frasi\nsentences = [\n    ["il", "gatto", "dorme"],\n    ["il", "cane", "corre"],\n    ["l-intelligenza", "artificiale", "impara"]\n]\n\n# Addestra il modello\nmodel = Word2Vec(sentences, vector_size=50, window=3, min_count=1)\n\n# Parole simili\nsimilar = model.wv.most_similar("gatto", topn=3)\nprint(similar)\n# [("cane", 0.85), ...]'
-      }
-    ],
     labNote: 'Lab 3 — NLP Sentiment Analysis (ZIP scaricabile: ml-lab-03-nlp.zip). Dataset inline 30 frasi italiane (15 positive + 15 negative), nessun download esterno. Step: preprocessing regex, TF-IDF vectorization, confronto Logistic Regression vs Naive Bayes, confusion matrix seaborn + top 10 parole sentiment. Esperimento: modifica mia_recensione in fondo al main.py per testare frasi personalizzate.',
     discussionPrompts: [
       'Come cambierebbe ChatGPT se non avesse Attention mechanism?',
