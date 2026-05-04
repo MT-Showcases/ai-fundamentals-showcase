@@ -60,5 +60,30 @@ export const ch07: Chapter = {
       { question: 'Nel dataset CH7, quale assegnazione rischio è più plausibile?', options: ['low_light + heavy occlusion + high blur -> low risk', 'good light + front + no occlusion -> high risk', 'backlight + partial occlusion + high blur -> high risk', 'good light + top angle + no blur -> always high risk'], correct: 2, explanation: 'Combinazioni con visibilità ridotta e blur aumentano il rischio di errore.' },
       { question: 'Cosa misura meglio la robustezza di un modello vision?', options: ['Solo loss finale di training', 'Solo numero di immagini totali', 'Performance consistente su segmenti difficili e condizioni variabili', 'Velocità di inferenza su un unico device'], correct: 2, explanation: 'Robustezza = stabilità su scenari reali eterogenei.' },
       { question: 'Messaggio chiave del capitolo 7:', options: ['Vision affidabile = modello + test realistici + controllo operativo', 'Basta aumentare risoluzione immagini', 'Basta usare una CNN più grande', 'Basta ottimizzare il learning rate'], correct: 0, explanation: 'La qualità in produzione nasce da tecnica + validazione + governance.' }
+    ],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 7',
+        description: 'Video completo Capitolo 7: come le CNN estraggono pattern visivi, object detection in produzione, edge-case critici (occlusione, controluce, angoli), confidence threshold e fallback umano. Con esempi da sistemi vision reali.',
+        estimatedDuration: '8-10 min',
+        placeholderPath: 'media/ch07-computer-vision/video.mp4',
+        notes: 'ready'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 7',
+        description: 'Schema CNN layer per layer, pipeline object detection, matrice edge-case per dominio, e checklist deploy vision con confidence threshold e fallback.',
+        placeholderPath: 'media/ch07-computer-vision/infographic.png',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 7',
+        description: 'Computer Vision in produzione: dall accuratezza media ai failure mode critici. Come costruire un sistema vision robusto con soglie di confidence, fallback umano e monitoraggio continuo dei casi ambigui. Collegamento con transfer learning e scelta dataset.',
+        estimatedDuration: '10-12 min',
+        placeholderPath: 'media/ch07-computer-vision/podcast.mp3',
+        notes: 'placeholder'
+      }
     ]
 };
