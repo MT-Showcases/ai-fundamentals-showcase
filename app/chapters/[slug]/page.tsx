@@ -304,7 +304,7 @@ housing = fetch_california_housing()
 X = pd.DataFrame(housing.data, columns=housing.feature_names)
 y = pd.Series(housing.target * 100000, name='Price')`,
                     codeLang: 'python',
-                    tryThis: <>Stampa X.head() — quante righe? Quante colonne? Poi verifica se i dati sono pronti per la <GlossaryTerm term="validation">validation</GlossaryTerm>.</>,
+                    tryThis: <>Stampa <code>X.head()</code> — quante righe? Quante colonne? Poi verifica se i dati sono pronti per la <GlossaryTerm term="validation">validation</GlossaryTerm>.</>,
                     fileReference: {
                       filename: 'main.py',
                       lines: '28-32',
