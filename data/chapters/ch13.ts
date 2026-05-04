@@ -55,15 +55,115 @@ export const ch13: Chapter = {
       }
     ],
     quiz: [
-      { question: 'Scenario: il modello propone una spiegazione tecnica molto fluida ma senza fonti verificabili. Prima azione corretta?', options: ['Pubblicare subito per risparmiare tempo', 'Chiedere esempi più creativi', 'Verificare i fatti chiave su fonti affidabili prima dell uso', 'Aumentare solo la temperature'], correct: 2, explanation: 'La qualità stilistica non garantisce accuratezza: serve verifica fattuale.' },
-      { question: 'Qual è il beneficio più realistico di Copilot in un team maturo?', options: ['Azzerare il bisogno di test', 'Ridurre tempo su task ripetitivi mantenendo review umana', 'Sostituire senior developer', 'Eliminare bug di sicurezza'], correct: 1, explanation: 'Accelera l esecuzione, ma responsabilità tecnica e qualità restano del team.' },
-      { question: 'Scenario: output AI include una query SQL efficace ma con rischio di data leak. Cosa fai?', options: ['Eseguire direttamente in produzione', 'Bloccare, fare security review e aggiungere controlli accesso', 'Cambiare solo il naming delle colonne', 'Ignorare se passa i test locali'], correct: 1, explanation: 'I rischi di sicurezza richiedono review dedicata prima dell esecuzione.' },
-      { question: 'Prompt engineering utile significa soprattutto:', options: ['Scrivere prompt lunghissimi', 'Definire obiettivo, vincoli e formato output in modo esplicito', 'Usare solo inglese tecnico', 'Evitare esempi per non influenzare il modello'], correct: 1, explanation: 'Struttura chiara del prompt migliora qualità e coerenza della risposta.' },
-      { question: 'Scenario: il team usa AI per generare test unitari. Quale controllo è prioritario?', options: ['Verificare copertura e rilevanza dei test sui casi critici', 'Contare solo il numero totale di file test', 'Accettare tutto se compila', 'Saltare test manuali e code review'], correct: 0, explanation: 'Conta la qualità dei test sui comportamenti importanti, non solo la quantità.' },
-      { question: 'Quale metrica misura meglio il valore operativo dei tool AI nel tempo?', options: ['Numero di prompt inviati', 'Riduzione lead time con qualità stabile (bug e rework sotto controllo)', 'Numero di modelli provati', 'Dimensione media dei commit'], correct: 1, explanation: 'Il valore reale è velocità sostenibile senza degradare affidabilità.' },
-      { question: 'Scenario: output AI corretto nel 90% dei casi, ma sbaglia in casi sensibili clienti. Decisione migliore?', options: ['Usarlo comunque senza filtri', 'Limitare utilizzo ai casi low-risk e introdurre fallback umano sui casi sensibili', 'Disattivare completamente ogni automazione', 'Cambiare provider ogni settimana'], correct: 1, explanation: 'Segmentare per rischio e introdurre fallback riduce incidenti ad alto impatto.' },
-      { question: 'Errore comune nell adozione di ChatGPT in azienda:', options: ['Definire policy e checklist condivise', 'Trattare il tool come autore definitivo senza processo di review', 'Usare prompt template', 'Loggare decisioni critiche'], correct: 1, explanation: 'Senza governance minima l errore umano+automazione cresce rapidamente.' },
-      { question: 'Nel dataset CH13, uno scenario con tool=coding_assistant, risk_level=high e output_quality=medium dovrebbe andare in:', options: ['use_direct', 'review_required', 'auto_publish', 'archive_without_check'], correct: 1, explanation: 'Con rischio alto la revisione è obbligatoria anche con qualità discreta.' },
-      { question: 'Messaggio chiave del capitolo 13:', options: ['Più automazione possibile, meno controlli', 'Tool AI utili solo per studenti', 'Uso efficace AI = velocità + review umana + quality gate misurabili', 'La qualità dipende solo dal modello scelto'], correct: 2, explanation: 'Il risultato affidabile nasce dal processo operativo, non da un singolo tool.' }
+      {
+        question: 'Scenario: il modello propone una spiegazione tecnica molto fluida ma senza fonti verificabili. Prima azione corretta?',
+        options: [
+          'Pubblicare subito per risparmiare tempo',
+          'Chiedere esempi più creativi',
+          'Aumentare solo la temperature',
+          'Verificare i fatti chiave su fonti affidabili prima dell uso',
+        ],
+        correct: 3,
+        explanation: 'La qualità stilistica non garantisce accuratezza: serve verifica fattuale.'
+      },
+      {
+        question: 'Qual è il beneficio più realistico di Copilot in un team maturo?',
+        options: [
+          'Azzerare il bisogno di test',
+          'Ridurre tempo su task ripetitivi mantenendo review umana',
+          'Sostituire senior developer',
+          'Eliminare bug di sicurezza',
+        ],
+        correct: 1,
+        explanation: 'Accelera l esecuzione, ma responsabilità tecnica e qualità restano del team.'
+      },
+      {
+        question: 'Scenario: output AI include una query SQL efficace ma con rischio di data leak. Cosa fai?',
+        options: [
+          'Eseguire direttamente in produzione',
+          'Cambiare solo il naming delle colonne',
+          'Bloccare, fare security review e aggiungere controlli accesso',
+          'Ignorare se passa i test locali',
+        ],
+        correct: 2,
+        explanation: 'I rischi di sicurezza richiedono review dedicata prima dell esecuzione.'
+      },
+      {
+        question: 'Prompt engineering utile significa soprattutto:',
+        options: [
+          'Scrivere prompt lunghissimi',
+          'Usare solo inglese tecnico',
+          'Evitare esempi per non influenzare il modello',
+          'Definire obiettivo, vincoli e formato output in modo esplicito',
+        ],
+        correct: 3,
+        explanation: 'Struttura chiara del prompt migliora qualità e coerenza della risposta.'
+      },
+      {
+        question: 'Scenario: il team usa AI per generare test unitari. Quale controllo è prioritario?',
+        options: [
+          'Verificare copertura e rilevanza dei test sui casi critici',
+          'Contare solo il numero totale di file test',
+          'Accettare tutto se compila',
+          'Saltare test manuali e code review',
+        ],
+        correct: 0,
+        explanation: 'Conta la qualità dei test sui comportamenti importanti, non solo la quantità.'
+      },
+      {
+        question: 'Quale metrica misura meglio il valore operativo dei tool AI nel tempo?',
+        options: [
+          'Numero di prompt inviati',
+          'Numero di modelli provati',
+          'Riduzione lead time con qualità stabile (bug e rework sotto controllo)',
+          'Dimensione media dei commit',
+        ],
+        correct: 2,
+        explanation: 'Il valore reale è velocità sostenibile senza degradare affidabilità.'
+      },
+      {
+        question: 'Scenario: output AI corretto nel 90% dei casi, ma sbaglia in casi sensibili clienti. Decisione migliore?',
+        options: [
+          'Usarlo comunque senza filtri',
+          'Limitare utilizzo ai casi low-risk e introdurre fallback umano sui casi sensibili',
+          'Disattivare completamente ogni automazione',
+          'Cambiare provider ogni settimana',
+        ],
+        correct: 1,
+        explanation: 'Segmentare per rischio e introdurre fallback riduce incidenti ad alto impatto.'
+      },
+      {
+        question: 'Errore comune nell adozione di ChatGPT in azienda:',
+        options: [
+          'Trattare il tool come autore definitivo senza processo di review',
+          'Definire policy e checklist condivise',
+          'Usare prompt template',
+          'Loggare decisioni critiche',
+        ],
+        correct: 0,
+        explanation: 'Senza governance minima l errore umano+automazione cresce rapidamente.'
+      },
+      {
+        question: 'Nel dataset CH13, uno scenario con tool=coding_assistant, risk_level=high e output_quality=medium dovrebbe andare in:',
+        options: [
+          'use_direct',
+          'review_required',
+          'auto_publish',
+          'archive_without_check',
+        ],
+        correct: 1,
+        explanation: 'Con rischio alto la revisione è obbligatoria anche con qualità discreta.'
+      },
+      {
+        question: 'Messaggio chiave del capitolo 13:',
+        options: [
+          'Più automazione possibile, meno controlli',
+          'Tool AI utili solo per studenti',
+          'Uso efficace AI = velocità + review umana + quality gate misurabili',
+          'La qualità dipende solo dal modello scelto',
+        ],
+        correct: 2,
+        explanation: 'Il risultato affidabile nasce dal processo operativo, non da un singolo tool.'
+      }
     ]
 };

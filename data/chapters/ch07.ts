@@ -50,16 +50,116 @@ export const ch07: Chapter = {
       }
     ],
     quiz: [
-      { question: 'In un sistema vision per accessi aziendali, quale test è PIÙ utile prima del deploy?', options: ['Solo immagini in ufficio ben illuminato', 'Edge-case con controluce, occhiali, cappelli e movimento', 'Solo test con immagini ad alta risoluzione', 'Solo test su volti frontali'], correct: 1, explanation: 'I test realistici con variabili difficili riducono failure in produzione.' },
-      { question: 'Perché una CNN generalizza meglio di una rete fully-connected su immagini?', options: ['Perché condivide pesi e cattura pattern locali', 'Perché non ha bisogno di dati etichettati', 'Perché elimina completamente l\'overfitting', 'Perché non richiede validazione'], correct: 0, explanation: 'Convoluzione + weight sharing sfruttano la struttura spaziale dell\'immagine.' },
-      { question: 'Hai confidence media alta, ma errori gravi su persone in controluce. Cosa fai per primo?', options: ['Aumenti subito i layer', 'Ignori il problema perché accuracy media è alta', 'Aggiungi casi controluce al validation set e monitori quel segmento', 'Riduci la risoluzione immagini'], correct: 2, explanation: 'Segmentare e misurare i failure mode critici è la priorità operativa.' },
-      { question: 'Quale combinazione è più corretta per ridurre rischio operativo in vision?', options: ['Solo threshold basso per classificare tutto', 'Confidence threshold + fallback umano per casi ambigui', 'Nessuna soglia ma più GPU', 'Solo data augmentation senza monitoraggio'], correct: 1, explanation: 'Soglia e fallback creano un meccanismo di sicurezza reale.' },
-      { question: 'Transfer learning è particolarmente vantaggioso quando:', options: ['Hai pochi dati etichettati ma task simile a dataset noti', 'Hai già milioni di esempi perfetti del tuo dominio', 'Vuoi evitare completamente il training', 'Il dominio target non ha alcuna relazione visiva col pretraining'], correct: 0, explanation: 'Riusa feature visive già apprese e accelera il go-to-market.' },
-      { question: 'Un aumento di accuracy dal 94% al 96% può essere inutile se:', options: ['Gli errori residui sono su classi ad alto impatto', 'Il modello usa convoluzioni', 'Il dataset ha immagini RGB', 'Il batch size è piccolo'], correct: 0, explanation: 'Conta dove sbaglia il modello, non solo la media globale.' },
-      { question: 'Quale segnale indica possibile data drift in computer vision?', options: ['Calo progressivo performance con nuove camere/ambienti', 'Aumento numero di layer nel modello', 'Riduzione del tempo di training', 'Stessa accuracy su train e train'], correct: 0, explanation: 'Nuove condizioni visive possono cambiare la distribuzione dei dati.' },
-      { question: 'Nel dataset CH7, quale assegnazione rischio è più plausibile?', options: ['low_light + heavy occlusion + high blur -> low risk', 'good light + front + no occlusion -> high risk', 'backlight + partial occlusion + high blur -> high risk', 'good light + top angle + no blur -> always high risk'], correct: 2, explanation: 'Combinazioni con visibilità ridotta e blur aumentano il rischio di errore.' },
-      { question: 'Cosa misura meglio la robustezza di un modello vision?', options: ['Solo loss finale di training', 'Solo numero di immagini totali', 'Performance consistente su segmenti difficili e condizioni variabili', 'Velocità di inferenza su un unico device'], correct: 2, explanation: 'Robustezza = stabilità su scenari reali eterogenei.' },
-      { question: 'Messaggio chiave del capitolo 7:', options: ['Vision affidabile = modello + test realistici + controllo operativo', 'Basta aumentare risoluzione immagini', 'Basta usare una CNN più grande', 'Basta ottimizzare il learning rate'], correct: 0, explanation: 'La qualità in produzione nasce da tecnica + validazione + governance.' }
+      {
+        question: 'In un sistema vision per accessi aziendali, quale test è PIÙ utile prima del deploy?',
+        options: [
+          'Edge-case con controluce, occhiali, cappelli e movimento',
+          'Solo immagini in ufficio ben illuminato',
+          'Solo test con immagini ad alta risoluzione',
+          'Solo test su volti frontali',
+        ],
+        correct: 0,
+        explanation: 'I test realistici con variabili difficili riducono failure in produzione.'
+      },
+      {
+        question: 'Perché una CNN generalizza meglio di una rete fully-connected su immagini?',
+        options: [
+          'Perché non ha bisogno di dati etichettati',
+          'Perché elimina completamente l\'overfitting',
+          'Perché condivide pesi e cattura pattern locali',
+          'Perché non richiede validazione',
+        ],
+        correct: 2,
+        explanation: 'Convoluzione + weight sharing sfruttano la struttura spaziale dell\'immagine.'
+      },
+      {
+        question: 'Hai confidence media alta, ma errori gravi su persone in controluce. Cosa fai per primo?',
+        options: [
+          'Aumenti subito i layer',
+          'Aggiungi casi controluce al validation set e monitori quel segmento',
+          'Ignori il problema perché accuracy media è alta',
+          'Riduci la risoluzione immagini',
+        ],
+        correct: 1,
+        explanation: 'Segmentare e misurare i failure mode critici è la priorità operativa.'
+      },
+      {
+        question: 'Quale combinazione è più corretta per ridurre rischio operativo in vision?',
+        options: [
+          'Confidence threshold + fallback umano per casi ambigui',
+          'Solo threshold basso per classificare tutto',
+          'Nessuna soglia ma più GPU',
+          'Solo data augmentation senza monitoraggio',
+        ],
+        correct: 0,
+        explanation: 'Soglia e fallback creano un meccanismo di sicurezza reale.'
+      },
+      {
+        question: 'Transfer learning è particolarmente vantaggioso quando:',
+        options: [
+          'Hai già milioni di esempi perfetti del tuo dominio',
+          'Hai pochi dati etichettati ma task simile a dataset noti',
+          'Vuoi evitare completamente il training',
+          'Il dominio target non ha alcuna relazione visiva col pretraining',
+        ],
+        correct: 1,
+        explanation: 'Riusa feature visive già apprese e accelera il go-to-market.'
+      },
+      {
+        question: 'Un aumento di accuracy dal 94% al 96% può essere inutile se:',
+        options: [
+          'Il modello usa convoluzioni',
+          'Il dataset ha immagini RGB',
+          'Gli errori residui sono su classi ad alto impatto',
+          'Il batch size è piccolo',
+        ],
+        correct: 2,
+        explanation: 'Conta dove sbaglia il modello, non solo la media globale.'
+      },
+      {
+        question: 'Quale segnale indica possibile data drift in computer vision?',
+        options: [
+          'Aumento numero di layer nel modello',
+          'Riduzione del tempo di training',
+          'Stessa accuracy su train e train',
+          'Calo progressivo performance con nuove camere/ambienti',
+        ],
+        correct: 3,
+        explanation: 'Nuove condizioni visive possono cambiare la distribuzione dei dati.'
+      },
+      {
+        question: 'Nel dataset CH7, quale assegnazione rischio è più plausibile?',
+        options: [
+          'low_light + heavy occlusion + high blur -> low risk',
+          'backlight + partial occlusion + high blur -> high risk',
+          'good light + front + no occlusion -> high risk',
+          'good light + top angle + no blur -> always high risk',
+        ],
+        correct: 1,
+        explanation: 'Combinazioni con visibilità ridotta e blur aumentano il rischio di errore.'
+      },
+      {
+        question: 'Cosa misura meglio la robustezza di un modello vision?',
+        options: [
+          'Solo loss finale di training',
+          'Solo numero di immagini totali',
+          'Performance consistente su segmenti difficili e condizioni variabili',
+          'Velocità di inferenza su un unico device',
+        ],
+        correct: 2,
+        explanation: 'Robustezza = stabilità su scenari reali eterogenei.'
+      },
+      {
+        question: 'Messaggio chiave del capitolo 7:',
+        options: [
+          'Basta aumentare risoluzione immagini',
+          'Basta usare una CNN più grande',
+          'Basta ottimizzare il learning rate',
+          'Vision affidabile = modello + test realistici + controllo operativo',
+        ],
+        correct: 3,
+        explanation: 'La qualità in produzione nasce da tecnica + validazione + governance.'
+      }
     ],
     media: [
       {

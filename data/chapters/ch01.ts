@@ -78,114 +78,114 @@ export const ch01: Chapter = {
     ],
     quiz: [
       {
-        question: "Qual è la differenza più solida tra intelligenza umana e AI moderna?",
+        question: 'Qual è la differenza più solida tra intelligenza umana e AI moderna?',
         options: [
-          "L\'AI comprende il significato come un umano",
-          "L\'AI apprende soprattutto correlazioni e pattern statistici",
-          "L\'AI non dipende dai dati",
-          "L\'AI è sempre più creativa dell\'umano",
+          'L\'AI comprende il significato come un umano',
+          'L\'AI apprende soprattutto correlazioni e pattern statistici',
+          'L\'AI non dipende dai dati',
+          'L\'AI è sempre più creativa dell\'umano',
         ],
         correct: 1,
-        explanation: "L\'AI è fortissima nel pattern matching, ma non ha comprensione semantica umana piena."
+        explanation: 'L\'AI è fortissima nel pattern matching, ma non ha comprensione semantica umana piena.'
       },
       {
-        question: "Se un output AI è molto fluido e convincente, qual è il comportamento corretto?",
+        question: 'Se un output AI è molto fluido e convincente, qual è il comportamento corretto?',
         options: [
-          "Pubblicarlo subito perché suona bene",
-          "Verificarne fonti, contesto e coerenza prima di usarlo",
-          "Usarlo solo se è breve",
-          "Scartarlo sempre",
-        ],
-        correct: 1,
-        explanation: "Fluenza linguistica non equivale a verità: serve validazione."
-      },
-      {
-        question: "Un sistema di raccomandazione peggiora per una settimana: quale ipotesi è più utile per iniziare il debug?",
-        options: [
-          "Il brand è cambiato",
-          "Possibile drift nei dati/comportamenti utenti da misurare con KPI",
-          "Il modello è diventato cosciente",
-          "È un problema inevitabile e non monitorabile",
-        ],
-        correct: 1,
-        explanation: "Quando cala la qualità, partire da dati/KPI è più utile che da ipotesi vaghe."
-      },
-      {
-        question: "Quale triade è necessaria per costruire un sistema AI funzionante?",
-        options: [
-          "Dati + Algoritmo + Potenza di calcolo",
-          "Prompt + UI + Branding",
-          "GPU + DNS + CDN",
-          "SEO + Design + Social",
-        ],
-        correct: 0,
-        explanation: "Senza uno dei tre pilastri, la qualità del sistema crolla."
-      },
-      {
-        question: "Hai 2 modelli: A più accurato ma con dati poco rappresentativi, B leggermente meno accurato ma più robusto sui casi reali. In produzione scegli:",
-        options: [
-          "A, sempre: basta il numero più alto",
-          "B, se regge meglio gli edge-case del dominio reale",
-          "A, ma senza monitoraggio",
-          "Nessuno dei due",
-        ],
-        correct: 1,
-        explanation: "In produzione conta la robustezza sul reale, non solo il picco in test controllato."
-      },
-      {
-        question: "Qual è un segnale che stai trattando l\'AI come \"oracolo\" invece che come \"copilot\"?",
-        options: [
-          "Definire KPI prima del rilascio",
-          "Confrontare output AI con fonti indipendenti",
-          "Accettare output senza review perché \"sembra giusto\"",
-          "Documentare limiti e fallback",
+          'Pubblicarlo subito perché suona bene',
+          'Usarlo solo se è breve',
+          'Verificarne fonti, contesto e coerenza prima di usarlo',
+          'Scartarlo sempre',
         ],
         correct: 2,
-        explanation: "Il rischio principale è delegare verità all\'AI senza controllo umano."
+        explanation: 'Fluenza linguistica non equivale a verità: serve validazione.'
       },
       {
-        question: "In un MVP startup, dove ha più senso inserire AI per prima?",
+        question: 'Un sistema di raccomandazione peggiora per una settimana: quale ipotesi è più utile per iniziare il debug?',
         options: [
-          "In processi ad alto volume e ripetitivi con KPI chiari",
-          "In qualsiasi punto \"fa scena\"",
-          "Solo in funzionalità non usate dagli utenti",
-          "Solo dopo aver assunto un team ML completo",
+          'Il brand è cambiato',
+          'Il modello è diventato cosciente',
+          'È un problema inevitabile e non monitorabile',
+          'Possibile drift nei dati/comportamenti utenti da misurare con KPI',
         ],
-        correct: 0,
-        explanation: "L\'AI crea valore quando riduce tempo/costo su flussi misurabili."
+        correct: 3,
+        explanation: 'Quando cala la qualità, partire da dati/KPI è più utile che da ipotesi vaghe.'
       },
       {
-        question: "Quale combinazione rappresenta una validazione minima sensata di output AI?",
+        question: 'Quale triade è necessaria per costruire un sistema AI funzionante?',
         options: [
-          "Controllo dati di input + verifica output + metrica di qualità",
-          "Solo rilettura grammaticale",
-          "Solo test su 1 esempio",
-          "Solo benchmark marketing",
-        ],
-        correct: 0,
-        explanation: "La validazione utile copre input, output e criterio misurabile."
-      },
-      {
-        question: "Prima del go-live, quale decisione è più matura?",
-        options: [
-          "Rilasciare e sperare che vada bene",
-          "Definire soglie KPI e regole di fallback/manual review",
-          "Nascondere i log per evitare rumore",
-          "Misurare solo il tempo di caricamento UI",
+          'Prompt + UI + Branding',
+          'Dati + Algoritmo + Potenza di calcolo',
+          'GPU + DNS + CDN',
+          'SEO + Design + Social',
         ],
         correct: 1,
-        explanation: "Soglie e fallback trasformano un prototipo in sistema operativo controllabile."
+        explanation: 'Senza uno dei tre pilastri, la qualità del sistema crolla.'
       },
       {
-        question: "Quale affermazione è più corretta sul ruolo umano con l\'AI?",
+        question: 'Hai 2 modelli: A più accurato ma con dati poco rappresentativi, B leggermente meno accurato ma più robusto sui casi reali. In produzione scegli:',
         options: [
-          "L\'umano diventa inutile appena il modello è grande",
-          "Il valore umano cresce su decisioni, verifica e responsabilità",
-          "Basta sapere scrivere prompt lunghi",
-          "L\'AI elimina il bisogno di contesto",
+          'A, sempre: basta il numero più alto',
+          'A, ma senza monitoraggio',
+          'B, se regge meglio gli edge-case del dominio reale',
+          'Nessuno dei due',
+        ],
+        correct: 2,
+        explanation: 'In produzione conta la robustezza sul reale, non solo il picco in test controllato.'
+      },
+      {
+        question: 'Qual è un segnale che stai trattando l\'AI come "oracolo" invece che come "copilot"?',
+        options: [
+          'Definire KPI prima del rilascio',
+          'Confrontare output AI con fonti indipendenti',
+          'Documentare limiti e fallback',
+          'Accettare output senza review perché "sembra giusto"',
+        ],
+        correct: 3,
+        explanation: 'Il rischio principale è delegare verità all\'AI senza controllo umano.'
+      },
+      {
+        question: 'In un MVP startup, dove ha più senso inserire AI per prima?',
+        options: [
+          'In processi ad alto volume e ripetitivi con KPI chiari',
+          'In qualsiasi punto "fa scena"',
+          'Solo in funzionalità non usate dagli utenti',
+          'Solo dopo aver assunto un team ML completo',
+        ],
+        correct: 0,
+        explanation: 'L\'AI crea valore quando riduce tempo/costo su flussi misurabili.'
+      },
+      {
+        question: 'Quale combinazione rappresenta una validazione minima sensata di output AI?',
+        options: [
+          'Solo rilettura grammaticale',
+          'Solo test su 1 esempio',
+          'Controllo dati di input + verifica output + metrica di qualità',
+          'Solo benchmark marketing',
+        ],
+        correct: 2,
+        explanation: 'La validazione utile copre input, output e criterio misurabile.'
+      },
+      {
+        question: 'Prima del go-live, quale decisione è più matura?',
+        options: [
+          'Rilasciare e sperare che vada bene',
+          'Definire soglie KPI e regole di fallback/manual review',
+          'Nascondere i log per evitare rumore',
+          'Misurare solo il tempo di caricamento UI',
         ],
         correct: 1,
-        explanation: "L\'AI amplifica, ma governance e responsabilità restano umane."
+        explanation: 'Soglie e fallback trasformano un prototipo in sistema operativo controllabile.'
+      },
+      {
+        question: 'Quale affermazione è più corretta sul ruolo umano con l\'AI?',
+        options: [
+          'Il valore umano cresce su decisioni, verifica e responsabilità',
+          'L\'umano diventa inutile appena il modello è grande',
+          'Basta sapere scrivere prompt lunghi',
+          'L\'AI elimina il bisogno di contesto',
+        ],
+        correct: 0,
+        explanation: 'L\'AI amplifica, ma governance e responsabilità restano umane.'
       }
     ]
 };

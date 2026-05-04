@@ -76,114 +76,114 @@ export const ch03: Chapter = {
     ],
     quiz: [
       {
-        question: "Quali sono le tre dimensioni chiave della qualità dei dati?",
+        question: 'Quali sono le tre dimensioni chiave della qualità dei dati?',
         options: [
-          "Velocità, volume, varietà",
-          "Quantità, qualità e rappresentatività",
-          "Accuratezza, latenza, throughput",
-          "Dimensione, formato, compressione",
+          'Velocità, volume, varietà',
+          'Accuratezza, latenza, throughput',
+          'Dimensione, formato, compressione',
+          'Quantità, qualità e rappresentatività',
         ],
-        correct: 1,
-        explanation: "Un dataset utile per il ML deve avere abbastanza esempi (quantità), dati corretti e puliti (qualità) e una distribuzione che riflette il mondo reale (rappresentatività). Mancarne uno compromette il modello."
+        correct: 3,
+        explanation: 'Un dataset utile per il ML deve avere abbastanza esempi (quantità), dati corretti e puliti (qualità) e una distribuzione che riflette il mondo reale (rappresentatività). Mancarne uno compromette il modello.'
       },
       {
-        question: "Il data drift in produzione indica che:",
+        question: 'Il data drift in produzione indica che:',
         options: [
-          "Il modello ha troppi parametri",
-          "La distribuzione dei dati reali si è spostata rispetto ai dati di training",
-          "Il server di inferenza è lento",
-          "Il dataset di training era troppo piccolo",
+          'Il modello ha troppi parametri',
+          'La distribuzione dei dati reali si è spostata rispetto ai dati di training',
+          'Il server di inferenza è lento',
+          'Il dataset di training era troppo piccolo',
         ],
         correct: 1,
-        explanation: "Il data drift avviene quando il mondo cambia (nuovi comportamenti utenti, stagionalità, eventi) e i dati in produzione non assomigliano più a quelli su cui il modello è stato addestrato. Causa degradazione silente delle performance."
+        explanation: 'Il data drift avviene quando il mondo cambia (nuovi comportamenti utenti, stagionalità, eventi) e i dati in produzione non assomigliano più a quelli su cui il modello è stato addestrato. Causa degradazione silente delle performance.'
       },
       {
-        question: "Un dataset di 10.000 esempi con 9.800 etichette 'non frode' e 200 'frode' è:",
+        question: 'Un dataset di 10.000 esempi con 9.800 etichette \'non frode\' e 200 \'frode\' è:',
         options: [
-          "Perfetto — più dati non-frode aiutano il modello a stabilizzarsi",
-          "Sbilanciato — il modello rischia di predire sempre 'non frode' e raggiungere il 98% di accuracy senza imparare nulla",
-          "Troppo piccolo per qualsiasi modello ML",
-          "Normale — tutti i dataset reali hanno questa distribuzione",
-        ],
-        correct: 1,
-        explanation: "Dataset sbilanciati sono insidiosi: un modello stupido che predice sempre la classe maggioritaria raggiunge il 98% di accuracy. Serve oversampling, undersampling o metriche come F1-score e AUC-ROC."
-      },
-      {
-        question: "Cosa significa 'data leakage' in un progetto ML?",
-        options: [
-          "I dati vengono rubati da attori esterni",
-          "Il modello vede durante il training informazioni che non saranno disponibili in produzione",
-          "Il dataset è troppo grande per la RAM",
-          "I dati perdono qualità durante la trasformazione",
-        ],
-        correct: 1,
-        explanation: "Data leakage è uno degli errori più subdoli: es. normalizzare con la media dell'intero dataset PRIMA dello split, o includere feature che 'vedono il futuro'. Il modello sembra ottimo in training ma fallisce in produzione."
-      },
-      {
-        question: "Quale approccio è corretto per gestire valori mancanti (NaN) in un dataset?",
-        options: [
-          "Eliminare sempre tutte le righe con NaN",
-          "Ignorarli — la maggior parte dei modelli li gestisce automaticamente",
-          "Analizzare il pattern di missingness prima di scegliere strategia (imputazione, eliminazione, o feature apposita)",
-          "Sostituirli sempre con 0",
+          'Perfetto — più dati non-frode aiutano il modello a stabilizzarsi',
+          'Troppo piccolo per qualsiasi modello ML',
+          'Sbilanciato — il modello rischia di predire sempre \'non frode\' e raggiungere il 98% di accuracy senza imparare nulla',
+          'Normale — tutti i dataset reali hanno questa distribuzione',
         ],
         correct: 2,
-        explanation: "Non esiste una soluzione universale. I NaN possono essere MCAR (random), MAR (dipendente da altre variabili) o MNAR (sistematico). La strategia dipende dal pattern — eliminare tutto o mettere 0 può introdurre bias."
+        explanation: 'Dataset sbilanciati sono insidiosi: un modello stupido che predice sempre la classe maggioritaria raggiunge il 98% di accuracy. Serve oversampling, undersampling o metriche come F1-score e AUC-ROC.'
       },
       {
-        question: "Perché la rappresentatività del dataset è critica per il ML?",
+        question: 'Cosa significa \'data leakage\' in un progetto ML?',
         options: [
-          "Dataset rappresentativi richiedono meno computational power",
-          "Un modello addestrato su dati non rappresentativi impara bias e discrimina su gruppi sottorappresentati",
-          "La rappresentatività influenza solo la velocità di training",
-          "Dataset rappresentativi sono sempre più grandi",
+          'I dati vengono rubati da attori esterni',
+          'Il dataset è troppo grande per la RAM',
+          'I dati perdono qualità durante la trasformazione',
+          'Il modello vede durante il training informazioni che non saranno disponibili in produzione',
         ],
-        correct: 1,
-        explanation: "Se il dataset di training è composto solo da uomini bianchi di 30-40 anni, il modello fallirà su donne, anziani, altre etnie. I bias nei dati diventano bias nel modello — con impatti reali sulle persone."
+        correct: 3,
+        explanation: 'Data leakage è uno degli errori più subdoli: es. normalizzare con la media dell\'intero dataset PRIMA dello split, o includere feature che \'vedono il futuro\'. Il modello sembra ottimo in training ma fallisce in produzione.'
       },
       {
-        question: "Qual è la differenza tra dato strutturato e non strutturato?",
+        question: 'Quale approccio è corretto per gestire valori mancanti (NaN) in un dataset?',
         options: [
-          "I dati strutturati sono sempre più accurati",
-          "Il dato strutturato è organizzato in righe/colonne (tabelle); il non strutturato è testo libero, immagini, audio",
-          "I dati non strutturati non possono essere usati nel ML",
-          "Strutturato = open-source, non strutturato = proprietario",
+          'Analizzare il pattern di missingness prima di scegliere strategia (imputazione, eliminazione, o feature apposita)',
+          'Eliminare sempre tutte le righe con NaN',
+          'Ignorarli — la maggior parte dei modelli li gestisce automaticamente',
+          'Sostituirli sempre con 0',
         ],
-        correct: 1,
-        explanation: "Dati strutturati: tabelle SQL, CSV, fogli Excel. Dati non strutturati: email, articoli, foto, video, registrazioni. La maggior parte del valore aziendale è nel non strutturato — da qui l'importanza di NLP e Computer Vision."
+        correct: 0,
+        explanation: 'Non esiste una soluzione universale. I NaN possono essere MCAR (random), MAR (dipendente da altre variabili) o MNAR (sistematico). La strategia dipende dal pattern — eliminare tutto o mettere 0 può introdurre bias.'
       },
       {
-        question: "Una startup ha 500 esempi etichettati. Quale tecnica può aumentare efficacemente la dimensione del training set per immagini?",
+        question: 'Perché la rappresentatività del dataset è critica per il ML?',
         options: [
-          "Copiare ogni immagine 10 volte senza modifiche",
-          "Data augmentation — rotazioni, flip, zoom, variazioni di luminosità",
-          "Ridurre la risoluzione per avere più spazio",
-          "Usare solo il 10% dei dati per ridurre overfitting",
-        ],
-        correct: 1,
-        explanation: "La data augmentation crea varianti artificiali degli esempi esistenti: un'immagine di un gatto ruotata di 15° è ancora un gatto, ma il modello la tratta come esempio nuovo. Molto usata in Computer Vision con dati limitati."
-      },
-      {
-        question: "Cosa succede se normalizzi i dati DOPO lo split train/test invece che prima?",
-        options: [
-          "Niente — l'ordine non influisce sui risultati",
-          "Il modello diventa più veloce",
-          "Eviti data leakage: la normalizzazione usa solo le statistiche del training set, non quelle del test",
-          "Il test set diventa più piccolo",
+          'Dataset rappresentativi richiedono meno computational power',
+          'La rappresentatività influenza solo la velocità di training',
+          'Un modello addestrato su dati non rappresentativi impara bias e discrimina su gruppi sottorappresentati',
+          'Dataset rappresentativi sono sempre più grandi',
         ],
         correct: 2,
-        explanation: "Normalizzare prima dello split = usare media e std dell'intero dataset (incluso test) → data leakage. Corretto: calcola media/std sul training set → applica le stesse trasformazioni a validation e test."
+        explanation: 'Se il dataset di training è composto solo da uomini bianchi di 30-40 anni, il modello fallirà su donne, anziani, altre etnie. I bias nei dati diventano bias nel modello — con impatti reali sulle persone.'
       },
       {
-        question: "Qual è il messaggio chiave sulla qualità dei dati nel ML?",
+        question: 'Qual è la differenza tra dato strutturato e non strutturato?',
         options: [
-          "Più dati hai, meglio è — la quantità batte sempre la qualità",
-          "Dati puliti, rappresentativi e senza leakage sono più importanti del modello scelto",
-          "Il preprocessing è opzionale se usi modelli moderni come le reti neurali",
-          "I dati non strutturati non servono — meglio concentrarsi sui tabellari",
+          'I dati strutturati sono sempre più accurati',
+          'Il dato strutturato è organizzato in righe/colonne (tabelle); il non strutturato è testo libero, immagini, audio',
+          'I dati non strutturati non possono essere usati nel ML',
+          'Strutturato = open-source, non strutturato = proprietario',
         ],
         correct: 1,
-        explanation: "'Garbage in, garbage out' è la regola d'oro del ML. Il modello più sofisticato non può compensare dati di bassa qualità. Investire in data quality è spesso più efficace che ottimizzare il modello."
+        explanation: 'Dati strutturati: tabelle SQL, CSV, fogli Excel. Dati non strutturati: email, articoli, foto, video, registrazioni. La maggior parte del valore aziendale è nel non strutturato — da qui l\'importanza di NLP e Computer Vision.'
+      },
+      {
+        question: 'Una startup ha 500 esempi etichettati. Quale tecnica può aumentare efficacemente la dimensione del training set per immagini?',
+        options: [
+          'Data augmentation — rotazioni, flip, zoom, variazioni di luminosità',
+          'Copiare ogni immagine 10 volte senza modifiche',
+          'Ridurre la risoluzione per avere più spazio',
+          'Usare solo il 10% dei dati per ridurre overfitting',
+        ],
+        correct: 0,
+        explanation: 'La data augmentation crea varianti artificiali degli esempi esistenti: un\'immagine di un gatto ruotata di 15° è ancora un gatto, ma il modello la tratta come esempio nuovo. Molto usata in Computer Vision con dati limitati.'
+      },
+      {
+        question: 'Cosa succede se normalizzi i dati DOPO lo split train/test invece che prima?',
+        options: [
+          'Niente — l\'ordine non influisce sui risultati',
+          'Eviti data leakage: la normalizzazione usa solo le statistiche del training set, non quelle del test',
+          'Il modello diventa più veloce',
+          'Il test set diventa più piccolo',
+        ],
+        correct: 1,
+        explanation: 'Normalizzare prima dello split = usare media e std dell\'intero dataset (incluso test) → data leakage. Corretto: calcola media/std sul training set → applica le stesse trasformazioni a validation e test.'
+      },
+      {
+        question: 'Qual è il messaggio chiave sulla qualità dei dati nel ML?',
+        options: [
+          'Più dati hai, meglio è — la quantità batte sempre la qualità',
+          'Il preprocessing è opzionale se usi modelli moderni come le reti neurali',
+          'Dati puliti, rappresentativi e senza leakage sono più importanti del modello scelto',
+          'I dati non strutturati non servono — meglio concentrarsi sui tabellari',
+        ],
+        correct: 2,
+        explanation: '\'Garbage in, garbage out\' è la regola d\'oro del ML. Il modello più sofisticato non può compensare dati di bassa qualità. Investire in data quality è spesso più efficace che ottimizzare il modello.'
       }
     ]
 };

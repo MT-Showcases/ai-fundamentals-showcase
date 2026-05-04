@@ -43,15 +43,115 @@ export const ch14: Chapter = {
       }
     ],
     quiz: [
-      { question: 'Una knowledge base interna cambia ogni giorno. Strategia iniziale più sensata?', options: ['Fine-tuning immediato', 'RAG con retrieval su documenti aggiornati', 'Solo zero-shot senza fonti', 'Agent con accesso completo senza controlli'], correct: 1, explanation: 'Con contenuti dinamici il RAG riduce latenza di aggiornamento e migliora tracciabilità.' },
-      { question: 'Qual è il rischio operativo principale di un agent con tool finanziari?', options: ['Prompt troppo corto', 'Azioni irreversibili non autorizzate', 'Output troppo sintetico', 'Numero basso di token'], correct: 1, explanation: 'Con tool ad alto impatto servono limiti, approvazioni e audit trail.' },
-      { question: 'Quando il fine-tuning è davvero giustificato?', options: ['Sempre, per default', 'Quando prompt+RAG mostrano gap persistenti su KPI critici', 'Quando vuoi ridurre il lavoro di valutazione', 'Quando il dataset è piccolo e rumoroso'], correct: 1, explanation: 'Il tuning va deciso con evidenza misurabile, non per preferenza tecnologica.' },
-      { question: 'Quale set di controlli è più robusto per agent in produzione?', options: ['Permessi granulari + limiti budget/tempo + human approval su azioni sensibili', 'Solo temperature bassa', 'Solo logging UI', 'Nessun fallback per velocità'], correct: 0, explanation: 'La governance operativa riduce rischio tecnico e business.' },
-      { question: 'Scenario: risposte corrette ma senza citazioni fonte. Cosa manca?', options: ['Più GPU', 'Tracciabilità e verificabilità del retrieval', 'Più token in output', 'Cambio linguaggio di programmazione'], correct: 1, explanation: 'In RAG la citazione fonte è parte chiave del controllo qualità.' },
-      { question: 'In una scelta architetturale, quale metrica combina qualità e rischio?', options: ['Solo latenza media', 'Quality pass rate segmentato + incident rate', 'Solo costo mensile cloud', 'Solo numero prompt/giorno'], correct: 1, explanation: 'Valutare segmenti e incidenti evita decisioni basate su medie fuorvianti.' },
-      { question: 'Se un agent entra in loop di retry su API esterna, prima mitigazione?', options: ['Aumentare max token', 'Circuit breaker con retry cap e timeout', 'Aumentare temperatura', 'Eliminare logging'], correct: 1, explanation: 'Limiti di retry/tempo prevengono consumo incontrollato e failure a cascata.' },
-      { question: 'Quale segnale suggerisce di restare su RAG e NON passare a tuning?', options: ['Dati e policy cambiano frequentemente', 'Hai budget alto', 'Vuoi una demo più complessa', 'Il team preferisce modelli custom'], correct: 0, explanation: 'Quando la conoscenza cambia spesso, RAG è più agile e manutenibile.' },
-      { question: 'Scenario compliance: dominio regolato con decisioni ad alto impatto. Cosa è prioritario?', options: ['Rimuovere tutte le approvazioni', 'Definire escalation umana e audit log obbligatori', 'Nascondere i fallimenti agli utenti', 'Usare solo output creativo'], correct: 1, explanation: 'Nei contesti high-stakes conta la governance verificabile oltre alla performance.' },
-      { question: 'Messaggio chiave del capitolo 14:', options: ['Pattern avanzati efficaci = scelta guidata da KPI + guardrail + monitoraggio continuo', 'Più complesso è sempre meglio', 'Basta un modello grande per risolvere tutto', 'Gli agent non hanno bisogno di controlli'], correct: 0, explanation: 'Il valore reale nasce da architettura appropriata e controllo operativo.' }
+      {
+        question: 'Una knowledge base interna cambia ogni giorno. Strategia iniziale più sensata?',
+        options: [
+          'Fine-tuning immediato',
+          'RAG con retrieval su documenti aggiornati',
+          'Solo zero-shot senza fonti',
+          'Agent con accesso completo senza controlli',
+        ],
+        correct: 1,
+        explanation: 'Con contenuti dinamici il RAG riduce latenza di aggiornamento e migliora tracciabilità.'
+      },
+      {
+        question: 'Qual è il rischio operativo principale di un agent con tool finanziari?',
+        options: [
+          'Prompt troppo corto',
+          'Output troppo sintetico',
+          'Azioni irreversibili non autorizzate',
+          'Numero basso di token',
+        ],
+        correct: 2,
+        explanation: 'Con tool ad alto impatto servono limiti, approvazioni e audit trail.'
+      },
+      {
+        question: 'Quando il fine-tuning è davvero giustificato?',
+        options: [
+          'Sempre, per default',
+          'Quando vuoi ridurre il lavoro di valutazione',
+          'Quando il dataset è piccolo e rumoroso',
+          'Quando prompt+RAG mostrano gap persistenti su KPI critici',
+        ],
+        correct: 3,
+        explanation: 'Il tuning va deciso con evidenza misurabile, non per preferenza tecnologica.'
+      },
+      {
+        question: 'Quale set di controlli è più robusto per agent in produzione?',
+        options: [
+          'Permessi granulari + limiti budget/tempo + human approval su azioni sensibili',
+          'Solo temperature bassa',
+          'Solo logging UI',
+          'Nessun fallback per velocità',
+        ],
+        correct: 0,
+        explanation: 'La governance operativa riduce rischio tecnico e business.'
+      },
+      {
+        question: 'Scenario: risposte corrette ma senza citazioni fonte. Cosa manca?',
+        options: [
+          'Più GPU',
+          'Più token in output',
+          'Tracciabilità e verificabilità del retrieval',
+          'Cambio linguaggio di programmazione',
+        ],
+        correct: 2,
+        explanation: 'In RAG la citazione fonte è parte chiave del controllo qualità.'
+      },
+      {
+        question: 'In una scelta architetturale, quale metrica combina qualità e rischio?',
+        options: [
+          'Solo latenza media',
+          'Quality pass rate segmentato + incident rate',
+          'Solo costo mensile cloud',
+          'Solo numero prompt/giorno',
+        ],
+        correct: 1,
+        explanation: 'Valutare segmenti e incidenti evita decisioni basate su medie fuorvianti.'
+      },
+      {
+        question: 'Se un agent entra in loop di retry su API esterna, prima mitigazione?',
+        options: [
+          'Circuit breaker con retry cap e timeout',
+          'Aumentare max token',
+          'Aumentare temperatura',
+          'Eliminare logging',
+        ],
+        correct: 0,
+        explanation: 'Limiti di retry/tempo prevengono consumo incontrollato e failure a cascata.'
+      },
+      {
+        question: 'Quale segnale suggerisce di restare su RAG e NON passare a tuning?',
+        options: [
+          'Hai budget alto',
+          'Dati e policy cambiano frequentemente',
+          'Vuoi una demo più complessa',
+          'Il team preferisce modelli custom',
+        ],
+        correct: 1,
+        explanation: 'Quando la conoscenza cambia spesso, RAG è più agile e manutenibile.'
+      },
+      {
+        question: 'Scenario compliance: dominio regolato con decisioni ad alto impatto. Cosa è prioritario?',
+        options: [
+          'Rimuovere tutte le approvazioni',
+          'Nascondere i fallimenti agli utenti',
+          'Definire escalation umana e audit log obbligatori',
+          'Usare solo output creativo',
+        ],
+        correct: 2,
+        explanation: 'Nei contesti high-stakes conta la governance verificabile oltre alla performance.'
+      },
+      {
+        question: 'Messaggio chiave del capitolo 14:',
+        options: [
+          'Più complesso è sempre meglio',
+          'Basta un modello grande per risolvere tutto',
+          'Gli agent non hanno bisogno di controlli',
+          'Pattern avanzati efficaci = scelta guidata da KPI + guardrail + monitoraggio continuo',
+        ],
+        correct: 3,
+        explanation: 'Il valore reale nasce da architettura appropriata e controllo operativo.'
+      }
     ]
 };

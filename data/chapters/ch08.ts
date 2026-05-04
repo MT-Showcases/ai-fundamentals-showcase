@@ -38,15 +38,115 @@ export const ch08: Chapter = {
     ],
     exercises: [],
     quiz: [
-      { question: 'Un output LLM sembra credibile ma cita dati inventati. Come lo classifichi?', options: ['Buono, perché è scritto bene', 'Allucinazione con rischio fattuale', 'Errore di rete', 'Normale variabilità stilistica'], correct: 1, explanation: 'Forma fluida non garantisce veridicità del contenuto.' },
-      { question: 'Quale prompt è più robusto per ottenere una risposta verificabile?', options: ['"Parlami di AI"', '"Spiega in modo creativo"', '"Rispondi in 5 punti, cita fonti, separa fatti da ipotesi"', '"Rispondi velocemente"'], correct: 2, explanation: 'Vincoli su formato e fonti migliorano controllo e auditabilità.' },
-      { question: 'Quando la temperature è alta, tipicamente ottieni:', options: ['Output più deterministico e ripetibile', 'Output più vario ma meno stabile', 'Meno token generati', 'Meno rischio di allucinazioni per definizione'], correct: 1, explanation: 'Maggiore casualità aumenta creatività ma anche variabilità.' },
-      { question: 'Per ridurre allucinazioni su knowledge aziendale, scelta migliore:', options: ['Solo aumentare il contesto del prompt', 'RAG con fonti interne aggiornate + verifica finale', 'Ridurre max_tokens', 'Cambiare solo modello ogni settimana'], correct: 1, explanation: 'RAG ancora il modello a documenti reali e aggiornati.' },
-      { question: 'Quale guardrail è più utile in un chatbot pubblico?', options: ['Filtro contenuti sensibili + escalation umana su richieste critiche', 'Nessun filtro, fidarsi del modello', 'Solo limite di 50 token', 'Solo UI più bella'], correct: 0, explanation: 'La mitigazione del rischio richiede controlli applicativi concreti.' },
-      { question: 'Nel dataset CH8, caso con high safety_risk e output_quality low: azione attesa?', options: ['publish', 'review', 'rewrite', 'auto-approve'], correct: 2, explanation: 'Rischio alto e qualità bassa richiedono riscrittura, non pubblicazione.' },
-      { question: 'Quale metrica è più adatta per QA generativo in produzione?', options: ['Solo tempo medio risposta', 'Tasso di correzioni post-pubblicazione + incident rate', 'Solo token per secondo', 'Solo numero prompt al giorno'], correct: 1, explanation: 'Misure di qualità reale e rischio sono più informative delle sole metriche tecniche.' },
-      { question: 'Fallback umano è obbligatorio soprattutto quando:', options: ['Si tratta di contenuti sensibili legali/sanitari/finanziari', 'Il prompt è breve', 'Il modello è recente', 'L\'utente scrive in maiuscolo'], correct: 0, explanation: 'Nei domini ad alto impatto serve supervisione umana.' },
-      { question: 'Errore comune nel prompt engineering:', options: ['Definire ruolo, vincoli e formato output', 'Richiedere esempi di output', 'Usare prompt vaghi senza criteri di qualità', 'Separare task complessi in step'], correct: 2, explanation: 'Ambiguità nel prompt produce output poco controllabile.' },
-      { question: 'Messaggio chiave del capitolo 8:', options: ['Basta un modello grande per avere affidabilità', 'Generative AI affidabile = prompt strutturato + fonti + guardrail + QA', 'La validazione rallenta e va evitata', 'Temperature alta risolve i bias'], correct: 1, explanation: 'La qualità operativa nasce da un processo completo, non da un solo parametro.' }
+      {
+        question: 'Un output LLM sembra credibile ma cita dati inventati. Come lo classifichi?',
+        options: [
+          'Buono, perché è scritto bene',
+          'Errore di rete',
+          'Allucinazione con rischio fattuale',
+          'Normale variabilità stilistica',
+        ],
+        correct: 2,
+        explanation: 'Forma fluida non garantisce veridicità del contenuto.'
+      },
+      {
+        question: 'Quale prompt è più robusto per ottenere una risposta verificabile?',
+        options: [
+          '"Parlami di AI"',
+          '"Rispondi in 5 punti, cita fonti, separa fatti da ipotesi"',
+          '"Spiega in modo creativo"',
+          '"Rispondi velocemente"',
+        ],
+        correct: 1,
+        explanation: 'Vincoli su formato e fonti migliorano controllo e auditabilità.'
+      },
+      {
+        question: 'Quando la temperature è alta, tipicamente ottieni:',
+        options: [
+          'Output più vario ma meno stabile',
+          'Output più deterministico e ripetibile',
+          'Meno token generati',
+          'Meno rischio di allucinazioni per definizione',
+        ],
+        correct: 0,
+        explanation: 'Maggiore casualità aumenta creatività ma anche variabilità.'
+      },
+      {
+        question: 'Per ridurre allucinazioni su knowledge aziendale, scelta migliore:',
+        options: [
+          'Solo aumentare il contesto del prompt',
+          'RAG con fonti interne aggiornate + verifica finale',
+          'Ridurre max_tokens',
+          'Cambiare solo modello ogni settimana',
+        ],
+        correct: 1,
+        explanation: 'RAG ancora il modello a documenti reali e aggiornati.'
+      },
+      {
+        question: 'Quale guardrail è più utile in un chatbot pubblico?',
+        options: [
+          'Nessun filtro, fidarsi del modello',
+          'Solo limite di 50 token',
+          'Filtro contenuti sensibili + escalation umana su richieste critiche',
+          'Solo UI più bella',
+        ],
+        correct: 2,
+        explanation: 'La mitigazione del rischio richiede controlli applicativi concreti.'
+      },
+      {
+        question: 'Nel dataset CH8, caso con high safety_risk e output_quality low: azione attesa?',
+        options: [
+          'publish',
+          'review',
+          'auto-approve',
+          'rewrite',
+        ],
+        correct: 3,
+        explanation: 'Rischio alto e qualità bassa richiedono riscrittura, non pubblicazione.'
+      },
+      {
+        question: 'Quale metrica è più adatta per QA generativo in produzione?',
+        options: [
+          'Solo tempo medio risposta',
+          'Tasso di correzioni post-pubblicazione + incident rate',
+          'Solo token per secondo',
+          'Solo numero prompt al giorno',
+        ],
+        correct: 1,
+        explanation: 'Misure di qualità reale e rischio sono più informative delle sole metriche tecniche.'
+      },
+      {
+        question: 'Fallback umano è obbligatorio soprattutto quando:',
+        options: [
+          'Il prompt è breve',
+          'Il modello è recente',
+          'Si tratta di contenuti sensibili legali/sanitari/finanziari',
+          'L\'utente scrive in maiuscolo',
+        ],
+        correct: 2,
+        explanation: 'Nei domini ad alto impatto serve supervisione umana.'
+      },
+      {
+        question: 'Errore comune nel prompt engineering:',
+        options: [
+          'Definire ruolo, vincoli e formato output',
+          'Richiedere esempi di output',
+          'Separare task complessi in step',
+          'Usare prompt vaghi senza criteri di qualità',
+        ],
+        correct: 3,
+        explanation: 'Ambiguità nel prompt produce output poco controllabile.'
+      },
+      {
+        question: 'Messaggio chiave del capitolo 8:',
+        options: [
+          'Generative AI affidabile = prompt strutturato + fonti + guardrail + QA',
+          'Basta un modello grande per avere affidabilità',
+          'La validazione rallenta e va evitata',
+          'Temperature alta risolve i bias',
+        ],
+        correct: 0,
+        explanation: 'La qualità operativa nasce da un processo completo, non da un solo parametro.'
+      }
     ]
 };

@@ -43,15 +43,115 @@ export const ch10: Chapter = {
       }
     ],
     quiz: [
-      { question: 'Un sistema AI di screening CV scarta sistematicamente un gruppo demografico. Primo passo corretto?', options: ['Aumentare subito il numero di layer', 'Analizzare bias nei dati e nei criteri decisionali', 'Nascondere le feature sensibili e basta', 'Disattivare tutti i log'], correct: 1, explanation: 'Serve diagnosi strutturata delle cause di discriminazione.' },
-      { question: 'Explainability è più critica quando:', options: ['Le decisioni impattano diritti/opportunità delle persone', 'Il modello è open-source', 'La latenza è sotto 100ms', 'Il team è piccolo'], correct: 0, explanation: 'Nei contesti ad alto impatto è necessario giustificare le decisioni.' },
-      { question: 'Quale controllo riduce meglio il rischio in high-stakes AI?', options: ['Human-in-the-loop + escalation policy + audit trail', 'Solo documentazione marketing', 'Solo accuracy media', 'Solo test una tantum'], correct: 0, explanation: 'Servono controlli operativi continui, non solo dichiarazioni.' },
-      { question: 'Nel dataset CH10, caso affects_persons=yes + bias_risk=high + explainability=high dovrebbe avere:', options: ['automated', 'human_review', 'nessun controllo', 'publish_direct'], correct: 1, explanation: 'Combinazione ad alto rischio richiede revisione umana.' },
-      { question: 'Errore comune sulla governance AI:', options: ['Trattarla come processo continuo', 'Definire ruoli e responsabilità', 'Ridurla a documento statico senza enforcement', 'Monitorare incidenti'], correct: 2, explanation: 'Senza applicazione operativa, la governance non funziona.' },
-      { question: 'Quale metrica è più utile per fairness monitoring?', options: ['Delta di errore tra sottogruppi', 'Solo throughput API', 'Solo costo GPU', 'Solo numero utenti attivi'], correct: 0, explanation: 'La fairness va misurata confrontando performance tra gruppi.' },
-      { question: 'Privacy-by-design in AI implica:', options: ['Raccogliere tutti i dati possibili e filtrare dopo', 'Minimizzazione dati, controllo accessi e tracciabilità uso', 'Nascondere il modello al team', 'Disattivare backup'], correct: 1, explanation: 'Ridurre e proteggere i dati è parte del design, non post-processing.' },
-      { question: 'Se un modello peggiora nel tempo su casi reali, quale pratica aiuta?', options: ['Audit periodico con retraining/recalibrazione controllata', 'Ignorare feedback utente', 'Cambiare UI', 'Aumentare solo batch size'], correct: 0, explanation: 'Il monitoraggio continuo intercetta drift e regressioni.' },
-      { question: 'AI Act (approccio generale) enfatizza:', options: ['Classificazione per livello di rischio e obblighi proporzionati', 'Solo numero di parametri', 'Divieto di QA interna', 'Assenza di documentazione'], correct: 0, explanation: 'I requisiti aumentano con il rischio del sistema.' },
-      { question: 'Messaggio chiave del capitolo 10:', options: ['Etica e compliance sono opzionali se il modello performa', 'AI responsabile = performance tecnica + fairness + accountability + controllo umano dove serve', 'Basta anonimizzare e tutto è risolto', 'Solo il reparto legale deve occuparsene'], correct: 1, explanation: 'Responsabilità AI è multidisciplinare e operativa.' }
+      {
+        question: 'Un sistema AI di screening CV scarta sistematicamente un gruppo demografico. Primo passo corretto?',
+        options: [
+          'Analizzare bias nei dati e nei criteri decisionali',
+          'Aumentare subito il numero di layer',
+          'Nascondere le feature sensibili e basta',
+          'Disattivare tutti i log',
+        ],
+        correct: 0,
+        explanation: 'Serve diagnosi strutturata delle cause di discriminazione.'
+      },
+      {
+        question: 'Explainability è più critica quando:',
+        options: [
+          'Il modello è open-source',
+          'Le decisioni impattano diritti/opportunità delle persone',
+          'La latenza è sotto 100ms',
+          'Il team è piccolo',
+        ],
+        correct: 1,
+        explanation: 'Nei contesti ad alto impatto è necessario giustificare le decisioni.'
+      },
+      {
+        question: 'Quale controllo riduce meglio il rischio in high-stakes AI?',
+        options: [
+          'Solo documentazione marketing',
+          'Solo accuracy media',
+          'Human-in-the-loop + escalation policy + audit trail',
+          'Solo test una tantum',
+        ],
+        correct: 2,
+        explanation: 'Servono controlli operativi continui, non solo dichiarazioni.'
+      },
+      {
+        question: 'Nel dataset CH10, caso affects_persons=yes + bias_risk=high + explainability=high dovrebbe avere:',
+        options: [
+          'automated',
+          'nessun controllo',
+          'publish_direct',
+          'human_review',
+        ],
+        correct: 3,
+        explanation: 'Combinazione ad alto rischio richiede revisione umana.'
+      },
+      {
+        question: 'Errore comune sulla governance AI:',
+        options: [
+          'Trattarla come processo continuo',
+          'Ridurla a documento statico senza enforcement',
+          'Definire ruoli e responsabilità',
+          'Monitorare incidenti',
+        ],
+        correct: 1,
+        explanation: 'Senza applicazione operativa, la governance non funziona.'
+      },
+      {
+        question: 'Quale metrica è più utile per fairness monitoring?',
+        options: [
+          'Solo throughput API',
+          'Solo costo GPU',
+          'Delta di errore tra sottogruppi',
+          'Solo numero utenti attivi',
+        ],
+        correct: 2,
+        explanation: 'La fairness va misurata confrontando performance tra gruppi.'
+      },
+      {
+        question: 'Privacy-by-design in AI implica:',
+        options: [
+          'Raccogliere tutti i dati possibili e filtrare dopo',
+          'Nascondere il modello al team',
+          'Disattivare backup',
+          'Minimizzazione dati, controllo accessi e tracciabilità uso',
+        ],
+        correct: 3,
+        explanation: 'Ridurre e proteggere i dati è parte del design, non post-processing.'
+      },
+      {
+        question: 'Se un modello peggiora nel tempo su casi reali, quale pratica aiuta?',
+        options: [
+          'Audit periodico con retraining/recalibrazione controllata',
+          'Ignorare feedback utente',
+          'Cambiare UI',
+          'Aumentare solo batch size',
+        ],
+        correct: 0,
+        explanation: 'Il monitoraggio continuo intercetta drift e regressioni.'
+      },
+      {
+        question: 'AI Act (approccio generale) enfatizza:',
+        options: [
+          'Solo numero di parametri',
+          'Divieto di QA interna',
+          'Classificazione per livello di rischio e obblighi proporzionati',
+          'Assenza di documentazione',
+        ],
+        correct: 2,
+        explanation: 'I requisiti aumentano con il rischio del sistema.'
+      },
+      {
+        question: 'Messaggio chiave del capitolo 10:',
+        options: [
+          'Etica e compliance sono opzionali se il modello performa',
+          'AI responsabile = performance tecnica + fairness + accountability + controllo umano dove serve',
+          'Basta anonimizzare e tutto è risolto',
+          'Solo il reparto legale deve occuparsene',
+        ],
+        correct: 1,
+        explanation: 'Responsabilità AI è multidisciplinare e operativa.'
+      }
     ]
 };

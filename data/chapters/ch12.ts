@@ -47,11 +47,11 @@ export const ch12: Chapter = {
         question: 'In un team operations, quale approccio descrive meglio un\'adozione AI matura?',
         options: [
           'Automatizzare tutto subito senza monitoraggio',
-          'Mappare i task, partire da casi ripetitivi e misurare KPI',
           'Usare AI solo per contenuti marketing',
+          'Mappare i task, partire da casi ripetitivi e misurare KPI',
           'Delegare l\'intero processo al modello senza review',
         ],
-        correct: 1,
+        correct: 2,
         explanation: 'La strategia robusta parte da task chiari, rollout progressivo e metriche misurabili.'
       },
       {
@@ -59,21 +59,21 @@ export const ch12: Chapter = {
         options: [
           'Confermi il rollout perché la velocità è migliorata',
           'Blocchi AI definitivamente',
-          'Rivedi KPI qualità/rischio e introduci escalation umana sui casi sensibili',
           'Aumenti solo il numero di prompt',
+          'Rivedi KPI qualità/rischio e introduci escalation umana sui casi sensibili',
         ],
-        correct: 2,
+        correct: 3,
         explanation: 'Efficienza senza qualità affidabile è un falso miglioramento operativo.'
       },
       {
         question: 'Quale skill umana cresce di valore quando i task ripetitivi vengono automatizzati?',
         options: [
-          'Pensiero critico e decision making',
           'Memorizzazione meccanica',
+          'Pensiero critico e decision making',
           'Compilazione manuale ripetitiva',
           'Esecuzione senza contesto',
         ],
-        correct: 0,
+        correct: 1,
         explanation: 'Le attività ad alto giudizio umano diventano il vero differenziale competitivo.'
       },
       {
@@ -91,33 +91,33 @@ export const ch12: Chapter = {
         question: 'Quale metrica è più utile per valutare qualità di un workflow AI di supporto clienti?',
         options: [
           'Solo numero ticket processati',
-          'Tasso di risoluzione corretta al primo contatto',
           'Solo costo mensile cloud',
           'Numero di prompt per operatore',
+          'Tasso di risoluzione corretta al primo contatto',
         ],
-        correct: 1,
+        correct: 3,
         explanation: 'La qualità percepita dal cliente dipende dalla correttezza risolutiva, non solo dal volume.'
       },
       {
         question: 'In ottica carriera, quale scelta è più solida nei prossimi anni?',
         options: [
-          'Imparare un solo tool e non aggiornarsi più',
           'Combinare skill di dominio, dati e governance AI',
+          'Imparare un solo tool e non aggiornarsi più',
           'Evitare qualsiasi esposizione a processi AI',
           'Concentrarsi solo su velocità di digitazione',
         ],
-        correct: 1,
+        correct: 0,
         explanation: 'Il valore professionale cresce con competenze trasferibili e capacità di orchestrazione.'
       },
       {
         question: 'Scenario: il team vuole introdurre AI in 12 processi insieme. Rischio principale?',
         options: [
           'Miglioramento troppo rapido della qualità',
-          'Perdita di controllo su priorità, KPI e responsabilità',
           'Riduzione automatica dei costi di training',
+          'Perdita di controllo su priorità, KPI e responsabilità',
           'Eliminazione immediata dei bias',
         ],
-        correct: 1,
+        correct: 2,
         explanation: 'Senza rollout graduale e ownership chiara, aumenta il rischio di caos operativo.'
       },
       {
@@ -134,23 +134,23 @@ export const ch12: Chapter = {
       {
         question: 'Se un task richiede empatia, negoziazione o giudizio contestuale, la scelta migliore è:',
         options: [
+          'Modello human-in-the-loop con AI di supporto',
           'Automazione completa senza eccezioni',
           'Eliminare l\'interazione umana',
-          'Modello human-in-the-loop con AI di supporto',
           'Bloccare l\'uso AI in tutto il team',
         ],
-        correct: 2,
+        correct: 0,
         explanation: 'Nei task ad alta componente relazionale, AI supporta ma non sostituisce la decisione umana.'
       },
       {
         question: 'Messaggio chiave del Capitolo 12:',
         options: [
           'AI sostituisce ogni professione in modo uniforme',
-          'Basta usare più tool per essere competitivi',
           'Adozione AI efficace = task design + skill umane + KPI + supervisione',
+          'Basta usare più tool per essere competitivi',
           'La governance rallenta sempre e va evitata',
         ],
-        correct: 2,
+        correct: 1,
         explanation: 'Il valore nasce dall\'integrazione tra tecnologia, processo e responsabilità.'
       }
     ]

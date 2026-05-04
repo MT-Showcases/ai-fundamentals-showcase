@@ -44,114 +44,114 @@ export const ch11: Chapter = {
     ],
     quiz: [
       {
-        question: "L'AI Act europeo classifica i sistemi AI principalmente in base a:",
+        question: 'L\'AI Act europeo classifica i sistemi AI principalmente in base a:',
         options: [
-          "Il numero di parametri del modello",
-          "Il livello di rischio per diritti e sicurezza delle persone",
-          "Il costo computazionale di training",
-          "La nazionalità del fornitore",
+          'Il numero di parametri del modello',
+          'Il livello di rischio per diritti e sicurezza delle persone',
+          'Il costo computazionale di training',
+          'La nazionalità del fornitore',
         ],
         correct: 1,
-        explanation: "L'AI Act usa una piramide del rischio: inaccettabile (vietato), alto rischio (obblighi forti), limitato (trasparenza), minimale (libero). I requisiti crescono con l'impatto potenziale sulle persone."
+        explanation: 'L\'AI Act usa una piramide del rischio: inaccettabile (vietato), alto rischio (obblighi forti), limitato (trasparenza), minimale (libero). I requisiti crescono con l\'impatto potenziale sulle persone.'
       },
       {
-        question: "Un sistema di screening CV automatizzato che impatta l'accesso al lavoro rientra in quale categoria AI Act?",
+        question: 'Un sistema di screening CV automatizzato che impatta l\'accesso al lavoro rientra in quale categoria AI Act?',
         options: [
-          "Rischio minimale — è solo un filtro",
-          "Rischio limitato — basta dichiararlo",
-          "Alto rischio — obblighi di documentazione, audit e supervisione umana",
-          "Vietato — nessun sistema automatizzato può filtrare CV",
+          'Rischio minimale — è solo un filtro',
+          'Rischio limitato — basta dichiararlo',
+          'Alto rischio — obblighi di documentazione, audit e supervisione umana',
+          'Vietato — nessun sistema automatizzato può filtrare CV',
         ],
         correct: 2,
-        explanation: "I sistemi che impattano accesso a lavoro, credito o istruzione sono esplicitamente classificati ad alto rischio nell'AI Act. Richiedono risk assessment, documentazione tecnica e possibilità di supervisione umana."
+        explanation: 'I sistemi che impattano accesso a lavoro, credito o istruzione sono esplicitamente classificati ad alto rischio nell\'AI Act. Richiedono risk assessment, documentazione tecnica e possibilità di supervisione umana.'
       },
       {
-        question: "Qual è l'errore più frequente dei team che affrontano la compliance AI Act per la prima volta?",
+        question: 'Qual è l\'errore più frequente dei team che affrontano la compliance AI Act per la prima volta?',
         options: [
-          "Fare troppi test prima del deploy",
-          "Trattarla come documento statico da produrre una volta sola, senza enforcement operativo",
-          "Coinvolgere troppo il team legale",
-          "Documentare troppo dettagliatamente i modelli",
+          'Fare troppi test prima del deploy',
+          'Coinvolgere troppo il team legale',
+          'Documentare troppo dettagliatamente i modelli',
+          'Trattarla come documento statico da produrre una volta sola, senza enforcement operativo',
+        ],
+        correct: 3,
+        explanation: 'La compliance non è un documento da archiviare — è un processo continuo. Senza monitoring, incident tracking e aggiornamento della documentazione, la conformità si degrada nel tempo.'
+      },
+      {
+        question: 'Un chatbot per FAQ aziendali interne (senza decisioni su persone) ricade tipicamente in:',
+        options: [
+          'Alto rischio — tutti i chatbot sono ad alto rischio',
+          'Rischio minimale o limitato, con obbligo di disclosure se sembra umano',
+          'Vietato — i chatbot imitano esseri umani',
+          'Fuori scope dell\'AI Act',
         ],
         correct: 1,
-        explanation: "La compliance non è un documento da archiviare — è un processo continuo. Senza monitoring, incident tracking e aggiornamento della documentazione, la conformità si degrada nel tempo."
+        explanation: 'Un FAQ bot interno senza impatto su diritti individuali è a rischio basso. Se però interagisce con utenti esterni simulando un umano, scatta l\'obbligo di disclosure (\'stai parlando con un\'AI\').'
       },
       {
-        question: "Un chatbot per FAQ aziendali interne (senza decisioni su persone) ricade tipicamente in:",
+        question: 'Quale evidenza è più utile in caso di audit su un sistema AI ad alto rischio?',
         options: [
-          "Alto rischio — tutti i chatbot sono ad alto rischio",
-          "Vietato — i chatbot imitano esseri umani",
-          "Rischio minimale o limitato, con obbligo di disclosure se sembra umano",
-          "Fuori scope dell'AI Act",
+          'Numero di utenti attivi al mese',
+          'Solo accuracy media sul test set',
+          'Log tecnici + risultati test fairness + documentazione decisioni architetturali + incident trail',
+          'Screenshot dell\'interfaccia utente',
         ],
         correct: 2,
-        explanation: "Un FAQ bot interno senza impatto su diritti individuali è a rischio basso. Se però interagisce con utenti esterni simulando un umano, scatta l'obbligo di disclosure ('stai parlando con un'AI')."
+        explanation: 'Un audit richiede tracciabilità completa: come funziona il sistema, come è stato testato (incluso fairness), quali incidenti sono avvenuti e come sono stati gestiti.'
       },
       {
-        question: "Quale evidenza è più utile in caso di audit su un sistema AI ad alto rischio?",
+        question: 'Privacy-by-design in un sistema AI significa:',
         options: [
-          "Numero di utenti attivi al mese",
-          "Log tecnici + risultati test fairness + documentazione decisioni architetturali + incident trail",
-          "Solo accuracy media sul test set",
-          "Screenshot dell'interfaccia utente",
+          'Raccogliere tutti i dati possibili e poi anonimizzarli alla fine',
+          'Nascondere il modello agli utenti',
+          'Usare solo dati sintetici senza eccezioni',
+          'Minimizzare i dati raccolti, controllare l\'accesso e tracciare ogni uso — fin dalla progettazione',
         ],
-        correct: 1,
-        explanation: "Un audit richiede tracciabilità completa: come funziona il sistema, come è stato testato (incluso fairness), quali incidenti sono avvenuti e come sono stati gestiti."
+        correct: 3,
+        explanation: 'Privacy-by-design significa integrare la protezione dei dati nel design del sistema, non aggiungerla dopo. Minimizzazione, controllo accessi e audit trail sono requisiti strutturali, non optional.'
       },
       {
-        question: "Privacy-by-design in un sistema AI significa:",
+        question: 'Un modello AI ha accuracy del 94% ma sbaglia sistematicamente su un gruppo demografico specifico. Primo passo corretto?',
         options: [
-          "Raccogliere tutti i dati possibili e poi anonimizzarli alla fine",
-          "Minimizzare i dati raccolti, controllare l'accesso e tracciare ogni uso — fin dalla progettazione",
-          "Nascondere il modello agli utenti",
-          "Usare solo dati sintetici senza eccezioni",
-        ],
-        correct: 1,
-        explanation: "Privacy-by-design significa integrare la protezione dei dati nel design del sistema, non aggiungerla dopo. Minimizzazione, controllo accessi e audit trail sono requisiti strutturali, non optional."
-      },
-      {
-        question: "Un modello AI ha accuracy del 94% ma sbaglia sistematicamente su un gruppo demografico specifico. Primo passo corretto?",
-        options: [
-          "Accettare il modello — il 94% globale è ottimo",
-          "Analizzare la distribuzione degli errori per gruppo e valutare l'impatto reale",
-          "Aumentare solo il batch size",
-          "Pubblicare il modello e raccogliere feedback post-deploy",
-        ],
-        correct: 1,
-        explanation: "L'accuracy globale può mascherare bias gravi su sottogruppi. Prima di qualsiasi deploy che impatta persone, serve analisi di fairness segmentata — non solo media."
-      },
-      {
-        question: "Quale controllo riduce meglio il rischio operativo in sistemi AI ad alto impatto?",
-        options: [
-          "Human-in-the-loop + escalation policy + audit trail continuo",
-          "Solo documentazione marketing del prodotto",
-          "Solo accuracy media superiore al 90%",
-          "Test unitari una tantum prima del deploy",
+          'Analizzare la distribuzione degli errori per gruppo e valutare l\'impatto reale',
+          'Accettare il modello — il 94% globale è ottimo',
+          'Aumentare solo il batch size',
+          'Pubblicare il modello e raccogliere feedback post-deploy',
         ],
         correct: 0,
-        explanation: "Controlli operativi continui (supervisione umana, escalation, tracciabilità) sono più efficaci di qualsiasi metrica statica. L'affidabilità si costruisce nel processo, non in un singolo numero."
+        explanation: 'L\'accuracy globale può mascherare bias gravi su sottogruppi. Prima di qualsiasi deploy che impatta persone, serve analisi di fairness segmentata — non solo media.'
       },
       {
-        question: "Nel dataset CH11, uno scenario con risk_level=high e affects_rights=yes dovrebbe avere come priorità:",
+        question: 'Quale controllo riduce meglio il rischio operativo in sistemi AI ad alto impatto?',
         options: [
-          "human_review obbligatorio prima di qualsiasi azione automatica",
-          "Auto-deploy con monitoring passivo",
-          "Nessun controllo aggiuntivo se accuracy è alta",
-          "Publish diretto per ridurre latenza operativa",
-        ],
-        correct: 0,
-        explanation: "Alto rischio + impatto su diritti = supervisione umana obbligatoria. Nessuna accuracy media giustifica l'assenza di revisione umana su decisioni che impattano diritti fondamentali."
-      },
-      {
-        question: "Messaggio chiave del capitolo 11 sull'AI Act:",
-        options: [
-          "La compliance è opzionale se il modello performa bene",
-          "Solo il reparto legale deve occuparsi di AI Act",
-          "AI responsabile = performance tecnica + fairness + accountability + controllo umano dove serve",
-          "Basta anonimizzare i dati e tutto è risolto",
+          'Solo documentazione marketing del prodotto',
+          'Solo accuracy media superiore al 90%',
+          'Human-in-the-loop + escalation policy + audit trail continuo',
+          'Test unitari una tantum prima del deploy',
         ],
         correct: 2,
-        explanation: "L'AI Act riflette un principio più ampio: i sistemi AI affidabili richiedono governance multidisciplinare — tecnica, legale, etica e operativa. Non è un check-box, è un processo continuo."
+        explanation: 'Controlli operativi continui (supervisione umana, escalation, tracciabilità) sono più efficaci di qualsiasi metrica statica. L\'affidabilità si costruisce nel processo, non in un singolo numero.'
+      },
+      {
+        question: 'Nel dataset CH11, uno scenario con risk_level=high e affects_rights=yes dovrebbe avere come priorità:',
+        options: [
+          'Auto-deploy con monitoring passivo',
+          'human_review obbligatorio prima di qualsiasi azione automatica',
+          'Nessun controllo aggiuntivo se accuracy è alta',
+          'Publish diretto per ridurre latenza operativa',
+        ],
+        correct: 1,
+        explanation: 'Alto rischio + impatto su diritti = supervisione umana obbligatoria. Nessuna accuracy media giustifica l\'assenza di revisione umana su decisioni che impattano diritti fondamentali.'
+      },
+      {
+        question: 'Messaggio chiave del capitolo 11 sull\'AI Act:',
+        options: [
+          'AI responsabile = performance tecnica + fairness + accountability + controllo umano dove serve',
+          'La compliance è opzionale se il modello performa bene',
+          'Solo il reparto legale deve occuparsi di AI Act',
+          'Basta anonimizzare i dati e tutto è risolto',
+        ],
+        correct: 0,
+        explanation: 'L\'AI Act riflette un principio più ampio: i sistemi AI affidabili richiedono governance multidisciplinare — tecnica, legale, etica e operativa. Non è un check-box, è un processo continuo.'
       }
     ]
 };

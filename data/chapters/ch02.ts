@@ -58,114 +58,114 @@ export const ch02: Chapter = {
     ],
     quiz: [
       {
-        question: "Cosa distingue il Machine Learning dalla programmazione tradizionale?",
+        question: 'Cosa distingue il Machine Learning dalla programmazione tradizionale?',
         options: [
-          "Il ML usa solo linguaggi di basso livello",
-          "Nel ML le regole emergono dai dati, non vengono scritte a mano",
-          "La programmazione tradizionale è sempre più lenta",
-          "Il ML non richiede dati per funzionare",
+          'Il ML usa solo linguaggi di basso livello',
+          'La programmazione tradizionale è sempre più lenta',
+          'Nel ML le regole emergono dai dati, non vengono scritte a mano',
+          'Il ML non richiede dati per funzionare',
         ],
-        correct: 1,
-        explanation: "Nella programmazione classica si scrivono regole esplicite. Nel ML si forniscono esempi (dati) e il modello apprende le regole da solo — utile quando le regole sono troppo complesse o sconosciute."
+        correct: 2,
+        explanation: 'Nella programmazione classica si scrivono regole esplicite. Nel ML si forniscono esempi (dati) e il modello apprende le regole da solo — utile quando le regole sono troppo complesse o sconosciute.'
       },
       {
-        question: "Supervised Learning richiede:",
+        question: 'Supervised Learning richiede:',
         options: [
-          "Dataset con esempi etichettati (input + output atteso)",
-          "Solo dati grezzi senza etichette",
-          "Un supervisore umano presente durante il training",
-          "Dati esclusivamente numerici, mai categorici",
-        ],
-        correct: 0,
-        explanation: "In supervised learning ogni esempio di training ha un'etichetta (es. 'spam'/'non spam', prezzo della casa). Il modello impara a predire l'output dato l'input."
-      },
-      {
-        question: "Qual è la differenza tra classificazione e regressione?",
-        options: [
-          "La classificazione è sempre più accurata della regressione",
-          "Nessuna — sono sinonimi in ML",
-          "La regressione usa solo alberi decisionali",
-          "La classificazione predice categorie discrete, la regressione predice valori continui",
+          'Solo dati grezzi senza etichette',
+          'Un supervisore umano presente durante il training',
+          'Dati esclusivamente numerici, mai categorici',
+          'Dataset con esempi etichettati (input + output atteso)',
         ],
         correct: 3,
-        explanation: "Classificazione: 'è spam o no?', 'che cifra è?' — output discreto. Regressione: 'quanto costa questa casa?', 'quanti gradi farà domani?' — output numerico continuo."
+        explanation: 'In supervised learning ogni esempio di training ha un\'etichetta (es. \'spam\'/\'non spam\', prezzo della casa). Il modello impara a predire l\'output dato l\'input.'
       },
       {
-        question: "Un modello ha training accuracy 99% e test accuracy 62%. Cosa sta succedendo?",
+        question: 'Qual è la differenza tra classificazione e regressione?',
         options: [
-          "Underfitting — il modello è troppo semplice",
-          "Overfitting — il modello ha memorizzato il training set ma non generalizza",
-          "Risultato normale — il gap è sempre così ampio",
-          "Errore nel codice dello split train/test",
+          'La classificazione è sempre più accurata della regressione',
+          'La classificazione predice categorie discrete, la regressione predice valori continui',
+          'Nessuna — sono sinonimi in ML',
+          'La regressione usa solo alberi decisionali',
         ],
         correct: 1,
-        explanation: "Gap enorme tra training e test accuracy = overfitting classico. Il modello ha 'studiato a memoria' il training set invece di imparare pattern generalizzabili."
+        explanation: 'Classificazione: \'è spam o no?\', \'che cifra è?\' — output discreto. Regressione: \'quanto costa questa casa?\', \'quanti gradi farà domani?\' — output numerico continuo.'
       },
       {
-        question: "Quale tipo di problema è più adatto all'Unsupervised Learning?",
+        question: 'Un modello ha training accuracy 99% e test accuracy 62%. Cosa sta succedendo?',
         options: [
-          "Predire il prezzo di una casa da 8 feature note",
-          "Classificare email in spam/non-spam con esempi etichettati",
-          "Scoprire segmenti naturali in 100.000 clienti senza etichette predefinite",
-          "Riconoscere cifre scritte a mano con dataset MNIST etichettato",
+          'Underfitting — il modello è troppo semplice',
+          'Risultato normale — il gap è sempre così ampio',
+          'Overfitting — il modello ha memorizzato il training set ma non generalizza',
+          'Errore nel codice dello split train/test',
         ],
         correct: 2,
-        explanation: "Unsupervised Learning lavora senza etichette — trova strutture nascoste nei dati. La segmentazione clienti (clustering) è il caso d'uso classico: non sai a priori quanti gruppi esistono."
+        explanation: 'Gap enorme tra training e test accuracy = overfitting classico. Il modello ha \'studiato a memoria\' il training set invece di imparare pattern generalizzabili.'
       },
       {
-        question: "Il validation set serve a:",
+        question: 'Quale tipo di problema è più adatto all\'Unsupervised Learning?',
         options: [
-          "Aumentare la quantità di dati di training",
-          "Validare l'identità dell'utente che usa il modello",
-          "Valutare le performance durante il training senza 'contaminare' il test set finale",
-          "Sostituire il test set nelle fasi avanzate",
+          'Predire il prezzo di una casa da 8 feature note',
+          'Classificare email in spam/non-spam con esempi etichettati',
+          'Riconoscere cifre scritte a mano con dataset MNIST etichettato',
+          'Scoprire segmenti naturali in 100.000 clienti senza etichette predefinite',
+        ],
+        correct: 3,
+        explanation: 'Unsupervised Learning lavora senza etichette — trova strutture nascoste nei dati. La segmentazione clienti (clustering) è il caso d\'uso classico: non sai a priori quanti gruppi esistono.'
+      },
+      {
+        question: 'Il validation set serve a:',
+        options: [
+          'Valutare le performance durante il training senza \'contaminare\' il test set finale',
+          'Aumentare la quantità di dati di training',
+          'Validare l\'identità dell\'utente che usa il modello',
+          'Sostituire il test set nelle fasi avanzate',
+        ],
+        correct: 0,
+        explanation: 'Il validation set è separato dal test set: si usa durante il development per scegliere iperparametri e confrontare modelli. Il test set si usa UNA SOLA VOLTA alla fine — è la valutazione finale imparziale.'
+      },
+      {
+        question: 'Random Forest migliora rispetto a un singolo albero decisionale perché:',
+        options: [
+          'Usa più dati di training grazie alla parallelizzazione',
+          'Ha sempre meno parametri da ottimizzare',
+          'Combina le previsioni di molti alberi diversi riducendo varianza e overfitting',
+          'Non richiede la divisione train/test',
         ],
         correct: 2,
-        explanation: "Il validation set è separato dal test set: si usa durante il development per scegliere iperparametri e confrontare modelli. Il test set si usa UNA SOLA VOLTA alla fine — è la valutazione finale imparziale."
+        explanation: 'Random Forest è un ensemble: allena molti alberi su subset diversi dei dati e delle feature, poi fa voting. La varietà degli alberi riduce l\'overfitting del singolo albero.'
       },
       {
-        question: "Random Forest migliora rispetto a un singolo albero decisionale perché:",
+        question: 'Una startup vuole predire il churn (abbandono) dei clienti. Quale metrica è più rilevante?',
         options: [
-          "Usa più dati di training grazie alla parallelizzazione",
-          "Combina le previsioni di molti alberi diversi riducendo varianza e overfitting",
-          "Ha sempre meno parametri da ottimizzare",
-          "Non richiede la divisione train/test",
+          'Solo accuracy globale',
+          'Precision e Recall sul churn (classe positiva), non solo accuracy',
+          'Solo velocità di training del modello',
+          'Numero di feature nel dataset',
         ],
         correct: 1,
-        explanation: "Random Forest è un ensemble: allena molti alberi su subset diversi dei dati e delle feature, poi fa voting. La varietà degli alberi riduce l'overfitting del singolo albero."
+        explanation: 'Con churn, i clienti che abbandonano sono tipicamente pochi (dataset sbilanciato). Accuracy del 95% può significare \'predico sempre non-churn\'. Serve Recall (quanti churner identifico) e Precision (quanti allarmi sono corretti).'
       },
       {
-        question: "Una startup vuole predire il churn (abbandono) dei clienti. Quale metrica è più rilevante?",
+        question: 'Cosa si intende per \'feature engineering\'?',
         options: [
-          "Solo accuracy globale",
-          "Precision e Recall sul churn (classe positiva), non solo accuracy",
-          "Solo velocità di training del modello",
-          "Numero di feature nel dataset",
+          'Il processo di selezionare, trasformare e creare variabili input utili per il modello',
+          'La scelta del framework ML da usare',
+          'L\'ottimizzazione degli iperparametri del modello',
+          'La visualizzazione dei risultati dopo il training',
         ],
-        correct: 1,
-        explanation: "Con churn, i clienti che abbandonano sono tipicamente pochi (dataset sbilanciato). Accuracy del 95% può significare 'predico sempre non-churn'. Serve Recall (quanti churner identifico) e Precision (quanti allarmi sono corretti)."
+        correct: 0,
+        explanation: 'Feature engineering è spesso più impattante del modello scelto: estrarre l\'ora dal timestamp, combinare feature correlate, normalizzare scale diverse — tutto questo può fare la differenza tra un modello mediocre e uno eccellente.'
       },
       {
-        question: "Cosa si intende per 'feature engineering'?",
+        question: 'Qual è il ciclo corretto di un progetto ML?',
         options: [
-          "La scelta del framework ML da usare",
-          "Il processo di selezionare, trasformare e creare variabili input utili per il modello",
-          "L'ottimizzazione degli iperparametri del modello",
-          "La visualizzazione dei risultati dopo il training",
+          'Scegli modello → training → deploy (senza validazione)',
+          'Raccogli dati → esplora → prepara → training → valida → deploy → monitora',
+          'Training → raccogli dati → valida',
+          'Deploy → training → raccogli dati',
         ],
         correct: 1,
-        explanation: "Feature engineering è spesso più impattante del modello scelto: estrarre l'ora dal timestamp, combinare feature correlate, normalizzare scale diverse — tutto questo può fare la differenza tra un modello mediocre e uno eccellente."
-      },
-      {
-        question: "Qual è il ciclo corretto di un progetto ML?",
-        options: [
-          "Scegli modello → training → deploy (senza validazione)",
-          "Raccogli dati → esplora → prepara → training → valida → deploy → monitora",
-          "Training → raccogli dati → valida",
-          "Deploy → training → raccogli dati",
-        ],
-        correct: 1,
-        explanation: "Il ciclo ML corretto inizia sempre dai dati e termina con il monitoring in produzione. Saltare fasi (soprattutto validazione e monitoring) è la causa principale di modelli che falliscono in produzione."
+        explanation: 'Il ciclo ML corretto inizia sempre dai dati e termina con il monitoring in produzione. Saltare fasi (soprattutto validazione e monitoring) è la causa principale di modelli che falliscono in produzione.'
       }
     ]
 };

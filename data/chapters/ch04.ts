@@ -78,114 +78,114 @@ export const ch04: Chapter = {
     ],
     quiz: [
       {
-        question: "Qual è il primo step corretto in qualsiasi workflow ML?",
+        question: 'Qual è il primo step corretto in qualsiasi workflow ML?',
         options: [
-          "Scegliere il modello più performante disponibile",
-          "Caricare e esplorare i dati per capire distribuzione, valori mancanti e range",
-          "Ottimizzare gli iperparametri",
-          "Fare il deploy su cloud",
+          'Scegliere il modello più performante disponibile',
+          'Caricare e esplorare i dati per capire distribuzione, valori mancanti e range',
+          'Ottimizzare gli iperparametri',
+          'Fare il deploy su cloud',
         ],
         correct: 1,
-        explanation: "Prima di qualsiasi modello: esplora i dati. Capire distribuzione, outlier, correlazioni e valori mancanti è fondamentale — un modello addestrato su dati mal compresi produrrà risultati inaffidabili."
+        explanation: 'Prima di qualsiasi modello: esplora i dati. Capire distribuzione, outlier, correlazioni e valori mancanti è fondamentale — un modello addestrato su dati mal compresi produrrà risultati inaffidabili.'
       },
       {
-        question: "Nel lab CH4 carichi il dataset con pd.read_csv('data/housing.csv'). Perché non usiamo fetch_california_housing()?",
+        question: 'Nel lab CH4 carichi il dataset con pd.read_csv(\'data/housing.csv\'). Perché non usiamo fetch_california_housing()?',
         options: [
-          "fetch_california_housing() è deprecata in Python 3",
-          "Il CSV locale funziona offline — nessuna dipendenza di rete o versione di sklearn",
-          "Il CSV ha più righe del dataset sklearn",
-          "fetch_california_housing() non restituisce prezzi in dollari",
-        ],
-        correct: 1,
-        explanation: "Il CSV bundled nello ZIP garantisce che il lab funzioni su qualsiasi PC, offline, senza problemi di versione di sklearn o connessione internet — essenziale in aula."
-      },
-      {
-        question: "Perché si divide il dataset in train e test set PRIMA di addestrare il modello?",
-        options: [
-          "Per ridurre il tempo di training",
-          "Per avere più dati di training disponibili",
-          "Per valutare le performance su dati mai visti durante il training — evitando stime ottimistiche",
-          "Perché sklearn lo richiede obbligatoriamente",
+          'fetch_california_housing() è deprecata in Python 3',
+          'Il CSV ha più righe del dataset sklearn',
+          'Il CSV locale funziona offline — nessuna dipendenza di rete o versione di sklearn',
+          'fetch_california_housing() non restituisce prezzi in dollari',
         ],
         correct: 2,
-        explanation: "Se valutassi il modello sugli stessi dati usati per il training, otterresti una stima gonfiata — il modello 'ha già visto le risposte'. Il test set simula dati reali nuovi: è la valutazione onesta."
+        explanation: 'Il CSV bundled nello ZIP garantisce che il lab funzioni su qualsiasi PC, offline, senza problemi di versione di sklearn o connessione internet — essenziale in aula.'
       },
       {
-        question: "Linear Regression ha MAE $65.000, Random Forest ha MAE $43.000. Quale scegli?",
+        question: 'Perché si divide il dataset in train e test set PRIMA di addestrare il modello?',
         options: [
-          "Linear Regression — è più semplice e interpretabile",
-          "Random Forest — MAE più basso significa errore minore in media",
-          "Dipende dal contesto: se interpretabilità è critica, Linear Regression può valere i $22k in più di errore",
-          "Non si può decidere senza sapere l'R²",
-        ],
-        correct: 2,
-        explanation: "Non esiste una risposta universale. Random Forest è più accurato, ma Linear Regression è interpretabile (sai PERCHÉ prevede quel prezzo). In contesti regolati o dove devi spiegare le decisioni, l'interpretabilità può valere più dell'accuracy."
-      },
-      {
-        question: "Nel grafico scatter del lab, i punti si allineano perfettamente alla diagonale rossa. Cosa indica?",
-        options: [
-          "Overfitting — il modello ha memorizzato i dati",
-          "Il modello predice perfettamente ogni caso — potenziale data leakage da verificare",
-          "Underfitting — il modello è troppo semplice",
-          "La visualizzazione è configurata male",
-        ],
-        correct: 1,
-        explanation: "Perfetta aderenza alla diagonale su dati reali è sospetta — quasi mai succede. Potrebbe indicare data leakage (il test set ha informazioni del training). Un R²=0.85-0.90 su housing è già eccellente."
-      },
-      {
-        question: "Cosa misura il MAE (Mean Absolute Error) nel contesto del lab prezzi case?",
-        options: [
-          "La percentuale di case previste correttamente",
-          "L'errore medio in dollari tra prezzo previsto e prezzo reale",
-          "Il numero di case nel dataset",
-          "La correlazione tra feature e prezzo",
-        ],
-        correct: 1,
-        explanation: "MAE = media degli errori assoluti. Se MAE=$45.000, il modello sbaglia in media di $45.000 per casa. È una metrica intuitiva: stessa unità di misura del target (dollari)."
-      },
-      {
-        question: "Hai training MAE=$38k e test MAE=$71k. Cosa fai?",
-        options: [
-          "Aumenti il numero di alberi in Random Forest",
-          "Il gap grande suggerisce overfitting — riduci la complessità del modello o aumenta i dati di training",
-          "Consideri il modello pronto per il deploy",
-          "Cambi metrica — usi R² invece di MAE",
-        ],
-        correct: 1,
-        explanation: "Gap training/test = overfitting. Soluzioni: ridurre max_depth negli alberi, aumentare i dati, aggiungere regolarizzazione. Non si risolve aumentando n_estimators — quello aggiunge complessità, non la riduce."
-      },
-      {
-        question: "R²=0.82 significa che:",
-        options: [
-          "Il modello sbaglia nel 18% dei casi",
-          "Il modello prevede correttamente l'82% delle case",
-          "Il modello spiega l'82% della variabilità nei prezzi — l'18% resta inspiegato",
-          "L'accuracy è dell'82%",
-        ],
-        correct: 2,
-        explanation: "R² non è una percentuale di casi corretti — è la proporzione di varianza spiegata. R²=0.82 significa che il modello cattura l'82% delle variazioni di prezzo; il 18% dipende da fattori non nelle feature (es. stato interno, vista, ristrutturazioni)."
-      },
-      {
-        question: "Quale esperimento del lab mostra il trade-off velocità/accuratezza in Random Forest?",
-        options: [
-          "Cambiare test_size da 0.2 a 0.3",
-          "Modificare random_state=42 in random_state=7",
-          "Ridurre n_estimators da 100 a 10 — training molto più veloce ma MAE peggiore",
-          "Aggiungere StandardScaler prima del training",
-        ],
-        correct: 2,
-        explanation: "n_estimators=10 vs 100: con 10 alberi il training è ~10x più veloce, ma l'ensemble è meno robusto e il MAE cresce. Classico trade-off ingegneristico: quanto accuracy vale il tempo di training?"
-      },
-      {
-        question: "Qual è il messaggio chiave del capitolo 4 sul workflow ML?",
-        options: [
-          "Il modello più complesso vince sempre — usa sempre Random Forest",
-          "Basta un buon dataset — il modello non conta",
-          "Il workflow ML è lineare: si fa una volta sola e si deploya",
-          "Un buon ML workflow è ciclico: esplora → prepara → addestra → valuta → itera",
+          'Per ridurre il tempo di training',
+          'Per avere più dati di training disponibili',
+          'Perché sklearn lo richiede obbligatoriamente',
+          'Per valutare le performance su dati mai visti durante il training — evitando stime ottimistiche',
         ],
         correct: 3,
-        explanation: "Il workflow ML non è mai lineare. Dopo la valutazione si torna a esplorare i dati, si aggiungono feature, si cambiano modelli. L'iterazione guidata dalle metriche è il cuore del processo scientifico applicato al ML."
+        explanation: 'Se valutassi il modello sugli stessi dati usati per il training, otterresti una stima gonfiata — il modello \'ha già visto le risposte\'. Il test set simula dati reali nuovi: è la valutazione onesta.'
+      },
+      {
+        question: 'Linear Regression ha MAE $65.000, Random Forest ha MAE $43.000. Quale scegli?',
+        options: [
+          'Dipende dal contesto: se interpretabilità è critica, Linear Regression può valere i $22k in più di errore',
+          'Linear Regression — è più semplice e interpretabile',
+          'Random Forest — MAE più basso significa errore minore in media',
+          'Non si può decidere senza sapere l\'R²',
+        ],
+        correct: 0,
+        explanation: 'Non esiste una risposta universale. Random Forest è più accurato, ma Linear Regression è interpretabile (sai PERCHÉ prevede quel prezzo). In contesti regolati o dove devi spiegare le decisioni, l\'interpretabilità può valere più dell\'accuracy.'
+      },
+      {
+        question: 'Nel grafico scatter del lab, i punti si allineano perfettamente alla diagonale rossa. Cosa indica?',
+        options: [
+          'Overfitting — il modello ha memorizzato i dati',
+          'Underfitting — il modello è troppo semplice',
+          'Il modello predice perfettamente ogni caso — potenziale data leakage da verificare',
+          'La visualizzazione è configurata male',
+        ],
+        correct: 2,
+        explanation: 'Perfetta aderenza alla diagonale su dati reali è sospetta — quasi mai succede. Potrebbe indicare data leakage (il test set ha informazioni del training). Un R²=0.85-0.90 su housing è già eccellente.'
+      },
+      {
+        question: 'Cosa misura il MAE (Mean Absolute Error) nel contesto del lab prezzi case?',
+        options: [
+          'La percentuale di case previste correttamente',
+          'L\'errore medio in dollari tra prezzo previsto e prezzo reale',
+          'Il numero di case nel dataset',
+          'La correlazione tra feature e prezzo',
+        ],
+        correct: 1,
+        explanation: 'MAE = media degli errori assoluti. Se MAE=$45.000, il modello sbaglia in media di $45.000 per casa. È una metrica intuitiva: stessa unità di misura del target (dollari).'
+      },
+      {
+        question: 'Hai training MAE=$38k e test MAE=$71k. Cosa fai?',
+        options: [
+          'Il gap grande suggerisce overfitting — riduci la complessità del modello o aumenta i dati di training',
+          'Aumenti il numero di alberi in Random Forest',
+          'Consideri il modello pronto per il deploy',
+          'Cambi metrica — usi R² invece di MAE',
+        ],
+        correct: 0,
+        explanation: 'Gap training/test = overfitting. Soluzioni: ridurre max_depth negli alberi, aumentare i dati, aggiungere regolarizzazione. Non si risolve aumentando n_estimators — quello aggiunge complessità, non la riduce.'
+      },
+      {
+        question: 'R²=0.82 significa che:',
+        options: [
+          'Il modello sbaglia nel 18% dei casi',
+          'Il modello spiega l\'82% della variabilità nei prezzi — l\'18% resta inspiegato',
+          'Il modello prevede correttamente l\'82% delle case',
+          'L\'accuracy è dell\'82%',
+        ],
+        correct: 1,
+        explanation: 'R² non è una percentuale di casi corretti — è la proporzione di varianza spiegata. R²=0.82 significa che il modello cattura l\'82% delle variazioni di prezzo; il 18% dipende da fattori non nelle feature (es. stato interno, vista, ristrutturazioni).'
+      },
+      {
+        question: 'Quale esperimento del lab mostra il trade-off velocità/accuratezza in Random Forest?',
+        options: [
+          'Cambiare test_size da 0.2 a 0.3',
+          'Modificare random_state=42 in random_state=7',
+          'Ridurre n_estimators da 100 a 10 — training molto più veloce ma MAE peggiore',
+          'Aggiungere StandardScaler prima del training',
+        ],
+        correct: 2,
+        explanation: 'n_estimators=10 vs 100: con 10 alberi il training è ~10x più veloce, ma l\'ensemble è meno robusto e il MAE cresce. Classico trade-off ingegneristico: quanto accuracy vale il tempo di training?'
+      },
+      {
+        question: 'Qual è il messaggio chiave del capitolo 4 sul workflow ML?',
+        options: [
+          'Il modello più complesso vince sempre — usa sempre Random Forest',
+          'Basta un buon dataset — il modello non conta',
+          'Il workflow ML è lineare: si fa una volta sola e si deploya',
+          'Un buon ML workflow è ciclico: esplora → prepara → addestra → valuta → itera',
+        ],
+        correct: 3,
+        explanation: 'Il workflow ML non è mai lineare. Dopo la valutazione si torna a esplorare i dati, si aggiungono feature, si cambiano modelli. L\'iterazione guidata dalle metriche è il cuore del processo scientifico applicato al ML.'
       }
     ]
 };
