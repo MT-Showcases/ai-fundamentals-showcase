@@ -308,7 +308,7 @@ y = pd.Series(housing.target * 100000, name='Price')`,
                     fileReference: {
                       filename: 'main.py',
                       lines: '28-32',
-                      description: 'Carica il dataset e costruisce features (X) e target prezzo (y) in formato Pandas, base per tutto il workflow.',
+                      description: 'Carica il dataset e costruisce features (X) e target prezzo (y) in formato Pandas — la base strutturata per tutto il workflow ML.',
                     },
                     modificationExample: {
                       lineNumber: 4,
@@ -332,7 +332,7 @@ X_train, X_test, y_train, y_test = train_test_split(
                     fileReference: {
                       filename: 'main.py',
                       lines: '35-38',
-                      description: 'Divide il dataset: 80% per allenare il modello, 20% per valutare quanto generalizza su dati nuovi.',
+                      description: 'Divide il dataset: 80% per il training, 20% per il test — il principio fondamentale di ogni valutazione ML affidabile.',
                     },
                     modificationExample: {
                       lineNumber: 3,
@@ -358,7 +358,7 @@ model_rf.fit(X_train, y_train)`,
                     fileReference: {
                       filename: 'main.py',
                       lines: '41-48',
-                      description: 'Istanzia e addestra due modelli diversi sullo stesso training set per confrontare approcci lineari vs ensemble.',
+                      description: 'Istanzia e addestra due modelli sullo stesso training set: Linear Regression (lineare, veloce) vs Random Forest (ensemble, più potente).',
                     },
                     modificationExample: {
                       lineNumber: 7,
@@ -385,7 +385,7 @@ print(f"Test R²: \${test_r2:.3f}")`,
                     fileReference: {
                       filename: 'main.py',
                       lines: '51-60',
-                      description: 'Calcola metriche su training e test per misurare errore medio e qualità di spiegazione della varianza.',
+                      description: 'Calcola MAE e R² su training e test per misurare l\'errore in dollari e rilevare overfitting dal gap tra le due metriche.',
                     },
                     modificationExample: {
                       lineNumber: 7,
@@ -413,7 +413,7 @@ plt.show()`,
                     fileReference: {
                       filename: 'main.py',
                       lines: '63-71',
-                      description: 'Visualizza qualità delle predizioni confrontando valori reali e stimati con un riferimento ideale (linea diagonale).',
+                      description: 'Grafico scatter previsioni vs realtà — più i punti si avvicinano alla diagonale, migliore è la generalizzazione del modello.',
                     },
                     modificationExample: {
                       lineNumber: 3,
@@ -552,7 +552,7 @@ Usa questa fonte per generare:
                     {
                       number: 1,
                       title: 'Carica i Dati',
-                      description: 'Dataset inline di 30 recensioni (15 positive + 15 negative) — nessun download richiesto.',
+                      description: <>Dataset inline di <strong>30 recensioni</strong> in italiano (15 positive + 15 negative) — nessun download, nessuna API. Il modello impara direttamente da queste frasi.</>,
                       code: 'texts = [\n  "Prodotto fantastico, lo consiglio!",\n  "Pessima qualità, deluso.",\n  # ... 28 altre frasi\n]\nlabels = [1, 0, ...]',
                       codeLang: 'python',
                       tryThis: <><strong>Prova:</strong> aggiungi 5 tue frasi al dataset — il modello le include nel <em>training</em>. Una frase ironica viene classificata correttamente?</>,
@@ -560,7 +560,7 @@ Usa questa fonte per generare:
                     {
                       number: 2,
                       title: 'Preprocessing',
-                      description: 'Lowercase + rimozione punteggiatura con regex. Nessuna libreria esterna.',
+                      description: <><em>Preprocessing</em> in 2 righe: <code>lowercase</code> + rimozione punteggiatura con <code>regex</code>. Nessuna libreria esterna — mostra che il pre-processing è matematica elementare.</>,
                       code: 'import re\n\ndef preprocess(text):\n    text = text.lower()\n    text = re.sub(r"[^\\w\\s]", "", text)\n    return text',
                       codeLang: 'python',
                       tryThis: <><strong>Sperimenta:</strong> aggiungi <code>re.sub(r&apos;\d+&apos;, &apos;&apos;, text)</code> per rimuovere i numeri — migliora o peggiora l&apos;<em>accuracy</em>?</>,
@@ -568,7 +568,7 @@ Usa questa fonte per generare:
                     {
                       number: 3,
                       title: 'TF-IDF Vectorization',
-                      description: 'Trasforma il testo in numeri: ogni parola diventa una feature pesata per rarità.',
+                      description: <><code>TF-IDF</code> trasforma il testo in numeri: parole rare ma frequenti in un documento hanno <em>peso alto</em>. È la base di quasi tutti i sistemi <em>NLP</em> classici.</>,
                       code: 'from sklearn.feature_extraction.text import TfidfVectorizer\n\nvectorizer = TfidfVectorizer(max_features=1000)\nX = vectorizer.fit_transform(texts_clean)',
                       codeLang: 'python',
                       tryThis: <><strong>Prova:</strong> cambia <code>max_features=500</code> — l&apos;<em>accuracy</em> cambia? Con meno feature il modello è più veloce ma meno preciso.</>,
@@ -576,7 +576,7 @@ Usa questa fonte per generare:
                     {
                       number: 4,
                       title: 'Training — LR vs Naive Bayes',
-                      description: 'Allena e confronta Logistic Regression vs Multinomial Naive Bayes.',
+                      description: <>Allena e confronta due approcci: <strong>Logistic Regression</strong> (lineare, interpretabile) vs <strong>Multinomial Naive Bayes</strong> (probabilistico, velocissimo su testo).</>,
                       code: 'from sklearn.linear_model import LogisticRegression\nfrom sklearn.naive_bayes import MultinomialNB\n\nlr = LogisticRegression(random_state=42)\nnb = MultinomialNB()\nlr.fit(X_train, y_train)\nnb.fit(X_train, y_train)',
                       codeLang: 'python',
                       tryThis: <><strong>Rifletti:</strong> quale modello ha <em>accuracy</em> più alta? Perché <strong>Naive Bayes</strong> funziona spesso bene con il testo nonostante le sue assunzioni semplificate?</>,
@@ -584,7 +584,7 @@ Usa questa fonte per generare:
                     {
                       number: 5,
                       title: 'Visualizzazione',
-                      description: 'Confusion matrix con seaborn + top 10 parole più positive e negative.',
+                      description: <><em>Confusion matrix</em> con seaborn per visualizzare falsi positivi/negativi + le <strong>top 10 parole</strong> più discriminanti dai coefficienti del modello.</>,
                       code: 'import seaborn as sns\nfrom sklearn.metrics import confusion_matrix\n\ncm = confusion_matrix(y_test, y_pred)\nsns.heatmap(cm, annot=True, fmt="d")\nplt.savefig("sentiment-analysis.png")',
                       codeLang: 'python',
                       tryThis: <><strong>Sperimenta:</strong> aggiungi la tua frase nella sezione <code>ESPERIMENTO</code> in fondo al <code>main.py</code> — il modello la classifica correttamente?</>,
@@ -689,7 +689,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                     {
                       number: 1,
                       title: 'Setup e connessione API',
-                      description: 'Carica la chiave Groq dal file .env e verifica la connessione con una chiamata test.',
+                      description: <>Carica la chiave <strong>API</strong> dal file <code>.env</code> e verifica la connessione con una chiamata test — nessuna carta di credito, account Groq gratuito.</>,
                       code: 'from dotenv import load_dotenv\nfrom groq import Groq\nimport os\n\nload_dotenv()\nclient = Groq(api_key=os.getenv("GROQ_API_KEY"))\n\n# Test connessione\nrisposta, tokens = call_llm(client, "Rispondi solo con: OK")\nprint(f"Connessione OK — token test: {tokens}")',
                       codeLang: 'python',
                       tryThis: <><strong>Attenzione:</strong> se vedi un errore <code>401</code>, controlla che la chiave <strong>API</strong> nel file <code>.env</code> sia corretta e che l&apos;account Groq sia attivo.</>,
@@ -697,7 +697,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                     {
                       number: 2,
                       title: 'Prima chiamata — prompt semplice',
-                      description: 'Chiedi al modello di spiegare un concetto AI in 2 righe.',
+                      description: <>Prima chiamata reale a un <em>LLM</em>: un <em>prompt</em> semplice per spiegare un concetto AI. Osserva la risposta e il conteggio <code>token</code> usati.</>,
                       code: 'prompt = "Spiega cos\'\u00e8 il Machine Learning in 2 righe."\nrisposta, tokens = call_llm(client, prompt)\nprint(risposta)\nprint(f"Token usati: {tokens}")',
                       codeLang: 'python',
                       tryThis: <><strong>Prova:</strong> cambia il concetto &mdash; usa <em>&ldquo;deep learning&rdquo;</em> o <em>&ldquo;overfitting&rdquo;</em>. La risposta cambia? Nota come il modello adatta il linguaggio.</>,
@@ -705,7 +705,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                     {
                       number: 3,
                       title: 'Prompt vago vs Prompt strutturato',
-                      description: 'Stesso obiettivo, due prompt diversi: osserva come cambia la qualità della risposta.',
+                      description: <>Stesso obiettivo, due <em>prompt</em> diversi: vago vs strutturato (ruolo + vincoli + formato). Il confronto diretto mostra quanto il <em>prompt engineering</em> impatta l&apos;output.</>,
                       code: '# Prompt A: vago\nprompt_a = "Cos\'\u00e8 l\'overfitting?"\n\n# Prompt B: strutturato (ruolo + vincoli + formato)\nprompt_b = (\n    "Sei un docente AI per studenti di primo anno. "\n    "Spiega overfitting in max 3 bullet point "\n    "usando un\'analogia pratica."\n)',
                       codeLang: 'python',
                       tryThis: <><strong>Analizza:</strong> qual è la differenza tra le due risposte? Il <em>prompt strutturato</em> è <strong>sempre</strong> migliore, o dipende dal contesto?</>,
@@ -713,7 +713,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                     {
                       number: 4,
                       title: 'System Prompt — controllo comportamento',
-                      description: 'Il system prompt definisce il ruolo e i vincoli globali del modello per tutta la conversazione.',
+                      description: <>Il <em>system prompt</em> definisce ruolo e vincoli globali del modello — è il meccanismo più potente per <strong>controllare il comportamento</strong> dell&apos;LLM in produzione.</>,
                       code: 'system = (\n    "Sei un assistente tecnico per startup AI. "\n    "Rispondi sempre in max 5 righe, "\n    "con linguaggio pratico e orientato al business."\n)\nrisposta, _ = call_llm(client, domanda, system_prompt=system)',
                       codeLang: 'python',
                       tryThis: <><strong>Sperimenta:</strong> cambia il ruolo nel <em>system prompt</em> &mdash; prova <em>&ldquo;Sei uno studente universitario scettico&rdquo;</em>. Come cambia il tono della risposta?</>,
@@ -721,7 +721,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                     {
                       number: 5,
                       title: 'Valutazione qualità output',
-                      description: 'Confronta le risposte con una scorecard: lunghezza, struttura, coerenza con il prompt.',
+                      description: <>Valuta le risposte con una <em>scorecard</em> semplice: lunghezza, struttura e coerenza col prompt. Introduce l&apos;idea di <strong>QA sistematico</strong> sugli output generativi.</>,
                       code: 'def valuta(risposta):\n    parole = len(risposta.split())\n    ha_struttura = any(c in risposta for c in ["\u2022", "-", "1.", "\\n-"])\n    print(f"Parole: {parole}")\n    print(f"Struttura: {\u2705 if ha_struttura else \u274c}")\n\nvaluta(risposta_a)  # prompt vago\nvaluta(risposta_b)  # prompt strutturato',
                       codeLang: 'python',
                       tryThis: <><strong>Crea:</strong> sblocca la sezione <code>ESPERIMENTO</code> in fondo al <code>main.py</code> e testa il tuo <em>prompt</em> preferito — cosa riesci a far fare al modello?</>,
@@ -862,7 +862,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                     {
                       number: 1,
                       title: 'Scarica i Dati (MNIST)',
-                      description: 'Carichiamo un subset di MNIST: 10.000 immagini di numeri scritti a mano (28x28 pixel = 784 feature per immagine).',
+                      description: <>Carica un subset di <strong>MNIST</strong>: 10.000 immagini di numeri scritti a mano — ogni immagine è una griglia <code>28×28 pixel</code> = <strong>784 feature</strong> per immagine.</>,
                       code: `from sklearn.datasets import fetch_openml
 X, y = fetch_openml('mnist_784', version=1, return_X_y=True, as_frame=False)
 X, y = X[:10000], y[:10000] # Subset per velocità`,
@@ -873,7 +873,7 @@ X, y = X[:10000], y[:10000] # Subset per velocità`,
                     {
                       number: 2,
                       title: 'Preprocessing (Scaling)',
-                      description: 'Le reti neurali lavorano male con valori grandi (es. pixel da 0 a 255). Scalare i dati verso lo zero accelera enormemente l\'apprendimento.',
+                      description: <>Le <em>reti neurali</em> lavorano male con pixel da <code>0 a 255</code>. Lo <code>StandardScaler</code> porta media a 0 e deviazione standard a 1 — la <em>discesa del gradiente</em> converge molto più velocemente.</>,
                       code: `from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
@@ -884,7 +884,7 @@ X_test_scaled = scaler.transform(X_test)`,
                     {
                       number: 3,
                       title: 'Definisci e Allena l\'Architettura',
-                      description: 'Creiamo un Multi-Layer Perceptron (MLP) con un singolo layer nascosto da 50 neuroni.',
+                      description: <>Crea un <strong>Multi-Layer Perceptron</strong>: <code>hidden_layer_sizes=(50,)</code> = 1 layer nascosto con 50 neuroni. Il <em>solver SGD</em> aggiorna i pesi con la <em>backpropagation</em> — vedrai la <em>loss</em> scendere ad ogni epoca.</>,
                       code: `from sklearn.neural_network import MLPClassifier
 nn_model = MLPClassifier(hidden_layer_sizes=(50,), max_iter=20, solver='sgd')
 nn_model.fit(X_train_scaled, y_train)`,
@@ -901,7 +901,7 @@ nn_model.fit(X_train_scaled, y_train)`,
                     {
                       number: 4,
                       title: 'Visualizza le Predizioni',
-                      description: 'Il modello prevede il numero basandosi sui pixel. Mostriamo i primi 10 risultati visivamente per capire dove sbaglia.',
+                      description: <>Il modello prevede il numero dai pixel. La griglia <code>2×5</code> mostra i risultati: <strong style={{color:'green'}}>verde</strong> = corretto, <strong style={{color:'red'}}>rosso</strong> = sbagliato — gli errori di solito sono numeri ambigui come <code>4 vs 9</code> o <code>3 vs 8</code>.</>,
                       code: `import matplotlib.pyplot as plt
 img = X_test[0].reshape(28, 28)
 plt.imshow(img, cmap='gray')
