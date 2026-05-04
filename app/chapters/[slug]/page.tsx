@@ -13,7 +13,7 @@ import ChapterMediaSlots from '@/components/ChapterMediaSlots';
 import PracticalWorkflow from '@/components/PracticalWorkflow';
 import SourceToggle from '@/components/SourceToggle';
 import Breadcrumb from '@/components/Breadcrumb';
-import ChapterSidebar from '@/components/ChapterSidebar';
+import SidebarToggleWrapper from '@/components/SidebarToggleWrapper';
 import BackToTopButton from '@/components/BackToTopButton';
 import GlossaryTerm from '@/components/GlossaryTerm';
 import Link from 'next/link';
@@ -147,14 +147,7 @@ export default async function ChapterPage({ params }: Props) {
 
         {/* Main grid: sidebar + content */}
         <div className="flex gap-0 md:gap-6 lg:gap-8">
-          {/*
-            Single ChapterSidebar instance:
-            - Mobile: w-0 (no layout space) — sidebar is fixed overlay, hamburger is fixed top-right
-            - Desktop (md+): w-64/w-72 sticky sidebar in flex layout
-          */}
-          <div className="w-0 overflow-visible md:w-64 lg:w-72 flex-shrink-0">
-            <ChapterSidebar currentSlug={slug} />
-          </div>
+          <SidebarToggleWrapper currentSlug={slug} />
 
           {/* Main content area */}
           <main className="flex-1 min-w-0">
