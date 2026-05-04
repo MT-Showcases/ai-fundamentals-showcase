@@ -394,13 +394,14 @@ print(f"Train MAE: \${train_mae:.0f}, Test MAE: \${test_mae:.0f}, RMSE: \${test_
                     number: 5,
                     title: 'Visualizza Risultati',
                     description: <>Grafico scatter: previsioni vs realtà. Se i punti si allineano alla diagonale, il modello ha buona <GlossaryTerm term="generalization">generalization</GlossaryTerm>.</>,
-                    code: `import matplotlib.pyplot as plt
+                    code: `fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+ax = axes[0]  # Linear Regression
 
-plt.scatter(y_test, y_pred, alpha=0.3, s=10)
-plt.plot([min_val, max_val], [min_val, max_val], 'r--', lw=2, label='Perfect')
-plt.xlabel('Actual Price ($)')
-plt.ylabel('Predicted Price ($)')
-plt.title('Predictions vs Reality')
+ax.scatter(y_test, y_pred, alpha=0.3, s=10)
+ax.plot([min_val, max_val], [min_val, max_val], 'r--', lw=2, label='Perfect')
+ax.set_xlabel('Actual Price ($)')
+ax.set_ylabel('Predicted Price ($)')
+ax.set_title('Predictions vs Reality')
 plt.show()`,
                     codeLang: 'python',
                     tryThis: <>Confronta il grafico dei due modelli: chi ha dispersione minore e <GlossaryTerm term="MAE">MAE</GlossaryTerm> più basso?</>,
@@ -412,8 +413,8 @@ plt.show()`,
                     modificationExample: {
                       lineNumber: 3,
                       description: 'Cambia il colore e la trasparenza per visualizzare meglio i cluster di punti.',
-                      before: `plt.scatter(y_test, y_pred, alpha=0.3, s=10)`,
-                      after: `plt.scatter(y_test, y_pred, alpha=0.5, s=20, c='cyan', edgecolors='blue', linewidth=0.5)`,
+                      before: `ax.scatter(y_test, y_pred, alpha=0.3, s=10)`,
+                      after: `ax.scatter(y_test, y_pred, alpha=0.5, s=20, c='cyan', edgecolors='blue', linewidth=0.5)`,
                       expectedResult: 'Scatter più leggibile con bordi blu e colore ciano. Punti più grandi (s=20) = più visibilità',
                     },
                   },
