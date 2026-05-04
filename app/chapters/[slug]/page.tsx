@@ -519,6 +519,7 @@ Usa questa fonte per generare:
                       <div className="bg-navy-800 rounded-lg p-4 border border-cyan-400/20">
                         <p className="text-sm font-semibold text-cyan-300 mb-2">🛠️ Scelte Tecniche</p>
                         <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc leading-relaxed">
+                          <li><strong>Questo lab NON usa reti neurali</strong>: è NLP classico per consolidare i fondamentali prima dei modelli deep.</li>
                           <li><code>TF-IDF</code> invece di embedding deep: visibile, interpretabile e perfetto per capire i fondamentali NLP.</li>
                           <li><GlossaryTerm term="LogisticRegression"><code>LogisticRegression</code></GlossaryTerm> + <GlossaryTerm term="MultinomialNB"><code>MultinomialNB</code></GlossaryTerm>: confronto lineare vs probabilistico sullo stesso dataset.</li>
                           <li><code>random_state=42</code> per risultati riproducibili durante la lezione.</li>
@@ -531,7 +532,7 @@ Usa questa fonte per generare:
                         <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc leading-relaxed">
                           <li>Dataset <strong>inline</strong> da 30 frasi italiane: nessun download e setup immediato in aula.</li>
                           <li>Niente API esterne: il lab funziona completamente offline.</li>
-                          <li>Pipeline in 5 step volutamente didattica: caricamento → preprocessing → vettorizzazione → training → visualizzazione.</li>
+                          <li>Pipeline in 6 step volutamente didattica: caricamento → preprocessing → vettorizzazione → training → visualizzazione → esperimento su <code>mia_recensione</code>.</li>
                           <li>Focus sull&apos;analisi degli errori e top parole, non sul “modello più complesso”.</li>
                         </ul>
                       </div>
