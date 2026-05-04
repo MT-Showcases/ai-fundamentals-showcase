@@ -667,6 +667,119 @@ OBIETTIVO GENERAZIONE CONTENUTI:
               </div>
             )}
 
+            {chapter.slug === 'fine-tuning' && (
+              <div className="mb-12">
+                <PracticalWorkflow
+                  title="CH9 Extra — Small LLM + Mini RAG (6 Step)"
+                  setupContent={
+                    <div className="space-y-4">
+                      <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
+                        <p className="text-sm text-gray-300 font-semibold mb-1">Cosa imparerai in questo lab extra:</p>
+                        <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc">
+                          <li>Caricare un mini modello locale e fare inferenza testuale</li>
+                          <li>Costruire una mini pipeline <code>RAG</code> con retrieval TF-IDF</li>
+                          <li>Confrontare output <em>zero-shot</em> vs output con contesto recuperato</li>
+                          <li>Valutare trade-off reali: qualità, latenza, aggiornabilità</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-navy-800 rounded-lg p-4 border border-cyan-400/20">
+                        <p className="text-sm font-semibold text-cyan-300 mb-2">🛠️ Scelte Tecniche</p>
+                        <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc leading-relaxed">
+                          <li><code>sshleifer/tiny-gpt2</code> come modello piccolo: leggero per demo didattica.</li>
+                          <li>Retrieval con <code>TfidfVectorizer</code>: semplice da capire e replicare in aula.</li>
+                          <li>Knowledge base locale in <code>docs/knowledge_base.txt</code>: aggiornabile senza ri-addestrare.</li>
+                          <li>Confronto diretto tra prompt senza contesto e prompt arricchito da retrieval.</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
+                        <p className="text-sm font-semibold text-blue-300 mb-2">🧪 Scelte di Laboratorio</p>
+                        <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc leading-relaxed">
+                          <li>Lab volutamente “small”: obiettivo = capire il workflow, non massimizzare benchmark.</li>
+                          <li>Primo run con internet per scaricare il modello; poi riesecuzione locale.</li>
+                          <li>Struttura in 6 step con esperimento finale su <code>query_utente</code>.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <p className="text-sm font-semibold text-gray-300 mb-2">Prerequisiti:</p>
+                        <ul className="text-sm text-gray-400 space-y-1 ml-4">
+                          <li>&#x2705; Python 3.9+</li>
+                          <li>&#x2705; pip installato</li>
+                          <li>&#x2705; Connessione internet al primo run (download modello)</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <p className="text-sm font-semibold text-gray-300 mb-2">Comandi di avvio:</p>
+                        <div className="bg-navy-900 rounded-lg p-4 border border-cyan-400/20 font-mono text-xs text-cyan-300 space-y-1">
+                          <p className="text-gray-400"># 1. Estrai lo ZIP e accedi</p>
+                          <p>$ cd ml-lab-05-small-llm-rag/</p>
+                          <p className="text-gray-400"># 2. Installa dipendenze</p>
+                          <p>$ pip install -r requirements.txt</p>
+                          <p className="text-gray-400"># 3. Esegui il lab</p>
+                          <p>$ python main.py</p>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                  downloadLinks={[
+                    {
+                      label: 'Scarica ZIP Lab Extra — Small LLM + Mini RAG',
+                      url: '/downloads/ml-lab-05-small-llm-rag.zip',
+                      icon: 'zip',
+                    },
+                  ]}
+                  steps={[
+                    {
+                      number: 1,
+                      title: 'Carica knowledge base locale',
+                      description: <>Legge <code>docs/knowledge_base.txt</code> e divide il testo in chunk recuperabili.</>,
+                      code: 'kb_text = Path("docs/knowledge_base.txt").read_text(encoding="utf-8")\nchunks = split_chunks(kb_text)',
+                      codeLang: 'python',
+                    },
+                    {
+                      number: 2,
+                      title: 'Retrieval con TF-IDF',
+                      description: <>Converte chunk + query in vettori e seleziona i top chunk con <code>cosine similarity</code>.</>,
+                      code: 'vectorizer = TfidfVectorizer()\nX = vectorizer.fit_transform(chunks + [query_utente])\nsims = cosine_similarity(X[-1], X[:-1]).flatten()',
+                      codeLang: 'python',
+                    },
+                    {
+                      number: 3,
+                      title: 'Inizializza mini LLM',
+                      description: <>Usa un modello piccolo locale con <code>transformers.pipeline</code> per text generation.</>,
+                      code: 'generator = pipeline("text-generation", model="sshleifer/tiny-gpt2")',
+                      codeLang: 'python',
+                    },
+                    {
+                      number: 4,
+                      title: 'Prompt zero-shot (baseline)',
+                      description: <>Genera una risposta senza contesto esterno, solo dalla query utente.</>,
+                      code: 'prompt_no_rag = f"Domanda: {query_utente}\\nRisposta breve in italiano:"\nout_no_rag = generator(prompt_no_rag, max_new_tokens=70, do_sample=False)',
+                      codeLang: 'python',
+                    },
+                    {
+                      number: 5,
+                      title: 'Prompt con contesto (Mini RAG)',
+                      description: <>Costruisce prompt con chunk recuperati e confronta output con la baseline.</>,
+                      code: 'prompt_rag = f"Contesto:\\n{context}\\n\\nDomanda: {query_utente}\\nRisposta:"\nout_rag = generator(prompt_rag, max_new_tokens=90, do_sample=False)',
+                      codeLang: 'python',
+                    },
+                    {
+                      number: 6,
+                      title: 'Esperimento — cambia query_utente',
+                      description: <>Modifica <code>query_utente</code> e osserva differenze tra output senza contesto e con RAG.</>,
+                      code: 'query_utente = "Quando conviene usare RAG invece del fine-tuning?"',
+                      codeLang: 'python',
+                      tryThis: <><strong>Prova:</strong> testa 3 query diverse (generica, specifica, ambigua) e confronta qualità/rilevanza dei due output.</>,
+                    },
+                  ]}
+                />
+              </div>
+            )}
+
             {chapter.slug === 'generative-ai' && (
               <div className="mb-12">
                 <PracticalWorkflow
