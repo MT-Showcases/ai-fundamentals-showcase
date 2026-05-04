@@ -159,7 +159,7 @@ export const ch06: Chapter = {
       {
         type: 'video',
         title: 'Video Capitolo 6',
-        description: 'Panoramica NLP: token, embedding, attention e uso in prodotto.',
+        description: 'Video completo Capitolo 6: dalla tokenizzazione agli embedding, meccanismo attention nei Transformer, pipeline NLP in produzione con guardrail e fallback. Con esempi concreti su classificazione testo, chatbot e sistemi di raccomandazione linguistica.',
         estimatedDuration: '8-10 min',
         placeholderPath: 'media/ch06-nlp/video.mp4',
         notes: 'ready'
@@ -167,7 +167,7 @@ export const ch06: Chapter = {
       {
         type: 'infographic',
         title: 'Infografica Capitolo 6',
-        description: 'Come l\'AI capisce il linguaggio: tokenizzazione, embedding e attention.',
+        description: 'Infografica Capitolo 6: pipeline NLP dall input testuale al vettore semantico, schema dei Transformer con meccanismo attention, e checklist operativa per sistemi NLP in produzione (fallback, monitoraggio, guardrail).',
         placeholderPath: 'media/ch06-nlp/infographic.png',
         notes: 'ready'
       },

@@ -7,7 +7,7 @@ export const ch03: Chapter = {
     description: 'Il carburante dell\'AI',
     sections: [
       { title: 'Quantità vs Qualità', content: 'Non è vero che più dati = meglio. Se raccogli 1 milione di foto blurrate di gatti, un algoritmo le imparerà male. Al contrario, 10.000 foto nitide di gatti diverse porteranno a risultati migliori. I dati devono essere: (1) sufficienti in quantità, (2) di alta qualità, (3) rappresentativi della realtà. Nel lavoro reale creare **dataset** bilanciati e versionati e spesso il fattore che separa una demo da una soluzione affidabile. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Dati puliti e rappresentativi valgono più di grandi volumi rumorosi>>.', media: [ { type: 'infographic', title: 'Quantità vs Qualità dati', description: 'Infografica: confronto visivo tra dataset grande ma rumoroso vs dataset piccolo ma curato.', placeholderPath: 'media/ch03-data-importance/sec-01/infographic.png', notes: 'ready' } ] },
-      { title: 'Bias nei Dati', content: 'Il **bias** è il problema più grave. Se alleni un algoritmo di riconoscimento facciale usando foto solo di uomini, avrà difficoltà a riconoscere i volti femminili. Amazon ha dovuto buttare il suo sistema di assunzione automatico perché discriminava le donne — i dati storici riflettevano pregiudizi umani, e l\'AI li aveva imparati perfettamente. Nel lavoro reale creare dataset bilanciati e versionati e spesso il fattore che separa una demo da una soluzione affidabile. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Dati puliti e rappresentativi valgono più di grandi volumi rumorosi>>.', media: [ { type: 'video', title: 'Video — Bias nei dati: il caso Amazon', description: 'Mini video narrativo sul bias nei dati, con il caso Amazon hiring.', placeholderPath: 'media/ch03-data-importance/sec-02/video.mp4', notes: 'ready' } ] },
+      { title: 'Bias nei Dati', content: 'Il **bias** è il problema più grave. Se alleni un algoritmo di riconoscimento facciale usando foto solo di uomini, avrà difficoltà a riconoscere i volti femminili. Amazon ha dovuto buttare il suo sistema di assunzione automatico perché discriminava le donne — i dati storici riflettevano pregiudizi umani, e l\'AI li aveva imparati perfettamente. Nel lavoro reale creare dataset bilanciati e versionati e spesso il fattore che separa una demo da una soluzione affidabile. *Nota pratica:* applica il concetto in un mini scenario reale prima del deploy. <<Takeaway: Dati puliti e rappresentativi valgono più di grandi volumi rumorosi>>.', media: [ { type: 'video', title: 'Video — Bias nei dati: il caso Amazon', description: 'Video narrativo sul bias nei dati: il caso reale Amazon hiring tool (2018) che discriminava le donne perche addestrato su CV storici prevalentemente maschili. Come il bias entra nei dati, si propaga nel modello e produce decisioni ingiuste su persone reali.', placeholderPath: 'media/ch03-data-importance/sec-02/video.mp4', notes: 'ready' } ] },
       { title: "Startup Lens", content: "In early-stage product, meglio 5.000 record puliti e bilanciati che 500.000 rumorosi. Introduci versionamento dataset e changelog: ogni modifica ai dati deve essere tracciata." },
       { title: "Errore comune + Check rapido", content: "**Errore comune:** valutare il modello solo su test set statico.\n\n**Check rapido (2 min):** indica un caso reale in cui un test statico può dare falsa sicurezza e quale controllo aggiungeresti per evitare errori in produzione.", media: [ { type: 'podcast', title: 'Podcast — Errore comune: testare solo su dati statici', description: 'Micro-podcast sull\'errore di validation e come costruire edge-case robusti.', placeholderPath: 'media/ch03-data-importance/sec-04/podcast.mp3', notes: 'placeholder' } ] },
     ],
@@ -46,7 +46,7 @@ export const ch03: Chapter = {
       {
         type: 'video',
         title: 'Video Capitolo 3',
-        description: 'Video completo su qualità dei dati, bias e validazione operativa.',
+        description: 'Video completo Capitolo 3: quantita vs qualita dei dati, bias e discriminazione (caso Amazon), versionamento dataset, test statici vs dinamici. Con framework operativo per costruire dataset bilanciati e validazione robusta in produzione.',
         estimatedDuration: '8 min',
         placeholderPath: 'media/ch03-data-importance/video.mp4',
         notes: 'ready'
@@ -54,7 +54,7 @@ export const ch03: Chapter = {
       {
         type: 'podcast',
         title: 'Podcast Capitolo 3',
-        description: 'Versione audio completa del Capitolo 3: qualità dati, bias e validazione.',
+        description: 'Podcast del Capitolo 3: perche i dati sono il carburante dell AI, come il bias si insinua nei dataset, strategie di versionamento e validazione continua. Con il caso Amazon e framework pratico per dataset affidabili in startup.',
         estimatedDuration: '23 min',
         placeholderPath: 'media/ch03-data-importance/podcast.mp3',
         notes: 'ready'
@@ -62,7 +62,7 @@ export const ch03: Chapter = {
       {
         type: 'infographic',
         title: 'Infografica',
-        description: 'Sintesi visuale: 5 punti chiave, 1 warning, 1 mini framework.',
+        description: 'Infografica Capitolo 3: 5 caratteristiche di un dataset di qualita, 3 tipi di bias piu comuni (storico, selezione, etichettatura), warning su test statici, e mini framework per audit dataset in 4 step.',
         placeholderPath: 'media/ch03-data-importance/infographic.png',
         notes: 'placeholder'
       },

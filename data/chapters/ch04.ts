@@ -43,7 +43,7 @@ export const ch04: Chapter = {
       {
         type: 'video',
         title: 'Video Capitolo 4',
-        description: 'Panoramica operativa su apprendimento, overfitting e scelta metriche.',
+        description: 'Video completo Capitolo 4: come il Machine Learning apprende dai dati, overfitting e underfitting con esempi visivi, scelta delle metriche giuste per classificazione e regressione, e workflow ML in 5 step applicato a California Housing.',
         estimatedDuration: '8-10 min',
         placeholderPath: 'media/ch04-machine-learning/video.mp4',
         notes: 'ready'
@@ -51,7 +51,7 @@ export const ch04: Chapter = {
       {
         type: 'podcast',
         title: 'Podcast Capitolo 4',
-        description: 'Versione audio con focus su generalizzazione e decisioni di produzione.',
+        description: 'Podcast del Capitolo 4: ciclo di apprendimento ML, trappola dell accuracy, come scegliere precision vs recall in base al costo degli errori, e decisioni architetturali per modelli che generalizzano davvero in produzione.',
         estimatedDuration: '10-15 min',
         placeholderPath: 'media/ch04-machine-learning/podcast.mp3',
         notes: 'placeholder'
@@ -59,7 +59,7 @@ export const ch04: Chapter = {
       {
         type: 'infographic',
         title: 'Infografica Capitolo 4',
-        description: 'Schema visuale ML pipeline + overfitting/underfitting + metriche.',
+        description: 'Infografica riassuntiva Capitolo 4: pipeline ML in 5 step, diagramma overfitting vs underfitting con curve diagnostiche, tabella comparativa metriche (accuracy, precision, recall, F1, MAE, R2) e quando usare ciascuna.',
         placeholderPath: 'media/ch04-machine-learning/infographic.png',
         notes: 'ready'
       },

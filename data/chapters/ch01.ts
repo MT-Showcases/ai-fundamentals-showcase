@@ -6,8 +6,8 @@ export const ch01: Chapter = {
     title: "Cos'è davvero l\'Intelligenza Artificiale",
     description: 'Introduzione ai concetti fondamentali dell\'AI',
     sections: [
-      { title: 'AI vs Intelligenza Umana', content: 'L\'intelligenza artificiale *non pensa come gli umani*. Mentre un bambino impara a riconoscere i cani da pochi esempi, l\'AI ha bisogno di migliaia di immagini di cani per lo stesso compito. La differenza fondamentale: gli umani comprendono il significato, l\'AI fa **riconoscimento di pattern** nei dati. Questo significa che il modello apprende correlazioni statistiche che *simulano* comprensione, ma non possiede semantica umana reale. In pratica: valida sempre il contesto prima di usare un output AI; AI e una leva, non un oracolo.', media: [ { type: 'infographic', title: 'AI vs Intelligenza Umana — visual', description: 'Confronto visivo tra apprendimento umano e apprendimento AI.', placeholderPath: 'media/ch01-what-is-ai/sec-01/infographic.png', notes: 'ready' } ] },
-      { title: "L\'AI nella Vita Quotidiana", content: 'Ogni giorno interagiamo con l\'AI senza rendercene conto: Spotify suggerisce musica basandosi sui tuoi ascolti, Netflix consiglia film simili a quelli che hai guardato, Alexa risponde ai tuoi comandi vocali. Questo è **sistema di raccomandazione basato su dati**. *Utile non significa infallibile*: sembra intelligente, ma sta facendo predizione statistica. Caso pratico: se Netflix ti propone film sbagliati per una settimana, il KPI di qualità della raccomandazione sta calando e il sistema va ricalibrato.', media: [ { type: 'infographic', title: 'AI nella vita quotidiana', description: 'Infografica sui sistemi di raccomandazione e assistenti vocali.', placeholderPath: 'media/ch01-what-is-ai/sec-02/infographic.png', notes: 'ready' } ] },
+      { title: 'AI vs Intelligenza Umana', content: 'L\'intelligenza artificiale *non pensa come gli umani*. Mentre un bambino impara a riconoscere i cani da pochi esempi, l\'AI ha bisogno di migliaia di immagini di cani per lo stesso compito. La differenza fondamentale: gli umani comprendono il significato, l\'AI fa **riconoscimento di pattern** nei dati. Questo significa che il modello apprende correlazioni statistiche che *simulano* comprensione, ma non possiede semantica umana reale. In pratica: valida sempre il contesto prima di usare un output AI; AI e una leva, non un oracolo.', media: [ { type: 'infographic', title: 'AI vs Intelligenza Umana — visual', description: 'Schema comparativo tra come impara un bambino (esperienza diretta, regole implicite, adattamento) e come impara una macchina (dati etichettati, ottimizzazione matematica, generalizzazione statistica). Evidenzia capacita e limiti di ciascun approccio.', placeholderPath: 'media/ch01-what-is-ai/sec-01/infographic.png', notes: 'ready' } ] },
+      { title: "L\'AI nella Vita Quotidiana", content: 'Ogni giorno interagiamo con l\'AI senza rendercene conto: Spotify suggerisce musica basandosi sui tuoi ascolti, Netflix consiglia film simili a quelli che hai guardato, Alexa risponde ai tuoi comandi vocali. Questo è **sistema di raccomandazione basato su dati**. *Utile non significa infallibile*: sembra intelligente, ma sta facendo predizione statistica. Caso pratico: se Netflix ti propone film sbagliati per una settimana, il KPI di qualità della raccomandazione sta calando e il sistema va ricalibrato.', media: [ { type: 'infographic', title: 'AI nella vita quotidiana', description: 'Come funzionano i sistemi AI nella vita quotidiana: raccomandazione (Netflix, Spotify), riconoscimento vocale (Siri, Alexa), filtri antispam, navigazione GPS. Ogni esempio mostra input, algoritmo e output concreto.', placeholderPath: 'media/ch01-what-is-ai/sec-02/infographic.png', notes: 'ready' } ] },
       { title: "Startup Lens", content: "Per un MVP startup, usa AI dove riduce tempo operativo in modo misurabile: supporto clienti, classificazione ticket, suggerimenti contenuto. Definisci **KPI misurabili** (tempo medio risposta, tasso risoluzione, error rate) prima del rilascio. <<Niente AI in produzione senza metrica di controllo>>.", },
       { title: "Errore comune + Mini esercizio", content: "**Errore comune:** trattare l'AI come fonte di verita assoluta.\n\n**Mini esercizio (15 min):** prendi 3 risposte AI su un tema tecnico, verifica fonti, segna cosa era corretto, ambiguo o errato, poi riscrivi una risposta validata.\n\nRubrica rapida di validazione:\n- **Dataset check**: i dati sono rappresentativi o sbilanciati?\n- **Output check**: dove sbaglia più spesso il modello?\n- **KPI check**: quale metrica minima (precisione, recall o errore medio) useresti per dire che il sistema funziona?\n\n<<Usa AI come copilota, non come verita assoluta>>.", media: [ { type: 'podcast', title: 'Podcast sezione — Errore comune e validazione', description: 'Mini podcast dedicato all\'errore più comune con AI e metodo di controllo pratico.', placeholderPath: 'media/ch01-what-is-ai/sec-04/podcast.mp3', notes: 'ready' } ] },
     ],
@@ -48,7 +48,7 @@ export const ch01: Chapter = {
       {
         type: 'video',
         title: 'Video Capitolo 1',
-        description: 'Introduzione completa al Capitolo 1: AI vs intelligenza umana e basi operative.',
+        description: 'Video di apertura del corso: cosa e AI, differenza tra intelligenza umana e artificiale, panoramica dei 15 capitoli e come usare la piattaforma per massimizzare l apprendimento. Ideale come primo contatto con il materiale.',
         estimatedDuration: '7-8 min',
         placeholderPath: 'media/ch01-what-is-ai/video.mp4',
         notes: 'ready'
@@ -56,7 +56,7 @@ export const ch01: Chapter = {
       {
         type: 'podcast',
         title: 'Podcast Capitolo 1',
-        description: 'Versione audio completa del Capitolo 1 con spiegazione e contesto operativo.',
+        description: 'Versione audio del Capitolo 1: definizione di AI, confronto con intelligenza umana, esempi concreti nella vita quotidiana e framework mentale per affrontare i capitoli successivi. Perfetto da ascoltare in mobilita.',
         estimatedDuration: '12-13 min',
         placeholderPath: 'media/ch01-what-is-ai/podcast.mp3',
         notes: 'ready'
@@ -64,7 +64,7 @@ export const ch01: Chapter = {
       {
         type: 'infographic',
         title: 'Infografica Capitolo 1',
-        description: 'Sintesi visuale del capitolo 1: concetti chiave, struttura e punti cardine.',
+        description: 'Mappa visuale del Capitolo 1: definizione AI, 3 differenze chiave con intelligenza umana, 5 esempi quotidiani, e i 3 takeaway fondamentali. Una pagina per portare sempre con se il nucleo del capitolo.',
         placeholderPath: 'media/ch01-what-is-ai/infographic.png',
         notes: 'ready'
       },
