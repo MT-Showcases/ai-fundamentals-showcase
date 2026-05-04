@@ -21,6 +21,8 @@ export default function GlossaryTerm({ term, children }: GlossaryTermProps) {
     RMSE: 'Root Mean Squared Error. Come MAE ma penalizza di più gli errori grandi (outlier).',
     random_state: 'Seed per il generatore casuale. Stesso valore = risultati riproducibili.',
     generalization: 'Capacità del modello di funzionare bene su dati mai visti. Obiettivo principale del ML.',
+    LogisticRegression: 'Classificatore lineare che stima la probabilità di appartenenza a una classe (es. positivo/negativo).',
+    MultinomialNB: 'Classificatore probabilistico Naive Bayes molto efficace su testo (bag-of-words/TF-IDF), rapido e leggero.',
   };
 
   const definition = glossary[term] || 'Termine non trovato';
