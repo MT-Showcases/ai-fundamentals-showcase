@@ -58,114 +58,114 @@ export const ch02: Chapter = {
     ],
     quiz: [
       {
-        question: "Quale descrizione rappresenta meglio i 3 pilastri dell'AI?",
+        question: "Cosa distingue il Machine Learning dalla programmazione tradizionale?",
         options: [
-          "Dati, algoritmo e potenza di calcolo che lavorano insieme",
-          "Solo prompt e interfaccia",
-          "Solo hardware potente",
-          "Solo dataset molto grande",
-        ],
-        correct: 0,
-        explanation: "La qualità emerge dall\'equilibrio tra tutti e tre i pilastri."
-      },
-      {
-        question: "Hai tantissimi dati ma rumorosi: cosa è più probabile?",
-        options: [
-          "Il modello generalizza meglio automaticamente",
-          "Il modello apprende rumore e peggiora nel reale",
-          "Il modello diventa più etico",
-          "L\'algoritmo non serve più",
+          "Il ML usa solo linguaggi di basso livello",
+          "Nel ML le regole emergono dai dati, non vengono scritte a mano",
+          "La programmazione tradizionale è sempre più lenta",
+          "Il ML non richiede dati per funzionare",
         ],
         correct: 1,
-        explanation: "Quantità senza qualità spesso aumenta errori e instabilità."
+        explanation: "Nella programmazione classica si scrivono regole esplicite. Nel ML si forniscono esempi (dati) e il modello apprende le regole da solo — utile quando le regole sono troppo complesse o sconosciute."
       },
       {
-        question: "Qual è la definizione più operativa di algoritmo nel capitolo 2?",
+        question: "Supervised Learning richiede:",
         options: [
-          "Una sequenza ripetibile di passi per trasformare input in output",
-          "Una scelta artistica del team",
-          "Una scorciatoia casuale",
-          "Un file di configurazione UI",
+          "Dataset con esempi etichettati (input + output atteso)",
+          "Solo dati grezzi senza etichette",
+          "Un supervisore umano presente durante il training",
+          "Dati esclusivamente numerici, mai categorici",
         ],
         correct: 0,
-        explanation: "Algoritmo = procedura eseguibile, non intuizione."
+        explanation: "In supervised learning ogni esempio di training ha un'etichetta (es. 'spam'/'non spam', prezzo della casa). Il modello impara a predire l'output dato l'input."
       },
       {
-        question: "In un e-commerce, se cala la conversione del recommender, quale pilastro controlli per primo?",
+        question: "Qual è la differenza tra classificazione e regressione?",
         options: [
-          "Dati recenti e loro qualità/rappresentatività",
-          "Solo il font della pagina",
-          "Solo il dominio internet",
-          "Solo il numero di slide della presentazione",
+          "La classificazione è sempre più accurata della regressione",
+          "Nessuna — sono sinonimi in ML",
+          "La regressione usa solo alberi decisionali",
+          "La classificazione predice categorie discrete, la regressione predice valori continui",
         ],
-        correct: 0,
-        explanation: "I degradi reali partono spesso da drift o qualità dati."
+        correct: 3,
+        explanation: "Classificazione: 'è spam o no?', 'che cifra è?' — output discreto. Regressione: 'quanto costa questa casa?', 'quanti gradi farà domani?' — output numerico continuo."
       },
       {
-        question: "Le reti neurali sono più utili quando il problema richiede:",
+        question: "Un modello ha training accuracy 99% e test accuracy 62%. Cosa sta succedendo?",
         options: [
-          "Pattern complessi difficili da codificare a regole fisse",
-          "Regole statiche e banali",
-          "Zero dati",
-          "Nessuna validazione",
-        ],
-        correct: 0,
-        explanation: "Le NN eccellono su relazioni non lineari e pattern complessi."
-      },
-      {
-        question: "Se aumenti il calcolo ma lasci algoritmo e dati invariati e scadenti, cosa aspettarti?",
-        options: [
-          "Miglioramento strutturale garantito",
-          "Possibile accelerazione, ma qualità non necessariamente migliore",
-          "Risoluzione automatica del bias",
-          "Scomparsa del data drift",
+          "Underfitting — il modello è troppo semplice",
+          "Overfitting — il modello ha memorizzato il training set ma non generalizza",
+          "Risultato normale — il gap è sempre così ampio",
+          "Errore nel codice dello split train/test",
         ],
         correct: 1,
-        explanation: "Più compute non compensa da solo dati/algoritmo deboli."
+        explanation: "Gap enorme tra training e test accuracy = overfitting classico. Il modello ha 'studiato a memoria' il training set invece di imparare pattern generalizzabili."
       },
       {
-        question: "Quale scelta è più robusta in produzione dopo il deploy?",
+        question: "Quale tipo di problema è più adatto all'Unsupervised Learning?",
         options: [
-          "Considerare il modello finito",
-          "Monitorare KPI e aggiornare il sistema su segnali reali",
-          "Bloccare i log",
-          "Valutare solo demo iniziale",
+          "Predire il prezzo di una casa da 8 feature note",
+          "Classificare email in spam/non-spam con esempi etichettati",
+          "Scoprire segmenti naturali in 100.000 clienti senza etichette predefinite",
+          "Riconoscere cifre scritte a mano con dataset MNIST etichettato",
+        ],
+        correct: 2,
+        explanation: "Unsupervised Learning lavora senza etichette — trova strutture nascoste nei dati. La segmentazione clienti (clustering) è il caso d'uso classico: non sai a priori quanti gruppi esistono."
+      },
+      {
+        question: "Il validation set serve a:",
+        options: [
+          "Aumentare la quantità di dati di training",
+          "Validare l'identità dell'utente che usa il modello",
+          "Valutare le performance durante il training senza 'contaminare' il test set finale",
+          "Sostituire il test set nelle fasi avanzate",
+        ],
+        correct: 2,
+        explanation: "Il validation set è separato dal test set: si usa durante il development per scegliere iperparametri e confrontare modelli. Il test set si usa UNA SOLA VOLTA alla fine — è la valutazione finale imparziale."
+      },
+      {
+        question: "Random Forest migliora rispetto a un singolo albero decisionale perché:",
+        options: [
+          "Usa più dati di training grazie alla parallelizzazione",
+          "Combina le previsioni di molti alberi diversi riducendo varianza e overfitting",
+          "Ha sempre meno parametri da ottimizzare",
+          "Non richiede la divisione train/test",
         ],
         correct: 1,
-        explanation: "Un modello in produzione va osservato continuamente."
+        explanation: "Random Forest è un ensemble: allena molti alberi su subset diversi dei dati e delle feature, poi fa voting. La varietà degli alberi riduce l'overfitting del singolo albero."
       },
       {
-        question: "Nel task \"Production Warning\", quale metrica aiuta a capire quante richieste non regge il modello?",
+        question: "Una startup vuole predire il churn (abbandono) dei clienti. Quale metrica è più rilevante?",
         options: [
-          "Fallback rate",
-          "Colore card",
-          "Numero capitoli",
-          "Versione browser",
-        ],
-        correct: 0,
-        explanation: "Il fallback rate misura quante volte serve escalation/manuale."
-      },
-      {
-        question: "Qual è il rischio di valutare il modello solo su test statico?",
-        options: [
-          "Nessun rischio se il test è grande",
-          "Non vedere drift e nuovi edge-case reali",
-          "Aumentare automaticamente robustezza",
-          "Ridurre sempre latenza",
+          "Solo accuracy globale",
+          "Precision e Recall sul churn (classe positiva), non solo accuracy",
+          "Solo velocità di training del modello",
+          "Numero di feature nel dataset",
         ],
         correct: 1,
-        explanation: "La realtà evolve: test statico da solo non basta."
+        explanation: "Con churn, i clienti che abbandonano sono tipicamente pochi (dataset sbilanciato). Accuracy del 95% può significare 'predico sempre non-churn'. Serve Recall (quanti churner identifico) e Precision (quanti allarmi sono corretti)."
       },
       {
-        question: "In ottica decisionale, quale frase è più corretta?",
+        question: "Cosa si intende per 'feature engineering'?",
         options: [
-          "Un pilastro forte può sostituire gli altri due",
-          "La triade è interdipendente: se cede un pilastro, cede il sistema",
-          "Conta solo il modello",
-          "Conta solo il cloud",
+          "La scelta del framework ML da usare",
+          "Il processo di selezionare, trasformare e creare variabili input utili per il modello",
+          "L'ottimizzazione degli iperparametri del modello",
+          "La visualizzazione dei risultati dopo il training",
         ],
         correct: 1,
-        explanation: "La stabilità AI nasce dall\'equilibrio complessivo, non da un singolo elemento."
+        explanation: "Feature engineering è spesso più impattante del modello scelto: estrarre l'ora dal timestamp, combinare feature correlate, normalizzare scale diverse — tutto questo può fare la differenza tra un modello mediocre e uno eccellente."
+      },
+      {
+        question: "Qual è il ciclo corretto di un progetto ML?",
+        options: [
+          "Scegli modello → training → deploy (senza validazione)",
+          "Raccogli dati → esplora → prepara → training → valida → deploy → monitora",
+          "Training → raccogli dati → valida",
+          "Deploy → training → raccogli dati",
+        ],
+        correct: 1,
+        explanation: "Il ciclo ML corretto inizia sempre dai dati e termina con il monitoring in produzione. Saltare fasi (soprattutto validazione e monitoring) è la causa principale di modelli che falliscono in produzione."
       }
     ]
 };

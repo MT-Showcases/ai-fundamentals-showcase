@@ -45,139 +45,114 @@ export const ch06: Chapter = {
     ],
     quiz: [
       {
-        question: "Nel NLP, la tokenizzazione serve a:",
+        question: "Cos'è la tokenizzazione nel NLP?",
         options: [
-          "Dividere il testo in unità elaborabili dal modello",
-          "Ridurre automaticamente il bias",
-          "Sostituire il fine-tuning",
-          "Garantire risposte vere",
+          "La compressione del testo per ridurne la dimensione",
+          "Il processo che spezza il testo in unità (token) elaborabili dal modello",
+          "La traduzione automatica tra lingue diverse",
+          "L'eliminazione delle parole duplicate nel testo",
         ],
-        correct: 0,
-        explanation: "Senza tokenizzazione il modello non può convertire correttamente il testo in input numerici."
+        correct: 1,
+        explanation: "La tokenizzazione converte testo grezzo in unità discrete (parole, sottoparole o caratteri) che il modello può ricevere come input numerico."
       },
       {
-        question: "Il meccanismo di attention aiuta principalmente a:",
+        question: "Nel lab NLP del capitolo 6, quale tecnica converte le frasi in vettori numerici?",
         options: [
-          "Pesare il contesto più rilevante per ogni token",
-          "Eliminare la necessità di validazione",
-          "Ridurre sempre il costo token",
-          "Sostituire le policy di safety",
+          "One-hot encoding con padding fisso",
+          "TF-IDF (Term Frequency–Inverse Document Frequency)",
+          "Base64 encoding",
+          "StandardScaler come nel lab MNIST",
         ],
-        correct: 0,
-        explanation: "Attention migliora la comprensione contestuale evidenziando relazioni importanti tra parole."
+        correct: 1,
+        explanation: "TF-IDF pesa ogni parola in base a quanto è frequente nel documento ma rara nel corpus — parole comuni come 'il', 'di' ricevono peso basso; parole caratteristiche ricevono peso alto."
       },
       {
-        question: "Un embedding rappresenta:",
+        question: "Il meccanismo di Attention nei Transformer serve principalmente a:",
         options: [
-          "Una rappresentazione numerica del significato",
-          "Il prompt originale in formato HTML",
-          "Una regola di routing",
-          "Una policy di autorizzazione",
+          "Ridurre il numero di parametri del modello",
+          "Eliminare la necessità di dati etichettati",
+          "Pesare dinamicamente quali parole del contesto sono più rilevanti per ogni posizione",
+          "Velocizzare il preprocessing del testo",
         ],
-        correct: 0,
-        explanation: "Gli embedding mappano testo in uno spazio vettoriale dove la vicinanza riflette similarità semantica."
+        correct: 2,
+        explanation: "Attention permette al modello di 'guardare' tutta la sequenza contemporaneamente e decidere, per ogni token, quali altri token sono più utili — superando i limiti delle reti ricorrenti."
       },
       {
-        question: "Perché testare solo prompt 'facili' è rischioso?",
+        question: "Due parole hanno embedding molto vicini nello spazio vettoriale. Cosa significa?",
         options: [
-          "Perché nasconde failure mode su edge-case reali",
-          "Perché aumenta la precisione",
-          "Perché riduce sempre la latenza",
-          "Perché rende inutile la context window",
+          "Sono ortograficamente simili (es. 'casa' e 'cassa')",
+          "Appaiono spesso in contesti simili e hanno uso semantico vicino",
+          "Hanno la stessa lunghezza in caratteri",
+          "Appartengono alla stessa categoria grammaticale",
         ],
-        correct: 0,
-        explanation: "I casi facili non rappresentano la variabilità del traffico reale."
+        correct: 1,
+        explanation: "Gli embedding catturano similarità d'uso: 're' e 'regina' sono vicini perché compaiono in contesti simili. Non è ortografia, è semantica distribuzionale."
       },
       {
-        question: "In un chatbot supporto, quale metrica segnala meglio robustezza operativa?",
+        question: "La context window di un LLM limita principalmente:",
         options: [
-          "Fallback rate su richieste ambigue",
-          "Numero di parole nella risposta",
-          "Uso medio CPU locale",
-          "Numero di prompt inviati dal team",
+          "Il numero di utenti simultanei supportati",
+          "La velocità di risposta in millisecondi",
+          "La quantità di testo che il modello può considerare in una singola elaborazione",
+          "Il numero di lingue supportate",
         ],
-        correct: 0,
-        explanation: "Il fallback rate indica quanto spesso il sistema non gestisce bene casi reali complessi."
+        correct: 2,
+        explanation: "Se il testo supera la context window, il modello perde le informazioni fuori finestra. Questo impatta domande su documenti lunghi, conversazioni prolungate e RAG con chunk grandi."
       },
       {
-        question: "Se due parole hanno embedding vicini, significa che:",
+        question: "Nel lab NLP confronti Logistic Regression e Naive Bayes su 30 frasi. Quale vantaggio ha Naive Bayes?",
         options: [
-          "Sono usate in contesti semantici simili",
-          "Sono sempre sinonimi perfetti",
-          "Hanno stessa lunghezza",
-          "Appartengono allo stesso dataset",
+          "È sempre più accurato su qualsiasi dataset",
+          "Non richiede feature engineering",
+          "È molto veloce e funziona bene anche con pochissimi dati",
+          "Non ha iperparametri da configurare",
         ],
-        correct: 0,
-        explanation: "Vicini nello spazio vettoriale implica similarità d'uso, non identità assoluta di significato."
+        correct: 2,
+        explanation: "Naive Bayes è velocissimo da addestrare e sorprendentemente efficace con pochi esempi — ideale per prototipi NLP. Con più dati, Logistic Regression tende a superarlo."
       },
       {
-        question: "Quale approccio è più corretto prima del deploy NLP?",
+        question: "Un chatbot di supporto ha confidence media alta ma fallback rate del 30%. Come interpreti?",
         options: [
-          "Prompt test set + guardrail + monitoraggio metriche",
-          "Solo demo interna con 3 esempi",
-          "Solo aumento token massimi",
-          "Solo tuning temperatura",
+          "Il modello è eccellente — confidence alta è l'unica metrica che conta",
+          "Il modello è overconfident: dichiara sicurezza alta anche quando sbaglia",
+          "Il fallback rate alto è normale e irrilevante",
+          "Serve solo più GPU per abbassare la latenza",
         ],
-        correct: 0,
-        explanation: "Serve pipeline completa: test, regole e osservabilità."
+        correct: 1,
+        explanation: "Alta confidence + alto fallback = overconfidence. Il modello non sa quando non sa. Serve calibrazione e test su edge-case reali, non solo sui casi facili."
       },
       {
-        question: "La context window limita principalmente:",
+        question: "Perché valutare un sistema NLP solo su prompt 'facili' è pericoloso?",
         options: [
-          "Quanto testo il modello può considerare in una singola risposta",
-          "Il numero di utenti totali",
-          "La velocità della rete internet",
-          "La qualità dei dati di training originale",
+          "I prompt facili costano troppi token",
+          "I casi facili non rappresentano la variabilità del traffico reale — il sistema sembrerà funzionare finché non va in produzione",
+          "Viola le policy OpenAI",
+          "I prompt facili rallentano il benchmark",
         ],
-        correct: 0,
-        explanation: "Se il contesto supera la finestra, il modello perde parte delle informazioni utili."
+        correct: 1,
+        explanation: "In produzione arrivano frasi ambigue, ironiche, miste (italiano + dialetto + emoji), negazioni, slang. Testare solo su casi puliti crea falsa sicurezza."
       },
       {
-        question: "Quando conviene introdurre fallback umano/manuale?",
+        question: "Quando è più utile introdurre un fallback umano in un sistema NLP?",
         options: [
-          "Quando confidence bassa o richiesta sensibile/ambigua",
-          "Mai, l\'LLM basta sempre",
-          "Solo quando server down",
-          "Solo in fase di training",
+          "Solo quando il modello è open-source",
+          "Quando il prompt supera 100 token",
+          "Mai — rallenta il sistema",
+          "Quando confidence è sotto soglia o il caso impatta decisioni critiche per l'utente",
         ],
-        correct: 0,
-        explanation: "Fallback riduce rischio operativo nei casi critici o poco affidabili."
+        correct: 3,
+        explanation: "Il fallback umano non è un fallimento tecnico, è un guardrail operativo. Su casi sensibili (salute, legale, finanziario) o bassa confidence, la supervisione umana riduce il rischio reale."
       },
       {
-        question: "Qual è il messaggio chiave del capitolo NLP?",
+        question: "Qual è il messaggio operativo chiave del capitolo NLP?",
         options: [
-          "Qualità NLP = rappresentazione numerica + contesto + test robusti",
-          "Basta un prompt creativo per risolvere tutto",
-          "Attention elimina tutti gli errori",
-          "I dataset non servono se il modello è grande",
+          "Basta un buon modello pre-addestrato — il preprocessing è opzionale",
+          "NLP affidabile = pipeline completa: tokenizzazione corretta + embedding + test su edge-case + monitoraggio in produzione",
+          "La context window non influisce sulla qualità delle risposte",
+          "Naive Bayes è sempre superiore a Logistic Regression per il testo",
         ],
-        correct: 0,
-        explanation: "La qualità NLP nasce da basi tecniche solide e validazione continua nel mondo reale."
-      }
-    ],
-    media: [
-      {
-        type: 'video',
-        title: 'Video Capitolo 6',
-        description: 'Video completo Capitolo 6: dalla tokenizzazione agli embedding, meccanismo attention nei Transformer, pipeline NLP in produzione con guardrail e fallback. Con esempi concreti su classificazione testo, chatbot e sistemi di raccomandazione linguistica.',
-        estimatedDuration: '8-10 min',
-        placeholderPath: 'media/ch06-nlp/video.mp4',
-        notes: 'ready'
-      },
-      {
-        type: 'infographic',
-        title: 'Infografica Capitolo 6',
-        description: 'Infografica Capitolo 6: pipeline NLP dall input testuale al vettore semantico, schema dei Transformer con meccanismo attention, e checklist operativa per sistemi NLP in produzione (fallback, monitoraggio, guardrail).',
-        placeholderPath: 'media/ch06-nlp/infographic.png',
-        notes: 'ready'
-      },
-      {
-        type: 'podcast',
-        title: 'Podcast Capitolo 6',
-        description: 'NLP in produzione: dalla pipeline completa (preprocessing, embedding, inference) ai guardrail obbligatori (moderazione, fallback umano, monitoraggio qualità token). Collega i concetti teorici del capitolo con le decisioni operative di chi costruisce prodotti linguistici reali.',
-        estimatedDuration: '10-15 min',
-        placeholderPath: 'media/ch06-nlp/podcast.mp3',
-        notes: 'placeholder'
+        correct: 1,
+        explanation: "Un sistema NLP di qualità non dipende solo dal modello: serve preprocessing solido, test realistici e osservabilità continua. La qualità si costruisce a livello di pipeline, non di singolo componente."
       }
     ]
 };

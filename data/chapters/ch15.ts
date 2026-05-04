@@ -56,114 +56,114 @@ export const ch15: Chapter = {
     ],
     quiz: [
       {
-        question: 'Qual è la differenza più corretta tra narrow AI e AGI?',
+        question: "Qual è la differenza più corretta tra Narrow AI e AGI?",
         options: [
-          'Narrow AI è specializzata, AGI implicherebbe adattamento generale multi-dominio',
-          'Sono sinonimi usati in modo diverso dai media',
-          'AGI è un tipo di database per modelli avanzati',
-          'Narrow AI è sempre non supervisionata, AGI sempre supervisionata',
+          "Narrow AI usa reti neurali, AGI usa algoritmi classici",
+          "Narrow AI eccelle in un dominio specifico, AGI (ipotetica) ragionerebbe autonomamente su qualsiasi problema",
+          "Narrow AI è open-source, AGI è sempre proprietaria",
+          "Non c'è differenza — AGI è solo marketing",
         ],
-        correct: 0,
-        explanation: 'La narrow AI eccelle in task specifici; AGI descrive capacità trasversali e adattive non ancora raggiunte.'
+        correct: 1,
+        explanation: "Tutti i sistemi AI attuali (GPT, Gemini, Copilot) sono Narrow AI: eccezionali nel loro dominio, incapaci di generalizzare fuori. AGI è ancora un obiettivo di ricerca, non un prodotto esistente."
       },
       {
-        question: 'Scenario: un team adotta un copilot su assistenza clienti. Quale KPI è più utile per misurare valore reale?',
+        question: "Un team adotta un copilot AI su assistenza clienti. Quale KPI misura meglio il valore reale nel tempo?",
         options: [
-          'Riduzione tempo medio risposta con tasso di risoluzione corretta stabile',
-          'Numero di prompt inviati al giorno',
-          'Numero di pagine della documentazione interna',
-          'Tempo medio di avvio del browser',
+          "Numero di prompt inviati al giorno",
+          "Riduzione del tempo medio di risoluzione con tasso di escalation stabile o in calo",
+          "Velocità di risposta in millisecondi",
+          "Numero di modelli AI provati",
         ],
-        correct: 0,
-        explanation: 'Velocità senza qualità non basta: il KPI deve combinare efficienza e correttezza.'
+        correct: 1,
+        explanation: "Il valore reale si misura su outcome operativi: meno tempo + qualità stabile. Metriche di volume (prompt/giorno) non dicono nulla sull'impatto sul cliente."
       },
       {
-        question: 'Quale rischio aumenta quando un agent può eseguire tool senza limiti o approvazioni?',
+        question: "Quale rischio aumenta quando un agente AI può eseguire tool senza limiti o approvazioni?",
         options: [
-          'Azioni non autorizzate e incidenti operativi ad alto impatto',
-          'Riduzione automatica del debito tecnico',
-          'Eliminazione della necessità di logging',
-          'Maggiore spiegabilità del modello',
+          "Il modello diventa troppo lento",
+          "Si riduce la context window disponibile",
+          "Azioni irreversibili non autorizzate con impatti difficili da tracciare",
+          "Il numero di token generati cresce indefinitamente",
         ],
-        correct: 0,
-        explanation: 'La governance di agent richiede confini chiari su tool, budget e azioni sensibili.'
+        correct: 2,
+        explanation: "Agenti senza guardrail possono eseguire azioni reali (inviare email, modificare DB, spendere budget) in modo autonomo. Senza limiti, approvazioni e audit trail il rischio operativo è molto alto."
       },
       {
-        question: 'In ottica strategica, quale decisione è più matura?',
+        question: "In ottica strategica, quale decisione è più matura per un'organizzazione che vuole adottare AI?",
         options: [
-          'Partire da use case con baseline e KPI prima di scalare',
-          'Avviare 20 iniziative AI contemporaneamente senza priorità',
-          'Scegliere tecnologie solo in base all\'hype',
-          'Valutare i risultati solo a fine anno',
+          "Adottare il modello più grande disponibile sul mercato",
+          "Identificare un caso d'uso con KPI misurabili, pilotare, misurare, scalare solo se i dati lo giustificano",
+          "Aspettare l'AGI prima di investire",
+          "Delegare tutte le decisioni AI al reparto IT",
         ],
-        correct: 0,
-        explanation: 'La scalabilità sostenibile parte da sperimentazioni misurabili e progressive.'
+        correct: 1,
+        explanation: "Le organizzazioni che ottengono valore dall'AI partono da problemi concreti con metriche chiare. Adottare AI per seguire il trend senza KPI porta a progetti demo senza ROI reale."
       },
       {
-        question: 'Scenario: un progetto AI aumenta produttività, ma genera errori critici in casi sensibili. Cosa fai?',
+        question: "Un progetto AI aumenta produttività del 30% ma genera errori critici in casi sensibili. Cosa fai?",
         options: [
-          'Introduci escalation umana e regole di fallback sui casi ad alto rischio',
-          'Ignori gli errori perché la media è migliorata',
-          'Aumenti solo la lunghezza del prompt',
-          'Rimuovi completamente ogni monitoraggio',
+          "Accetti il trade-off — il 30% vale qualsiasi rischio",
+          "Disattivi tutto immediatamente e torni al processo manuale",
+          "Segmenti per rischio: usi AI sui casi low-risk, mantieni supervisione umana sui casi critici",
+          "Aumenti solo la temperatura del modello",
         ],
-        correct: 0,
-        explanation: 'Quando cresce il rischio sui casi critici, il controllo umano è prioritario rispetto alla sola velocità.'
+        correct: 2,
+        explanation: "La segmentazione per rischio è la risposta matura: catturi il valore dove il rischio è basso, proteggi dove il rischio è alto. Non è tutto-o-niente."
       },
       {
-        question: 'Quale combinazione rappresenta meglio una governance minima per iniziative AI future-ready?',
+        question: "Quale combinazione rappresenta una governance AI minima ma efficace?",
         options: [
-          'Classificazione rischio + KPI + audit trail + review periodica',
-          'Solo policy legale statica',
-          'Solo benchmark di latenza',
-          'Solo scelta del modello più recente',
+          "Solo un documento di policy approvato dal CEO",
+          "Policy d'uso + ruoli definiti + monitoring KPI + processo di incident response",
+          "Solo audit annuale da parte di una società esterna",
+          "Nessuna governance — rallenta l'innovazione",
         ],
-        correct: 0,
-        explanation: 'Serve un sistema operativo completo: rischio, metriche, tracciabilità e miglioramento continuo.'
+        correct: 1,
+        explanation: "Governance efficace non significa burocrazia: significa sapere chi decide cosa, come si misura la qualità, come si gestiscono i problemi. Senza questi elementi, l'adozione AI è caotica."
       },
       {
-        question: 'Quale segnale indica che un progetto AI sta creando valore reale e non solo effetto demo?',
+        question: "Quale segnale indica che un progetto AI sta creando valore reale e non solo effetto demo?",
         options: [
-          'Migliora KPI di business mantenendo sotto controllo incidenti e rework',
-          'Riceve molti like interni nella presentazione',
-          'Usa il modello più grande disponibile',
-          'Ha il maggior numero di slide nel kick-off',
+          "La demo impressiona il management",
+          "Il modello è il più recente disponibile",
+          "I KPI operativi migliorano in modo stabile dopo 3+ mesi di produzione",
+          "Il team è entusiasta nella fase di sviluppo",
         ],
-        correct: 0,
-        explanation: 'Il valore reale emerge da impatto misurabile e qualità operativa nel tempo.'
+        correct: 2,
+        explanation: "L'effetto demo dura settimane, il valore reale si vede in produzione su mesi. KPI stabili nel tempo (non spike iniziali) sono il segnale affidabile."
       },
       {
-        question: 'Scenario pubblico: contenuti sintetici generati automaticamente senza verifica fonte. Rischio principale?',
+        question: "Contenuti sintetici generati automaticamente e pubblicati senza verifica fonte. Rischio principale?",
         options: [
-          'Disinformazione scalabile con perdita di fiducia',
-          'Riduzione del costo cloud',
-          'Miglioramento automatico della compliance',
-          'Eliminazione della necessità di editor umani',
+          "Il modello consuma troppi token",
+          "La latenza aumenta a causa del volume",
+          "Diffusione di informazioni false o distorte con credibilità apparente (allucinazioni a scala)",
+          "Il costo del cloud cresce proporzionalmente",
         ],
-        correct: 0,
-        explanation: 'Senza verifica delle fonti, l\'errore si propaga rapidamente su larga scala.'
+        correct: 2,
+        explanation: "I contenuti AI-generated sembrano autorevoli ma possono contenere fatti inventati. Senza review umana o fact-checking, la scala dell'automazione amplifica il danno informativo."
       },
       {
-        question: 'Se il tuo dominio cambia ogni settimana (policy, cataloghi, prezzi), quale scelta iniziale è più robusta?',
+        question: "Il tuo dominio cambia ogni settimana (nuovi prezzi, policy, cataloghi). Scelta iniziale più robusta?",
         options: [
-          'RAG con base documentale aggiornata e tracciabilità fonti',
-          'Fine-tuning continuo senza governance',
-          'Zero-shot senza monitoraggio',
-          'Disattivare fallback per velocità',
+          "Fine-tuning mensile del modello base",
+          "RAG con knowledge base aggiornata che il modello interroga in tempo reale",
+          "Zero-shot senza fonti e senza monitoring",
+          "Agente autonomo con accesso completo ai sistemi interni senza controlli",
         ],
-        correct: 0,
-        explanation: 'Con conoscenza dinamica, retrieval aggiornabile offre maggiore controllo e sostenibilità.'
+        correct: 1,
+        explanation: "Con contenuti dinamici, il RAG è nettamente superiore: non richiede re-training, si aggiorna cambiando i documenti e garantisce tracciabilità delle fonti. Fine-tuning frequente è costoso e lento."
       },
       {
-        question: 'Messaggio chiave del Capitolo 15:',
+        question: "Messaggio chiave del Capitolo 15 — Futuro dell'AI:",
         options: [
-          'Futuro AI efficace = scelte progressive, metriche chiare e governance operativa',
-          'Il futuro dipende solo dalla potenza del modello',
-          'Basta accelerare senza controlli per vincere il mercato',
-          'Etica e sicurezza rallentano sempre e vanno ridotte',
+          "AGI arriverà presto e renderà obsoleto qualsiasi piano strategico attuale",
+          "L'AI va adottata tutta e subito per non restare indietro",
+          "Il futuro dell'AI si naviga con scelte graduali, misurate, governate — non con hype o paura",
+          "Solo le grandi aziende possono usare l'AI in modo responsabile",
         ],
-        correct: 0,
-        explanation: 'La crescita AI sostenibile unisce innovazione, qualità e responsabilità in un unico processo.'
+        correct: 2,
+        explanation: "Il capitolo conclude con una visione pragmatica: né catastrofismo né entusiasmo acritico. Le organizzazioni che vincono con l'AI scelgono casi concreti, misurano, governano e iterano."
       }
     ]
 };
