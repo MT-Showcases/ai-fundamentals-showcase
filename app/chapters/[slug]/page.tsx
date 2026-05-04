@@ -486,7 +486,7 @@ Usa questa fonte per generare:
             {chapter.slug === 'nlp' && (
               <div className="mb-12">
                 <PracticalWorkflow
-                  title="NLP Workflow Pratico — 5 Step"
+                  title="NLP Workflow Pratico — 6 Step"
                   chapterId={chapter.id}
                   chapterSlug={chapter.slug}
                   media={[
@@ -604,6 +604,14 @@ Usa questa fonte per generare:
                       codeLang: 'python',
                       tryThis: <><strong>Sperimenta:</strong> aggiungi la tua frase nella sezione <code>ESPERIMENTO</code> in fondo al <code>main.py</code> — il modello la classifica correttamente?</>,
                     },
+                    {
+                      number: 6,
+                      title: 'Esperimento — cambia mia_recensione',
+                      description: <>Modifica la variabile <code>mia_recensione</code> nel file <code>main.py</code>: il modello rifà il preprocessing, la vettorizzazione e restituisce una nuova predizione (<strong>Positivo</strong>/<strong>Negativo</strong>) con relativa confidenza.</>,
+                      code: 'mia_recensione = "Prodotto eccellente, assistenza perfetta e consegna velocissima"\n\nclean = preprocess(mia_recensione)\nvec = vectorizer.transform([clean])\npred = model.predict(vec)[0]\nprint("Predizione:", "Positivo" if pred == 1 else "Negativo")',
+                      codeLang: 'python',
+                      tryThis: <><strong>Prova:</strong> cambia tono e parole chiave in <code>mia_recensione</code> (es. “ottimo” vs “pessimo”) e osserva come cambia la predizione. Con frasi ambigue, verifica se il modello sbaglia: è un ottimo test di robustezza.</>,
+                    },
                   ]}
                   workflowCompleteSource={`CAPITOLO 6 — NLP WORKFLOW PRATICO COMPLETO: ANALISI DEL SENTIMENT
 ============================================================
@@ -621,7 +629,7 @@ TECNOLOGIE:
 - Seaborn/Matplotlib: confusion matrix e top parole
 - Scelta deliberata: NO BERT, NO Transformers — focus sulla teoria
 
-I 5 STEP:
+I 6 STEP:
 
 [Step 1] Caricamento Dati
 Dataset inline: 30 frasi con etichette 0/1. Lo studente può aggiungere le proprie frasi e vedere l'impatto immediato.
@@ -637,6 +645,9 @@ Logistic Regression vs Multinomial Naive Bayes sullo stesso train set. random_st
 
 [Step 5] Visualizzazione
 Confusion matrix + top 10 parole positive/negative dai coefficienti LR. Grafico: sentiment-analysis.png.
+
+[Step 6] Esperimento Personalizzato
+Modifica la variabile mia_recensione in fondo al file e riesegui. Il testo viene preprocessato e classificato dal modello addestrato. Cambiando parole/tono, lo studente osserva subito come cambia la predizione e dove il modello è fragile.
 
 FLUSSO DIDATTICO:
 1. Scarica ZIP Lab 3 (ml-lab-03-nlp.zip)
