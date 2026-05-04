@@ -30,7 +30,7 @@ export const ch05: Chapter = {
       {
         type: 'podcast',
         title: 'Podcast Capitolo 5',
-        description: 'Versione audio orientata a decisioni di progetto.',
+        description: 'Versione audio del Capitolo 5: architettura delle reti neurali, backpropagation e decisioni operative. Quando usare reti neurali vs modelli più semplici, come leggere i segnali di overfitting durante il training, e perché la profondità non è sempre la risposta giusta. Orientato a chi deve scegliere, costruire e validare modelli in un contesto startup.',
         estimatedDuration: '10-15 min',
         placeholderPath: 'media/ch05-neural-networks/podcast.mp3',
         notes: 'placeholder'
