@@ -465,6 +465,13 @@ Usa questa fonte per generare:
                       description: 'Pipeline completa del lab: dal caricamento dati al preprocessing TF-IDF, fino al confronto Logistic Regression vs Naive Bayes e la confusion matrix.',
                       placeholderPath: 'media/ch06-nlp/lab/infographic.jpg',
                       notes: 'ready'
+                    },
+                    {
+                      type: 'video',
+                      title: 'Video Lab — NLP Sentiment Analysis',
+                      description: 'Guida pratica al lab: dal preprocessing TF-IDF al confronto LR vs Naive Bayes, fino alla confusion matrix e le parole pi\u00f9 discriminanti.',
+                      placeholderPath: 'media/ch06-nlp/lab/video.mp4',
+                      notes: 'ready'
                     }
                   ]}
                   setupContent={
