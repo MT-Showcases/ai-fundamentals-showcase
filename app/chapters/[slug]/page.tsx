@@ -292,10 +292,11 @@ export default async function ChapterPage({ params }: Props) {
                     number: 1,
                     title: 'Carica i Dati',
                     description: <>Legge il dataset California Housing (20k case con prezzi reali) che userai per il <GlossaryTerm term="training">training</GlossaryTerm>.</>,
-                    code: `from sklearn.datasets import fetch_california_housing
-housing = fetch_california_housing()
-X = pd.DataFrame(housing.data, columns=housing.feature_names)
-y = pd.Series(housing.target * 100000, name='Price')`,
+                    code: `import pandas as pd
+
+df = pd.read_csv('data/housing.csv')
+X = df.drop(columns=['Price'])
+y = df['Price']`,
                     codeLang: 'python',
                     tryThis: <>Stampa <code>X.head()</code> — quante righe? Quante colonne? Poi verifica se i dati sono pronti per la <GlossaryTerm term="validation">validation</GlossaryTerm>.</>,
                     fileReference: {
@@ -440,7 +441,7 @@ TECNOLOGIE E MODELLI:
 I 5 STEP DEL WORKFLOW:
 
 [Step 1] Estrazione e Caricamento Dati
-Il codice usa \`fetch_california_housing\` di scikit-learn. I dati vengono trasformati in un DataFrame Pandas per la massima chiarezza e manipolabilità. Questo step insegna l'importanza dell'esplorazione esplorativa dei dati (EDA), stampando il range dei prezzi per capire con cosa si sta lavorando (da ~$15k a ~$500k).
+Il dataset viene letto direttamente da un file CSV locale (\`data/housing.csv\`) incluso nello ZIP. Nessuna connessione internet richiesta. I dati vengono caricati in un DataFrame Pandas: X contiene le feature (camere, posizione, reddito...) e y i prezzi in dollari (~$15k-$500k).
 
 [Step 2] Split dei Dati (Train/Test)
 Concetto fondamentale del ML: non testare mai il modello sui dati con cui ha studiato.
