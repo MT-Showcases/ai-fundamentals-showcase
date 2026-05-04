@@ -1151,7 +1151,7 @@ Esempi di utilizzo:
               </div>
             )}
 
-            {chapter.exercises && chapter.exercises.length > 0 && (
+            {chapter.slug !== 'nlp' && chapter.exercises && chapter.exercises.length > 0 && (
               <ChapterExercises exercises={chapter.exercises} />
             )}
 
