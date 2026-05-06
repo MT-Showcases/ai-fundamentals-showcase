@@ -9,6 +9,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import QuizScoreDashboard from '@/components/QuizScoreDashboard';
 import Link from 'next/link';
+import GlossaryTooltip from '@/components/GlossaryTooltip';
 
 export default function Home() {
   const [introVideoError, setIntroVideoError] = useState(false);
@@ -25,7 +26,7 @@ export default function Home() {
             Capire l&apos;Intelligenza Artificiale — davvero.
           </p>
           <p className="text-gray-400 text-base mb-8 max-w-2xl">
-            Dal machine learning alle reti neurali, dai modelli linguistici alle applicazioni pratiche: un percorso completo pensato per chi vuole costruire con l&apos;AI, non solo parlarne.
+            Dal <GlossaryTooltip termId="machine-learning">Machine Learning</GlossaryTooltip> alle <GlossaryTooltip termId="neural-network">reti neurali</GlossaryTooltip>, dai <GlossaryTooltip termId="llm">modelli linguistici</GlossaryTooltip> alle applicazioni pratiche: un percorso completo pensato per chi vuole costruire con l&apos;<GlossaryTooltip termId="intelligenza-artificiale">AI</GlossaryTooltip>, non solo parlarne.
           </p>
           <div className="flex flex-wrap gap-6 text-sm text-gray-300 items-center">
             <div className="flex items-center gap-2">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PrintButton from './PrintButton';
+import GlossaryTooltip from '@/components/GlossaryTooltip';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -99,9 +100,9 @@ export default function PrivacyPolicyPage() {
           <div className="rounded-xl border border-blue-700/40 bg-blue-900/20 p-5 text-sm text-gray-300 leading-relaxed">
             <p>
               Questa informativa privacy è redatta ai sensi del{' '}
-              <strong className="text-white">Regolamento UE 2016/679 (GDPR)</strong> e del
+              <strong className="text-white"><GlossaryTooltip termId="ai-act">Regolamento UE 2016/679 (GDPR)</GlossaryTooltip></strong> e del
               D.Lgs. 196/2003 (Codice Privacy italiano). Descrive come questo sito web gestisce
-              (o meglio: <em>non</em> gestisce) i tuoi dati personali.
+              (o meglio: <em>non</em> gestisce) i tuoi <GlossaryTooltip termId="dataset">dati personali</GlossaryTooltip>.
             </p>
           </div>
 
@@ -153,7 +154,7 @@ export default function PrivacyPolicyPage() {
                   <div>
                     <p className="text-white font-semibold mb-1">Zero dati personali raccolti</p>
                     <p className="text-sm">
-                      Questo sito <strong>non raccoglie, non archivia e non trasmette</strong> dati
+                      Questo sito <strong>non raccoglie, non archivia e non trasmette</strong> <GlossaryTooltip termId="dataset">dati</GlossaryTooltip>
                       personali identificabili (PII — Personally Identifiable Information).
                       Non esistono form di registrazione, login, profili utente o sistemi di tracciamento
                       individuale.
@@ -180,6 +181,7 @@ export default function PrivacyPolicyPage() {
               </ul>
               <p className="text-sm text-gray-400 bg-navy-800/40 rounded-lg p-4 border border-blue-800/30">
                 <strong className="text-gray-300">Log di accesso Vercel:</strong> Come ogni hosting web,
+                una minima raccolta tecnica aiuta a mantenere qualità operativa e <GlossaryTooltip termId="guardrail">guardrail</GlossaryTooltip> di sicurezza,
                 Vercel può registrare indirizzi IP e dati tecnici della richiesta HTTP per fini
                 operativi e di sicurezza. Questi log sono gestiti da Vercel Inc. secondo la propria
                 privacy policy e non vengono elaborati da noi.
@@ -252,6 +254,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>
                 Vercel può impostare cookie tecnici strettamente necessari per il corretto funzionamento
+                del CDN: questi meccanismi non hanno scopo di profilazione e non introducono <GlossaryTooltip termId="bias">bias</GlossaryTooltip> decisionale sugli utenti.
                 del CDN e per funzionalità di sicurezza (es. protezione DDoS). Questi cookie non
                 tracciano la navigazione e non richiedono consenso ai sensi del GDPR.
               </p>

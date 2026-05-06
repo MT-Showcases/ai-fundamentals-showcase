@@ -738,6 +738,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: <>Legge <code>docs/knowledge_base.txt</code> e divide il testo in chunk recuperabili.</>,
                       code: 'kb_text = Path("docs/knowledge_base.txt").read_text(encoding="utf-8")\nchunks = split_chunks(kb_text)',
                       codeLang: 'python',
+                      tryThis: <><strong>Prova:</strong> aumenta la dimensione dei chunk e osserva come cambia il retrieval.</>,
                     },
                     {
                       number: 2,
@@ -745,6 +746,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: <>Converte chunk + query in vettori e seleziona i top chunk con <code>cosine similarity</code>.</>,
                       code: 'vectorizer = TfidfVectorizer()\nX = vectorizer.fit_transform(chunks + [query_utente])\nsims = cosine_similarity(X[-1], X[:-1]).flatten()',
                       codeLang: 'python',
+                      tryThis: <><strong>Prova:</strong> cambia la threshold di similarità e conta quanti chunk vengono selezionati.</>,
                     },
                     {
                       number: 3,
@@ -752,6 +754,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: <>Usa un modello piccolo locale con <code>transformers.pipeline</code> per text generation.</>,
                       code: 'generator = pipeline("text-generation", model="sshleifer/tiny-gpt2")',
                       codeLang: 'python',
+                      tryThis: <><strong>Prova:</strong> sostituisci con un modello diverso e confronta velocità vs qualità.</>,
                     },
                     {
                       number: 4,
@@ -759,6 +762,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: <>Genera una risposta senza contesto esterno, solo dalla query utente.</>,
                       code: 'prompt_no_rag = f"Domanda: {query_utente}\\nRisposta breve in italiano:"\nout_no_rag = generator(prompt_no_rag, max_new_tokens=70, do_sample=False)',
                       codeLang: 'python',
+                      tryThis: <><strong>Prova:</strong> aumenta <code>max_new_tokens</code> e osserva se la qualità migliora o peggiora.</>,
                     },
                     {
                       number: 5,
@@ -766,6 +770,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       description: <>Costruisce prompt con chunk recuperati e confronta output con la baseline.</>,
                       code: 'prompt_rag = f"Contesto:\\n{context}\\n\\nDomanda: {query_utente}\\nRisposta:"\nout_rag = generator(prompt_rag, max_new_tokens=90, do_sample=False)',
                       codeLang: 'python',
+                      tryThis: <><strong>Prova:</strong> formatta il contesto diversamente (es: bullet points vs paragrafo) e misura l&apos;impatto sulla risposta.</>,
                     },
                     {
                       number: 6,

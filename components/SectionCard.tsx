@@ -27,7 +27,7 @@ export default function SectionCard({ title, content, enableGlossary = false, gl
         <span>{getSectionIcon(title)}</span>
         <span>{title}</span>
       </h2>
-      <RichContent content={content} enableGlossary={enableGlossary} />
+      <RichContent content={content} enableGlossary={enableGlossary} glossaryTermIds={glossaryTermIds} />
     </section>
   );
 }

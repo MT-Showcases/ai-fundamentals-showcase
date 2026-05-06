@@ -126,6 +126,7 @@ function renderToken(
 interface RichContentProps {
   content: string;
   enableGlossary?: boolean;
+  glossaryTermIds?: string[];
   className?: string;
 }
 
@@ -136,9 +137,64 @@ function extractOrderedItems(text: string): string[] {
   return matches.map((m) => m[2].trim()).filter(Boolean);
 }
 
-export default function RichContent({ content, enableGlossary = false, className }: RichContentProps) {
+export default function RichContent({ content, enableGlossary = false, glossaryTermIds, className }: RichContentProps) {
   const items = extractOrderedItems(content);
   const hasOrderedList = items.length >= 2;
+
+  const selectedTerms = glossaryTermIds && glossaryTermIds.length > 0
+    ? SORTED_TERMS.filter((t) => glossaryTermIds.includes(t.id))
+    : SORTED_TERMS;
+
+  const wrapWithSelectedTerms = (text: string, keyPrefix: string): React.ReactNode[] => {
+    if (!text) return [];
+    const escapedTerms = selectedTerms.map((t) => t.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    if (escapedTerms.length === 0) return [text];
+    const regex = new RegExp(`\\b(${escapedTerms.join('|')})\\b`, 'gi');
+    const parts = text.split(regex);
+    const linkedTermIds = new Set<string>();
+    const nodes: React.ReactNode[] = [];
+    let matchCount = 0;
+
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      if (!part) continue;
+      const matchedTerm = selectedTerms.find((t) => t.term.toLowerCase() === part.toLowerCase());
+      if (matchedTerm && !linkedTermIds.has(matchedTerm.id)) {
+        linkedTermIds.add(matchedTerm.id);
+        nodes.push(
+          <GlossaryTooltip key={`${keyPrefix}-gterm-${matchCount++}-${i}`} termId={matchedTerm.id}>
+            {part}
+          </GlossaryTooltip>
+        );
+      } else {
+        nodes.push(part);
+      }
+    }
+
+    return nodes;
+  };
+
+  const renderTokenScoped = (token: Token, idx: number): React.ReactNode => {
+    const key = `tok-${idx}`;
+    const renderText = (value: string, innerKey: string): React.ReactNode => {
+      if (!enableGlossary) return value;
+      const wrapped = wrapWithSelectedTerms(value, innerKey);
+      return wrapped.length === 1 ? wrapped[0] : <React.Fragment>{wrapped}</React.Fragment>;
+    };
+
+    switch (token.type) {
+      case 'newline':
+        return <br key={key} />;
+      case 'bold':
+        return <strong key={key} className="font-bold text-white">{renderText(token.value, `${key}-b`)}</strong>;
+      case 'italic':
+        return <em key={key} className="italic text-gray-100">{renderText(token.value, `${key}-i`)}</em>;
+      case 'highlight':
+        return <span key={key} className="text-yellow-300 font-medium">{renderText(token.value, `${key}-h`)}</span>;
+      case 'text':
+        return <React.Fragment key={key}>{renderText(token.value, `${key}-t`)}</React.Fragment>;
+    }
+  };
 
   if (hasOrderedList) {
     return (
@@ -147,7 +203,7 @@ export default function RichContent({ content, enableGlossary = false, className
           const tokens = tokenizeMarkdown(item);
           return (
             <li key={idx}>
-              {tokens.map((tok, tidx) => renderToken(tok, tidx, enableGlossary))}
+              {tokens.map((tok, tidx) => renderTokenScoped(tok, tidx))}
             </li>
           );
         })}
@@ -158,7 +214,7 @@ export default function RichContent({ content, enableGlossary = false, className
   const tokens = tokenizeMarkdown(content);
   return (
     <p className={`text-gray-300 leading-relaxed whitespace-pre-line ${className ?? ''}`}>
-      {tokens.map((tok, idx) => renderToken(tok, idx, enableGlossary))}
+      {tokens.map((tok, idx) => renderTokenScoped(tok, idx))}
     </p>
   );
 }

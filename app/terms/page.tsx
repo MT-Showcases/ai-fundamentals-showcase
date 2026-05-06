@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import GlossaryTooltip from '@/components/GlossaryTooltip';
 
 export const metadata: Metadata = {
   title: 'Termini di Servizio | Fondamenti di AI',
@@ -33,7 +34,7 @@ export default function TermsPage() {
             Termini di Servizio
           </h1>
           <p className="text-gray-300 text-lg mb-6 max-w-2xl">
-            Leggendo o usando questa piattaforma accetti i presenti termini. Sono redatti in modo chiaro, senza legalese inutile.
+            Leggendo o usando questa piattaforma accetti i presenti termini. Sono redatti in modo chiaro, con attenzione a trasparenza e <GlossaryTooltip termId="etica-ai">Etica AI</GlossaryTooltip>.
           </p>
           <p className="text-gray-500 text-sm">
             Ultimo aggiornamento: <span className="text-[#00a8ff] font-medium">{LAST_UPDATED}</span>
@@ -84,7 +85,7 @@ export default function TermsPage() {
               <SectionHeader num="01" id="h-uso" title="Uso della piattaforma" />
               <div className="prose-custom">
                 <p>
-                  Questa piattaforma è un <strong>corso didattico open access</strong> sui Fondamenti dell&apos;Intelligenza Artificiale, realizzato da <strong>Michele Tornello</strong> nell&apos;ambito della sua attività di docenza presso la <strong>Steve Jobs Academy (SJA) Catania</strong>.
+                  Questa piattaforma è un <strong>corso didattico open access</strong> sui Fondamenti dell&apos;<GlossaryTooltip termId="intelligenza-artificiale">Intelligenza Artificiale</GlossaryTooltip>, realizzato da <strong>Michele Tornello</strong> nell&apos;ambito della sua attività di docenza presso la <strong>Steve Jobs Academy (SJA) Catania</strong>.
                 </p>
                 <p>La piattaforma è destinata a:</p>
                 <ul>
@@ -106,10 +107,10 @@ export default function TermsPage() {
               <SectionHeader num="02" id="h-resp" title="Responsabilità e disclaimer" />
               <div className="prose-custom">
                 <p>
-                  I contenuti di questa piattaforma hanno <strong>finalità esclusivamente didattica</strong>. Non costituiscono consulenza professionale, tecnica, legale o finanziaria.
+                  I contenuti di questa piattaforma hanno <strong>finalità esclusivamente didattica</strong>. Non costituiscono consulenza professionale, tecnica, legale o finanziaria: decisioni operative su sistemi <GlossaryTooltip termId="generative-ai">AI Generativa</GlossaryTooltip> richiedono sempre valutazione umana.
                 </p>
                 <p>
-                  Il titolare si impegna a mantenere le informazioni aggiornate e accurate, ma non garantisce l&apos;assenza di errori, omissioni o variazioni rispetto all&apos;evoluzione rapida del settore AI.
+                  Il titolare si impegna a mantenere le informazioni aggiornate e accurate, ma non garantisce l&apos;assenza di errori, omissioni o variazioni rispetto all&apos;evoluzione rapida del settore AI, inclusi limiti tipici come <GlossaryTooltip termId="allucinazione">allucinazioni</GlossaryTooltip> o output non verificati.
                 </p>
                 <p>In nessun caso il titolare sarà responsabile per:</p>
                 <ul>
@@ -157,7 +158,7 @@ export default function TermsPage() {
               <SectionHeader num="04" id="h-gdpr" title="I tuoi diritti (GDPR)" />
               <div className="prose-custom">
                 <p>
-                  Questa piattaforma non raccoglie dati personali tramite form di registrazione o account. Tuttavia, come utente europeo hai diritti garantiti dal <strong>Regolamento UE 2016/679 (GDPR)</strong>:
+                  Questa piattaforma non raccoglie dati personali tramite form di registrazione o account. Tuttavia, come utente europeo hai diritti garantiti dal <strong><GlossaryTooltip termId="ai-act">Regolamento UE 2016/679 (GDPR)</GlossaryTooltip></strong>:
                 </p>
                 <ul>
                   <li><strong>Accesso</strong> — puoi richiedere copia dei tuoi dati eventualmente trattati</li>
@@ -185,7 +186,7 @@ export default function TermsPage() {
               <SectionHeader num="05" id="h-mod" title="Modifiche ai termini" />
               <div className="prose-custom">
                 <p>
-                  Il titolare si riserva il diritto di modificare i presenti Termini di Servizio in qualsiasi momento. Le modifiche saranno efficaci dal momento della pubblicazione su questa pagina, con aggiornamento della data in cima al documento.
+                  Il titolare si riserva il diritto di modificare i presenti Termini di Servizio in qualsiasi momento. Le modifiche saranno efficaci dal momento della pubblicazione su questa pagina, con aggiornamento della data in cima al documento e mantenendo coerenza con principi di <GlossaryTooltip termId="explainability">explainability</GlossaryTooltip> verso gli utenti.
                 </p>
                 <p>
                   Per modifiche sostanziali, verrà aggiornato l&apos;avviso in evidenza sulla homepage della piattaforma. L&apos;uso continuato della piattaforma dopo la pubblicazione delle modifiche costituisce accettazione dei nuovi termini.
