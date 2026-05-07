@@ -236,17 +236,20 @@ export default function OpenClawPage() {
           </div>
         </section>
 
-        {/* Sezione 3 — Media slot infografica NotebookLM */}
+        {/* Sezione 3 — Infografica */}
         <section>
           <h2 className="text-2xl font-bold text-white mb-2">Il sistema in un&apos;immagine</h2>
           <p className="text-gray-400 mb-6">
-            Un&apos;infografica generata con NotebookLM che mostra l&apos;architettura completa del sistema.
+            L&apos;architettura completa del sistema OpenClaw — dal brief di Michele al sito live.
           </p>
-          <div className="rounded-xl border border-blue-400/20 bg-navy-800 p-8 flex flex-col items-center justify-center gap-3 min-h-48">
-            <span className="text-4xl">🗺️</span>
-            <p className="text-gray-400 text-sm">Infografica in arrivo</p>
-            <p className="text-gray-600 text-xs">Generata con NotebookLM — <em>coming soon</em></p>
+          <div className="rounded-xl overflow-hidden border border-blue-400/20">
+            <img
+              src="/media/openclaw/infographic.png"
+              alt="OpenClaw: architettura multi-agente per la didattica AI"
+              className="w-full h-auto"
+            />
           </div>
+          <p className="text-xs text-gray-600 mt-2 text-center">Generata con NotebookLM</p>
         </section>
 
         {/* Sezione 4 — Stack */}
