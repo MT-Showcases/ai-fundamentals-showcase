@@ -100,10 +100,14 @@ const timelineSteps = [
 ];
 
 export default function OpenClawPage() {
-  const [expanded, setExpanded] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   const toggleAgent = (id: string) => {
-    setExpanded(prev => prev === id ? null : id);
+    setExpanded(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
   };
 
   const mainAgent = agents.find(a => a.id === 'spark')!;
@@ -144,9 +148,9 @@ export default function OpenClawPage() {
                   <span className={`text-lg font-bold ${mainAgent.textColor}`}>{mainAgent.name}</span>
                   <span className="text-gray-400 text-sm ml-3">{mainAgent.role}</span>
                 </div>
-                <span className="text-gray-400 text-sm">{expanded === mainAgent.id ? '▲' : '▼'}</span>
+                <span className="text-gray-400 text-sm">{expanded.has(mainAgent.id) ? '▲' : '▼'}</span>
               </div>
-              {expanded === mainAgent.id && (
+              {expanded.has(mainAgent.id) && (
                 <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
                   <p className="text-gray-300 text-sm">{mainAgent.description}</p>
                   <div className="flex flex-wrap gap-4 mt-3">
@@ -169,7 +173,7 @@ export default function OpenClawPage() {
             </div>
 
             {/* Sub-agenti */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pl-4 border-l-2 border-blue-400/20 ml-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pl-4 border-l-2 border-blue-400/20 ml-4 items-start">
               {subAgents.map(agent => (
                 <button
                   key={agent.id}
@@ -181,9 +185,9 @@ export default function OpenClawPage() {
                       <span className={`font-bold ${agent.textColor}`}>{agent.name}</span>
                       <p className="text-gray-400 text-xs mt-0.5">{agent.role}</p>
                     </div>
-                    <span className="text-gray-500 text-xs">{expanded === agent.id ? '▲' : '▼'}</span>
+                    <span className="text-gray-500 text-xs">{expanded.has(agent.id) ? '▲' : '▼'}</span>
                   </div>
-                  {expanded === agent.id && (
+                  {expanded.has(agent.id) && (
                     <div className="mt-3 pt-3 border-t border-white/10 space-y-2">
                       <p className="text-gray-300 text-xs leading-relaxed">{agent.description}</p>
                       <div className="flex flex-col gap-1 mt-2">
