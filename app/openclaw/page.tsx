@@ -267,7 +267,7 @@ export default function OpenClawPage() {
               <tbody className="divide-y divide-blue-400/10">
                 {agents.map(agent => (
                   <tr key={agent.id}>
-                    <td className={`py-3 pr-6 font-medium ${agent.textColor}`}>{agent.name}</td>
+                    <td className={`py-3 pr-6 font-medium whitespace-nowrap ${agent.textColor}`}>{agent.name}</td>
                     <td className="py-3 pr-6 text-gray-300">{agent.tool}</td>
                     <td className="py-3 text-gray-400">{agent.output}</td>
                   </tr>
