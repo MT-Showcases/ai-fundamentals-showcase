@@ -60,7 +60,7 @@ export default function Home() {
       <section className="py-4 px-6 bg-blue-900/30 border-b border-blue-400/20">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm text-gray-300">
-            <span className="text-cyan-300 font-semibold">✨ Questo sito è stato costruito da un sistema AI</span> — agenti OpenClaw che hanno generato contenuti, quiz e lab al posto mio.
+            <span className="text-cyan-300 font-semibold">✨ Dietro questo sito c&apos;è un sistema di agenti AI che ho costruito con OpenClaw</span> — per trasformare la mia visione didattica in un&apos;esperienza di apprendimento concreta, pratica e accessibile a tutti.
           </p>
           <Link href="/openclaw" className="text-xs font-semibold text-blue-400 hover:text-cyan-300 transition-colors whitespace-nowrap border border-blue-400/40 hover:border-cyan-400/60 px-4 py-1.5 rounded-full">
             Scopri come →
