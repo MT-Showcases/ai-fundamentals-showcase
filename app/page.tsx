@@ -56,6 +56,18 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Banner OpenClaw */}
+      <section className="py-4 px-6 bg-blue-900/30 border-b border-blue-400/20">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-sm text-gray-300">
+            <span className="text-cyan-300 font-semibold">✨ Questo sito è stato costruito da un sistema AI</span> — agenti OpenClaw che hanno generato contenuti, quiz e lab al posto mio.
+          </p>
+          <Link href="/openclaw" className="text-xs font-semibold text-blue-400 hover:text-cyan-300 transition-colors whitespace-nowrap border border-blue-400/40 hover:border-cyan-400/60 px-4 py-1.5 rounded-full">
+            Scopri come →
+          </Link>
+        </div>
+      </section>
+
       {/* Course Intro Video */}
       <section className="py-10 px-6 border-t border-blue-800/40 border-b border-blue-800/40 bg-navy-900/60">
         <div className="max-w-6xl mx-auto">
