@@ -7,7 +7,7 @@ const agents = [
   {
     id: 'spark',
     name: 'Spark ✨',
-    role: 'Docente AI',
+    role: 'Assistente alla Docenza',
     description: 'Coordina tutto il materiale didattico. Decide struttura, contenuti e quali agenti attivare per ogni task.',
     tool: 'OpenClaw',
     output: 'Orchestrazione completa — coordina ogni agente, ogni task, ogni output didattico',
