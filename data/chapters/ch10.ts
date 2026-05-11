@@ -106,7 +106,7 @@ export const ch10: Chapter = {
         description: 'Podcast di approfondimento su fairness, accountability e decisioni high-stakes.',
         estimatedDuration: '18 min',
         placeholderPath: 'media/ch10-ethics-ai/podcast.mp3',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'infographic',
