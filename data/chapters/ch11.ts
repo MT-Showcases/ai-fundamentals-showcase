@@ -42,6 +42,49 @@ export const ch11: Chapter = {
         ]
       }
     ],
+    challenge: {
+      id: 'ch11-classifica-rischio',
+      title: 'Classifica il Rischio AI Act',
+      intro: 'Leggi ogni scenario e assegna il livello di rischio corretto secondo l\'AI Act europeo. Clicca "Verifica" per scoprire se hai classificato correttamente.',
+      scenarios: [
+        {
+          id: 's1',
+          text: 'Una startup sviluppa un sistema AI che analizza le micro-espressioni facciali di studenti durante un esame universitario per rilevare comportamenti sospetti di copiatura, senza che gli studenti ne siano informati.',
+          correctRisk: 'prohibited',
+          rationale: 'Questo sistema rientra nella categoria vietata: utilizza sistemi biometrici in tempo reale in spazi accessibili al pubblico (o semi-pubblici come aule) per scopi non espressamente autorizzati. Inoltre, la raccolta di dati biometrici senza consenso informato viola esplicitamente l\'AI Act e il GDPR.',
+        },
+        {
+          id: 's2',
+          text: 'Un\'azienda HR utilizza un algoritmo AI per screeners automatici di CV e assegnare un punteggio di "idoneità lavorativa" che determina chi passa alla fase di colloquio, senza revisione umana obbligatoria.',
+          correctRisk: 'high',
+          rationale: 'I sistemi AI usati in processi di selezione e valutazione del personale sono esplicitamente classificati come alto rischio nell\'AI Act (Allegato III). Impattano direttamente l\'accesso all\'occupazione e richiedono documentazione tecnica, audit di fairness e supervisione umana.',
+        },
+        {
+          id: 's3',
+          text: 'Una fintech usa un modello AI per valutare il merito creditizio di persone fisiche e determinare automaticamente l\'approvazione o il rifiuto di un mutuo, con output vincolante e nessuna possibilità di ricorso.',
+          correctRisk: 'high',
+          rationale: 'I sistemi AI che valutano la solvibilità e determinano l\'accesso al credito sono alto rischio (Allegato III, categoria 5b). Impattano diritti economici fondamentali. Richiedono trasparenza, supervisione umana, possibilità di ricorso e documentazione del processo decisionale.',
+        },
+        {
+          id: 's4',
+          text: 'Un e-commerce integra un chatbot AI per rispondere alle domande dei clienti sul tracking degli ordini e sui resi. Il bot gestisce solo richieste standard; per casi complessi trasferisce a un operatore umano.',
+          correctRisk: 'limited',
+          rationale: 'Un chatbot di customer service senza impatto su diritti individuali è a rischio limitato. L\'obbligo principale dell\'AI Act è la disclosure: gli utenti devono sapere che stanno interagendo con un sistema AI, non con un umano.',
+        },
+        {
+          id: 's5',
+          text: 'Un\'app di produttività usa AI per suggerire automaticamente l\'orario migliore per le riunioni, analizzando la disponibilità del calendario degli utenti che hanno esplicitamente acconsentito.',
+          correctRisk: 'minimal',
+          rationale: 'Un sistema di scheduling AI con consenso esplicito, nessun impatto su diritti fondamentali e funzionalità puramente assistiva è a rischio minimo. Non richiede obblighi specifici oltre alle normali best practice di sviluppo software e privacy.',
+        },
+      ],
+      riskOptions: [
+        { value: 'prohibited', label: '🚫 Vietato', color: 'red' },
+        { value: 'high', label: '🔴 Alto Rischio', color: 'orange' },
+        { value: 'limited', label: '🟡 Rischio Limitato', color: 'yellow' },
+        { value: 'minimal', label: '🟢 Rischio Minimo', color: 'green' },
+      ],
+    },
     quiz: [
       {
         question: 'L\'AI Act europeo classifica i sistemi AI principalmente in base a:',

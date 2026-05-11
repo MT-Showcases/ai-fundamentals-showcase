@@ -18,7 +18,8 @@ import BackToTopButton from '@/components/BackToTopButton';
 import GlossaryTerm from '@/components/GlossaryTerm';
 import ChapterChallenge from '@/components/ChapterChallenge';
 import ChapterChallengeHallucination from '@/components/ChapterChallengeHallucination';
-import type { ChapterChallengeBias, ChapterChallengeHallucination as ChapterChallengeHallucinationType } from '@/data/types';
+import ChapterChallengeRiskClassification from '@/components/ChapterChallengeRiskClassification';
+import type { ChapterChallengeBias, ChapterChallengeHallucination as ChapterChallengeHallucinationType, ChapterChallengeRiskClassification as ChapterChallengeRiskClassificationType } from '@/data/types';
 import Link from 'next/link';
 
 export const revalidate = 60; // ISR: Revalidate every 60 seconds
@@ -1168,6 +1169,9 @@ Esempi di utilizzo:
             )}
             {chapter.challenge && 'spans' in chapter.challenge && (
               <ChapterChallengeHallucination challenge={chapter.challenge as ChapterChallengeHallucinationType} />
+            )}
+            {chapter.challenge && 'scenarios' in chapter.challenge && (
+              <ChapterChallengeRiskClassification challenge={chapter.challenge as ChapterChallengeRiskClassificationType} />
             )}
 
             {chapter.quiz && chapter.quiz.length > 0 && (

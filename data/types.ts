@@ -103,6 +103,21 @@ export interface ChapterChallengeHallucination {
   spans: HallucinationSpan[];
 }
 
+export interface RiskScenario {
+  id: string;
+  text: string;
+  correctRisk: 'prohibited' | 'high' | 'limited' | 'minimal';
+  rationale: string;
+}
+
+export interface ChapterChallengeRiskClassification {
+  id: string;
+  title: string;
+  intro: string;
+  scenarios: RiskScenario[];
+  riskOptions: Array<{ value: 'prohibited' | 'high' | 'limited' | 'minimal'; label: string; color: string }>;
+}
+
 export interface Chapter {
   id: number;
   slug: string;
@@ -115,6 +130,6 @@ export interface Chapter {
   quiz?: QuizQuestion[];
   media?: MediaPlaceholder[];
   exercises?: ChapterExercise[];
-  challenge?: ChapterChallengeBias | ChapterChallengeHallucination;
+  challenge?: ChapterChallengeBias | ChapterChallengeHallucination | ChapterChallengeRiskClassification;
   labNote?: string;
 }
