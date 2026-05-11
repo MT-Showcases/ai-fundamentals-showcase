@@ -20,8 +20,14 @@ type Token =
   | { type: 'newline' }
   | { type: 'text'; value: string };
 
+function normalizePedagogicBreaks(text: string): string {
+  // Ensure "Nota pratica" and "<<Takeaway: ...>>" appear on separate lines
+  return text.replace(/(\*Nota pratica:\*[^\n]*?)\s*(<<Takeaway:[^>]+>>)/g, '$1\n$2');
+}
+
 function tokenizeMarkdown(text: string): Token[] {
-  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|<<[^>]+>>|\n)/g).filter(Boolean);
+  const normalized = normalizePedagogicBreaks(text);
+  const parts = normalized.split(/(\*\*[^*]+\*\*|\*[^*]+\*|<<[^>]+>>|\n)/g).filter(Boolean);
   const tokens: Token[] = [];
   for (const part of parts) {
     if (part === '\n') {
