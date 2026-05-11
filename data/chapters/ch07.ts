@@ -175,7 +175,7 @@ export const ch07: Chapter = {
         title: 'Infografica Capitolo 7',
         description: 'Schema CNN layer per layer, pipeline object detection, matrice edge-case per dominio, e checklist deploy vision con confidence threshold e fallback.',
         placeholderPath: 'media/ch07-computer-vision/infographic-v2.jpg',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
