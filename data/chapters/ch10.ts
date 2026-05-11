@@ -111,7 +111,7 @@ export const ch10: Chapter = {
       {
         type: 'infographic',
         title: 'Infografica Capitolo 10',
-        description: 'Etica e responsabilità nell'AI: rischi principali (bias/opacità) e governance operativa con human review.',
+        description: 'Etica e responsabilità nell\'AI: rischi principali (bias/opacità) e governance operativa con human review.',
         placeholderPath: 'media/ch10-ethics-ai/infographic.jpg',
         notes: 'ready'
       },
