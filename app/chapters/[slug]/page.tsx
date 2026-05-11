@@ -16,6 +16,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import SidebarToggleWrapper from '@/components/SidebarToggleWrapper';
 import BackToTopButton from '@/components/BackToTopButton';
 import GlossaryTerm from '@/components/GlossaryTerm';
+import ChapterChallenge from '@/components/ChapterChallenge';
+import ChapterChallengeHallucination from '@/components/ChapterChallengeHallucination';
+import type { ChapterChallengeBias, ChapterChallengeHallucination as ChapterChallengeHallucinationType } from '@/data/types';
 import Link from 'next/link';
 
 export const revalidate = 60; // ISR: Revalidate every 60 seconds
@@ -1158,6 +1161,13 @@ Esempi di utilizzo:
 
             {chapter.slug !== 'nlp' && chapter.exercises && chapter.exercises.length > 0 && (
               <ChapterExercises exercises={chapter.exercises} />
+            )}
+
+            {chapter.challenge && 'dataset' in chapter.challenge && (
+              <ChapterChallenge challenge={chapter.challenge as ChapterChallengeBias} />
+            )}
+            {chapter.challenge && 'spans' in chapter.challenge && (
+              <ChapterChallengeHallucination challenge={chapter.challenge as ChapterChallengeHallucinationType} />
             )}
 
             {chapter.quiz && chapter.quiz.length > 0 && (

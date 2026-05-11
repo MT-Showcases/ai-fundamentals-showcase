@@ -74,6 +74,54 @@ export const ch03: Chapter = {
         notes: 'placeholder'
       }
     ],
+    challenge: {
+      id: 'ch03-trova-bias',
+      title: 'Trova il Bias',
+      intro: 'Analizza questo dataset di candidature. Alcune righe mostrano un pattern discriminatorio. Clicca sulle righe che ritieni problematiche.',
+      dataset: [
+        { nome: 'Marco R.', genere: 'M' as const, età: 28, città: 'Milano', assunto: true },
+        { nome: 'Laura B.', genere: 'F' as const, età: 27, città: 'Roma', assunto: false },
+        { nome: 'Andrea C.', genere: 'M' as const, età: 32, città: 'Milano', assunto: true },
+        { nome: 'Sara M.', genere: 'F' as const, età: 30, città: 'Napoli', assunto: false },
+        { nome: 'Luca P.', genere: 'M' as const, età: 25, città: 'Milano', assunto: true },
+        { nome: 'Elena V.', genere: 'F' as const, età: 26, città: 'Torino', assunto: false },
+        { nome: 'Matteo G.', genere: 'M' as const, età: 35, città: 'Milano', assunto: true },
+        { nome: 'Chiara F.', genere: 'F' as const, età: 29, città: 'Roma', assunto: false },
+        { nome: 'Davide L.', genere: 'M' as const, età: 31, città: 'Milano', assunto: true },
+        { nome: 'Giulia T.', genere: 'F' as const, età: 28, città: 'Napoli', assunto: false },
+      ],
+      questions: [
+        {
+          id: 'q1',
+          type: 'multiple-choice' as const,
+          text: 'Quale tipo di bias è più evidente in questo dataset?',
+          options: [
+            { id: 'a', text: 'Bias di età' },
+            { id: 'b', text: 'Bias di genere e geografico combinato' },
+            { id: 'c', text: 'Bias di istruzione' },
+            { id: 'd', text: 'Nessun bias rilevabile' },
+          ],
+          correctIds: ['b'],
+          feedback: {
+            correct: '✅ Esatto! Tutti gli uomini di Milano sono stati assunti, tutte le donne no — un pattern di doppio bias (genere + geografico).',
+            partial: "⚠️ Parzialmente corretto — c'è un bias più specifico da identificare.",
+            wrong: '❌ Rianalizza il dataset: guarda le colonne Genere e Città insieme alla colonna Assunto.',
+          },
+        },
+        {
+          id: 'q2',
+          type: 'open-text' as const,
+          text: 'Come correggeresti questo dataset per renderlo più equo?',
+          placeholder: 'Es: bilanciare genere e provenienza geografica, blind hiring...',
+          maxLength: 300,
+          checklist: [
+            { id: 'c1', text: 'Bilanciamento genere', keywords: ['bilanc', 'parità', 'genere', 'uomini', 'donne'] },
+            { id: 'c2', text: 'Rimozione dati geografici discriminatori', keywords: ['geograf', 'città', 'provenienza', 'sede'] },
+            { id: 'c3', text: 'Blind hiring o anonimizzazione', keywords: ['blind', 'anonimiz', 'nascond', 'rimuov'] },
+          ],
+        },
+      ] as [import('../types').ChallengeQuestionMultipleChoice, import('../types').ChallengeQuestionOpenText],
+    },
     quiz: [
       {
         question: 'Quali sono le tre dimensioni chiave della qualità dei dati?',

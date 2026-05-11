@@ -87,6 +87,21 @@ export interface ChapterChallengeBias {
   questions: [ChallengeQuestionMultipleChoice, ChallengeQuestionOpenText];
 }
 
+export interface HallucinationSpan {
+  id: string;
+  text: string;
+  isError: boolean;
+  feedback: string;
+}
+
+export interface ChapterChallengeHallucination {
+  id: string;
+  title: string;
+  intro: string;
+  fullText: string;
+  spans: HallucinationSpan[];
+}
+
 export interface Chapter {
   id: number;
   slug: string;
@@ -99,6 +114,6 @@ export interface Chapter {
   quiz?: QuizQuestion[];
   media?: MediaPlaceholder[];
   exercises?: ChapterExercise[];
-  challenge?: ChapterChallengeBias;
+  challenge?: ChapterChallengeBias | ChapterChallengeHallucination;
   labNote?: string;
 }
