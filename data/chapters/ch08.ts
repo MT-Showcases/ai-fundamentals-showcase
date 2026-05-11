@@ -53,6 +53,38 @@ export const ch08: Chapter = {
       'Quando usare fallback umano in un flusso generativo?'
     ],
     exercises: [],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 8',
+        description: 'Video completo Capitolo 8: funzionamento LLM, prompt design, allucinazioni e guardrail operativi.',
+        estimatedDuration: '9 min',
+        placeholderPath: 'media/ch08-generative-ai/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 8',
+        description: 'Podcast di ripasso su AI generativa, qualità fattuale e controlli in produzione.',
+        estimatedDuration: '18 min',
+        placeholderPath: 'media/ch08-generative-ai/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 8',
+        description: 'AI Generativa: dal funzionamento al controllo professionale (prompt, guardrail, fallback umano, verifica output).',
+        placeholderPath: 'media/ch08-generative-ai/infographic.jpg',
+        notes: 'ready'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Materiale scaricabile per studio e applicazione operativa.',
+        placeholderPath: 'media/ch08-generative-ai/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
     quiz: [
       {
         question: 'Un output LLM sembra credibile ma cita dati inventati. Come lo classifichi?',
