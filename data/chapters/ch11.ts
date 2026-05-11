@@ -85,6 +85,38 @@ export const ch11: Chapter = {
         { value: 'minimal', label: '🟢 Rischio Minimo', color: 'green' },
       ],
     },
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 11',
+        description: 'Video completo Capitolo 11: AI Act UE, livelli di rischio e controlli di compliance in pratica.',
+        estimatedDuration: '9 min',
+        placeholderPath: 'media/ch11-ai-act/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 11',
+        description: 'Podcast su classificazione rischio AI e governance operativa per team prodotto.',
+        estimatedDuration: '18 min',
+        placeholderPath: 'media/ch11-ai-act/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 11',
+        description: 'AI Act Europeo: livelli di rischio, principio di proporzionalità e pilastri per i sistemi ad alto rischio.',
+        placeholderPath: 'media/ch11-ai-act/infographic.jpg',
+        notes: 'ready'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Materiale scaricabile su classificazione rischio e controlli minimi di conformità.',
+        placeholderPath: 'media/ch11-ai-act/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
     quiz: [
       {
         question: 'L\'AI Act europeo classifica i sistemi AI principalmente in base a:',
