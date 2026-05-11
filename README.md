@@ -34,23 +34,23 @@ AI Fundamentals Showcase is built on **progressive disclosure** and **learning b
 
 15 chapters covering the full AI learning path:
 
-| # | Chapter | Topics |
-|---|---------|--------|
-| 01 | What is AI? | Definition, history, applications |
-| 02 | How AI Works | Algorithms, data, training loop |
-| 03 | Data Importance | Datasets, quality, bias |
-| 04 | Machine Learning | Regression, overfitting, evaluation |
-| 05 | Neural Networks | Perceptron, layers, backpropagation |
-| 06 | Deep Learning | CNNs, RNNs, transfer learning |
-| 07 | NLP | Tokenization, embeddings, transformers |
-| 08 | Computer Vision | Image recognition, object detection |
-| 09 | Reinforcement Learning | Agents, rewards, Q-learning |
-| 10 | AI Ethics | Bias, fairness, transparency |
-| 11 | Generative AI | GANs, diffusion models, LLMs |
-| 12 | AI in Practice | Deployment, APIs, real-world use cases |
-| 13 | Prompt Engineering | Effective prompting, chain-of-thought |
-| 14 | AI Tools & Ecosystem | Frameworks, libraries, platforms |
-| 15 | Future of AI | Trends, risks, opportunities |
+| # | Chapter (slug) | Topics |
+|---|-----------------|--------|
+| 01 | What is AI (`what-is-ai`) | Definition, limits, real-world examples |
+| 02 | How AI Works (`how-ai-works`) | Data, algorithms, compute, training loop |
+| 03 | Data Importance (`data-importance`) | Dataset quality, bias, validation |
+| 04 | Machine Learning (`machine-learning`) | Supervised learning, metrics, over/underfitting |
+| 05 | Neural Networks (`neural-networks`) | Layers, backpropagation, practical trade-offs |
+| 06 | NLP (`nlp`) | Tokenization, embeddings, transformers |
+| 07 | Computer Vision (`computer-vision`) | CNN basics, visual features, robustness |
+| 08 | Generative AI (`generative-ai`) | LLM behavior, prompting, hallucinations |
+| 09 | Fine-Tuning (`fine-tuning`) | Transfer learning, adaptation strategies |
+| 10 | AI Ethics (`ethics-ai`) | Fairness, explainability, accountability |
+| 11 | AI Act (`ai-act`) | EU risk classes, compliance controls |
+| 12 | AI at Work (`ai-at-work`) | Team adoption, workflows, governance |
+| 13 | Practical Tools (`practical-tools`) | ChatGPT, Copilot, assistant workflows |
+| 14 | Advanced Patterns (`advanced-patterns`) | RAG, agent patterns, orchestration |
+| 15 | Future of AI (`future-ai`) | Trends, opportunities, risk outlook |
 
 Each chapter includes:
 - 📖 Structured sections with inline glossary

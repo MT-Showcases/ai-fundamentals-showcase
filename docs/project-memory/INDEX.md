@@ -14,5 +14,11 @@ Questo indice è la fonte unica per agenti e contributor quando lavorano sul pro
 ## 4) Processo release breve
 - `RELEASE_SMOKE.md` — smoke test minimo dopo push
 
+## 5) Policy di cambiamento
+- `CHANGE_POLICY.md` — regole per change safety (content/media/challenge)
+
+## 6) Playbook agenti
+- `AGENT_PLAYBOOK.md` — flussi operativi rapidi per agenti sul progetto
+
 ## Regola
 Se una regola è specifica di questo progetto, va documentata qui (non nella skill generica).
