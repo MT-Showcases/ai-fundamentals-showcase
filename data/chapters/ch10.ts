@@ -91,6 +91,38 @@ export const ch10: Chapter = {
         },
       ] as [import('../types').ChallengeQuestionMultipleChoice, import('../types').ChallengeQuestionOpenText],
     },
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 10',
+        description: 'Video completo Capitolo 10: bias, explainability e governance etica operativa nei sistemi AI.',
+        estimatedDuration: '9 min',
+        placeholderPath: 'media/ch10-ethics-ai/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 10',
+        description: 'Podcast di approfondimento su fairness, accountability e decisioni high-stakes.',
+        estimatedDuration: '18 min',
+        placeholderPath: 'media/ch10-ethics-ai/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 10',
+        description: 'Etica e responsabilità nell'AI: rischi principali (bias/opacità) e governance operativa con human review.',
+        placeholderPath: 'media/ch10-ethics-ai/infographic.jpg',
+        notes: 'ready'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Materiale scaricabile su policy, audit trail e controllo etico operativo.',
+        placeholderPath: 'media/ch10-ethics-ai/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
     quiz: [
       {
         question: 'Un sistema AI di screening CV scarta sistematicamente un gruppo demografico. Primo passo corretto?',
