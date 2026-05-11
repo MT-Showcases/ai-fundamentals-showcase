@@ -49,7 +49,7 @@ export const ch09: Chapter = {
         description: 'Video completo Capitolo 9: quando usare fine-tuning, confronto con RAG e roadmap decisionale per startup.',
         estimatedDuration: '9 min',
         placeholderPath: 'media/ch09-fine-tuning/video.mp4',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
