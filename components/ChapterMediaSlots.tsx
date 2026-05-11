@@ -51,7 +51,9 @@ const badgeByType: Record<MediaPlaceholder['type'], string> = {
 };
 
 export default function ChapterMediaSlots({ chapter }: Props) {
-  const slots = chapter.media && chapter.media.length > 0 ? chapter.media : defaultSlots(chapter);
+  const slotsRaw = chapter.media && chapter.media.length > 0 ? chapter.media : defaultSlots(chapter);
+  // UX choice: hide resource cards until a real downloadable asset exists
+  const slots = slotsRaw.filter((slot) => !(slot.type === 'resource' && !slot.notes?.toLowerCase().includes('ready')));
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
   const [showSource, setShowSource] = useState(false);
   const [copied, setCopied] = useState(false);

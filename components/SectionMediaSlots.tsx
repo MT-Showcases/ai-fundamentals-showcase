@@ -21,7 +21,9 @@ const badgeByType: Record<MediaPlaceholder['type'], string> = {
 
 export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex, sectionTitle, sectionContent, media, isWorkflow = false, customSourceText }: Props & { isWorkflow?: boolean; customSourceText?: string }) {
   // Regola: nessun media definito => nessun placeholder automatico
-  const slots = media ?? [];
+  const slotsRaw = media ?? [];
+  // UX choice: hide resource cards until a real downloadable asset exists
+  const slots = slotsRaw.filter((slot) => !(slot.type === 'resource' && !slot.notes?.toLowerCase().includes('ready')));
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
   const [showSource, setShowSource] = useState(false);
   const [copied, setCopied] = useState(false);
