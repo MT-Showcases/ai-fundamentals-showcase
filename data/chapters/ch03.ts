@@ -63,7 +63,7 @@ export const ch03: Chapter = {
         type: 'infographic',
         title: 'Infografica',
         description: 'Infografica Capitolo 3: 5 caratteristiche di un dataset di qualita, 3 tipi di bias piu comuni (storico, selezione, etichettatura), warning su test statici, e mini framework per audit dataset in 4 step.',
-        placeholderPath: 'media/ch03-data-importance/infographic.png',
+        placeholderPath: 'media/ch03-data-importance/infographic-v2.png',
         notes: 'placeholder'
       },
       {
