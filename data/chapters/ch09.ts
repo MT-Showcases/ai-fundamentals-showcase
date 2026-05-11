@@ -42,6 +42,38 @@ export const ch09: Chapter = {
         ]
       }
     ],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 9',
+        description: 'Video completo Capitolo 9: quando usare fine-tuning, confronto con RAG e roadmap decisionale per startup.',
+        estimatedDuration: '9 min',
+        placeholderPath: 'media/ch09-fine-tuning/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 9',
+        description: 'Podcast di approfondimento sulle strategie di adattamento AI e trade-off costo/beneficio.',
+        estimatedDuration: '18 min',
+        placeholderPath: 'media/ch09-fine-tuning/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 9',
+        description: 'Strategie di adattamento AI: zero-shot vs RAG vs fine-tuning, con roadmap decisionale e rischio tuning precoce.',
+        placeholderPath: 'media/ch09-fine-tuning/infographic.jpg',
+        notes: 'ready'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Materiale scaricabile per supportare decisioni tecniche su adaptation strategy.',
+        placeholderPath: 'media/ch09-fine-tuning/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
     quiz: [
       {
         question: 'Scenario: FAQ prodotto aggiornate ogni settimana. Strategia iniziale più sensata?',
