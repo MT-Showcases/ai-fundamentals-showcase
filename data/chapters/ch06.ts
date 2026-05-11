@@ -25,6 +25,38 @@ export const ch06: Chapter = {
       'Se due parole hanno embedding molto simili, cosa significa?'
     ],
 
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 6',
+        description: 'Video completo Capitolo 6: tokenizzazione, embedding, Transformer e attention, con esempi pratici NLP e guardrail di valutazione.',
+        estimatedDuration: '9 min',
+        placeholderPath: 'media/ch06-nlp/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 6',
+        description: 'Podcast di ripasso NLP: pipeline testo->numeri, errori comuni e best practice per test su edge-case.',
+        estimatedDuration: '20 min',
+        placeholderPath: 'media/ch06-nlp/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 6',
+        description: 'Infografica riassuntiva NLP: tokenizzazione, embedding, attention e checklist di validazione output.',
+        placeholderPath: 'media/ch06-nlp/infographic.jpg',
+        notes: 'ready'
+      },
+      {
+        type: 'resource',
+        title: 'Asset/Dispensa',
+        description: 'Materiale scaricabile per studio e esercitazione guidata.',
+        placeholderPath: 'media/ch06-nlp/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
     quiz: [
       {
         question: 'Cos\'è la tokenizzazione nel NLP?',
