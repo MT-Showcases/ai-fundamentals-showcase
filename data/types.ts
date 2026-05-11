@@ -84,6 +84,7 @@ export interface ChapterChallengeBias {
     città: string;
     assunto: boolean;
   }>;
+  correctIndices: number[];
   questions: [ChallengeQuestionMultipleChoice, ChallengeQuestionOpenText];
 }
 

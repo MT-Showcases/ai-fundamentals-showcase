@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { chapters } from '@/data/chapters';
 
-const baseUrl = 'https://ai-fundamentals-showcase.vercel.app';
+const baseUrl = 'https://ai-fundamentals.micheletornello.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const chapterUrls = chapters.map((chapter) => ({

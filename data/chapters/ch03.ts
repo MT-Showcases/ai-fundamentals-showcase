@@ -82,14 +82,15 @@ export const ch03: Chapter = {
         { nome: 'Marco R.', genere: 'M' as const, età: 28, città: 'Milano', assunto: true },
         { nome: 'Laura B.', genere: 'F' as const, età: 27, città: 'Roma', assunto: false },
         { nome: 'Andrea C.', genere: 'M' as const, età: 32, città: 'Milano', assunto: true },
-        { nome: 'Sara M.', genere: 'F' as const, età: 30, città: 'Napoli', assunto: false },
+        { nome: 'Sara M.', genere: 'F' as const, età: 30, città: 'Napoli', assunto: true },   // donna assunta (caso normale)
         { nome: 'Luca P.', genere: 'M' as const, età: 25, città: 'Milano', assunto: true },
         { nome: 'Elena V.', genere: 'F' as const, età: 26, città: 'Torino', assunto: false },
-        { nome: 'Matteo G.', genere: 'M' as const, età: 35, città: 'Milano', assunto: true },
+        { nome: 'Matteo G.', genere: 'M' as const, età: 35, città: 'Palermo', assunto: false }, // uomo non assunto (caso normale)
         { nome: 'Chiara F.', genere: 'F' as const, età: 29, città: 'Roma', assunto: false },
         { nome: 'Davide L.', genere: 'M' as const, età: 31, città: 'Milano', assunto: true },
-        { nome: 'Giulia T.', genere: 'F' as const, età: 28, città: 'Napoli', assunto: false },
+        { nome: 'Giulia T.', genere: 'F' as const, età: 24, città: 'Milano', assunto: false }, // donna Milano non assunta
       ],
+      correctIndices: [1, 5, 7, 9],
       questions: [
         {
           id: 'q1',

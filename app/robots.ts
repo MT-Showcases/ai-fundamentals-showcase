@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://ai-fundamentals-showcase.vercel.app/sitemap.xml',
+    sitemap: 'https://ai-fundamentals.micheletornello.com/sitemap.xml',
   };
 }

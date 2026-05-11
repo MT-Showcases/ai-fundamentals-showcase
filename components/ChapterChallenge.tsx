@@ -23,16 +23,16 @@ const slugifyName = (name: string) =>
     .toLowerCase();
 
 const biasExplanations: Record<string, string> = {
-  'marco-r': 'Assunto, maschio, Milano → parte del bias di genere e geografico.',
-  'laura-b': 'Non assunta, donna, Roma → parte del bias di genere.',
-  'andrea-c': 'Assunto, maschio, Milano → parte del doppio bias.',
-  'sara-m': 'Non assunta, donna, Napoli → parte del bias di genere.',
-  'luca-p': 'Assunto, maschio, Milano → conferma il bias geografico e di genere.',
-  'elena-v': 'Non assunta, donna, Torino → conferma il bias di genere.',
-  'matteo-g': 'Assunto, maschio, Milano → pattern ripetuto del doppio bias.',
-  'chiara-f': 'Non assunta, donna, Roma → parte del pattern discriminatorio.',
-  'davide-l': 'Assunto, maschio, Milano → ulteriore conferma del pattern.',
-  'giulia-t': 'Non assunta, donna, Napoli → parte del bias di genere.',
+  'marco-r': 'Assunto, maschio, Milano → rientra nel pattern di bias ma non è una riga problematica di per sé.',
+  'laura-b': '⚠️ Non assunta, donna, Roma → profilo simile ai colleghi maschi assunti: bias di genere evidente.',
+  'andrea-c': 'Assunto, maschio, Milano → parte del pattern, ma non è una riga anomala.',
+  'sara-m': 'Assunta, donna, Napoli → eccezione che rompe il pattern: donna assunta nonostante la provenienza.',
+  'luca-p': 'Assunto, maschio, Milano → rientra nel pattern normale.',
+  'elena-v': '⚠️ Non assunta, donna, Torino → nessuna ragione apparente rispetto ai colleghi maschi con età simile.',
+  'matteo-g': 'Non assunto, maschio, Palermo → eccezione: uomo non assunto, probabilmente per ragione geografica.',
+  'chiara-f': '⚠️ Non assunta, donna, Roma → pattern discriminatorio: donna non assunta vs uomini romani assunti.',
+  'davide-l': 'Assunto, maschio, Milano → parte del pattern normale.',
+  'giulia-t': '⚠️ Non assunta, donna, Milano → caso più evidente: donna milanese non assunta mentre tutti i maschi milanesi sì.',
 };
 
 export default function ChapterChallenge({ challenge }: ChapterChallengeProps) {
@@ -41,7 +41,7 @@ export default function ChapterChallenge({ challenge }: ChapterChallengeProps) {
   const resultsStorageKey = `challenge_${challenge.id}_results`;
 
   const computeResults = (selections: Set<number>) => {
-    const correctIndices = challenge.dataset.map((_, idx) => idx);
+    const correctIndices = challenge.correctIndices;
 
     return challenge.dataset.map((_, idx) => {
       const row = challenge.dataset[idx];
@@ -49,14 +49,25 @@ export default function ChapterChallenge({ challenge }: ChapterChallengeProps) {
       const base =
         biasExplanations[rowKey] ?? 'Questa riga contribuisce al pattern di bias nel dataset.';
       const isSelected = selections.has(idx);
+      const isCorrect = correctIndices.includes(idx);
 
-      return {
-        rowIdx: idx,
-        correct: isSelected === correctIndices.includes(idx),
-        explanation: isSelected
-          ? `Selezionata correttamente. ${base}`
-          : `Mancata: anche questa riga è parte del bias. ${base}`,
-      };
+      if (isCorrect) {
+        return {
+          rowIdx: idx,
+          correct: isSelected,
+          explanation: isSelected
+            ? `Selezionata correttamente. ${base}`
+            : `Mancata: questa riga mostra un pattern discriminatorio. ${base}`,
+        };
+      } else {
+        return {
+          rowIdx: idx,
+          correct: !isSelected,
+          explanation: isSelected
+            ? `Falso positivo: questa riga non è discriminatoria. ${base}`
+            : `Corretto non selezionarla. ${base}`,
+        };
+      }
     });
   };
 
