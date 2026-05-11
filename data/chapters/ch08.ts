@@ -60,7 +60,7 @@ export const ch08: Chapter = {
         description: 'Video completo Capitolo 8: funzionamento LLM, prompt design, allucinazioni e guardrail operativi.',
         estimatedDuration: '9 min',
         placeholderPath: 'media/ch08-generative-ai/video.mp4',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
