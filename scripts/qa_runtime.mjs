@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'fs';
 
-const base = 'https://ai-fundamentals-showcase.vercel.app';
+const base = 'https://ai-fundamentals.micheletornello.com';
 const slugs = [
   'what-is-ai','how-ai-works','data-importance','machine-learning','neural-networks','nlp','computer-vision','generative-ai','fine-tuning','ethics-ai','ai-act','ai-at-work','practical-tools','advanced-patterns','future-ai'
 ];

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://ai-fundamentals-showcase.vercel.app";
+const siteUrl = "https://ai-fundamentals.micheletornello.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

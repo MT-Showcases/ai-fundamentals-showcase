@@ -20,5 +20,8 @@ Questo indice è la fonte unica per agenti e contributor quando lavorano sul pro
 ## 6) Playbook agenti
 - `AGENT_PLAYBOOK.md` — flussi operativi rapidi per agenti sul progetto
 
+## 7) Audit documentazione
+- `DOCUMENTATION_AUDIT_2026-05-11.md` — stato coverage docs, gap e azioni
+
 ## Regola
 Se una regola è specifica di questo progetto, va documentata qui (non nella skill generica).
