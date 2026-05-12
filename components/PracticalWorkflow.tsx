@@ -23,7 +23,6 @@ interface WorkflowStep {
   tryThis: ReactNode;
   fileReference?: FileReference;
   modificationExample?: ModificationExample;
-  notebookLmSource?: string;
 }
 
 interface FileReference {

@@ -187,11 +187,20 @@ export default async function ChapterPage({ params }: Props) {
                 const glossaryChapters = ['data-importance', 'neural-networks', 'generative-ai'];
                 const enableGlossary = glossaryChapters.includes(chapter.slug);
                 return chapter.sections.map((section, idx) => {
-                  // Skip rendering the workflow section as a standard card since we render it via PracticalWorkflow below
-                  if (
-                    (chapter.slug === 'machine-learning' && section.title === 'ML Workflow Pratico — 5 Step') ||
-                    (chapter.slug === 'neural-networks' && section.title === 'Mini Lab — Costruire e Analizzare la Prima Rete Neurale')
-                  ) {
+                  // Skip rendering any workflow-like section title as a standard card,
+                  // since it is rendered separately via PracticalWorkflow below.
+                  const workflowTitleBySlug: Record<string, string[]> = {
+                    'machine-learning': ['ML Workflow Pratico'],
+                    'neural-networks': ['Mini Lab — La Tua Prima Rete Neurale', 'Mini Lab — Costruire e Analizzare la Prima Rete Neurale'],
+                    'nlp': ['NLP Workflow Pratico'],
+                    'fine-tuning': ['Small LLM + Mini RAG'],
+                    'generative-ai': ['Generative AI Workflow'],
+                  };
+
+                  const shouldSkipSection =
+                    workflowTitleBySlug[chapter.slug]?.some((needle) => section.title.includes(needle)) ?? false;
+
+                  if (shouldSkipSection) {
                     return null;
                   }
 
