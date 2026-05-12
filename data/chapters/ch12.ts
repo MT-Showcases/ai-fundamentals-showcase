@@ -16,9 +16,9 @@ export const ch12: Chapter = {
         type: 'video',
         title: 'Video Capitolo 12',
         description: 'Video completo Capitolo 12: come l\'AI trasforma ruoli, competenze e decisioni nel mondo del lavoro.',
-        estimatedDuration: '9 min',
+        estimatedDuration: '7 min',
         placeholderPath: 'media/ch12-ai-work/video.mp4',
-        notes: 'placeholder'
+        notes: 'ready'
       },
       {
         type: 'podcast',
