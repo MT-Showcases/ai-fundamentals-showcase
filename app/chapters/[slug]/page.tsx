@@ -422,29 +422,29 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
                         <p className="text-sm text-gray-300 font-semibold mb-1">Cosa imparerai in questo lab extra:</p>
                         <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc">
-                          <li>Caricare un mini modello locale e fare inferenza testuale</li>
-                          <li>Costruire una mini pipeline <code>RAG</code> con retrieval TF-IDF</li>
-                          <li>Confrontare output <em>zero-shot</em> vs output con contesto recuperato</li>
-                          <li>Valutare trade-off reali: qualità, latenza, aggiornabilità</li>
+                          <li>Confrontare risposte <em>zero-shot</em> e <code>RAG</code> sullo stesso modello/query</li>
+                          <li>Scegliere l&apos;approccio giusto: API, locale con Ollama, oppure fine-tuning</li>
+                          <li>Implementare retrieval TF-IDF su knowledge base locale</li>
+                          <li>Eseguire un fine-tuning leggero LoRA e confrontare prima/dopo training</li>
                         </ul>
                       </div>
 
                       <div className="bg-navy-800 rounded-lg p-4 border border-cyan-400/20">
                         <p className="text-sm font-semibold text-cyan-300 mb-2">🛠️ Scelte Tecniche</p>
                         <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc leading-relaxed">
-                          <li><code>sshleifer/tiny-gpt2</code> come modello piccolo: leggero per demo didattica.</li>
-                          <li>Retrieval con <code>TfidfVectorizer</code>: semplice da capire e replicare in aula.</li>
-                          <li>Knowledge base locale in <code>docs/knowledge_base.txt</code>: aggiornabile senza ri-addestrare.</li>
-                          <li>Confronto diretto tra prompt senza contesto e prompt arricchito da retrieval.</li>
+                          <li>Livello 1: modelli via API (Groq con LLaMA 3 o Anthropic Claude).</li>
+                          <li>Livello 2: modello locale <code>phi3:mini</code> tramite Ollama (offline).</li>
+                          <li>Livello 3: fine-tuning LoRA su <code>GroNLP/gpt2-small-italian</code>.</li>
+                          <li>Retrieval con <code>TfidfVectorizer</code> su <code>docs/knowledge_base.txt</code> in tutti i livelli.</li>
                         </ul>
                       </div>
 
                       <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
                         <p className="text-sm font-semibold text-blue-300 mb-2">🧪 Scelte di Laboratorio</p>
                         <ul className="text-xs text-gray-400 space-y-1 ml-4 list-disc leading-relaxed">
-                          <li>Lab volutamente “small”: obiettivo = capire il workflow, non massimizzare benchmark.</li>
-                          <li>Primo run con internet per scaricare il modello; poi riesecuzione locale.</li>
-                          <li>Struttura in 6 step con esperimento finale su <code>query_utente</code>.</li>
+                          <li>Lab in 3 livelli progressivi: API → locale → fine-tuning.</li>
+                          <li>Stessa knowledge base, stesso obiettivo pedagogico, confronto diretto risultati.</li>
+                          <li>Esperimenti liberi modificando i file in <code>docs/</code>.</li>
                         </ul>
                       </div>
 
@@ -453,19 +453,26 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                         <ul className="text-sm text-gray-400 space-y-1 ml-4">
                           <li>&#x2705; Python 3.9+</li>
                           <li>&#x2705; pip installato</li>
-                          <li>&#x2705; Connessione internet al primo run (download modello)</li>
+                          <li>&#x2705; Livello 1: chiave API Groq o Anthropic</li>
+                          <li>&#x2705; Livello 2: Ollama installato (model pull <code>phi3:mini</code>)</li>
+                          <li>&#x2705; Livello 3: GPU o Apple Silicon per fine-tuning LoRA</li>
                         </ul>
                       </div>
 
                       <div>
                         <p className="text-sm font-semibold text-gray-300 mb-2">Comandi di avvio:</p>
                         <div className="bg-navy-900 rounded-lg p-4 border border-cyan-400/20 font-mono text-xs text-cyan-300 space-y-1">
-                          <p className="text-gray-400"># 1. Estrai lo ZIP e accedi</p>
                           <p>$ cd ml-lab-05-small-llm-rag/</p>
-                          <p className="text-gray-400"># 2. Installa dipendenze</p>
-                          <p>$ pip install -r requirements.txt</p>
-                          <p className="text-gray-400"># 3. Esegui il lab</p>
-                          <p>$ python main.py</p>
+                          <p className="text-gray-400"># Livello 1 — API</p>
+                          <p>$ cp .env.example .env</p>
+                          <p>$ pip install -r requirements_api.txt</p>
+                          <p>$ python main_api.py</p>
+                          <p className="text-gray-400"># Livello 2 — Locale con Ollama</p>
+                          <p>$ pip install -r requirements_local.txt</p>
+                          <p>$ python main_local.py</p>
+                          <p className="text-gray-400"># Livello 3 — Fine-tuning con LoRA</p>
+                          <p>$ pip install -r requirements_finetune.txt</p>
+                          <p>$ python main_finetune.py</p>
                         </div>
                       </div>
                     </div>
@@ -480,51 +487,51 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                   steps={[
                     {
                       number: 1,
-                      title: 'Carica knowledge base locale',
-                      description: <>Legge <code>docs/knowledge_base.txt</code> e divide il testo in chunk recuperabili.</>,
-                      code: 'kb_text = Path("docs/knowledge_base.txt").read_text(encoding="utf-8")\nchunks = split_chunks(kb_text)',
-                      codeLang: 'python',
-                      tryThis: <><strong>Prova:</strong> aumenta la dimensione dei chunk e osserva come cambia il retrieval.</>,
+                      title: 'Livello 1 — Configura API',
+                      description: <>Configura <code>.env</code> e prepara l&apos;esecuzione con Groq (LLaMA 3) o Anthropic Claude.</>,
+                      code: 'cp .env.example .env\n# inserisci GROQ_API_KEY o ANTHROPIC_API_KEY\npip install -r requirements_api.txt',
+                      codeLang: 'bash',
+                      tryThis: <><strong>Prova:</strong> esegui <code>python main_api.py</code> e confronta la stessa query in zero-shot e in modalità RAG.</>,
                     },
                     {
                       number: 2,
-                      title: 'Retrieval con TF-IDF',
-                      description: <>Converte chunk + query in vettori e seleziona i top chunk con <code>cosine similarity</code>.</>,
-                      code: 'vectorizer = TfidfVectorizer()\nX = vectorizer.fit_transform(chunks + [query_utente])\nsims = cosine_similarity(X[-1], X[:-1]).flatten()',
-                      codeLang: 'python',
-                      tryThis: <><strong>Prova:</strong> cambia la threshold di similarità e conta quanti chunk vengono selezionati.</>,
+                      title: 'Livello 1 — Confronto zero-shot vs RAG (API)',
+                      description: <>Osserva differenze di qualità tra risposta senza contesto e risposta con retrieval TF-IDF.</>,
+                      code: 'python main_api.py',
+                      codeLang: 'bash',
+                      tryThis: <><strong>Prova:</strong> modifica i contenuti in <code>docs/knowledge_base.txt</code> e riesegui per vedere l&apos;impatto immediato.</>,
                     },
                     {
                       number: 3,
-                      title: 'Inizializza mini LLM',
-                      description: <>Usa un modello piccolo locale con <code>transformers.pipeline</code> per text generation.</>,
-                      code: 'generator = pipeline("text-generation", model="sshleifer/tiny-gpt2")',
-                      codeLang: 'python',
-                      tryThis: <><strong>Prova:</strong> sostituisci con un modello diverso e confronta velocità vs qualità.</>,
+                      title: 'Livello 2 — Esecuzione locale con Ollama',
+                      description: <>Fai girare il lab completamente offline con <code>phi3:mini</code> (nessun dato esce dalla macchina).</>,
+                      code: 'pip install -r requirements_local.txt\n# assicurati di avere ollama + modello phi3:mini\npython main_local.py',
+                      codeLang: 'bash',
+                      tryThis: <><strong>Prova:</strong> confronta latenza e qualità tra esecuzione API e locale sullo stesso prompt.</>,
                     },
                     {
                       number: 4,
-                      title: 'Prompt zero-shot (baseline)',
-                      description: <>Genera una risposta senza contesto esterno, solo dalla query utente.</>,
-                      code: 'prompt_no_rag = f"Domanda: {query_utente}\\nRisposta breve in italiano:"\nout_no_rag = generator(prompt_no_rag, max_new_tokens=70, do_sample=False)',
-                      codeLang: 'python',
-                      tryThis: <><strong>Prova:</strong> aumenta <code>max_new_tokens</code> e osserva se la qualità migliora o peggiora.</>,
+                      title: 'Livello 3 — Setup fine-tuning LoRA',
+                      description: <>Prepara ambiente e dipendenze per il fine-tuning leggero su <code>GroNLP/gpt2-small-italian</code>.</>,
+                      code: 'pip install -r requirements_finetune.txt\npython main_finetune.py',
+                      codeLang: 'bash',
+                      tryThis: <><strong>Prova:</strong> salva i completamenti prima del training per il confronto finale.</>,
                     },
                     {
                       number: 5,
-                      title: 'Prompt con contesto (Mini RAG)',
-                      description: <>Costruisce prompt con chunk recuperati e confronta output con la baseline.</>,
-                      code: 'prompt_rag = f"Contesto:\\n{context}\\n\\nDomanda: {query_utente}\\nRisposta:"\nout_rag = generator(prompt_rag, max_new_tokens=90, do_sample=False)',
+                      title: 'Livello 3 — Osserva training e loss',
+                      description: <>Durante il training controlla la discesa della loss e la stabilità dei completamenti su prompt fissi.</>,
+                      code: '# output atteso\nstep=... loss=...\n# confronta snapshot prima/dopo',
                       codeLang: 'python',
-                      tryThis: <><strong>Prova:</strong> formatta il contesto diversamente (es: bullet points vs paragrafo) e misura l&apos;impatto sulla risposta.</>,
+                      tryThis: <><strong>Prova:</strong> modifica <code>docs/finetune_data.txt</code> con esempi coerenti e valuta come cambia il comportamento del modello.</>,
                     },
                     {
                       number: 6,
-                      title: 'Esperimento — cambia query_utente',
-                      description: <>Modifica <code>query_utente</code> e osserva differenze tra output senza contesto e con RAG.</>,
+                      title: 'Confronto finale multi-livello',
+                      description: <>Confronta API, locale e fine-tuning sullo stesso set di query e documenta qualità/tempo/controllo.</>,
                       code: 'query_utente = "Quando conviene usare RAG invece del fine-tuning?"',
                       codeLang: 'python',
-                      tryThis: <><strong>Prova:</strong> testa 3 query diverse (generica, specifica, ambigua) e confronta qualità/rilevanza dei due output.</>,
+                      tryThis: <><strong>Prova:</strong> esegui 3 query (generica, specifica, ambigua) e compila una mini tabella decisionale per scegliere il livello corretto.</>,
                     },
                   ]}
                 />
