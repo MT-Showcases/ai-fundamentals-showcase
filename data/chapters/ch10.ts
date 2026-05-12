@@ -43,53 +43,50 @@ export const ch10: Chapter = {
       }
     ],
     challenge: {
-      id: 'ch10-bias-credito',
-      title: 'Trova il Bias — Algoritmo di Credito',
-      intro: 'Un sistema AI valuta richieste di prestito. Alcune decisioni mostrano un pattern discriminatorio non immediato. Seleziona le righe che ritieni indicative di bias sistemico.',
-      dataset: [
-        { nome: 'Roberto M.', genere: 'M' as const, età: 34, città: 'Milano', assunto: true },
-        { nome: 'Fatima A.', genere: 'F' as const, età: 32, città: 'Milano', assunto: false },
-        { nome: 'Giovanni P.', genere: 'M' as const, età: 41, città: 'Roma', assunto: true },
-        { nome: 'Amira K.', genere: 'F' as const, età: 38, città: 'Roma', assunto: false },
-        { nome: 'Marco S.', genere: 'M' as const, età: 29, città: 'Torino', assunto: true },
-        { nome: 'Yuki T.', genere: 'F' as const, età: 33, città: 'Milano', assunto: true },
-        { nome: 'Luca B.', genere: 'M' as const, età: 55, città: 'Napoli', assunto: false },
-        { nome: 'Priya R.', genere: 'F' as const, età: 28, città: 'Milano', assunto: false },
-        { nome: 'Alessandro F.', genere: 'M' as const, età: 36, città: 'Roma', assunto: true },
-        { nome: 'Layla H.', genere: 'F' as const, età: 31, città: 'Torino', assunto: false },
-      ],
-      correctIndices: [1, 3, 7, 9],
-      questions: [
+      id: 'ch10-bias-credito-table-review',
+      title: 'Bias Review Interattivo — Credito',
+      intro: 'Analizza il dataset come reviewer etico: trova le decisioni sospette e i gruppi più esposti a bias. Verifica solo alla fine.',
+      scoringMode: 'balanced',
+      table: {
+        columns: ['applicant_id', 'genere', 'citta', 'income_band', 'credit_history', 'model_decision'],
+        rows: [
+          { applicant_id: 'CR-001', genere: 'M', citta: 'Milano', income_band: 'medium', credit_history: 'good', model_decision: 'approved' },
+          { applicant_id: 'CR-002', genere: 'F', citta: 'Milano', income_band: 'medium', credit_history: 'good', model_decision: 'rejected' },
+          { applicant_id: 'CR-003', genere: 'M', citta: 'Roma', income_band: 'medium', credit_history: 'good', model_decision: 'approved' },
+          { applicant_id: 'CR-004', genere: 'F', citta: 'Roma', income_band: 'medium', credit_history: 'good', model_decision: 'rejected' },
+          { applicant_id: 'CR-005', genere: 'M', citta: 'Torino', income_band: 'low', credit_history: 'limited', model_decision: 'rejected' },
+          { applicant_id: 'CR-006', genere: 'F', citta: 'Torino', income_band: 'low', credit_history: 'limited', model_decision: 'rejected' },
+          { applicant_id: 'CR-007', genere: 'M', citta: 'Napoli', income_band: 'high', credit_history: 'good', model_decision: 'approved' },
+          { applicant_id: 'CR-008', genere: 'F', citta: 'Napoli', income_band: 'high', credit_history: 'good', model_decision: 'rejected' }
+        ]
+      },
+      phases: [
         {
-          id: 'q1',
-          type: 'multiple-choice' as const,
-          text: 'Osservando il dataset, quale combinazione di fattori sembra influenzare maggiormente le decisioni negative?',
-          options: [
-            { id: 'a', text: 'Età elevata e residenza nel Sud Italia' },
-            { id: 'b', text: 'Nome di origine straniera + genere femminile' },
-            { id: 'c', text: 'Provenienza da città diverse da Milano' },
-            { id: 'd', text: 'Nessun pattern rilevante — le decisioni sembrano casuali' },
-          ],
-          correctIds: ['b'],
-          feedback: {
-            correct: "✅ Esatto! Il pattern emergente è l'intersezione tra nome percepito come straniero e genere femminile — un caso di bias intersezionale spesso invisibile nelle metriche aggregate.",
-            partial: "⚠️ Parzialmente corretto — il pattern più significativo coinvolge una combinazione specifica di fattori. Riesamina le righe con nome di origine straniera.",
-            wrong: "❌ Rianalizza con attenzione: confronta le righe con nomi di origine straniera vs italiana, poi considera anche il genere. Il bias intersezionale è più subdolo di un singolo fattore.",
-          },
+          id: 'bias-cells',
+          title: 'Fase 1',
+          instruction: 'Seleziona le celle model_decision potenzialmente discriminatorie rispetto a casi equivalenti.',
+          selectionMode: 'cell',
+          correctCells: [
+            { row: 1, column: 'model_decision' },
+            { row: 3, column: 'model_decision' },
+            { row: 7, column: 'model_decision' }
+          ]
         },
         {
-          id: 'q2',
-          type: 'open-text' as const,
-          text: 'Quali controlli tecnici o procedurali introdurresti per rilevare e mitigare questo bias prima del deploy in produzione?',
-          placeholder: 'Es: analisi per sottogruppi, fairness metrics, human review, audit trail...',
-          maxLength: 350,
-          checklist: [
-            { id: 'c1', text: 'Fairness metrics per sottogruppo', keywords: ['fairness', 'sottogruppo', 'demografico', 'parità', 'equità', 'disparate'] },
-            { id: 'c2', text: 'Human review o supervisione umana', keywords: ['human', 'umana', 'revisione', 'supervisione', 'manuale', 'review'] },
-            { id: 'c3', text: 'Audit trail e explainability', keywords: ['audit', 'tracciabilità', 'explain', 'spiegab', 'xai', 'logging', 'log'] },
-          ],
+          id: 'bias-rows',
+          title: 'Fase 2',
+          instruction: 'Seleziona le righe candidate a revisione umana prioritaria.',
+          selectionMode: 'row',
+          correctRows: [1, 3, 7]
         },
-      ] as [import('../types').ChallengeQuestionMultipleChoice, import('../types').ChallengeQuestionOpenText],
+        {
+          id: 'bias-columns',
+          title: 'Fase 3',
+          instruction: 'Seleziona le colonne da monitorare sempre per fairness in questo caso.',
+          selectionMode: 'column',
+          correctColumns: ['genere', 'citta', 'model_decision']
+        }
+      ]
     },
     media: [
       {
