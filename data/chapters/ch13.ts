@@ -11,6 +11,15 @@ export const ch13: Chapter = {
       { title: 'Startup Lens', content: "In team startup il flusso più solido è: **prompt strutturato -> output AI -> review umana -> test -> rilascio**.\n\nQuesto approccio evita due estremi: fiducia cieca nell'AI e rifiuto totale dello strumento. L\'obiettivo non è usare più AI, ma ridurre lead time mantenendo qualità prevedibile." },
       { title: 'Errore comune + Check rapido', content: "**Errore comune:** usare output AI direttamente in produzione senza controlli minimi.\n\n**Check rapido (2 min):** prima di usare un output, verifica 1) accuratezza fattuale, 2) coerenza col contesto, 3) impatto se fosse sbagliato. Se uno dei tre fallisce, blocca il rilascio." }
     ],
+    media: [
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 13',
+        description: 'Workflow AI operativo: dalla richiesta prompt al rilascio con quality gate. Mappa visiva di ChatGPT, Copilot e tool assistivi nel ciclo di lavoro reale.',
+        placeholderPath: 'media/ch13-practical-tools/infographic.jpg',
+        notes: 'ready'
+      }
+    ],
     keyTakeaways: [
       'ChatGPT accelera la bozza, non sostituisce la validazione',
       'Gli assistenti di coding aumentano produttività solo con review e test',
