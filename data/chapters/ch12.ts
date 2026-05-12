@@ -11,6 +11,38 @@ export const ch12: Chapter = {
       { title: 'Competenze ad alto valore nel mercato AI', content: 'Le competenze che aumentano di valore non sono solo tecniche. Le più richieste combinano: **pensiero critico** (valutare affidabilità), **problem framing** (definire bene il problema), **comunicazione** (spiegare decisioni), **alfabetizzazione dati** (leggere metriche), **adattabilità** (aggiornare metodo e tool).\n\nConoscere un tool specifico aiuta, ma il vantaggio competitivo è saper progettare processi ripetibili e misurabili. *Nota pratica:* costruisci un portfolio di casi concreti in cui mostri come hai ridotto errori o tempo di ciclo usando AI con metriche chiare. <<Takeaway: nel mercato AI vince chi sa misurare impatto, non chi usa più tool>>.' },
       { title: 'Errore comune + Check rapido', content: '**Errore comune:** introdurre AI per moda, senza baseline e senza KPI di qualità del lavoro.\n\n**Check rapido (2 min):** scegli un processo reale (es. supporto clienti, selezione CV, QA contenuti) e rispondi:\n1) quale task automatizzi per primo?\n2) quale metrica userai per capire se hai migliorato davvero?\n3) quando scatta obbligatoriamente la revisione umana?' }
     ],
+    media: [
+      {
+        type: 'video',
+        title: 'Video Capitolo 12',
+        description: 'Video completo Capitolo 12: come l\'AI trasforma ruoli, competenze e decisioni nel mondo del lavoro.',
+        estimatedDuration: '9 min',
+        placeholderPath: 'media/ch12-ai-work/video.mp4',
+        notes: 'placeholder'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 12',
+        description: 'Podcast di approfondimento su adozione AI nel lavoro, nuovi ruoli e skill ad alto valore.',
+        estimatedDuration: '18 min',
+        placeholderPath: 'media/ch12-ai-work/podcast.mp3',
+        notes: 'placeholder'
+      },
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 12',
+        description: 'AI nel lavoro: mappa visiva di automazione task, nuovi ruoli e skill strategiche nel mercato AI-ready.',
+        placeholderPath: 'media/ch12-ai-work/infographic.jpg',
+        notes: 'ready'
+      },
+      {
+        type: 'resource',
+        title: 'Handout Capitolo 12',
+        description: 'Scheda riassuntiva stampabile con task split framework, KPI operativi e piano adozione AI.',
+        placeholderPath: 'media/ch12-ai-work/handout.pdf',
+        notes: 'placeholder'
+      }
+    ],
     keyTakeaways: [
       'L\'AI trasforma soprattutto i task ripetitivi, non elimina automaticamente interi ruoli',
       'Nuovi ruoli e responsabilità emergono su governance, qualità e orchestrazione dei workflow',
