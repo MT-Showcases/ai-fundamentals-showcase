@@ -13,6 +13,14 @@ export const ch13: Chapter = {
     ],
     media: [
       {
+        type: 'podcast',
+        title: 'Podcast Capitolo 13',
+        description: 'Podcast completo CH13: workflow AI con controllo qualità, review umana e quality gate prima del rilascio.',
+        estimatedDuration: '15 min',
+        placeholderPath: 'media/ch13-practical-tools/podcast.mp3',
+        notes: 'ready'
+      },
+      {
         type: 'infographic',
         title: 'Infografica Capitolo 13',
         description: 'Workflow AI operativo: dalla richiesta prompt al rilascio con quality gate. Mappa visiva di ChatGPT, Copilot e tool assistivi nel ciclo di lavoro reale.',
