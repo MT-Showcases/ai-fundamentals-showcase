@@ -30,7 +30,7 @@ export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
   };
 
   const lines = code.split('\n').length;
-  const height = Math.min(Math.max(lines * 22 + 28, 180), 520);
+  const height = Math.min(Math.max(lines * 20 + 24, 120), 480);
 
   return (
     <div className="h-auto rounded-xl border border-navy-600 overflow-hidden bg-navy-900/70">
