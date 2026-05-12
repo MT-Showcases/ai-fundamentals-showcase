@@ -19,8 +19,9 @@ import GlossaryTerm from '@/components/GlossaryTerm';
 import ChapterChallenge from '@/components/ChapterChallenge';
 import ChapterChallengeHallucination from '@/components/ChapterChallengeHallucination';
 import ChapterChallengeRiskClassification from '@/components/ChapterChallengeRiskClassification';
+import ChapterChallengeTableReview from '@/components/ChapterChallengeTableReview';
 import MachineLearningWorkflow from '@/components/workflows/MachineLearningWorkflow';
-import type { ChapterChallengeBias, ChapterChallengeHallucination as ChapterChallengeHallucinationType, ChapterChallengeRiskClassification as ChapterChallengeRiskClassificationType } from '@/data/types';
+import type { ChapterChallengeBias, ChapterChallengeHallucination as ChapterChallengeHallucinationType, ChapterChallengeRiskClassification as ChapterChallengeRiskClassificationType, ChapterChallengeTableReview as ChapterChallengeTableReviewType } from '@/data/types';
 import Link from 'next/link';
 
 export const revalidate = 60; // ISR: Revalidate every 60 seconds
@@ -913,6 +914,9 @@ Esempi di utilizzo:
             )}
             {chapter.challenge && 'scenarios' in chapter.challenge && (
               <ChapterChallengeRiskClassification challenge={chapter.challenge as ChapterChallengeRiskClassificationType} />
+            )}
+            {chapter.challenge && 'table' in chapter.challenge && (
+              <ChapterChallengeTableReview challenge={chapter.challenge as ChapterChallengeTableReviewType} />
             )}
 
             {chapter.quiz && chapter.quiz.length > 0 && (

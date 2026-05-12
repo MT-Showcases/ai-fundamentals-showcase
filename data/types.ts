@@ -118,6 +118,28 @@ export interface ChapterChallengeRiskClassification {
   riskOptions: Array<{ value: 'prohibited' | 'high' | 'limited' | 'minimal'; label: string; color: string }>;
 }
 
+export interface TableChallengePhase {
+  id: string;
+  title: string;
+  instruction: string;
+  selectionMode: 'row' | 'cell' | 'column';
+  correctRows?: number[];
+  correctColumns?: string[];
+  correctCells?: Array<{ row: number; column: string }>;
+}
+
+export interface ChapterChallengeTableReview {
+  id: string;
+  title: string;
+  intro: string;
+  scoringMode: 'precision' | 'coverage' | 'balanced';
+  table: {
+    columns: string[];
+    rows: Array<Record<string, string | number | boolean>>;
+  };
+  phases: TableChallengePhase[];
+}
+
 export interface Chapter {
   id: number;
   slug: string;
@@ -130,6 +152,6 @@ export interface Chapter {
   quiz?: QuizQuestion[];
   media?: MediaPlaceholder[];
   exercises?: ChapterExercise[];
-  challenge?: ChapterChallengeBias | ChapterChallengeHallucination | ChapterChallengeRiskClassification;
+  challenge?: ChapterChallengeBias | ChapterChallengeHallucination | ChapterChallengeRiskClassification | ChapterChallengeTableReview;
   labNote?: string;
 }

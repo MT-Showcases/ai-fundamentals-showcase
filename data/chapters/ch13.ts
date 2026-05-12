@@ -71,6 +71,43 @@ export const ch13: Chapter = {
         ]
       }
     ],
+    challenge: {
+      id: 'ch13-quality-gate-review',
+      title: 'Quality Gate Interattivo — Trova errori prima del rilascio',
+      intro: 'Analizza la tabella come farebbe un reviewer: individua errori puntuali e poi identifica le righe ad alto rischio. Verifica solo alla fine.',
+      scoringMode: 'balanced',
+      table: {
+        columns: ['case_id', 'tool', 'risk_level', 'output_quality', 'fact_check_passed', 'security_impact', 'proposed_action'],
+        rows: [
+          { case_id: 'CH13-001', tool: 'chat_assistant', risk_level: 'low', output_quality: 'high', fact_check_passed: 'yes', security_impact: 'none', proposed_action: 'use_direct' },
+          { case_id: 'CH13-002', tool: 'chat_assistant', risk_level: 'high', output_quality: 'medium', fact_check_passed: 'no', security_impact: 'possible', proposed_action: 'review_required' },
+          { case_id: 'CH13-003', tool: 'coding_assistant', risk_level: 'low', output_quality: 'medium', fact_check_passed: 'yes', security_impact: 'none', proposed_action: 'review_required' },
+          { case_id: 'CH13-004', tool: 'coding_assistant', risk_level: 'high', output_quality: 'medium', fact_check_passed: 'no', security_impact: 'critical', proposed_action: 'use_direct' },
+          { case_id: 'CH13-005', tool: 'coding_assistant', risk_level: 'high', output_quality: 'medium', fact_check_passed: 'yes', security_impact: 'critical', proposed_action: 'review_required' },
+          { case_id: 'CH13-006', tool: 'chat_assistant', risk_level: 'medium', output_quality: 'low', fact_check_passed: 'no', security_impact: 'possible', proposed_action: 'use_direct' }
+        ]
+      },
+      phases: [
+        {
+          id: 'wrong-cells',
+          title: 'Fase 1',
+          instruction: 'Seleziona le celle sbagliate nella colonna proposed_action.',
+          selectionMode: 'cell',
+          correctCells: [
+            { row: 1, column: 'proposed_action' },
+            { row: 3, column: 'proposed_action' },
+            { row: 5, column: 'proposed_action' }
+          ]
+        },
+        {
+          id: 'high-risk-rows',
+          title: 'Fase 2',
+          instruction: 'Seleziona le righe ad alto rischio operativo (risk high).',
+          selectionMode: 'row',
+          correctRows: [1, 3, 4]
+        }
+      ]
+    },
     quiz: [
       {
         question: 'Scenario: il modello propone una spiegazione tecnica molto fluida ma senza fonti verificabili. Prima azione corretta?',
