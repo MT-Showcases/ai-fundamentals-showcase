@@ -30,25 +30,38 @@ export const ch07: Chapter = {
       'Quale edge-case è più critico nel tuo dominio?',
       'Quando conviene usare transfer learning in vision?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Test set realistico vision (senza coding)',
-        objective: 'Progettare un mini piano test per stressare un sistema vision prima del deploy.',
-        duration: '15-20 min',
-        steps: [
-          'Leggi il dataset train CH7 e individua pattern principali.',
-          'Definisci 3 edge-case: luce, angolo, occlusione.',
-          'Confronta con validation CH7 e segna dove serve fallback.',
-          'Definisci 2 KPI: errori critici e fallback rate.'
-        ],
-        deliverable: 'Checkpoint personale: 3 edge-case + 1 mitigazione operativa.',
-        resources: [
-          { label: 'Dataset train CH7 (CSV)', path: '/datasets/ch07-vision-cases/train.csv' },
-          { label: 'Dataset validation CH7 (CSV)', path: '/datasets/ch07-vision-cases/validation.csv' },
-          { label: 'Schema campi CH7 (JSON)', path: '/datasets/ch07-vision-cases/schema.json' }
+    challenge: {
+      id: 'ch07-vision-risk-review',
+      title: 'Vision Risk Review — Edge Case Interattivo',
+      intro: 'Analizza i casi vision e individua dove il rischio operativo è più alto prima del rilascio.',
+      scoringMode: 'balanced',
+      table: {
+        columns: ['image_id', 'lighting', 'angle', 'occlusion', 'motion_blur', 'expected_class', 'risk_tag'],
+        rows: [
+          { image_id: 'I001', lighting: 'good', angle: 'front', occlusion: 'none', motion_blur: 'low', expected_class: 'dog', risk_tag: 'low' },
+          { image_id: 'I002', lighting: 'low_light', angle: 'front', occlusion: 'partial', motion_blur: 'low', expected_class: 'dog', risk_tag: 'medium' },
+          { image_id: 'I003', lighting: 'good', angle: 'side', occlusion: 'none', motion_blur: 'medium', expected_class: 'cat', risk_tag: 'medium' },
+          { image_id: 'I004', lighting: 'backlight', angle: 'front', occlusion: 'partial', motion_blur: 'high', expected_class: 'person', risk_tag: 'high' },
+          { image_id: 'I005', lighting: 'good', angle: 'top', occlusion: 'none', motion_blur: 'low', expected_class: 'car', risk_tag: 'low' }
         ]
-      }
-    ],
+      },
+      phases: [
+        {
+          id: 'high-risk-rows',
+          title: 'Fase 1',
+          instruction: 'Seleziona le righe con rischio high/critico di errore visivo.',
+          selectionMode: 'row',
+          correctRows: [3]
+        },
+        {
+          id: 'risk-columns',
+          title: 'Fase 2',
+          instruction: 'Seleziona le colonne da monitorare sempre per edge-case vision.',
+          selectionMode: 'column',
+          correctColumns: ['lighting', 'occlusion', 'motion_blur', 'risk_tag']
+        }
+      ]
+    },
     quiz: [
       {
         question: 'In un sistema vision per accessi aziendali, quale test è PIÙ utile prima del deploy?',

@@ -150,6 +150,7 @@ npm run start
 │   ├── SectionCard.tsx           # Content section wrapper
 │   ├── ChapterQuiz.tsx           # Interactive quiz engine
 │   ├── ChapterExercises.tsx      # Practical exercises
+│   ├── ChapterChallengeTableReview.tsx # Modular row/cell/column challenge engine
 │   ├── PracticalWorkflow.tsx     # Step-by-step lab guide
 │   ├── CodeSnippet.tsx           # Syntax-highlighted code
 │   ├── GlossaryTooltip.tsx       # Inline term tooltips
@@ -164,6 +165,8 @@ npm run start
 │   └── labs/                     # Lab source files (Python)
 └── docs/                         # Reports and audits
 ```
+
+Interactive challenge system docs: `docs/interactive-challenges.md`
 
 ---
 

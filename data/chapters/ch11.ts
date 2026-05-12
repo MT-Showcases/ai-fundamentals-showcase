@@ -23,25 +23,6 @@ export const ch11: Chapter = {
       'Come bilanceresti velocità di rilascio e obblighi di conformità?',
       'Quali evidenze tecniche conserveresti per dimostrare accountability?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Classificazione rischio e controlli AI Act (senza coding)',
-        objective: 'Applicare l\'AI Act a scenari reali per definire il livello di rischio e i controlli minimi di conformità.',
-        duration: '15-20 min',
-        steps: [
-          'Apri il dataset train CH11 e leggi i casi d\'uso con contesto operativo.',
-          'Classifica ogni caso: prohibited, high, limited oppure minimal.',
-          'Per i casi high indica il controllo prioritario (human review, conformity assessment, logging o transparency notice).',
-          'Confronta con validation CH11 e annota 2 rischi di non conformità da evitare nel tuo dominio.'
-        ],
-        deliverable: 'Checkpoint personale: tabella scenario → rischio → controllo prioritario con breve motivazione.',
-        resources: [
-          { label: 'Dataset train CH11 (CSV)', path: '/datasets/ch11-ai-act-compliance/train.csv' },
-          { label: 'Dataset validation CH11 (CSV)', path: '/datasets/ch11-ai-act-compliance/validation.csv' },
-          { label: 'Schema campi CH11 (JSON)', path: '/datasets/ch11-ai-act-compliance/schema.json' }
-        ]
-      }
-    ],
     challenge: {
       id: 'ch11-classifica-rischio',
       title: 'Classifica il Rischio AI Act',

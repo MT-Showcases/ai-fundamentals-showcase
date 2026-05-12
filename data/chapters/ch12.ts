@@ -55,25 +55,37 @@ export const ch12: Chapter = {
       'Quale competenza umana pensi diventerà più preziosa con l\'uso esteso dell\'AI?',
       'Come bilanceresti velocità operativa e controllo qualità in un workflow AI?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Piano self-paced di adozione AI (senza coding)',
-        objective: 'Progettare un piano concreto per introdurre AI in un processo di lavoro mantenendo qualità e controllo rischio.',
-        duration: '20-25 min',
-        steps: [
-          'Apri il dataset train CH12 e seleziona 3 scenari di lavoro diversi (es. supporto, HR, operations).',
-          'Per ogni scenario identifica: task da automatizzare, task da assistere e task da lasciare umani.',
-          'Usa la validation CH12 per verificare la coerenza delle scelte e annota eventuali correzioni.',
-          'Definisci per uno scenario finale 3 KPI (efficienza, qualità, rischio) e una regola di escalation umana.'
-        ],
-        deliverable: 'Checkpoint personale: tabella scenario → task split → KPI → regola di supervisione, pronta per discussione in aula.',
-        resources: [
-          { label: 'Dataset train CH12 (CSV)', path: '/datasets/ch12-ai-workforce/train.csv' },
-          { label: 'Dataset validation CH12 (CSV)', path: '/datasets/ch12-ai-workforce/validation.csv' },
-          { label: 'Schema campi CH12 (JSON)', path: '/datasets/ch12-ai-workforce/schema.json' }
+    challenge: {
+      id: 'ch12-operating-mode-review',
+      title: 'Operating Mode Review — Automate / Assist / Human-led',
+      intro: 'Valuta gli scenari di lavoro e individua dove la modalità operativa proposta è rischiosa o non coerente.',
+      scoringMode: 'balanced',
+      table: {
+        columns: ['case_id', 'domain', 'task', 'task_repetitiveness', 'impact_if_wrong', 'needs_human_judgment', 'data_sensitivity', 'recommended_operating_mode'],
+        rows: [
+          { case_id: 'W001', domain: 'customer_support', task: 'faq_routing', task_repetitiveness: 'high', impact_if_wrong: 'low', needs_human_judgment: 'no', data_sensitivity: 'medium', recommended_operating_mode: 'automate' },
+          { case_id: 'W002', domain: 'finance', task: 'invoice_data_extraction', task_repetitiveness: 'high', impact_if_wrong: 'medium', needs_human_judgment: 'no', data_sensitivity: 'high', recommended_operating_mode: 'assist' },
+          { case_id: 'W003', domain: 'hiring', task: 'candidate_cv_screening', task_repetitiveness: 'medium', impact_if_wrong: 'high', needs_human_judgment: 'yes', data_sensitivity: 'high', recommended_operating_mode: 'human_led' },
+          { case_id: 'W004', domain: 'legal_ops', task: 'contract_risk_flagging', task_repetitiveness: 'medium', impact_if_wrong: 'high', needs_human_judgment: 'yes', data_sensitivity: 'high', recommended_operating_mode: 'automate' }
         ]
-      }
-    ],
+      },
+      phases: [
+        {
+          id: 'wrong-mode-cell',
+          title: 'Fase 1',
+          instruction: 'Seleziona la cella recommended_operating_mode non coerente con il rischio.',
+          selectionMode: 'cell',
+          correctCells: [{ row: 3, column: 'recommended_operating_mode' }]
+        },
+        {
+          id: 'human-led-rows',
+          title: 'Fase 2',
+          instruction: 'Seleziona le righe che richiedono human-led o supervisione forte.',
+          selectionMode: 'row',
+          correctRows: [2, 3]
+        }
+      ]
+    },
     quiz: [
       {
         question: 'In un team operations, quale approccio descrive meglio un\'adozione AI matura?',

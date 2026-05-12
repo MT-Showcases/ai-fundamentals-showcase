@@ -35,25 +35,40 @@ export const ch15: Chapter = {
       'Quali decisioni non automatizzeresti mai senza revisione umana obbligatoria?',
       'Come misureresti se un progetto AI "futuro-oriented" sta creando valore reale oggi?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Roadmap AI 12 mesi (self-paced, senza coding)',
-        objective: 'Definire una roadmap AI realistica per un team o una startup bilanciando valore, rischio e governance.',
-        duration: '20-30 min',
-        steps: [
-          'Apri il dataset train CH15 e seleziona 4 scenari con priorità differenti (efficienza, qualità, compliance, crescita).',
-          'Per ogni scenario assegna priorità (alta/media/bassa) e indica il principale rischio operativo.',
-          'Confronta le tue scelte con validation CH15 e correggi almeno un caso dove la mitigazione era insufficiente.',
-          'Scegli uno scenario finale e definisci 3 KPI per i prossimi 90 giorni: impatto, qualità, rischio.'
-        ],
-        deliverable: 'Checkpoint personale: tabella scenario → priorità → rischio → mitigazione → KPI (90 giorni).',
-        resources: [
-          { label: 'Dataset train CH15 (CSV)', path: '/datasets/ch15-future-scenarios/train.csv' },
-          { label: 'Dataset validation CH15 (CSV)', path: '/datasets/ch15-future-scenarios/validation.csv' },
-          { label: 'Schema campi CH15 (JSON)', path: '/datasets/ch15-future-scenarios/schema.json' }
+    challenge: {
+      id: 'ch15-roadmap-review',
+      title: 'Roadmap Review — Futuro AI',
+      intro: 'Valuta scenari futuri e individua dove strategia o mitigazioni sono insufficienti per il rischio dichiarato.',
+      scoringMode: 'balanced',
+      table: {
+        columns: ['scenario_id', 'domain', 'initiative', 'horizon', 'expected_value', 'risk_level', 'data_readiness', 'governance_maturity', 'recommended_strategy', 'primary_kpi', 'primary_mitigation'],
+        rows: [
+          { scenario_id: 'CH15-001', domain: 'Healthcare', initiative: 'AI triage support', horizon: '6-month', expected_value: 'high', risk_level: 'high', data_readiness: 'medium', governance_maturity: 'medium', recommended_strategy: 'human_in_the_loop + risk segmentation', primary_kpi: 'triage_accuracy_critical_cases', primary_mitigation: 'mandatory_clinician_review_for_high_impact' },
+          { scenario_id: 'CH15-002', domain: 'E-commerce', initiative: 'Multimodal product assistant', horizon: '3-month', expected_value: 'medium', risk_level: 'medium', data_readiness: 'high', governance_maturity: 'medium', recommended_strategy: 'rag + fallback_human', primary_kpi: 'first_contact_resolution_rate', primary_mitigation: 'confidence_threshold_and_escalation' },
+          { scenario_id: 'CH15-003', domain: 'Education', initiative: 'Adaptive feedback generator', horizon: '6-month', expected_value: 'high', risk_level: 'medium', data_readiness: 'medium', governance_maturity: 'low', recommended_strategy: 'pilot_with_guardrails', primary_kpi: 'learning_outcome_improvement', primary_mitigation: 'teacher_validation_on_assessment_outputs' },
+          { scenario_id: 'CH15-004', domain: 'Finance', initiative: 'Auto-credit approval', horizon: '3-month', expected_value: 'high', risk_level: 'high', data_readiness: 'low', governance_maturity: 'low', recommended_strategy: 'full_automation_fast_rollout', primary_kpi: 'approval_speed', primary_mitigation: 'none' }
         ]
-      }
-    ],
+      },
+      phases: [
+        {
+          id: 'critical-wrong-cells',
+          title: 'Fase 1',
+          instruction: 'Seleziona le celle critiche errate o insufficienti nello scenario più rischioso.',
+          selectionMode: 'cell',
+          correctCells: [
+            { row: 3, column: 'recommended_strategy' },
+            { row: 3, column: 'primary_mitigation' }
+          ]
+        },
+        {
+          id: 'high-risk-rows',
+          title: 'Fase 2',
+          instruction: 'Seleziona le righe high-risk che richiedono governance forte.',
+          selectionMode: 'row',
+          correctRows: [0, 3]
+        }
+      ]
+    },
     quiz: [
       {
         question: 'Qual è la differenza più corretta tra Narrow AI e AGI?',

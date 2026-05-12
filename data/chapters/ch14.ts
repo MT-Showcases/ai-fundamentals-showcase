@@ -23,25 +23,37 @@ export const ch14: Chapter = {
       'Quali azioni di un agent dovrebbero richiedere approvazione umana obbligatoria?',
       'Quale segnale concreto ti direbbe che è arrivato il momento del fine-tuning?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Scelta architettura avanzata (self-paced, senza coding)',
-        objective: 'Confrontare prompt-only, RAG e agent su uno scenario reale usando criteri tecnici e business.',
-        duration: '20-25 min',
-        steps: [
-          'Apri il dataset train CH14 e scegli 3 scenari con vincoli diversi (qualità, tempo, compliance).',
-          'Per ogni scenario proponi una strategia iniziale: prompt-only, RAG o agent assistito.',
-          'Confronta le tue scelte con il validation CH14 e identifica un caso in cui servirebbe escalation umana.',
-          'Definisci 3 KPI di verifica per le prime 2 settimane: quality pass rate, fallback rate, costo per task.'
-        ],
-        deliverable: 'Checkpoint personale: tabella scenario → strategia → rischio principale → KPI di monitoraggio.',
-        resources: [
-          { label: 'Dataset train CH14 (CSV)', path: '/datasets/ch14-advanced-patterns/train.csv' },
-          { label: 'Dataset validation CH14 (CSV)', path: '/datasets/ch14-advanced-patterns/validation.csv' },
-          { label: 'Schema campi CH14 (JSON)', path: '/datasets/ch14-advanced-patterns/schema.json' }
+    challenge: {
+      id: 'ch14-architecture-review',
+      title: 'Architecture Review — RAG vs Agent vs Fine-tuning',
+      intro: 'Analizza gli scenari avanzati e identifica dove la strategia scelta richiede più guardrail o escalation.',
+      scoringMode: 'balanced',
+      table: {
+        columns: ['case_id', 'domain', 'knowledge_change_rate', 'action_automation_needed', 'compliance_risk', 'response_accuracy_need', 'budget_level', 'latency_tolerance', 'recommended_strategy'],
+        rows: [
+          { case_id: 'CH14-001', domain: 'customer_support', knowledge_change_rate: 'high', action_automation_needed: 'low', compliance_risk: 'medium', response_accuracy_need: 'high', budget_level: 'medium', latency_tolerance: 'moderate', recommended_strategy: 'rag' },
+          { case_id: 'CH14-002', domain: 'internal_wiki_qa', knowledge_change_rate: 'high', action_automation_needed: 'low', compliance_risk: 'low', response_accuracy_need: 'medium', budget_level: 'low', latency_tolerance: 'moderate', recommended_strategy: 'rag' },
+          { case_id: 'CH14-003', domain: 'invoice_reconciliation', knowledge_change_rate: 'medium', action_automation_needed: 'high', compliance_risk: 'high', response_accuracy_need: 'high', budget_level: 'medium', latency_tolerance: 'strict', recommended_strategy: 'agent_assisted' },
+          { case_id: 'CH14-004', domain: 'policy_qa_regulated', knowledge_change_rate: 'high', action_automation_needed: 'high', compliance_risk: 'high', response_accuracy_need: 'high', budget_level: 'medium', latency_tolerance: 'strict', recommended_strategy: 'prompt_only' }
         ]
-      }
-    ],
+      },
+      phases: [
+        {
+          id: 'wrong-strategy',
+          title: 'Fase 1',
+          instruction: 'Seleziona la cella recommended_strategy più rischiosa/non coerente.',
+          selectionMode: 'cell',
+          correctCells: [{ row: 3, column: 'recommended_strategy' }]
+        },
+        {
+          id: 'guardrail-columns',
+          title: 'Fase 2',
+          instruction: 'Seleziona le colonne da usare sempre come guardrail decisionali.',
+          selectionMode: 'column',
+          correctColumns: ['compliance_risk', 'action_automation_needed', 'response_accuracy_need', 'recommended_strategy']
+        }
+      ]
+    },
     quiz: [
       {
         question: 'Una knowledge base interna cambia ogni giorno. Strategia iniziale più sensata?',
