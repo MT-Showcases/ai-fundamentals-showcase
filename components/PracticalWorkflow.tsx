@@ -62,6 +62,7 @@ export default function PracticalWorkflow({
 }: PracticalWorkflowProps) {
   const [showCompleteSource, setShowCompleteSource] = useState(false);
   const [copiedComplete, setCopiedComplete] = useState(false);
+  const [expandedModifications, setExpandedModifications] = useState<Record<number, boolean>>({});
 
   return (
     <div className="bg-navy-900 border border-cyan-400/20 rounded-xl p-4 sm:p-6 lg:p-8 mb-8">
@@ -97,15 +98,43 @@ export default function PracticalWorkflow({
         </div>
       )}
 
-      <div className="space-y-6">
-        {steps.map((step) => {
-          const lang = step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python');
+      <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-8">
+        <aside className="hidden lg:block lg:sticky lg:top-24 lg:self-start">
+          <div className="bg-navy-800 border border-cyan-400/20 rounded-lg p-4">
+            <p className="text-cyan-300 font-semibold text-sm mb-3">Progressione Step</p>
+            <ul className="space-y-2 mb-4">
+              {steps.map((s) => (
+                <li key={`nav-${s.number}`} className="text-xs text-gray-300 flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-cyan-300 text-navy-900 font-bold text-[11px]">
+                    {s.number}
+                  </span>
+                  <span className="truncate">{s.title}</span>
+                </li>
+              ))}
+            </ul>
+            {downloadLinks.length > 0 && (
+              <div className="pt-3 border-t border-navy-600 space-y-2">
+                {downloadLinks.slice(0, 1).map((link, idx) => (
+                  <a key={`side-${idx}`} href={link.url} download className="inline-block w-full">
+                    <Button variant="primary" className="w-full px-3 py-2 min-h-0 text-xs">
+                      {link.icon === 'zip' ? '📦' : link.icon === 'pdf' ? '📄' : '⬇️'} Download Lab
+                    </Button>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </aside>
 
-          return (
-            <div
-              key={step.number}
-              className="bg-navy-800 rounded-lg p-4 md:p-5 lg:p-6 border border-cyan-400/20"
-            >
+        <div className="space-y-6">
+          {steps.map((step) => {
+            const lang = step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python');
+
+            return (
+              <div
+                key={step.number}
+                className="bg-navy-800 rounded-lg p-4 md:p-5 lg:p-6 border border-cyan-400/20"
+              >
               <div className="flex items-baseline gap-3 mb-4">
                 <div className="bg-cyan-300 text-navy-900 font-extrabold px-4 py-1.5 rounded text-sm md:text-base leading-none shadow-sm">
                   Step {step.number}
@@ -140,46 +169,63 @@ export default function PracticalWorkflow({
               </div>
 
               {step.modificationExample && (
-                <div className="mt-6 bg-blue-900/10 rounded-lg p-6 border border-blue-400/20">
-                  <p className="text-sm font-semibold text-blue-300 mb-4">
-                    📝 MODIFICA ESEMPIO — Riga {step.modificationExample.lineNumber}
-                  </p>
-                  <p className="text-sm text-gray-300 mb-4">
-                    {step.modificationExample.description}
-                  </p>
-
-                  <div className="space-y-4 mb-4">
-                    <div>
-                      <p className="text-xs text-gray-400 mb-2 font-mono">PRIMA:</p>
-                      <CodeSnippet
-                        lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
-                        code={step.modificationExample.before}
-                        label="Originale"
-                      />
-                    </div>
-
-                    <div>
-                      <p className="text-xs text-gray-400 mb-2 font-mono">DOPO (Prova):</p>
-                      <CodeSnippet
-                        lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
-                        code={step.modificationExample.after}
-                        label="Modificato"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="bg-cyan-900/20 border-l-2 border-cyan-400 pl-4 py-3">
-                    <p className="text-sm text-gray-300">
-                      <strong>Risultato atteso:</strong> {step.modificationExample.expectedResult}
+                <div className="mt-6 bg-blue-900/10 rounded-lg p-4 md:p-6 border border-blue-400/20">
+                  <button
+                    onClick={() =>
+                      setExpandedModifications((prev) => ({
+                        ...prev,
+                        [step.number]: !prev[step.number],
+                      }))
+                    }
+                    className="w-full flex items-center justify-between text-left"
+                  >
+                    <p className="text-sm font-semibold text-blue-300">
+                      📝 MODIFICA ESEMPIO — Riga {step.modificationExample.lineNumber}
                     </p>
-                  </div>
+                    <span className="text-xs text-cyan-300">{expandedModifications[step.number] ? 'Nascondi' : 'Mostra'}</span>
+                  </button>
+
+                  {expandedModifications[step.number] && (
+                    <>
+                      <p className="text-sm text-gray-300 mt-4 mb-4">
+                        {step.modificationExample.description}
+                      </p>
+
+                      <div className="space-y-4 mb-4">
+                        <div>
+                          <p className="text-xs text-gray-400 mb-2 font-mono">PRIMA:</p>
+                          <CodeSnippet
+                            lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
+                            code={step.modificationExample.before}
+                            label="Originale"
+                          />
+                        </div>
+
+                        <div>
+                          <p className="text-xs text-gray-400 mb-2 font-mono">DOPO (Prova):</p>
+                          <CodeSnippet
+                            lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
+                            code={step.modificationExample.after}
+                            label="Modificato"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="bg-cyan-900/20 border-l-2 border-cyan-400 pl-4 py-3">
+                        <p className="text-sm text-gray-300">
+                          <strong>Risultato atteso:</strong> {step.modificationExample.expectedResult}
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
 
             </div>
           );
-        })}
+          })}
 
+        </div>
       </div>
 
       {workflowCompleteSource && (
