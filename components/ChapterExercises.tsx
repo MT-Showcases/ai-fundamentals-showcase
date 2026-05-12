@@ -26,6 +26,37 @@ export default function ChapterExercises({ exercises }: Props) {
   useEffect(() => {
     let active = true;
 
+    function parseCsvLine(line: string): string[] {
+      const out: string[] = [];
+      let current = '';
+      let inQuotes = false;
+
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+
+        if (ch === '"') {
+          if (inQuotes && line[i + 1] === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+          continue;
+        }
+
+        if (ch === ',' && !inQuotes) {
+          out.push(current.trim());
+          current = '';
+          continue;
+        }
+
+        current += ch;
+      }
+
+      out.push(current.trim());
+      return out;
+    }
+
     async function loadCsv(path: string) {
       try {
         const res = await fetch(path);
@@ -33,8 +64,8 @@ export default function ChapterExercises({ exercises }: Props) {
         const text = await res.text();
         const lines = text.trim().split(/\r?\n/).filter(Boolean);
         if (lines.length < 2) return;
-        const headers = lines[0].split(',').map((s) => s.trim());
-        const rows = lines.slice(1, 7).map((line) => line.split(',').map((s) => s.trim()));
+        const headers = parseCsvLine(lines[0]);
+        const rows = lines.slice(1, 7).map((line) => parseCsvLine(line));
         if (!active) return;
         setPreviews((prev) => ({ ...prev, [path]: { headers, rows } }));
       } catch {
@@ -134,7 +165,7 @@ export default function ChapterExercises({ exercises }: Props) {
                           </Link>
 
                           {previews[res.path] && (
-                            <div className="overflow-x-auto rounded-lg border border-amber-500/30">
+                            <div className="overflow-x-scroll show-scrollbar-x rounded-lg border border-amber-500/30">
                               <div className="px-3 py-2 text-xs text-amber-200/90 border-b border-amber-600/30">{res.label} (prime 6 righe)</div>
                               <table className="min-w-full text-xs">
                                 <thead className="bg-amber-900/30 text-amber-200">
@@ -175,7 +206,7 @@ export default function ChapterExercises({ exercises }: Props) {
                     if (!preview) return null;
 
                     return (
-                      <div key={`preview-${res.path}`} className="overflow-x-auto rounded-lg border border-blue-700/40">
+                      <div key={`preview-${res.path}`} className="overflow-x-scroll show-scrollbar-x rounded-lg border border-blue-700/40">
                         <div className="px-3 py-2 text-xs text-gray-400 border-b border-blue-800/40">{res.label} (prime 6 righe)</div>
                         <table className="min-w-full text-xs">
                           <thead className="bg-navy-800/80 text-cyan-200">

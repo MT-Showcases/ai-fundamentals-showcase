@@ -56,6 +56,15 @@ body {
   background: #00d9ff;
 }
 
+/* For dataset tables: keep horizontal scrollbar track visible and stable */
+.show-scrollbar-x {
+  scrollbar-gutter: stable both-edges;
+}
+
+.show-scrollbar-x::-webkit-scrollbar {
+  height: 10px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
