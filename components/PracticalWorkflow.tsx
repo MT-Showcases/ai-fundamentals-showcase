@@ -62,6 +62,7 @@ export default function PracticalWorkflow({
 }: PracticalWorkflowProps) {
   const [showCompleteSource, setShowCompleteSource] = useState(false);
   const [copiedComplete, setCopiedComplete] = useState(false);
+  const [expandedModifications, setExpandedModifications] = useState<Record<number, boolean>>({});
 
   return (
     <div className="bg-navy-900 border border-cyan-400/20 rounded-xl p-4 sm:p-6 lg:p-8 mb-8">
@@ -140,39 +141,55 @@ export default function PracticalWorkflow({
               </div>
 
               {step.modificationExample && (
-                <div className="mt-6 bg-blue-900/10 rounded-lg p-6 border border-blue-400/20">
-                  <p className="text-sm font-semibold text-blue-300 mb-4">
-                    📝 MODIFICA ESEMPIO — Riga {step.modificationExample.lineNumber}
-                  </p>
-                  <p className="text-sm text-gray-300 mb-4">
-                    {step.modificationExample.description}
-                  </p>
-
-                  <div className="space-y-4 mb-4">
-                    <div>
-                      <p className="text-xs text-gray-400 mb-2 font-mono">PRIMA:</p>
-                      <CodeSnippet
-                        lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
-                        code={step.modificationExample.before}
-                        label="Originale"
-                      />
-                    </div>
-
-                    <div>
-                      <p className="text-xs text-gray-400 mb-2 font-mono">DOPO (Prova):</p>
-                      <CodeSnippet
-                        lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
-                        code={step.modificationExample.after}
-                        label="Modificato"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="bg-cyan-900/20 border-l-2 border-cyan-400 pl-4 py-3">
-                    <p className="text-sm text-gray-300">
-                      <strong>Risultato atteso:</strong> {step.modificationExample.expectedResult}
+                <div className="mt-6 bg-blue-900/10 rounded-lg p-4 md:p-6 border border-blue-400/20">
+                  <button
+                    onClick={() =>
+                      setExpandedModifications((prev) => ({
+                        ...prev,
+                        [step.number]: !prev[step.number],
+                      }))
+                    }
+                    className="w-full flex items-center justify-between text-left"
+                  >
+                    <p className="text-sm font-semibold text-blue-300">
+                      📝 MODIFICA ESEMPIO — Riga {step.modificationExample.lineNumber}
                     </p>
-                  </div>
+                    <span className="text-xs text-cyan-300">{expandedModifications[step.number] ? 'Nascondi' : 'Mostra'}</span>
+                  </button>
+
+                  {expandedModifications[step.number] && (
+                    <>
+                      <p className="text-sm text-gray-300 mt-4 mb-4">
+                        {step.modificationExample.description}
+                      </p>
+
+                      <div className="space-y-4 mb-4">
+                        <div>
+                          <p className="text-xs text-gray-400 mb-2 font-mono">PRIMA:</p>
+                          <CodeSnippet
+                            lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
+                            code={step.modificationExample.before}
+                            label="Originale"
+                          />
+                        </div>
+
+                        <div>
+                          <p className="text-xs text-gray-400 mb-2 font-mono">DOPO (Prova):</p>
+                          <CodeSnippet
+                            lang={step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python')}
+                            code={step.modificationExample.after}
+                            label="Modificato"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="bg-cyan-900/20 border-l-2 border-cyan-400 pl-4 py-3">
+                        <p className="text-sm text-gray-300">
+                          <strong>Risultato atteso:</strong> {step.modificationExample.expectedResult}
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
 

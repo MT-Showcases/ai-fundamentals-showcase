@@ -59,9 +59,13 @@ export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
           fontSize: 13,
           lineNumbers: 'on',
           automaticLayout: true,
-          wordWrap: 'on',
+          wordWrap: 'off',
           tabSize: 2,
           padding: { top: 12, bottom: 12 },
+          scrollbar: {
+            horizontal: 'auto',
+            vertical: 'auto',
+          },
           fontFamily: 'JetBrains Mono, Fira Code, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
         }}
       />
