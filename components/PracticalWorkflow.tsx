@@ -61,17 +61,15 @@ export default function PracticalWorkflow({
   chapterSlug,
   setupContent
 }: PracticalWorkflowProps) {
-  const [expandedSources, setExpandedSources] = useState<Record<number, boolean>>({});
-  const [copiedStep, setCopiedStep] = useState<number | null>(null);
   const [showCompleteSource, setShowCompleteSource] = useState(false);
   const [copiedComplete, setCopiedComplete] = useState(false);
 
   return (
-    <div className="bg-navy-900 border border-cyan-400/20 rounded-xl p-8 mb-8">
+    <div className="bg-navy-900 border border-cyan-400/20 rounded-xl p-4 sm:p-6 lg:p-8 mb-8">
       <h3 className="text-2xl font-bold text-cyan-300 mb-2">{title}</h3>
-      {intro && <p className="text-gray-300 mb-6">{intro}</p>}
+      {intro && <p className="text-gray-300 mb-6 max-w-prose leading-7">{intro}</p>}
 
-      <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-6 mb-8">
+      <div className="bg-navy-800 border border-blue-400/30 rounded-lg p-4 md:p-6 mb-8">
         <h4 className="text-lg font-semibold text-blue-300 mb-4">📋 Setup</h4>
         <div className="flex flex-wrap gap-3 mb-6">
           {downloadLinks.map((link, idx) => (
@@ -82,7 +80,7 @@ export default function PracticalWorkflow({
             </a>
           ))}
         </div>
-        {setupContent && <div>{setupContent}</div>}
+        {setupContent && <div className="max-w-4xl">{setupContent}</div>}
       </div>
 
       {media && media.length > 0 && chapterId && chapterSlug && (
@@ -100,23 +98,23 @@ export default function PracticalWorkflow({
         </div>
       )}
 
-      <div className="space-y-8">
+      <div className="space-y-6">
         {steps.map((step) => {
           const lang = step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python');
 
           return (
             <div
               key={step.number}
-              className="bg-navy-800 rounded-lg p-4 md:p-6 border border-cyan-400/20"
+              className="bg-navy-800 rounded-lg p-4 md:p-5 lg:p-6 border border-cyan-400/20"
             >
               <div className="flex items-baseline gap-3 mb-4">
-                <div className="bg-cyan-400/20 text-cyan-300 font-bold px-3 py-1 rounded text-sm">
+                <div className="bg-cyan-400/30 text-cyan-200 font-bold px-4 py-1.5 rounded text-base leading-none">
                   Step {step.number}
                 </div>
-                <h4 className="text-lg font-semibold text-cyan-300">{step.title}</h4>
+                <h4 className="text-lg md:text-xl font-semibold text-cyan-200">{step.title}</h4>
               </div>
 
-              <p className="text-gray-300 mb-4">{step.description}</p>
+              <p className="text-gray-300 mb-4 max-w-prose leading-7">{step.description}</p>
 
               <div className="mb-4">
                 <CodeSnippet
@@ -127,7 +125,7 @@ export default function PracticalWorkflow({
               </div>
 
               {step.fileReference && (
-                <div className="mt-3 p-3 bg-navy-700/50 rounded border-l-2 border-cyan-400 text-sm text-gray-300">
+                <div className="mt-3 p-3 bg-navy-700/50 rounded border-l-2 border-cyan-400 text-sm text-gray-300 max-w-prose">
                   <p className="font-mono text-xs text-cyan-300 mb-1">
                     📁 {step.fileReference.filename}
                     {step.fileReference.lines && ` (righe ${step.fileReference.lines})`}
@@ -136,9 +134,9 @@ export default function PracticalWorkflow({
                 </div>
               )}
 
-              <div className="bg-blue-900/20 border-l-2 border-blue-400 pl-4 py-3">
-                <p className="text-sm text-gray-300">
-                  <strong>🎯 Prova:</strong> {step.tryThis}
+              <div className="bg-emerald-900/20 border-l-2 border-emerald-400 pl-4 py-3 rounded-r-md">
+                <p className="text-sm text-gray-200 leading-relaxed">
+                  <strong className="text-emerald-300">🎯 Prova:</strong> {step.tryThis}
                 </p>
               </div>
 
