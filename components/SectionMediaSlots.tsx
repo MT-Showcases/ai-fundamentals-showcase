@@ -19,11 +19,19 @@ const badgeByType: Record<MediaPlaceholder['type'], string> = {
   resource: '📄 Risorsa'
 };
 
+const mediaTypeOrder: Record<MediaPlaceholder['type'], number> = {
+  infographic: 0,
+  video: 1,
+  podcast: 2,
+  resource: 3,
+};
+
 export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex, sectionTitle, sectionContent, media, isWorkflow = false, customSourceText }: Props & { isWorkflow?: boolean; customSourceText?: string }) {
   // Regola: nessun media definito => nessun placeholder automatico
   const slotsRaw = media ?? [];
   // UX choice: hide resource cards until a real downloadable asset exists
-  const slots = slotsRaw.filter((slot) => !(slot.type === 'resource' && !slot.notes?.toLowerCase().includes('ready')));
+  const visible = slotsRaw.filter((slot) => !(slot.type === 'resource' && !slot.notes?.toLowerCase().includes('ready')));
+  const slots = [...visible].sort((a, b) => mediaTypeOrder[a.type] - mediaTypeOrder[b.type]);
   const [active, setActive] = useState<MediaPlaceholder | null>(null);
   const [showSource, setShowSource] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -36,7 +44,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
 
   return (
     <>
-      <div className="mb-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className={slots.length === 1 ? 'mb-3 grid grid-cols-1 gap-3' : 'mb-3 grid grid-cols-1 md:grid-cols-2 gap-3'}>
         {slots.map((slot, idx) => (
           <div
             key={`${slot.type}-${idx}`}
@@ -52,7 +60,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
                   <img
                     src={`/${slot.placeholderPath}`}
                     alt={slot.title}
-                    className="w-full h-64 md:h-72 object-contain rounded-md hover:opacity-90 transition bg-black/20 cursor-pointer"
+                    className={slots.length === 1 ? 'w-full h-auto object-contain rounded-md hover:opacity-90 transition bg-black/20 cursor-pointer' : 'w-full h-72 object-contain rounded-md hover:opacity-90 transition bg-black/20 cursor-pointer'}
                     loading="lazy"
                   />
                 </button>
@@ -63,7 +71,7 @@ export default function SectionMediaSlots({ chapterId, chapterSlug, sectionIndex
                     preload="metadata"
                     muted
                     playsInline
-                    className="w-full h-64 md:h-72 object-contain rounded-md bg-black pointer-events-none"
+                    className={slots.length === 1 ? 'w-full h-auto object-contain rounded-md bg-black pointer-events-none' : 'w-full h-72 object-contain rounded-md bg-black pointer-events-none'}
                   />
                   <span className="absolute inset-0 flex items-center justify-center text-white/90 text-xs bg-black/20">
                     ▶ Apri video

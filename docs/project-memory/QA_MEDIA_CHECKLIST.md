@@ -13,6 +13,10 @@
 ## Post-deploy (live)
 - [ ] Test desktop (homepage + pagina capitolo)
 - [ ] Test mobile (390px)
+- [ ] Layout media corretto:
+  - [ ] 1 slot visibile → full-width
+  - [ ] 2+ slot visibili → 2 colonne desktop / 1 colonna mobile
+  - [ ] ordine: infografica → video → podcast → risorsa
 - [ ] Apertura modal infografica/video funzionante
 - [ ] Nessun 404 su media
 - [ ] Se cache stale: applicato cache-bust filename + path
