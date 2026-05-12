@@ -28,3 +28,6 @@
 ## Governance rule
 Se una regola è specifica di questo progetto, documentarla in `docs/project-memory/*`.
 Le skill restano leggere e rimandano ai file di progetto.
+
+## Legacy note
+I report legacy precedenti al **2026-05-11** sono da considerare snapshot storici e non baseline operative correnti.

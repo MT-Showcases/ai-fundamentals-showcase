@@ -37,3 +37,25 @@ Ogni modifica deve aggiornare **codice + dati + documentazione locale** se tocca
 - 1 fix = 1 commit chiaro
 - formato consigliato: `feat(...)`, `fix(...)`, `docs(...)`, `chore(...)`
 - non mescolare refactor ampio con hotfix urgente
+
+## 5) PR policy (default)
+
+### Regola base
+Per questo progetto, il flusso standard è **branch → PR → review → merge**.
+
+### PR obbligatoria per
+- modifiche UI/UX
+- refactor
+- task multi-file
+- cambi con impatto didattico o strutturale
+- qualunque task che richiede review esplicita di Michele
+
+### Merge diretto su `main` consentito solo per
+- hotfix bloccanti/urgenti (produzione)
+- micro-fix triviali a rischio basso (tipicamente 1 file, senza impatto architetturale)
+
+### Artefatti minimi PR
+- link PR nella card Trello
+- SHA di riferimento
+- URL Preview (se disponibile)
+- URL Production nel commento finale quando live
