@@ -71,6 +71,15 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
     return Math.round((total / challenge.phases.length) * 100);
   }, [submitted, challenge, selected]);
 
+  const activePhaseStats = useMemo(() => {
+    const expected = buildExpected(phase);
+    const picked = selected[phase.id] ?? new Set<string>();
+    const tp = Array.from(picked).filter((k) => expected.has(k)).length;
+    const fp = Array.from(picked).filter((k) => !expected.has(k)).length;
+    const fn = Array.from(expected).filter((k) => !picked.has(k)).length;
+    return { expected: expected.size, picked: picked.size, tp, fp, fn };
+  }, [phase, selected]);
+
   return (
     <section className="mb-12 bg-navy-800 border border-cyan-400/30 rounded-xl p-6">
       <h3 className="text-cyan-300 font-bold text-xl">🧩 {challenge.title}</h3>
@@ -89,6 +98,11 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
       </div>
 
       <div className="text-sm text-amber-200 mb-3">{phase.title} — {phase.instruction}</div>
+
+      <div className="mb-3 text-xs text-gray-300 flex flex-wrap gap-3">
+        <span className="inline-flex items-center gap-2"><span className="w-3 h-3 rounded bg-blue-800/70" /> Selezionato</span>
+        <span className="inline-flex items-center gap-2"><span className="w-3 h-3 rounded bg-emerald-900/30 ring-2 ring-emerald-400" /> Corretto (Mostra risultati)</span>
+      </div>
 
       <div className="overflow-x-scroll show-scrollbar-x rounded-lg border border-cyan-400/20">
         <table className="min-w-[980px] w-full text-xs border-collapse">
@@ -167,6 +181,11 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
       {submitted && (
         <div className="mt-4 rounded-lg border border-cyan-500/30 bg-navy-900 p-4 text-sm text-gray-200">
           Score ({challenge.scoringMode}): <span className="text-cyan-300 font-semibold">{score}%</span>
+          <div className="mt-2 text-xs text-gray-300">
+            Fase attiva → corretti: <span className="text-emerald-300">{activePhaseStats.tp}</span> ·
+            falsi positivi: <span className="text-amber-300">{activePhaseStats.fp}</span> ·
+            mancanti: <span className="text-red-300">{activePhaseStats.fn}</span>
+          </div>
         </div>
       )}
     </section>
