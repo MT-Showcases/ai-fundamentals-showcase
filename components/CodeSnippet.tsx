@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Editor from '@monaco-editor/react';
 
 interface CodeSnippetProps {
@@ -18,6 +18,15 @@ const langMap: Record<CodeSnippetProps['lang'], string> = {
 
 export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
   const [copied, setCopied] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 767px)');
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
 
   const onCopy = async () => {
     try {
@@ -30,7 +39,9 @@ export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
   };
 
   const lines = code.split('\n').length;
-  const height = Math.min(Math.max(lines * 20 + 24, 120), 480);
+  const minHeight = isMobile ? 180 : 120;
+  const maxHeight = isMobile ? 560 : 480;
+  const height = Math.min(Math.max(lines * 20 + 24, minHeight), maxHeight);
 
   return (
     <div className="h-auto rounded-xl border border-navy-600 overflow-hidden bg-navy-900/70">
@@ -59,9 +70,13 @@ export default function CodeSnippet({ code, lang, label }: CodeSnippetProps) {
           fontSize: 13,
           lineNumbers: 'on',
           automaticLayout: true,
-          wordWrap: 'on',
+          wordWrap: 'off',
           tabSize: 2,
           padding: { top: 12, bottom: 12 },
+          scrollbar: {
+            horizontal: 'auto',
+            vertical: 'auto',
+          },
           fontFamily: 'JetBrains Mono, Fira Code, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
         }}
       />
