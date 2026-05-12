@@ -1,5 +1,7 @@
 case_id,domain,decision_type,affects_persons,data_bias_risk,explainability_need,recommended_control
-V001,healthcare,diagnosis_support,yes,high,high,human_review
-V002,insurance,risk_assessment,yes,high,high,human_review
-V003,search_ranking,sorting,no,low,low,automated
-V004,customer_churn,prediction,no,medium,medium,automated
+E001,hiring,screening,yes,high,high,human_review
+E002,content_moderation,filtering,yes,medium,medium,human_review
+E003,product_recommendation,ranking,no,low,low,automated
+E004,credit_scoring,lending,yes,high,high,human_review
+E005,fraud_detection,blocking,yes,medium,high,human_review
+E006,playlist_generation,ranking,no,low,low,automated

@@ -1,7 +1,13 @@
 case_id,tool,scenario,risk_level,output_quality,fact_check_passed,security_impact,recommended_action
-CH13-V01,chat_assistant,"FAQ prodotto con contenuto già approvato dal team",low,high,yes,none,use_direct
-CH13-V02,coding_assistant,"Patch gestione pagamenti proposta da AI senza code review",high,medium,no,critical,reject_and_rework
-CH13-V03,research_assistant,"Confronto tool SaaS con dati parziali ma non sensibili",medium,medium,no,none,review_required
-CH13-V04,chat_assistant,"Bozza post social con dati verificati e rischio basso",low,high,yes,none,use_direct
-CH13-V05,coding_assistant,"Script migrazione DB con successo locale ma senza test rollback",high,medium,yes,critical,review_required
-CH13-V06,research_assistant,"Sintesi report mercato con fonti discordanti",medium,low,no,possible,reject_and_rework
+CH13-001,chat_assistant,"Sintesi di articolo interno per newsletter con fonti verificate",low,high,yes,none,use_direct
+CH13-002,chat_assistant,"Risposta a domanda legale cliente senza citazioni normative",high,medium,no,possible,reject_and_rework
+CH13-003,coding_assistant,"Generazione test unitari per modulo non critico",low,medium,yes,none,review_required
+CH13-004,coding_assistant,"Query SQL per report finance con accesso dati sensibili",high,medium,no,critical,reject_and_rework
+CH13-005,research_assistant,"Analisi competitor con fonti pubbliche multiple",medium,high,yes,none,review_required
+CH13-006,chat_assistant,"Bozza email commerciale con claim numerici non verificati",medium,low,no,possible,reject_and_rework
+CH13-007,coding_assistant,"Refactor funzione API con tutti i test passati",medium,high,yes,possible,review_required
+CH13-008,research_assistant,"Riassunto trend AI per presentazione interna",low,medium,yes,none,use_direct
+CH13-009,chat_assistant,"Risposta customer care su rimborso policy aziendale",medium,medium,yes,possible,review_required
+CH13-010,coding_assistant,"Snippet autenticazione suggerito senza gestione errori",high,low,no,critical,reject_and_rework
+CH13-011,research_assistant,"Bozza benchmark tecnico senza riferimenti aggiornati",medium,low,no,none,reject_and_rework
+CH13-012,chat_assistant,"Traduzione tecnica con terminologia già validata",low,high,yes,none,use_direct

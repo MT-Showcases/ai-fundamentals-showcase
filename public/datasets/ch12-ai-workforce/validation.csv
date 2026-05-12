@@ -1,6 +1,11 @@
 case_id,domain,task,task_repetitiveness,impact_if_wrong,needs_human_judgment,data_sensitivity,recommended_operating_mode
-V1201,hr,interview_feedback_summary,medium,medium,yes,medium,assist
-V1202,banking,loan_pre_approval_decision,medium,high,yes,high,human_led
-V1203,ecommerce,return_label_generation,high,low,no,low,automate
-V1204,public_services,benefit_eligibility_scoring,medium,high,yes,high,human_led
-V1205,product,release_note_first_draft,high,low,no,low,automate
+W001,customer_support,faq_routing,high,low,no,medium,automate
+W002,finance,invoice_data_extraction,high,medium,no,high,assist
+W003,hiring,candidate_cv_screening,medium,high,yes,high,human_led
+W004,marketing,social_copy_first_draft,high,medium,yes,low,assist
+W005,operations,daily_kpi_report_generation,high,low,no,medium,automate
+W006,legal,contract_clause_risk_review,medium,high,yes,high,human_led
+W007,sales,lead_prioritization,medium,medium,yes,medium,assist
+W008,it_support,password_reset_ticket_handling,high,low,no,medium,automate
+W009,healthcare,triage_note_summarization,medium,high,yes,high,human_led
+W010,education,student_email_classification,high,medium,no,medium,assist

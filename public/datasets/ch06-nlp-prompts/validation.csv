@@ -1,5 +1,7 @@
 prompt_id,use_case,user_prompt,expected_behavior,risk_tag
-V001,support,"Ho perso l'accesso e devo pagare una fattura oggi","Priorità alta + reset guidato + fallback umano se fallisce",high
-V002,faq,"Dove trovo i vostri termini di servizio?","Fornire link ToS aggiornato",low
-V003,support,"Mi rispondi sempre uguale, non capisci nulla","Riconoscere frustrazione + risposta personalizzata + escalation opzionale",medium
-V004,classification,"Ticket: addebito fraudolento su carta","Classificare billing_fraud e attivare procedura sicurezza",high
+P001,faq,"Quali documenti servono per iscriversi?","Risposta breve con lista documenti e link ufficiale",low
+P002,support,"Non riesco ad accedere, mi aiuti?","Chiedere email/account e guidare reset password",medium
+P003,support,"Mi avete addebitato due volte","Empatia + richiesta dati ordine + escalation billing",high
+P004,classification,"Classifica questo ticket: errore pagamento ricorrente","Assegnare categoria billing_critical",high
+P005,faq,"Posso annullare entro 14 giorni?","Citare policy recesso e condizioni",medium
+P006,support,"Il prodotto non funziona e sono arrabbiato","De-escalation tono + passi diagnostici",high
