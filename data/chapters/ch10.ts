@@ -23,25 +23,6 @@ export const ch10: Chapter = {
       'Come bilanciare accuratezza e spiegabilità?',
       'Quale metrica useresti per monitorare fairness nel tempo?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Ethical risk review (senza coding)',
-        objective: 'Valutare rischi etici di un sistema AI e proporre mitigazioni operative.',
-        duration: '15-20 min',
-        steps: [
-          'Leggi dataset train CH10 con scenari e possibili impatti.',
-          'Segna per ogni scenario il rischio principale.',
-          'Confronta con validation CH10 e valuta dove serve human-in-the-loop.',
-          'Definisci 2 controlli obbligatori pre-deploy.'
-        ],
-        deliverable: 'Checkpoint personale: mappa rischi + 2 mitigazioni prioritarie.',
-        resources: [
-          { label: 'Dataset train CH10 (CSV)', path: '/datasets/ch10-ethics-risks/train.csv' },
-          { label: 'Dataset validation CH10 (CSV)', path: '/datasets/ch10-ethics-risks/validation.csv' },
-          { label: 'Schema campi CH10 (JSON)', path: '/datasets/ch10-ethics-risks/schema.json' }
-        ]
-      }
-    ],
     challenge: {
       id: 'ch10-bias-credito-table-review',
       title: 'Bias Review Interattivo — Credito',

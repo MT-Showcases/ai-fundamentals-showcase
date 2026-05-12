@@ -25,11 +25,13 @@ function buildExpected(phase: TableChallengePhase): Set<string> {
 export default function ChapterChallengeTableReview({ challenge }: Props) {
   const [activePhase, setActivePhase] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [showResults, setShowResults] = useState(false);
   const [selected, setSelected] = useState<Record<string, Set<string>>>(() =>
     Object.fromEntries(challenge.phases.map((p) => [p.id, new Set<string>()]))
   );
 
   const phase = challenge.phases[activePhase];
+  const expectedActivePhase = useMemo(() => buildExpected(phase), [phase]);
 
   const toggle = (phaseId: string, key: string) => {
     setSelected((prev) => {
@@ -96,11 +98,12 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
                 const k = `c:${col}`;
                 const isActive = selected[phase.id]?.has(k);
                 const isSelectable = phase.selectionMode === 'column';
+                const isCorrectResult = showResults && expectedActivePhase.has(k);
                 return (
                   <th
                     key={col}
                     onClick={() => isSelectable && toggle(phase.id, k)}
-                    className={`px-3 py-2 text-left font-semibold whitespace-nowrap ${isSelectable ? 'cursor-pointer' : ''} ${isActive ? 'bg-blue-800/60' : ''}`}
+                    className={`px-3 py-2 text-left font-semibold whitespace-nowrap ${isSelectable ? 'cursor-pointer' : ''} ${isActive ? 'bg-blue-800/60' : ''} ${isCorrectResult ? 'ring-2 ring-emerald-400 ring-inset' : ''}`}
                   >
                     {col}
                   </th>
@@ -112,15 +115,17 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
             {challenge.table.rows.map((row, rowIdx) => {
               const rowKey = `r:${rowIdx}`;
               const rowSelected = selected[phase.id]?.has(rowKey);
+              const rowCorrect = showResults && expectedActivePhase.has(rowKey);
               return (
                 <tr
                   key={rowIdx}
                   onClick={() => phase.selectionMode === 'row' && toggle(phase.id, rowKey)}
-                  className={`border-t border-blue-900/50 ${phase.selectionMode === 'row' ? 'cursor-pointer' : ''} ${rowSelected ? 'bg-blue-900/30' : ''}`}
+                  className={`border-t border-blue-900/50 ${phase.selectionMode === 'row' ? 'cursor-pointer' : ''} ${rowSelected ? 'bg-blue-900/30' : ''} ${rowCorrect ? 'ring-2 ring-emerald-400 ring-inset' : ''}`}
                 >
                   {challenge.table.columns.map((col) => {
                     const cellKey = `x:${rowIdx}:${col}`;
                     const cellSelected = selected[phase.id]?.has(cellKey);
+                    const cellCorrect = showResults && expectedActivePhase.has(cellKey);
                     return (
                       <td
                         key={`${rowIdx}-${col}`}
@@ -129,7 +134,7 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
                           e.stopPropagation();
                           toggle(phase.id, cellKey);
                         }}
-                        className={`px-3 py-2 whitespace-nowrap ${phase.selectionMode === 'cell' ? 'cursor-pointer' : ''} ${cellSelected ? 'bg-blue-800/60' : ''}`}
+                        className={`px-3 py-2 whitespace-nowrap ${phase.selectionMode === 'cell' ? 'cursor-pointer' : ''} ${cellSelected ? 'bg-blue-800/60' : ''} ${cellCorrect ? 'ring-2 ring-emerald-400 ring-inset bg-emerald-900/20' : ''}`}
                       >
                         {String(row[col] ?? '')}
                       </td>
@@ -142,11 +147,15 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
         </table>
       </div>
 
-      <div className="mt-4 flex gap-3">
+      <div className="mt-4 flex gap-3 flex-wrap">
         <Button onClick={() => setSubmitted(true)}>Verifica</Button>
+        <Button onClick={() => setShowResults((v) => !v)} className="bg-emerald-700 hover:bg-emerald-600">
+          {showResults ? 'Nascondi risultati' : 'Mostra risultati'}
+        </Button>
         <Button
           onClick={() => {
             setSubmitted(false);
+            setShowResults(false);
             setSelected(Object.fromEntries(challenge.phases.map((p) => [p.id, new Set<string>()])));
           }}
           className="bg-slate-700 hover:bg-slate-600"
@@ -163,4 +172,3 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
     </section>
   );
 }
-

@@ -52,25 +52,6 @@ export const ch13: Chapter = {
       'Quali output devono avere revisione umana obbligatoria prima della pubblicazione?',
       'Come misureresti in modo oggettivo il valore reale di Copilot o Cursor nel tuo team?'
     ],
-    exercises: [
-      {
-        title: 'Mini Lab — Self-paced workflow AI (senza coding obbligatorio)',
-        objective: 'Applicare un processo completo di uso AI: richiesta, revisione, verifica e decisione finale su un output reale.',
-        duration: '20-30 min',
-        steps: [
-          'Apri il dataset train CH13 e scegli 5 scenari con tool diversi (chat assistant, coding assistant, ricerca).',
-          'Per ogni scenario valuta se l output può essere usato subito, va rivisto o va scartato.',
-          'Confronta le tue decisioni con validation CH13 e identifica 2 errori di valutazione iniziali.',
-          'Definisci una checklist personale in 4 punti da riutilizzare nei prossimi task AI.'
-        ],
-        deliverable: 'Checkpoint personale: tabella scenario -> decisione (use/review/reject) + checklist finale in 4 punti.',
-        resources: [
-          { label: 'Dataset train CH13 (CSV)', path: '/datasets/ch13-practical-tools/train.csv' },
-          { label: 'Dataset validation CH13 (CSV)', path: '/datasets/ch13-practical-tools/validation.csv' },
-          { label: 'Schema campi CH13 (JSON)', path: '/datasets/ch13-practical-tools/schema.json' }
-        ]
-      }
-    ],
     challenge: {
       id: 'ch13-quality-gate-review',
       title: 'Quality Gate Interattivo — Trova errori prima del rilascio',
