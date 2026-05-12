@@ -88,7 +88,7 @@ export default async function ChapterPage({ params }: Props) {
   const progressPercent = (chapterNum / totalChapters) * 100;
 
   const chapterGlossaryTerms: Record<string, string[]> = {
-    'intro-to-ai': [
+    'what-is-ai': [
       'intelligenza-artificiale', 'machine-learning', 'algoritmo', 'pattern-recognition', 'modello', 'deep-learning',
     ],
     'how-ai-works': [
@@ -115,22 +115,22 @@ export default async function ChapterPage({ params }: Props) {
     'fine-tuning': [
       'fine-tuning', 'transfer-learning', 'rag', 'llm', 'zero-shot', 'pre-training', 'iperparametro', 'overfitting',
     ],
-    'ai-ethics': [
+    'ethics-ai': [
       'bias', 'fairness', 'explainability', 'etica-ai', 'produzione', 'edge-case', 'guardrail',
     ],
-    'ai-regulation': [
+    'ai-act': [
       'ai-act', 'etica-ai', 'fairness', 'explainability', 'produzione', 'guardrail',
     ],
-    'ai-and-work': [
+    'ai-at-work': [
       'machine-learning', 'algoritmo', 'kpi', 'produzione', 'autonomous-agent',
     ],
-    'ai-tools': [
+    'practical-tools': [
       'llm', 'prompt-engineering', 'allucinazione', 'api', 'guardrail', 'produzione',
     ],
     'advanced-patterns': [
       'rag', 'autonomous-agent', 'fine-tuning', 'llm', 'api', 'guardrail', 'context-window',
     ],
-    'future-of-ai': [
+    'future-ai': [
       'deep-learning', 'autonomous-agent', 'reinforcement-learning', 'rlhf', 'generative-ai', 'etica-ai',
     ],
   };
@@ -183,10 +183,9 @@ export default async function ChapterPage({ params }: Props) {
 
             {/* Content Sections */}
             <div className="space-y-8 mb-12">
-              {/* Glossary tooltips enabled for CH3, CH5, CH8 */}
+              {/* Glossary tooltips enabled for chapters with mapped terms */}
               {(() => {
-                const glossaryChapters = ['data-importance', 'neural-networks', 'generative-ai'];
-                const enableGlossary = glossaryChapters.includes(chapter.slug);
+                const enableGlossary = Boolean(chapterGlossaryTerms[chapter.slug]?.length);
                 return chapter.sections.map((section, idx) => {
                   // Skip rendering any workflow-like section title as a standard card,
                   // since it is rendered separately via PracticalWorkflow below.
