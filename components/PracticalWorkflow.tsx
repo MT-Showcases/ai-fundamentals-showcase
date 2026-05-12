@@ -98,43 +98,15 @@ export default function PracticalWorkflow({
         </div>
       )}
 
-      <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-8">
-        <aside className="hidden lg:block lg:sticky lg:top-24 lg:self-start">
-          <div className="bg-navy-800 border border-cyan-400/20 rounded-lg p-4">
-            <p className="text-cyan-300 font-semibold text-sm mb-3">Progressione Step</p>
-            <ul className="space-y-2 mb-4">
-              {steps.map((s) => (
-                <li key={`nav-${s.number}`} className="text-xs text-gray-300 flex items-center gap-2">
-                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-cyan-300 text-navy-900 font-bold text-[11px]">
-                    {s.number}
-                  </span>
-                  <span className="truncate">{s.title}</span>
-                </li>
-              ))}
-            </ul>
-            {downloadLinks.length > 0 && (
-              <div className="pt-3 border-t border-navy-600 space-y-2">
-                {downloadLinks.slice(0, 1).map((link, idx) => (
-                  <a key={`side-${idx}`} href={link.url} download className="inline-block w-full">
-                    <Button variant="primary" className="w-full px-3 py-2 min-h-0 text-xs">
-                      {link.icon === 'zip' ? '📦' : link.icon === 'pdf' ? '📄' : '⬇️'} Download Lab
-                    </Button>
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        </aside>
+      <div className="space-y-6">
+        {steps.map((step) => {
+          const lang = step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python');
 
-        <div className="space-y-6">
-          {steps.map((step) => {
-            const lang = step.codeLang === 'sql' ? 'javascript' : (step.codeLang || 'python');
-
-            return (
-              <div
-                key={step.number}
-                className="bg-navy-800 rounded-lg p-4 md:p-5 lg:p-6 border border-cyan-400/20"
-              >
+          return (
+            <div
+              key={step.number}
+              className="bg-navy-800 rounded-lg p-4 md:p-5 lg:p-6 border border-cyan-400/20"
+            >
               <div className="flex items-baseline gap-3 mb-4">
                 <div className="bg-cyan-300 text-navy-900 font-extrabold px-4 py-1.5 rounded text-sm md:text-base leading-none shadow-sm">
                   Step {step.number}
@@ -223,9 +195,8 @@ export default function PracticalWorkflow({
 
             </div>
           );
-          })}
+        })}
 
-        </div>
       </div>
 
       {workflowCompleteSource && (
