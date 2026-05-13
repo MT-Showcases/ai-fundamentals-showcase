@@ -9,6 +9,49 @@ type Source = { title: string; url: string; filePath?: string };
 
 const STORAGE_KEY = 'tutor_ai_session_v1';
 
+function IconSparkles() {
+  return (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z" />
+    </svg>
+  );
+}
+
+function IconBot({ className = 'w-3 h-3' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <rect x="4" y="8" width="16" height="12" rx="3" />
+      <path d="M12 4v4M9 13h.01M15 13h.01M9 17h6" />
+    </svg>
+  );
+}
+
+function IconUser() {
+  return (
+    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M20 21a8 8 0 0 0-16 0" />
+      <circle cx="12" cy="8" r="4" />
+    </svg>
+  );
+}
+
+function IconTrash() {
+  return (
+    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" />
+    </svg>
+  );
+}
+
+function IconSend() {
+  return (
+    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M22 2L11 13" />
+      <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+    </svg>
+  );
+}
+
 function normalizeAssistantText(text: string): string {
   return text
     .replace(/\*\*/g, '')
@@ -92,7 +135,7 @@ export default function TutorFloatingChat() {
         onClick={() => setOpen((v) => !v)}
         className="fixed bottom-24 right-5 z-[90] rounded-full bg-cyan-500 text-navy-950 px-4 py-3 font-semibold shadow-lg shadow-cyan-900/40 flex items-center gap-2 hover:bg-cyan-400 transition"
       >
-        <span aria-hidden="true">✨</span>
+        <IconSparkles />
         Tutor AI
       </button>
 
@@ -101,13 +144,13 @@ export default function TutorFloatingChat() {
           <div className="p-3 border-b border-cyan-400/20 flex items-center justify-between">
             <div>
               <p className="text-sm font-semibold text-cyan-300 flex items-center gap-2">
-                <span aria-hidden="true">🤖</span> Tutor AI
+                <IconBot className="w-4 h-4" /> Tutor AI
                 <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
               </p>
               <p className="text-[11px] text-gray-400">Sessione persistente su tutto il sito</p>
             </div>
             <button onClick={clearChat} className="text-xs text-gray-400 hover:text-white flex items-center gap-1">
-              <span aria-hidden="true">🗑️</span> Reset
+              <IconTrash /> Reset
             </button>
           </div>
 
@@ -118,7 +161,7 @@ export default function TutorFloatingChat() {
             {messages.map((m, i) => (
               <div key={i} className={`text-sm p-2 rounded-lg ${m.role === 'user' ? 'bg-cyan-600/20 ml-8' : 'bg-navy-800 mr-8'}`}>
                 <div className="mb-1 text-[11px] uppercase tracking-wide text-gray-400 flex items-center gap-1">
-                  {m.role === 'user' ? <span aria-hidden="true">🧑</span> : <span aria-hidden="true">🤖</span>}
+                  {m.role === 'user' ? <IconUser /> : <IconBot />}
                   {m.role === 'user' ? 'Tu' : 'Tutor'}
                 </div>
                 <p className="whitespace-pre-wrap">{m.text}</p>
@@ -141,7 +184,7 @@ export default function TutorFloatingChat() {
             {loading && (
               <div className="text-sm p-2 rounded-lg bg-navy-800 mr-8">
                 <div className="mb-1 text-[11px] uppercase tracking-wide text-gray-400 flex items-center gap-1">
-                  <span aria-hidden="true">🤖</span> Tutor
+                  <IconBot /> Tutor
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse" />
@@ -181,7 +224,7 @@ export default function TutorFloatingChat() {
               className="flex-1 rounded-md bg-navy-950 border border-cyan-400/20 px-3 py-2 text-sm resize-none min-h-[44px] max-h-28"
             />
             <button onClick={ask} disabled={loading} className="rounded-md bg-cyan-500 text-navy-950 px-3 py-2 text-sm font-semibold disabled:opacity-50">
-              <span className="flex items-center gap-1">{loading ? '...' : <>Invia <span aria-hidden="true">➤</span></>}</span>
+              <span className="flex items-center gap-1">{loading ? '...' : <>Invia <IconSend /></>}</span>
             </button>
           </div>
         </div>
