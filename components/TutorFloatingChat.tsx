@@ -66,13 +66,13 @@ export default function TutorFloatingChat() {
     <>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-5 right-5 z-[90] rounded-full bg-cyan-500 text-navy-950 px-4 py-3 font-semibold shadow-lg shadow-cyan-900/40"
+        className="fixed bottom-24 right-5 z-[90] rounded-full bg-cyan-500 text-navy-950 px-4 py-3 font-semibold shadow-lg shadow-cyan-900/40"
       >
         Tutor AI
       </button>
 
       {open && (
-        <div className="fixed bottom-20 right-5 z-[90] w-[92vw] max-w-md h-[70vh] rounded-2xl border border-cyan-400/30 bg-navy-900 text-gray-100 shadow-2xl flex flex-col">
+        <div className="fixed bottom-36 right-5 z-[90] w-[92vw] max-w-md h-[68vh] rounded-2xl border border-cyan-400/30 bg-navy-900 text-gray-100 shadow-2xl flex flex-col">
           <div className="p-3 border-b border-cyan-400/20 flex items-center justify-between">
             <div>
               <p className="text-sm font-semibold text-cyan-300">Tutor AI</p>
