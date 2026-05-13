@@ -13,6 +13,14 @@ export const ch14: Chapter = {
     ],
     media: [
       {
+        type: 'video',
+        title: 'Video Capitolo 14',
+        description: 'Spiegazione guidata dei pattern avanzati: quando scegliere RAG, Agent o Fine-tuning con esempi pratici.',
+        estimatedDuration: '15 min',
+        placeholderPath: 'media/ch14-advanced-patterns/video.mp4',
+        notes: 'ready'
+      },
+      {
         type: 'infographic',
         title: 'Infografica Capitolo 14',
         description: 'Mappa decisionale per scegliere tra RAG, Agent e Fine-tuning con guardrail operativi e KPI di validazione.',
