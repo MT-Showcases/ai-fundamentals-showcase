@@ -37,7 +37,8 @@ export default function TutorChat({ chapterSlug }: { chapterSlug: string }) {
   return (
     <div className="mt-10 rounded-xl border border-cyan-400/30 bg-navy-900/60 p-4">
       <h3 className="text-cyan-300 font-semibold mb-2">{TUTOR_NAME} (beta)</h3>
-      <p className="text-xs text-gray-400 mb-3">Fai domande sul capitolo, esercizi e file ZIP dei lab.</p>
+      <p className="text-xs text-gray-400 mb-1">Fai domande sul capitolo, esercizi e file ZIP dei lab.</p>
+      <p className="text-[11px] text-gray-500 mb-3">Disclaimer: {TUTOR_NAME} è un assistente AI e può commettere errori. Verifica sempre i passaggi importanti.</p>
 
       <div className="flex gap-2">
         <input

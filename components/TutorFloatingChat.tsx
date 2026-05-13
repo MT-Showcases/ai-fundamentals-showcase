@@ -253,6 +253,9 @@ export default function TutorFloatingChat() {
           <span className="flex items-center gap-1">{loading ? '...' : <><span className="hidden sm:inline">Invia</span> <IconSend /></>}</span>
         </button>
       </div>
+      <p className="px-3 pb-3 text-[11px] text-gray-500">
+        Disclaimer: {TUTOR_NAME} è un assistente AI e può commettere errori. Verifica sempre i passaggi importanti.
+      </p>
     </>
   );
 
