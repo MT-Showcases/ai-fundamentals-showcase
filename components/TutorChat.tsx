@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { TUTOR_NAME } from '@/lib/tutor-config';
 
 type Source = {
   title: string;
@@ -35,7 +36,7 @@ export default function TutorChat({ chapterSlug }: { chapterSlug: string }) {
 
   return (
     <div className="mt-10 rounded-xl border border-cyan-400/30 bg-navy-900/60 p-4">
-      <h3 className="text-cyan-300 font-semibold mb-2">Tutor AI (beta)</h3>
+      <h3 className="text-cyan-300 font-semibold mb-2">{TUTOR_NAME} (beta)</h3>
       <p className="text-xs text-gray-400 mb-3">Fai domande sul capitolo, esercizi e file ZIP dei lab.</p>
 
       <div className="flex gap-2">

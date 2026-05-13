@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { TUTOR_NAME, TUTOR_SYSTEM_IDENTITY } from '@/lib/tutor-config';
 
 type Chunk = {
   id: string;
@@ -88,7 +89,7 @@ async function callLLM(question: string, context: Chunk[], history: ChatTurn[] =
     .map((c, i) => `[Fonte ${i + 1}] ${c.title} (${c.url})\n${c.text.slice(0, 1200)}`)
     .join('\n\n');
 
-  const system = `Sei il Tutor AI di AI Fundamentals. Rispondi in italiano, pratico e breve. Usa solo fonti fornite. Se mancano info, dillo chiaramente.${pageContext}\nRispondi SOLO JSON valido con questo schema: {"summary":"string","bullets":["string"],"suggestions":[{"label":"string","url":"/chapters/... o /glossario"}]}`;
+  const system = `${TUTOR_SYSTEM_IDENTITY} Rispondi in italiano, pratico e breve. Usa solo fonti fornite. Se mancano info, dillo chiaramente.${pageContext}\nRispondi SOLO JSON valido con questo schema: {"summary":"string","bullets":["string"],"suggestions":[{"label":"string","url":"/chapters/... o /glossario"}]}`;
   const compactHistory = history
     .slice(-12)
     .map((h, i) => `${i + 1}. ${h.role === 'user' ? 'Utente' : 'Tutor'}: ${h.text}`)

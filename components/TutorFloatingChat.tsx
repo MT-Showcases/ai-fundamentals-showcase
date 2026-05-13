@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { TUTOR_NAME, TUTOR_PLACEHOLDER, TUTOR_TAGLINE } from '@/lib/tutor-config';
 
 type AnswerData = { summary: string; bullets?: string[]; suggestions?: Array<{ label: string; url: string }> };
 type Msg = { role: 'user' | 'assistant'; text: string; data?: AnswerData };
@@ -137,7 +138,7 @@ export default function TutorFloatingChat() {
         className="fixed bottom-6 right-5 z-[90] rounded-full bg-cyan-500 text-navy-950 px-4 py-3 font-semibold shadow-lg shadow-cyan-900/40 flex items-center gap-2 hover:bg-cyan-400 transition"
       >
         <IconSparkles />
-        Tutor AI
+        {TUTOR_NAME}
       </button>
 
       {open && (
@@ -145,7 +146,7 @@ export default function TutorFloatingChat() {
           <div className="p-3 border-b border-cyan-400/20 flex items-center justify-between">
             <div>
               <p className="text-sm font-semibold text-cyan-300 flex items-center gap-2">
-                <IconBot className="w-4 h-4" /> Tutor AI
+                <IconBot className="w-4 h-4" /> {TUTOR_NAME}
                 <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
               </p>
               <p className="text-[11px] text-gray-400">Sessione persistente su tutto il sito</p>
@@ -157,7 +158,7 @@ export default function TutorFloatingChat() {
 
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-3 space-y-2">
             {messages.length === 0 && (
-              <p className="text-xs text-gray-400">Chiedimi capitoli, esercizi, ZIP lab o navigazione del sito.</p>
+              <p className="text-xs text-gray-400">{TUTOR_TAGLINE}</p>
             )}
             {messages.map((m, i) => (
               <div key={i} className={`text-sm p-2 rounded-lg ${m.role === 'user' ? 'bg-cyan-600/20 ml-8' : 'bg-navy-800 mr-8'}`}>
@@ -220,7 +221,7 @@ export default function TutorFloatingChat() {
                   ask();
                 }
               }}
-              placeholder="Fai una domanda..."
+              placeholder={TUTOR_PLACEHOLDER}
               rows={2}
               className="flex-1 rounded-md bg-navy-950 border border-cyan-400/20 px-3 py-2 text-sm resize-none min-h-[44px] max-h-28"
             />

@@ -77,11 +77,11 @@ IL SITO IN NUMERI
 - Quiz interattivi per ogni capitolo
 - Lab pratici scaricabili
 - Glossario AI integrato
-- Tutor AI con RAG (Retrieval Augmented Generation)
+- Lumi con RAG (Retrieval Augmented Generation)
 
 TUTOR AI
 
-Il sito include un Tutor AI integrato (chat floating in basso a destra) che risponde alle domande sui contenuti del corso usando RAG: recupera i passaggi rilevanti dai capitoli e genera risposte contestuali.
+Il sito include un Lumi integrato (chat floating in basso a destra) che risponde alle domande sui contenuti del corso usando RAG: recupera i passaggi rilevanti dai capitoli e genera risposte contestuali.
 Provider: Groq (llama-3.3-70b-versatile)
 Architettura: Vercel-native, RAG index statico JSON, nessun database esterno.
 
