@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { TUTOR_NAME, TUTOR_SYSTEM_IDENTITY } from '@/lib/tutor-config';
+import { TUTOR_TEMPERATURE_DEFAULT, TUTOR_SYSTEM_IDENTITY } from '@/lib/tutor-config';
 
 type Chunk = {
   id: string;
@@ -76,7 +76,7 @@ function toReadableTitle(c: Chunk): string {
   return c.url || 'Fonte interna';
 }
 
-async function callLLM(question: string, context: Chunk[], history: ChatTurn[] = [], pathname?: string) {
+async function callLLM(question: string, context: Chunk[], history: ChatTurn[] = [], pathname?: string, temperature?: number) {
   const openaiKey = process.env.OPENAI_API_KEY;
   const groqKey = process.env.GROQ_API_KEY;
   let failReason = 'provider non configurato';
@@ -105,8 +105,8 @@ async function callLLM(question: string, context: Chunk[], history: ChatTurn[] =
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: process.env.GROQ_MODEL || 'llama-3.1-8b-instant',
-        temperature: 0.2,
+        model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+        temperature: Math.min(2, Math.max(0, temperature ?? TUTOR_TEMPERATURE_DEFAULT)),
         messages: [
           { role: 'system', content: system },
           { role: 'user', content: user },
@@ -130,7 +130,7 @@ async function callLLM(question: string, context: Chunk[], history: ChatTurn[] =
       },
       body: JSON.stringify({
         model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
-        temperature: 0.2,
+        temperature: Math.min(2, Math.max(0, temperature ?? TUTOR_TEMPERATURE_DEFAULT)),
         messages: [
           { role: 'system', content: system },
           { role: 'user', content: user },
@@ -187,7 +187,7 @@ function buildUniqueSources(ranked: Chunk[]) {
 
 export async function POST(req: NextRequest) {
   try {
-    const { question, chapterSlug, pathname, history } = (await req.json()) as { question?: string; chapterSlug?: string; pathname?: string; history?: ChatTurn[] };
+    const { question, chapterSlug, pathname, temperature, history } = (await req.json()) as { question?: string; chapterSlug?: string; pathname?: string; temperature?: number; history?: ChatTurn[] };
     if (!question || question.trim().length < 3) {
       return NextResponse.json({ error: 'Domanda troppo corta' }, { status: 400 });
     }
@@ -206,7 +206,7 @@ export async function POST(req: NextRequest) {
       ? history.filter((h) => h && (h.role === 'user' || h.role === 'assistant') && typeof h.text === 'string').slice(-20)
       : [];
 
-    const rawAnswer = await callLLM(question, ranked, safeHistory, pathname);
+    const rawAnswer = await callLLM(question, ranked, safeHistory, pathname, temperature);
     const answerData = parseTutorAnswer(rawAnswer);
     const answer = answerData?.summary || rawAnswer;
     const sources = buildUniqueSources(ranked);
