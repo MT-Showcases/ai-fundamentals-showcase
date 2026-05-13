@@ -34,16 +34,20 @@ export const ch09: Chapter = {
           { scenario_id: 'S001', domain: 'customer_support', data_freshness: 'high', accuracy_need: 'high', budget_level: 'medium', time_to_market: 'fast', recommended_strategy: 'rag' },
           { scenario_id: 'S002', domain: 'legal_ops', data_freshness: 'medium', accuracy_need: 'high', budget_level: 'high', time_to_market: 'medium', recommended_strategy: 'fine_tuning' },
           { scenario_id: 'S003', domain: 'marketing', data_freshness: 'high', accuracy_need: 'medium', budget_level: 'low', time_to_market: 'fast', recommended_strategy: 'zero_shot' },
-          { scenario_id: 'S004', domain: 'finance_reporting', data_freshness: 'high', accuracy_need: 'high', budget_level: 'medium', time_to_market: 'fast', recommended_strategy: 'zero_shot' }
+          { scenario_id: 'S004', domain: 'finance_reporting', data_freshness: 'high', accuracy_need: 'high', budget_level: 'medium', time_to_market: 'fast', recommended_strategy: 'zero_shot' },
+          { scenario_id: 'S005', domain: 'hr_onboarding', data_freshness: 'low', accuracy_need: 'medium', budget_level: 'low', time_to_market: 'fast', recommended_strategy: 'fine_tuning' },
         ]
       },
       phases: [
         {
           id: 'wrong-strategy-cell',
           title: 'Fase 1',
-          instruction: 'Seleziona la cella recommended_strategy che ritieni errata rispetto ai vincoli.',
+          instruction: 'Seleziona le celle recommended_strategy che ritieni errate rispetto ai vincoli. Ce ne sono 2.',
           selectionMode: 'cell',
-          correctCells: [{ row: 3, column: 'recommended_strategy' }]
+          correctCells: [
+            { row: 3, column: 'recommended_strategy', feedback: '❌ S004 — finance_reporting con data_freshness HIGH e accuracy_need HIGH dovrebbe usare RAG, non zero_shot. Dati aggiornati + alta precisione = RAG obbligatorio.' },
+            { row: 4, column: 'recommended_strategy', feedback: '❌ S005 — hr_onboarding con budget LOW e time_to_market FAST non può permettersi fine_tuning. Con data_freshness LOW, zero_shot con prompt ben costruito è la scelta corretta.' },
+          ]
         },
         {
           id: 'decision-columns',

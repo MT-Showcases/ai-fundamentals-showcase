@@ -164,6 +164,15 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
         </table>
       </div>
 
+      {/* Cell feedback after results shown */}
+      {showResults && phase.selectionMode === 'cell' && phase.correctCells && phase.correctCells.some(c => c.feedback) && (
+        <div className="mt-3 space-y-2">
+          {phase.correctCells.filter(c => c.feedback).map((c, i) => (
+            <p key={i} className="text-xs text-amber-200 bg-amber-900/20 border border-amber-400/30 rounded-lg px-3 py-2">{c.feedback}</p>
+          ))}
+        </div>
+      )}
+
       <div className="mt-4 flex gap-3 flex-wrap">
         <Button onClick={() => setSubmitted(true)}>Verifica</Button>
         <Button onClick={() => setShowResults((v) => !v)} className="bg-emerald-700 hover:bg-emerald-600">

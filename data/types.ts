@@ -125,7 +125,7 @@ export interface TableChallengePhase {
   selectionMode: 'row' | 'cell' | 'column';
   correctRows?: number[];
   correctColumns?: string[];
-  correctCells?: Array<{ row: number; column: string }>;
+  correctCells?: Array<{ row: number; column: string; feedback?: string }>;
 }
 
 export interface ChapterChallengeTableReview {
