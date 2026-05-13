@@ -103,114 +103,114 @@ export const ch10: Chapter = {
     ],
     quiz: [
       {
-        question: 'Un sistema AI di screening CV scarta sistematicamente un gruppo demografico. Primo passo corretto?',
+        question: 'Un modello di scoring del credito ha accuracy del 91% globale, ma sbaglia sul 34% dei richiedenti provenienti da una specifica area geografica. Il team vuole pubblicarlo. Cosa fai?',
         options: [
-          'Analizzare bias nei dati e nei criteri decisionali',
-          'Aumentare subito il numero di layer',
-          'Nascondere le feature sensibili e basta',
-          'Disattivare tutti i log',
-        ],
-        correct: 0,
-        explanation: 'Serve diagnosi strutturata delle cause di discriminazione.'
-      },
-      {
-        question: 'Explainability è più critica quando:',
-        options: [
-          'Il modello è open-source',
-          'Le decisioni impattano diritti/opportunità delle persone',
-          'La latenza è sotto 100ms',
-          'Il team è piccolo',
+          'Pubblichi perché il 91% globale supera la soglia interna di accettazione',
+          'Blocchi e analizzi la distribuzione degli errori per area: il 34% su un sottogruppo è un segnale di bias inaccettabile in un contesto ad alto rischio',
+          'Aggiungi un disclaimer nellâinterfaccia e pubblichi comunque',
+          'Riaddestri con più dati globali per alzare lâaccuracy al 95%',
         ],
         correct: 1,
-        explanation: 'Nei contesti ad alto impatto è necessario giustificare le decisioni.'
+        explanation: 'Lâaccuracy globale può nascondere bias gravi su sottogruppi. Un 34% di errori su unâarea geografica specifica in un sistema creditizio è potenzialmente discriminatorio e illegale. Prima di qualsiasi deploy in contesti ad alto impatto serve analisi di fairness segmentata, non solo media.'
       },
       {
-        question: 'Quale controllo riduce meglio il rischio in high-stakes AI?',
+        question: 'Il team legale chiede explainability sul modello che decide i bonus aziendali. Il data scientist risponde: âil modello ha 94% accuracy, funziona beneâ. Perché questa risposta è insufficiente?',
         options: [
-          'Solo documentazione marketing',
-          'Solo accuracy media',
-          'Human-in-the-loop + escalation policy + audit trail',
-          'Solo test una tantum',
-        ],
-        correct: 2,
-        explanation: 'Servono controlli operativi continui, non solo dichiarazioni.'
-      },
-      {
-        question: 'Nel dataset CH10, caso affects_persons=yes + bias_risk=high + explainability=high dovrebbe avere:',
-        options: [
-          'automated',
-          'nessun controllo',
-          'publish_direct',
-          'human_review',
-        ],
-        correct: 3,
-        explanation: 'Combinazione ad alto rischio richiede revisione umana.'
-      },
-      {
-        question: 'Errore comune sulla governance AI:',
-        options: [
-          'Trattarla come processo continuo',
-          'Ridurla a documento statico senza enforcement',
-          'Definire ruoli e responsabilità',
-          'Monitorare incidenti',
+          'Il 94% non è abbastanza alto — serve almeno il 99% per sistemi HR',
+          'Explainability non riguarda lâaccuracy ma la capacità di giustificare singole decisioni in modo comprensibile e verificabile dalle persone impattate',
+          'Il team legale dovrebbe fidarsi dei data scientist senza richiedere spiegazioni tecniche',
+          'Lâaccuracy è la metrica più importante in sistemi HR — le spiegazioni sono opzionali',
         ],
         correct: 1,
-        explanation: 'Senza applicazione operativa, la governance non funziona.'
+        explanation: 'Explainability non è un numero di performance — è la capacità di spiegare perché il modello ha preso una specifica decisione su una specifica persona. In contesti HR, creditizi o sanitari, è un requisito etico e spesso legale: le persone hanno diritto a capire perché sono state penalizzate.'
       },
       {
-        question: 'Quale metrica è più utile per fairness monitoring?',
+        question: 'Stai progettando un sistema AI per la diagnosi di patologie rare. Hai un modello con F1=0.87. Quale architettura di governance è più appropriata?',
         options: [
-          'Solo throughput API',
-          'Solo costo GPU',
-          'Delta di errore tra sottogruppi',
-          'Solo numero utenti attivi',
+          'Deploy automatico con notifica email al medico per ogni diagnosi',
+          'Deploy solo in ambienti di ricerca senza pazienti reali fino a F1=0.95',
+          'Human-in-the-loop strutturato: AI propone diagnosi con confidence score, medico decide sempre — con audit trail completo',
+          'Escalation umana solo per i casi con confidence < 50%',
         ],
         correct: 2,
-        explanation: 'La fairness va misurata confrontando performance tra gruppi.'
+        explanation: 'In ambito medico ad alto rischio, nessun F1 score giustifica lâautomazione completa. La governance corretta prevede che lâAI supporti il medico, non lo sostituisca. Lâaudit trail serve per tracciare responsabilità e migliorare il sistema nel tempo.'
       },
       {
-        question: 'Privacy-by-design in AI implica:',
+        question: 'Il tuo sistema AI di moderazione contenuti blocca correttamente il 97% dei contenuti inappropriati, ma ha un false positive rate del 18% su contenuti in arabo. Come classifichi questo problema?',
         options: [
-          'Raccogliere tutti i dati possibili e filtrare dopo',
-          'Nascondere il modello al team',
-          'Disattivare backup',
-          'Minimizzazione dati, controllo accessi e tracciabilità uso',
-        ],
-        correct: 3,
-        explanation: 'Ridurre e proteggere i dati è parte del design, non post-processing.'
-      },
-      {
-        question: 'Se un modello peggiora nel tempo su casi reali, quale pratica aiuta?',
-        options: [
-          'Audit periodico con retraining/recalibrazione controllata',
-          'Ignorare feedback utente',
-          'Cambiare UI',
-          'Aumentare solo batch size',
-        ],
-        correct: 0,
-        explanation: 'Il monitoraggio continuo intercetta drift e regressioni.'
-      },
-      {
-        question: 'AI Act (approccio generale) enfatizza:',
-        options: [
-          'Solo numero di parametri',
-          'Divieto di QA interna',
-          'Classificazione per livello di rischio e obblighi proporzionati',
-          'Assenza di documentazione',
+          'Problema tecnico di scarsa qualità del dataset in arabo — da risolvere con più dati',
+          'Non è un problema se la performance globale è al 97%',
+          'Bias sistemico che produce discriminazione linguistica — richiede analisi fairness, correzione e probabilmente revisione umana sui contenuti in arabo nel frattempo',
+          'Problema di latenza del modello su lingue non latine',
         ],
         correct: 2,
-        explanation: 'I requisiti aumentano con il rischio del sistema.'
+        explanation: 'Un false positive del 18% su utenti arabofoni significa che 1 su 5 contenuti legittimi viene bloccato erroneamente — discriminazione operativa reale. Richiede sia una soluzione tecnica (più dati bilanciati) sia una misura immediata (revisione umana) per non penalizzare gli utenti nel frattempo.'
       },
       {
-        question: 'Messaggio chiave del capitolo 10:',
+        question: 'Il documento di governance AI del tuo team è stato scritto 18 mesi fa. Il modello in produzione è stato aggiornato 3 volte. Qual è il rischio principale?',
         options: [
-          'Etica e compliance sono opzionali se il modello performa',
-          'AI responsabile = performance tecnica + fairness + accountability + controllo umano dove serve',
-          'Basta anonimizzare e tutto è risolto',
-          'Solo il reparto legale deve occuparsene',
+          'Il documento è ormai inutile e va eliminato',
+          'La governance è diventata un documento statico che non riflette più il sistema reale — se arriva un audit, non puoi dimostrare controllo effettivo',
+          'Il rischio è minimo se il modello continua a performare bene',
+          'Basta aggiornare la data di revisione sul documento',
         ],
         correct: 1,
-        explanation: 'Responsabilità AI è multidisciplinare e operativa.'
-      }
+        explanation: 'Governance non aggiornata è governance non esistente in pratica. Se il modello cambia e la documentazione no, in caso di audit o incidente non puoi dimostrare che il sistema è sotto controllo. La governance è un processo continuo, non un deliverable one-shot.'
+      },
+      {
+        question: 'Stai monitorando un sistema AI di raccomandazione. Quale metrica segnala un problema di fairness, non solo di performance?',
+        options: [
+          'Calo dellâNDCG globale dal 0.82 a 0.79',
+          'Aumento della latenza media da 120ms a 180ms',
+          'Il sistema raccomanda contenuti ad alto engagement a tutti i gruppi demografici in modo equivalente, ma i contenuti raccomandati al gruppo A hanno valore economico medio 3x superiore al gruppo B',
+          'Riduzione del click-through rate dal 12% allâinterno dello stesso gruppo demografico',
+        ],
+        correct: 2,
+        explanation: 'Un sistema può sembrare equo in engagement ma produrre disparità economiche strutturali. Il fairness monitoring deve guardare oltre le metriche aggregate — serve analisi del valore distribuito tra gruppi, non solo click o accuracy media.'
+      },
+      {
+        question: 'Il tuo sistema raccoglie feedback degli utenti per migliorare il modello. Un avvocato ti chiede: "chi ha accesso a questi feedback e per quanto tempo li conservate?". Non hai una risposta chiara. Che cosa rivela questo?',
+        options: [
+          'Che serve un data engineer dedicato al progetto',
+          'Che il sistema non ha implementato privacy-by-design — lâaccesso e la retention dei dati avrebbero dovuto essere definiti in fase di progettazione, non a sistema già in produzione',
+          'Che il team legale dovrebbe essere più coinvolto nelle fasi finali',
+          'Che la domanda è prematura — questi aspetti si definiscono dopo la fase di product-market fit',
+        ],
+        correct: 1,
+        explanation: 'Privacy-by-design significa che controllo degli accessi, retention policy e finalità dâuso dei dati sono decisi prima di raccogliere i dati, non dopo. Non avere una risposta chiara a questa domanda è un segnale che il principio non è stato applicato.'
+      },
+      {
+        question: 'Il modello di classificazione che usi in produzione aveva accuracy del 91% a gennaio. A maggio è sceso allâ 83% senza modifiche al codice. Cosa è più probabile e cosa fai?',
+        options: [
+          'Bug introdotto da un aggiornamento del framework — fai rollback',
+          'Data drift: la distribuzione dei dati reali si è spostata rispetto al training set. Analizzi il drift, valuti se serve retraining o recalibrazione, e introduci monitoring automatico per il futuro',
+          'Il modello è sovrafit sul training set e va sostituito con uno più semplice',
+          'Problema di infrastruttura: la GPU sta degradando le performance',
+        ],
+        correct: 1,
+        explanation: 'Un calo di performance senza modifiche al codice è quasi sempre data drift: il mondo è cambiato, il modello no. La risposta corretta non è il panico ma un processo: analisi del drift, decisione informata su retraining/recalibrazione, e monitoring preventivo per intercettarlo prima che diventi un problema.'
+      },
+      {
+        question: 'Quale affermazione sullâAI Act è corretta?',
+        options: [
+          'LâAI Act vieta lâuso di AI in ambito HR e creditizio',
+          'LâAI Act classifica i sistemi per livello di rischio e assegna obblighi proporzionati — più alto il rischio, più stringenti i requisiti di documentazione, audit e supervisione',
+          'LâAI Act si applica solo ai modelli con più di 10 miliardi di parametri',
+          'LâAI Act è una raccomandazione volontaria, non un regolamento vincolante',
+        ],
+        correct: 1,
+        explanation: 'LâAI Act usa una piramide del rischio: sistemi vietati (social scoring, manipolazione subliminale), alto rischio (CV screening, credito, diagnosi medica), rischio limitato (chatbot — obbligo di disclosure), minimale (filtri spam). Ogni livello ha obblighi specifici proporzionati allâimpatto potenziale.'
+      },
+      {
+        question: 'Il team vuole ridurre i costi di infrastructure spostando il sistema AI di approvazione prestiti su un modello più piccolo e veloce. Lâaccuracy globale rimane al 89%. Quale domanda devi fare prima di approvare il cambio?',
+        options: [
+          'Il nuovo modello è certificato ISO 27001?',
+          'La latenza media migliora di almeno il 30%?',
+          'Lâaccuracy per sottogruppo demografico rimane equivalente tra i due modelli — o il modello più piccolo introduce nuovi bias?',
+          'Il vendor del nuovo modello ha firmato un NDA?',
+        ],
+        correct: 2,
+        explanation: 'Un cambio di modello in un sistema ad alto rischio richiede fairness analysis comparativa, non solo confronto di accuracy globale. Il modello più piccolo potrebbe aver perso capacità di generalizzazione su sottogruppi — e in ambito creditizio questo è un rischio legale oltre che etico.'
+      },
     ]
 };
