@@ -46,6 +46,20 @@ function scoreChunk(chunk: Chunk, tokens: string[], chapterSlug?: string) {
   return score;
 }
 
+function toReadableTitle(c: Chunk): string {
+  const cleaned = (c.title || '').replace(/\\+/g, '').trim();
+  if (cleaned.length >= 3) return cleaned;
+
+  if (c.sourceType === 'lab_zip') {
+    if (c.filePath && c.zipName) return `${c.zipName} · ${c.filePath}`;
+    if (c.zipName) return c.zipName;
+  }
+
+  if (c.chapterSlug) return `Capitolo: ${c.chapterSlug}`;
+  if (c.url === '/glossario') return 'Glossario';
+  return c.url || 'Fonte interna';
+}
+
 async function callLLM(question: string, context: Chunk[]) {
   const openaiKey = process.env.OPENAI_API_KEY;
   const groqKey = process.env.GROQ_API_KEY;
@@ -129,7 +143,7 @@ export async function POST(req: NextRequest) {
     const answer = await callLLM(question, ranked);
 
     const sources = ranked.slice(0, 5).map((c) => ({
-      title: c.title,
+      title: toReadableTitle(c),
       url: c.url,
       sourceType: c.sourceType,
       zipName: c.zipName,
