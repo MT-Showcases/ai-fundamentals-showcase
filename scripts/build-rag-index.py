@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CHAPTERS_DIR = ROOT / "data" / "chapters"
 GLOSSARY_FILE = ROOT / "data" / "glossary.ts"
 DOWNLOADS_DIR = ROOT / "public" / "downloads"
+PAGES_DIR = ROOT / "data" / "pages"
 OUT_DIR = ROOT / "public" / "rag"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -119,15 +120,43 @@ def parse_labs():
     return items, manifest
 
 
+def parse_static_pages():
+    items = []
+    if not PAGES_DIR.exists():
+        return items
+    for file in sorted(PAGES_DIR.glob("*.txt")):
+        meta_file = PAGES_DIR / (file.stem + ".meta.json")
+        meta = {}
+        if meta_file.exists():
+            try:
+                meta = json.loads(meta_file.read_text(encoding="utf-8"))
+            except Exception:
+                pass
+        raw = file.read_text(encoding="utf-8", errors="ignore")
+        title = meta.get("title", file.stem)
+        url = meta.get("url", "/")
+        for idx, chunk in enumerate(chunk_text(raw, 1200, 160)):
+            items.append({
+                "id": f"page-{file.stem}-{idx}",
+                "sourceType": "page",
+                "chapterSlug": None,
+                "title": title,
+                "url": url,
+                "text": chunk,
+            })
+    return items
+
+
 def main():
     chapters = parse_chapters_raw()
     glossary = parse_glossary_raw()
     labs, manifest = parse_labs()
-    corpus = chapters + glossary + labs
+    pages = parse_static_pages()
+    corpus = chapters + glossary + labs + pages
 
     (OUT_DIR / "index.json").write_text(json.dumps(corpus, ensure_ascii=False, indent=2), encoding="utf-8")
     (OUT_DIR / "lab-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Built RAG index: {len(corpus)} chunks")
+    print(f"Built RAG index: {len(corpus)} chunks (pages: {len(pages)})")
     print(f"Built lab manifest: {len(manifest)} zip files")
 
 

@@ -1,0 +1,89 @@
+Pagina OpenClaw — Come è stato costruito questo sito
+
+URL: /openclaw
+Titolo: Come nasce un capitolo — Il sistema di agenti AI dietro Fondamenti di AI
+
+Questa pagina descrive il sistema di agenti AI costruito con OpenClaw che ha creato e gestisce il sito Fondamenti di AI.
+
+IL SISTEMA DI AGENTI AI
+
+Il sito è stato costruito da un sistema di agenti AI orchestrati con OpenClaw, ciascuno con un ruolo specifico:
+
+Spark ✨ — Assistente alla Docenza
+Ruolo: Coordina tutto il materiale didattico. Decide struttura, contenuti e quali agenti attivare per ogni task.
+Strumento: OpenClaw
+Output: Orchestrazione completa — coordina ogni agente, ogni task, ogni output didattico
+Sotto-agenti: Quizard, GammaBot, Notebook, Showcaser
+
+Quizard 🎯 — Creatore Quiz
+Ruolo: Gestisce Wayground end-to-end: crea quiz, configura modalità (Mastering, Practice, Exam), gestisce sezioni, punteggi e flussi di apprendimento per ogni corso.
+Strumento: Wayground
+Output: Esperienze di apprendimento interattive — quiz, sessioni guidate, tracciamento progressi
+
+GammaBot 🎨 — Creatore Slide
+Ruolo: Genera presentazioni e slide didattiche via API Gamma.app. Output pronto per la lezione in aula.
+Strumento: Gamma.app API
+Output: Presentazioni PDF/PPTX pronte per l'aula
+
+Notebook 📓 — Knowledge Companion
+Ruolo: Prepara le fonti per Google NotebookLM. Da ogni capitolo estrae il testo ottimizzato per generare podcast e video.
+Strumento: Google NotebookLM
+Output: Podcast audio, video riassuntivi, infografiche
+
+Showcaser 🖥️ — Sviluppatore Web
+Ruolo: Converte ogni contenuto didattico in pagine web interattive. Ha seguito una pipeline di 7 fasi per costruire questo sito.
+Strumento: Next.js + Vercel + GitHub
+Output: Questo sito — ogni capitolo, quiz, lab
+
+COME NASCE UN CAPITOLO — TIMELINE
+
+1. Michele definisce l'argomento
+   Un messaggio su Telegram: "Crea il capitolo sul Machine Learning — lab pratico incluso." Niente di più.
+
+2. Spark struttura il contenuto
+   Spark legge il contesto del corso, genera struttura, sezioni, keyTakeaway, discussionPrompt, esercizi e quiz in TypeScript.
+
+3. Showcaser costruisce la pagina
+   Il contenuto viene convertito in una pagina Next.js interattiva con componenti, glossario inline e workflow lab. Push su GitHub → deploy automatico su Vercel.
+
+4. Notebook prepara le fonti
+   Il testo del capitolo viene ottimizzato e caricato in Google NotebookLM per generare il podcast e le risorse audio.
+
+5. Quizard crea il quiz
+   Le domande vengono caricate su Wayground con la modalità Mastering per tracciare l'apprendimento.
+
+6. GammaBot genera le slide
+   Le slide della lezione vengono generate via API Gamma.app, pronte per la classe.
+
+NOTEBOOKLM — INFOGRAFICA DEL PROCESSO
+
+NotebookLM di Google è il motore che trasforma i testi dei capitoli in podcast audio, video e materiali sintetizzati.
+Il processo: testo capitolo → NotebookLM analizza le fonti → genera podcast, video e materiali.
+
+STACK TECNOLOGICO
+
+Frontend: Next.js 15, React 19, TypeScript, Tailwind CSS
+Deploy: Vercel (auto-deploy da GitHub)
+AI Provider: OpenClaw (orchestrazione agenti)
+Quiz: Wayground
+Slide: Gamma.app API
+Audio/Video: Google NotebookLM
+Agenti: Spark, Showcaser, Quizard, GammaBot, Notebook
+
+IL SITO IN NUMERI
+
+- 15 capitoli
+- Circa 3 ore di contenuto
+- Quiz interattivi per ogni capitolo
+- Lab pratici scaricabili
+- Glossario AI integrato
+- Tutor AI con RAG (Retrieval Augmented Generation)
+
+TUTOR AI
+
+Il sito include un Tutor AI integrato (chat floating in basso a destra) che risponde alle domande sui contenuti del corso usando RAG: recupera i passaggi rilevanti dai capitoli e genera risposte contestuali.
+Provider: Groq (llama-3.3-70b-versatile)
+Architettura: Vercel-native, RAG index statico JSON, nessun database esterno.
+
+Michele Tornello — Docente e Ideatore
+Docente alla Steve Jobs Academy di Catania. Ha progettato il corso, supervisionato ogni capitolo e guidato il sistema di agenti per creare questo sito.

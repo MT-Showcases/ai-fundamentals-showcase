@@ -1,0 +1,25 @@
+Fondamenti di AI — Homepage del corso
+
+Titolo: Fondamenti di AI
+Sottotitolo: Capire l'Intelligenza Artificiale — davvero.
+
+Descrizione: Dal Machine Learning alle reti neurali, dai modelli linguistici alle applicazioni pratiche: un percorso completo pensato per chi vuole costruire con l'AI, non solo parlarne.
+
+Il corso è composto da 15 capitoli, con circa 3 ore di lettura complessiva.
+
+Banner OpenClaw: Dietro questo sito c'è un sistema di agenti AI costruito con OpenClaw, per trasformare la visione didattica di Michele Tornello in un'esperienza di apprendimento concreta, pratica e accessibile a tutti.
+
+Struttura del corso:
+- 15 capitoli che coprono dall'introduzione all'AI ai pattern avanzati e al futuro dell'intelligenza artificiale
+- Ogni capitolo include sezioni teoriche, punti chiave, discussioni in aula ed esercizi pratici
+- Materiali didattici: video, podcast, infografiche, lab pratici scaricabili
+- Quiz interattivi per ogni capitolo
+- Glossario con terminologia AI
+
+Il sito è creato da Michele Tornello, docente alla Steve Jobs Academy di Catania.
+
+Navigazione: dalla homepage puoi accedere a tutti i 15 capitoli del corso, al glossario, e alla pagina OpenClaw che descrive come è stato costruito il sito.
+
+Progress Dashboard: nella homepage è visibile la dashboard dei tuoi progressi nei quiz, con il punteggio per ogni capitolo.
+
+Introduzione al Corso: video overview completo del percorso Fondamenti di AI.
