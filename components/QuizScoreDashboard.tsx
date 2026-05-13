@@ -12,9 +12,17 @@ import {
 export default function QuizScoreDashboard() {
   const [scores, setScores] = useState<QuizScoresMap>(() => loadQuizScores());
 
-  const quizChaptersCount = useMemo(() => chapters.filter((c) => c.quiz?.length).length, []);
-  const completed = Object.keys(scores).length;
-  const totals = getTotalCompletedQuestions(scores);
+  const quizChapterIds = useMemo(() => new Set(chapters.filter((c) => c.quiz?.length).map((c) => c.id)), []);
+  const quizChaptersCount = quizChapterIds.size;
+
+  const validScores = useMemo(() => {
+    return Object.fromEntries(
+      Object.entries(scores).filter(([, s]) => quizChapterIds.has(s.chapterId) && s.total > 0)
+    ) as QuizScoresMap;
+  }, [scores, quizChapterIds]);
+
+  const completed = Object.keys(validScores).length;
+  const totals = getTotalCompletedQuestions(validScores);
 
   return (
     <div className="rounded-2xl border border-blue-700/40 bg-navy-800/40 p-5 md:p-6">
