@@ -120,6 +120,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['addestramento', 'apprendimento'],
     relatedTerms: ['overfitting', 'loss-function', 'backpropagation', 'dataset'],
     relatedChapters: ['machine-learning', 'neural-networks'],
+    examples: ['Durante il training di un classificatore spam, il modello aggiorna i pesi a ogni batch di email etichettate.'],
   },
   {
     id: 'overfitting',
@@ -143,6 +144,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['sotto-adattamento'],
     relatedTerms: ['overfitting', 'training', 'modello'],
     relatedChapters: ['machine-learning'],
+    examples: ['Un modello lineare resta al 62% sia in training che in validation perché è troppo semplice per i dati.'],
   },
   {
     id: 'dataset',
@@ -177,6 +179,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['etichetta', 'annotation', 'ground truth'],
     relatedTerms: ['supervised-learning', 'dataset', 'training'],
     relatedChapters: ['data-importance', 'machine-learning'],
+    examples: ['Nel dataset ticket, la label indica se la richiesta va a supporto tecnico, billing o commerciale.'],
   },
   {
     id: 'data-quality',
@@ -200,6 +203,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['accuratezza', 'precisione globale'],
     relatedTerms: ['precision', 'recall', 'f1-score', 'kpi'],
     relatedChapters: ['machine-learning'],
+    examples: ['Su 1.000 richieste, il modello ne classifica correttamente 910: accuracy 91%.'],
   },
   {
     id: 'precision',
@@ -210,6 +214,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     category: 'ML',
     relatedTerms: ['recall', 'accuracy', 'f1-score'],
     relatedChapters: ['machine-learning'],
+    examples: ['Se il filtro segnala 100 email come spam e 92 lo sono davvero, la precision è 92%.'],
   },
   {
     id: 'recall',
@@ -221,6 +226,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['sensibilità', 'sensitivity'],
     relatedTerms: ['precision', 'accuracy', 'f1-score'],
     relatedChapters: ['machine-learning'],
+    examples: ['Su 200 frodi reali, il sistema ne intercetta 170: recall 85%.'],
   },
   {
     id: 'f1-score',
@@ -231,6 +237,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     category: 'ML',
     relatedTerms: ['precision', 'recall', 'accuracy'],
     relatedChapters: ['machine-learning'],
+    examples: ['In un triage medico si usa F1-score per bilanciare precision e recall senza favorire una sola metrica.'],
   },
 
   // ── Deep Learning ────────────────────────────────────────────────────────
@@ -256,6 +263,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['ANN', 'rete neurale artificiale'],
     relatedTerms: ['backpropagation', 'peso', 'layer', 'deep-learning'],
     relatedChapters: ['neural-networks'],
+    examples: ['Una rete neurale con 3 layer classifica immagini di prodotti danneggiati da foto di magazzino.'],
   },
   {
     id: 'backpropagation',
@@ -267,6 +275,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['retropropagazione', 'backprop'],
     relatedTerms: ['neural-network', 'gradient-descent', 'loss-function', 'training'],
     relatedChapters: ['neural-networks'],
+    examples: ['Durante l\'addestramento, la backpropagation corregge i pesi dopo ogni errore di previsione.'],
   },
   {
     id: 'gradient-descent',
@@ -278,6 +287,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['discesa del gradiente'],
     relatedTerms: ['backpropagation', 'learning-rate', 'loss-function'],
     relatedChapters: ['neural-networks'],
+    examples: ['Il gradient descent riduce la loss iterando piccoli aggiornamenti dei parametri del modello.'],
   },
   {
     id: 'loss-function',
@@ -289,6 +299,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['funzione di perdita', 'cost function', 'objective function'],
     relatedTerms: ['gradient-descent', 'training', 'backpropagation'],
     relatedChapters: ['neural-networks', 'machine-learning'],
+    examples: ['In classificazione binaria, la binary cross-entropy misura quanto la previsione si discosta dalla label reale.'],
   },
   {
     id: 'learning-rate',
@@ -300,6 +311,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['tasso di apprendimento'],
     relatedTerms: ['gradient-descent', 'training', 'iperparametro'],
     relatedChapters: ['neural-networks'],
+    examples: ['Con learning rate troppo alto la loss oscilla e il modello non converge.'],
   },
   {
     id: 'layer',
@@ -311,6 +323,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['strato', 'livello'],
     relatedTerms: ['neural-network', 'deep-learning', 'transformer'],
     relatedChapters: ['neural-networks'],
+    examples: ['Nel modello NLP, un layer aggiuntivo migliora la capacità di catturare dipendenze tra parole.'],
   },
   {
     id: 'peso',
@@ -322,6 +335,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['parametro', 'weight'],
     relatedTerms: ['neural-network', 'backpropagation', 'training'],
     relatedChapters: ['neural-networks'],
+    examples: ['Un peso alto su una feature rende quella variabile più influente nella previsione finale.'],
   },
   {
     id: 'dropout',
@@ -332,6 +346,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     category: 'Deep Learning',
     relatedTerms: ['overfitting', 'regolarizzazione', 'neural-network'],
     relatedChapters: ['neural-networks'],
+    examples: ['Con dropout al 30% il modello riduce overfitting su dataset piccolo di recensioni.'],
   },
   {
     id: 'cnn',
@@ -343,6 +358,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Convolutional Neural Network', 'rete convoluzionale'],
     relatedTerms: ['deep-learning', 'neural-network', 'computer-vision'],
     relatedChapters: ['neural-networks'],
+    examples: ['Una CNN distingue difetti visivi su immagini di controllo qualità in una linea produttiva.'],
   },
 
   // ── NLP ─────────────────────────────────────────────────────────────────
@@ -368,6 +384,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['tokenization'],
     relatedTerms: ['embedding', 'nlp', 'llm'],
     relatedChapters: ['nlp'],
+    examples: ['La tokenizzazione divide la frase utente in unità prima di passarla al modello linguistico.'],
   },
   {
     id: 'embedding',
@@ -402,6 +419,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['self-attention', 'meccanismo di attenzione'],
     relatedTerms: ['transformer', 'llm', 'context-window'],
     relatedChapters: ['nlp'],
+    examples: ['L\'attention evidenzia le parole chiave della domanda per generare una risposta coerente.'],
   },
   {
     id: 'context-window',
@@ -413,6 +431,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['finestra di contesto', 'context length'],
     relatedTerms: ['llm', 'transformer', 'tokenizzazione'],
     relatedChapters: ['nlp', 'generative-ai'],
+    examples: ['Se il documento supera il context window, le prime parti rischiano di uscire dal contesto.'],
   },
 
   // ── Generativa ──────────────────────────────────────────────────────────
@@ -462,6 +481,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['temperature', 'parametro temperatura'],
     relatedTerms: ['llm', 'prompt-engineering', 'allucinazione'],
     relatedChapters: ['generative-ai'],
+    examples: ['Con temperatura 0.2 il chatbot produce risposte più stabili e meno creative.'],
   },
   {
     id: 'rag',
@@ -485,6 +505,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['messa a punto', 'adattamento del modello'],
     relatedTerms: ['transfer-learning', 'rag', 'llm', 'training'],
     relatedChapters: ['fine-tuning'],
+    examples: ['Un team fine-tuna il modello su FAQ interne per ridurre errori su termini di dominio.'],
   },
   {
     id: 'transfer-learning',
@@ -508,6 +529,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['safety filters', 'controlli di sicurezza AI'],
     relatedTerms: ['llm', 'allucinazione', 'etica-ai'],
     relatedChapters: ['generative-ai', 'ethics-ai'],
+    examples: ['Un guardrail blocca output con dati sensibili prima che vengano mostrati all\'utente.'],
   },
 
   // ── Etica ────────────────────────────────────────────────────────────────
@@ -521,6 +543,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['equità', 'giustizia algoritmica'],
     relatedTerms: ['bias', 'etica-ai', 'data-quality'],
     relatedChapters: ['ethics-ai', 'data-importance'],
+    examples: ['Nel credit scoring si verifica fairness per evitare tassi di errore più alti su gruppi specifici.'],
   },
   {
     id: 'explainability',
@@ -532,6 +555,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['spiegabilità', 'interpretabilità', 'XAI'],
     relatedTerms: ['fairness', 'etica-ai', 'modello'],
     relatedChapters: ['ethics-ai'],
+    examples: ['Per un rifiuto prestito, il sistema mostra le feature che hanno pesato di più nella decisione.'],
   },
   {
     id: 'etica-ai',
@@ -543,6 +567,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['AI ethics', 'responsible AI'],
     relatedTerms: ['fairness', 'explainability', 'bias', 'guardrail'],
     relatedChapters: ['ethics-ai'],
+    examples: ['Prima del rilascio, il team esegue una review etica su impatti sociali e rischi discriminatori.'],
   },
 
   // ── Prodotto / Architettura ──────────────────────────────────────────────
@@ -556,6 +581,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Minimum Viable Product', 'prodotto minimo funzionante'],
     relatedTerms: ['kpi', 'produzione'],
     relatedChapters: ['what-is-ai'],
+    examples: ['La startup lancia un MVP con una sola automazione AI per validare utilità prima di scalare.'],
   },
   {
     id: 'produzione',
@@ -567,6 +593,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['deployment', 'in production'],
     relatedTerms: ['monitoring', 'data-drift', 'kpi'],
     relatedChapters: ['machine-learning'],
+    examples: ['Dopo i test, il modello viene messo in produzione e monitorato con KPI e alert.'],
   },
   {
     id: 'data-drift',
@@ -578,6 +605,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['dataset shift', 'distributional shift'],
     relatedTerms: ['produzione', 'monitoring', 'training'],
     relatedChapters: ['machine-learning'],
+    examples: ['Dopo un cambio di mercato, il modello vendite perde accuratezza per data drift nei comportamenti clienti.'],
   },
   {
     id: 'iperparametro',
@@ -589,6 +617,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['hyperparameter'],
     relatedTerms: ['learning-rate', 'training', 'modello'],
     relatedChapters: ['machine-learning', 'neural-networks'],
+    examples: ['Il numero di epoch è un iperparametro deciso prima del training, non appreso dal modello.'],
   },
   {
     id: 'preprocessing',
@@ -600,6 +629,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['preparazione dati', 'data preparation', 'data cleaning'],
     relatedTerms: ['dataset', 'data-quality', 'feature-engineering'],
     relatedChapters: ['data-importance'],
+    examples: ['Nel preprocessing si normalizzano campi e si gestiscono valori mancanti prima dell\'addestramento.'],
   },
   {
     id: 'feature-engineering',
@@ -611,6 +641,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['ingegneria delle feature'],
     relatedTerms: ['preprocessing', 'dataset', 'modello'],
     relatedChapters: ['data-importance', 'machine-learning'],
+    examples: ['Il team crea la feature \'spesa media 30 giorni\' per migliorare la previsione churn.'],
   },
   {
     id: 'validation',
@@ -622,6 +653,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['dev set', 'development set', 'insieme di validazione'],
     relatedTerms: ['training', 'overfitting', 'test-set'],
     relatedChapters: ['machine-learning'],
+    examples: ['La validation set serve per scegliere il modello migliore senza toccare il test finale.'],
   },
   {
     id: 'test-set',
@@ -633,6 +665,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['insieme di test', 'hold-out set'],
     relatedTerms: ['validation', 'training', 'overfitting'],
     relatedChapters: ['machine-learning'],
+    examples: ['Il test set viene usato una sola volta per misurare prestazioni reali prima del deploy.'],
   },
   {
     id: 'clustering',
@@ -656,6 +689,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['visione artificiale', 'CV'],
     relatedTerms: ['cnn', 'deep-learning', 'neural-network'],
     relatedChapters: ['neural-networks'],
+    examples: ['Un sistema di computer vision conta automaticamente prodotti sugli scaffali da feed camera.'],
   },
   {
     id: 'reinforcement-learning',
@@ -679,6 +713,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Reinforcement Learning from Human Feedback'],
     relatedTerms: ['llm', 'fine-tuning', 'reinforcement-learning'],
     relatedChapters: ['fine-tuning'],
+    examples: ['Con RLHF si allinea il modello ai feedback umani per ridurre risposte tossiche o inutili.'],
   },
   {
     id: 'zero-shot',
@@ -690,6 +725,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['zero-shot learning', 'zero shot'],
     relatedTerms: ['fine-tuning', 'rag', 'prompt-engineering', 'llm'],
     relatedChapters: ['fine-tuning'],
+    examples: ['In zero-shot il modello classifica una richiesta nuova senza esempi specifici nel prompt.'],
   },
   {
     id: 'regolarizzazione',
@@ -701,6 +737,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['regularization'],
     relatedTerms: ['overfitting', 'dropout', 'loss-function'],
     relatedChapters: ['machine-learning', 'neural-networks'],
+    examples: ['Aggiungendo regolarizzazione L2 il modello generalizza meglio su dati mai visti.'],
   },
   {
     id: 'generative-ai',
@@ -724,6 +761,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Generative Pre-trained Transformer', 'ChatGPT'],
     relatedTerms: ['llm', 'transformer', 'rlhf'],
     relatedChapters: ['generative-ai'],
+    examples: ['Un modello GPT genera bozze email commerciali a partire da un brief di due righe.'],
   },
   {
     id: 'diffusion-model',
@@ -747,6 +785,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['pre-addestramento'],
     relatedTerms: ['fine-tuning', 'transfer-learning', 'llm'],
     relatedChapters: ['fine-tuning'],
+    examples: ['Nel pre-training il modello apprende struttura linguistica da grandi corpora generici.'],
   },
   {
     id: 'api',
@@ -758,6 +797,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['interfaccia programmatica'],
     relatedTerms: ['llm', 'prompt-engineering', 'rag'],
     relatedChapters: ['generative-ai'],
+    examples: ['L\'app chiama un\'API LLM per ottenere una sintesi ticket in tempo reale.'],
   },
   {
     id: 'autonomous-agent',
@@ -769,6 +809,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['AI agent', 'autonomous AI'],
     relatedTerms: ['llm', 'rag', 'guardrail'],
     relatedChapters: ['generative-ai'],
+    examples: ['Un autonomous agent legge una mailbox e propone risposte, ma invia solo dopo approvazione umana.'],
   },
   {
     id: 'ai-act',
@@ -780,6 +821,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Regolamento AI europeo', 'EU AI Act'],
     relatedTerms: ['etica-ai', 'fairness', 'explainability'],
     relatedChapters: ['ethics-ai'],
+    examples: ['Per un sistema HR ad alto rischio, l\'azienda prepara documentazione richiesta dall\'AI Act.'],
   },
   {
     id: 'edge-case',
@@ -791,6 +833,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['caso limite', 'corner case'],
     relatedTerms: ['validation', 'test-set', 'data-quality'],
     relatedChapters: ['data-importance', 'machine-learning'],
+    examples: ['Una domanda con sigle aziendali rare è un edge case che manda in crisi il classificatore.'],
   },
   {
     id: 'autonomy-levels',
@@ -801,6 +844,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     category: 'Prodotto',
     relatedTerms: ['guardrail', 'etica-ai', 'autonomous-agent'],
     relatedChapters: ['ethics-ai'],
+    examples: ['Nel livello di autonomia 2, l\'agente suggerisce azioni ma non le esegue senza conferma.'],
   },
   {
     id: 'MAE',
@@ -812,6 +856,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Mean Absolute Error', 'errore medio assoluto'],
     relatedTerms: ['R²', 'RMSE', 'overfitting'],
     relatedChapters: ['supervised-learning-regression'],
+    examples: ['Su previsioni prezzi, MAE 8€ indica errore medio assoluto di 8 euro per ordine.'],
   },
   {
     id: 'R²',
@@ -823,6 +868,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['R quadro', 'coefficiente di determinazione', 'R-squared'],
     relatedTerms: ['MAE', 'RMSE', 'overfitting'],
     relatedChapters: ['supervised-learning-regression'],
+    examples: ['Un R² di 0.78 indica che il modello spiega il 78% della variabilità del target.'],
   },
   {
     id: 'RMSE',
@@ -834,6 +880,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Root Mean Square Error', 'errore quadratico medio'],
     relatedTerms: ['MAE', 'R²', 'overfitting'],
     relatedChapters: ['supervised-learning-regression'],
+    examples: ['RMSE alto segnala che alcuni errori grandi stanno pesando molto sulla metrica.'],
   },
   {
     id: 'logistic-regression',
@@ -845,6 +892,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Logistic Regression', 'regressione logistica'],
     relatedTerms: ['MultinomialNB', 'training', 'validation'],
     relatedChapters: ['nlp'],
+    examples: ['La logistic regression classifica lead caldi/freddi con output probabilistico interpretabile.'],
   },
   {
     id: 'multinomial-nb',
@@ -856,6 +904,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     synonyms: ['Multinomial Naive Bayes', 'Naive Bayes'],
     relatedTerms: ['LogisticRegression', 'TF-IDF', 'training'],
     relatedChapters: ['nlp'],
+    examples: ['Multinomial NB funziona bene nel filtraggio spam usando frequenze di parole nei messaggi.'],
   },
 ];
 
