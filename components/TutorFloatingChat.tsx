@@ -139,13 +139,19 @@ export default function TutorFloatingChat() {
             )}
           </div>
 
-          <div className="p-3 border-t border-cyan-400/20 flex gap-2">
-            <input
+          <div className="p-3 border-t border-cyan-400/20 flex gap-2 items-end">
+            <textarea
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && ask()}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  ask();
+                }
+              }}
               placeholder="Fai una domanda..."
-              className="flex-1 rounded-md bg-navy-950 border border-cyan-400/20 px-3 py-2 text-sm"
+              rows={2}
+              className="flex-1 rounded-md bg-navy-950 border border-cyan-400/20 px-3 py-2 text-sm resize-none min-h-[44px] max-h-28"
             />
             <button onClick={ask} disabled={loading} className="rounded-md bg-cyan-500 text-navy-950 px-3 py-2 text-sm font-semibold disabled:opacity-50">
               {loading ? '...' : 'Invia'}
