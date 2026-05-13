@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { TUTOR_NAME, TUTOR_PLACEHOLDER, TUTOR_TAGLINE, TUTOR_TEMPERATURE_DEFAULT, TUTOR_TEMPERATURE_PRESETS } from '@/lib/tutor-config';
+import { TUTOR_NAME, TUTOR_PLACEHOLDER, TUTOR_TAGLINE } from '@/lib/tutor-config';
 
 type AnswerData = { summary: string; bullets?: string[]; suggestions?: Array<{ label: string; url: string }> };
 type Msg = { role: 'user' | 'assistant'; text: string; data?: AnswerData };
@@ -81,7 +81,6 @@ export default function TutorFloatingChat() {
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [lastSources, setLastSources] = useState<Source[]>([]);
-  const [temperature, setTemperature] = useState(TUTOR_TEMPERATURE_DEFAULT);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -130,7 +129,7 @@ export default function TutorFloatingChat() {
           question: q,
           chapterSlug,
           pathname: pathname || '/',
-          temperature,
+          temperature: undefined,
           history: messages.map((m) => ({ role: m.role, text: m.text })),
         }),
       });
@@ -161,27 +160,8 @@ export default function TutorFloatingChat() {
             <IconBot className="w-4 h-4" /> {TUTOR_NAME}
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
           </p>
-          <p className="text-[11px] text-gray-400">Sessione persistente su tutto il sito</p>
         </div>
-        <div className="flex items-center gap-2">
-          {/* Temperature selector */}
-          <div className="flex items-center gap-1 bg-navy-800 rounded-lg p-1">
-            {TUTOR_TEMPERATURE_PRESETS.map((p) => (
-              <button
-                key={p.value}
-                onClick={() => setTemperature(p.value)}
-                title={`Temperatura: ${p.value}`}
-                className={`text-[10px] px-2 py-0.5 rounded-md transition-colors ${
-                  temperature === p.value
-                    ? 'bg-cyan-500 text-navy-950 font-semibold'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
-          <button onClick={clearChat} className="text-xs text-gray-400 hover:text-white flex items-center gap-1">
+        <div className="flex items-center gap-3">          <button onClick={clearChat} className="text-xs text-gray-400 hover:text-white flex items-center gap-1">
             <IconTrash /> Reset
           </button>
           <button
