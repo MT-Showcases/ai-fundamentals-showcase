@@ -88,114 +88,114 @@ export const ch12: Chapter = {
     },
     quiz: [
       {
-        question: 'Un team operations introduce AI per gestire le richieste di rimborso spese. Dopo 2 mesi, i rimborsi vengono processati 3x più veloce ma i reclami per errori aumentano del 22%. Come interpreti questo dato?',
+        question: 'Team operations: con AI i rimborsi spese sono 3x più veloci ma i reclami per errori salgono del 22%. Come interpreti?',
         options: [
-          'Successo: la velocità è l’obiettivo principale di qualsiasi automazione',
-          'Il 22% di reclami è nella norma per qualsiasi sistema nuovo — aspetti altri 6 mesi',
-          'La velocità è migliorata ma la qualità è peggiorata: serve ribilanciare i KPI e introdurre revisione umana sui casi ad alta probabilità di errore',
-          'Togli l’AI e torni al processo manuale',
+          'Il throughput è triplicato: il rollout è un successo operativo confermato.',
+          'Il 22% è il costo fisiologico di onboarding e si stabilizza entro sei mesi.',
+          'I KPI misurano solo velocità: serve aggiungere qualità e revisione umana.',
+          'Velocità e qualità sono trade-off naturali da accettare in qualsiasi rollout.',
         ],
         correct: 2,
-        explanation: 'Efficienza senza qualità affidabile è un falso guadagno. Il 22% di reclami in più è un segnale che i KPI di successo erano incompleti — si misurava solo la velocità, non la correttezza. La risposta corretta non è bloccare l’AI ma ridisegnare il workflow con supervisione umana sui casi rischiosi.'
+        explanation: 'Misurare solo la velocità nasconde il costo reale degli errori. Servono KPI bilanciati su qualità e revisione umana sui casi rischiosi.'
       },
       {
-        question: 'Il tuo responsabile ti chiede di automatizzare completamente i colloqui iniziali di selezione con un sistema AI conversazionale. Qual è il rischio principale che devi segnalare?',
+        question: 'Il tuo manager vuole automatizzare i colloqui HR iniziali con un AI conversazionale. Rischio principale?',
         options: [
-          'Il sistema sarà troppo lento rispetto a un recruiter umano',
-          'I candidati potrebbero preferire parlare con un umano per ragioni culturali',
-          'Un sistema di selezione automatizzato senza supervisione umana è ad alto rischio AI Act, può introdurre bias sistemici e priva i candidati di interazione contestuale che influenza l’equità del processo',
-          'Il costo del sistema AI supererà il risparmio sui recruiter nel primo anno',
+          'Latenza: un AI conversazionale è più lento di un recruiter esperto.',
+          'Costo: i modelli enterprise superano il risparmio sui recruiter junior.',
+          'Cultura: i candidati italiani preferiscono il contatto umano per fiducia.',
+          'AI Act: la selezione automatizzata è alto rischio e introduce bias sistemici.',
+        ],
+        correct: 3,
+        explanation: 'I sistemi di selezione personale sono esplicitamente alto rischio AI Act. Senza supervisione introducono bias e penalizzano profili non standard.'
+      },
+      {
+        question: 'In quale scenario AI in un workflow aziendale crea più valore strutturale nel tempo?',
+        options: [
+          'Quando automatizza task ripetitivi liberando persone su attività di giudizio.',
+          'Quando sostituisce funzioni intere per eliminare costi fissi del personale.',
+          'Quando è applicata a tutti i processi contemporaneamente per massimo impatto.',
+          'Quando si concentra su task ad alta variabilità per liberare budget rapido.',
+        ],
+        correct: 0,
+        explanation: 'Il valore nasce dividendo: AI sui task ripetitivi e misurabili, persone sui task di giudizio. Le altre strategie producono caos o falso ROI.'
+      },
+      {
+        question: 'Customer support AI: 89% ticket risolti ma l\'11% chiusi come "risolti" non lo era. Problema reale?',
+        options: [
+          'L\'89% è sotto soglia accettabile: serve raggiungere almeno il 95% prima.',
+          'Il sistema serve più training: con altri dati la resolution rate crescerà ancora.',
+          'Manca KPI di false closure: i clienti insoddisfatti spariscono dalle metriche.',
+          'Il problema è UX: i clienti non sanno riaprire facilmente i ticket chiusi.',
         ],
         correct: 2,
-        explanation: 'I sistemi di selezione automatizzata rientrano nell’alto rischio AI Act. Oltre alla conformità normativa, l’automazione completa dei colloqui rimuove il giudizio contestuale che è spesso critico per valutare candidati con percorsi non standard. Il rischio di bias sistematico è reale e misurabile.'
+        explanation: 'Misurare solo resolution rate nasconde l\'11% di clienti non ricontattati. Serve un set bilanciato di KPI che includa il costo degli errori.'
       },
       {
-        question: 'In quale scenario l’introduzione di AI in un workflow aziendale crea più valore strutturale nel tempo?',
+        question: 'Co-pilota AI per diagnosi differenziale in ospedale. Quale rollout è corretto?',
         options: [
-          'Quando automatizza task ad alta variabilità e giudizio contestuale per liberare budget',
-          'Quando sostituisce completamente una funzione aziendale eliminando i costi fissi',
-          'Quando gestisce task ripetitivi e misurabili, liberando le persone per attività ad alto giudizio che l’AI non può replicare',
-          'Quando è implementata su tutti i processi contemporaneamente per massimizzare l’impatto',
-        ],
-        correct: 2,
-        explanation: 'Il valore strutturale si crea quando AI e persone si specializzano in ciò che sanno fare meglio: AI su task ripetitivi, volumetrici e misurabili; persone su giudizio contestuale, relazioni e decisioni complesse. L’automazione totale o distribuita ovunque contemporaneamente produce caos operativo, non valore.'
-      },
-      {
-        question: 'Un sistema AI di customer support risolve correttamente l’89% dei ticket, ma il restante 11% viene chiuso automaticamente come “risolto” anche se non lo è. Il team festeggia il 89%. Qual è il problema reale?',
-        options: [
-          'L’89% è sotto la soglia minima di qualsiasi sistema AI in produzione',
-          'Il sistema non è addestrato su abbastanza dati — serve più training',
-          'L’11% di falsi positivi “risolti” crea danni reali: clienti insoddisfatti che non vengono ricontattati. La metrica corretta non è solo la resolution rate ma anche il false closure rate',
-          'Il problema è solo di UX: i clienti devono poter riaprire il ticket più facilmente',
-        ],
-        correct: 2,
-        explanation: 'Una metrica di successo incompleta è più pericolosa di nessuna metrica. Misurare solo la resolution rate nasconde il problema sistemico: ogni ticket chiuso erroneamente è un cliente che si sente ignorato. In sistemi AI operativi, serve sempre un set bilanciato di KPI — incluso il costo degli errori.'
-      },
-      {
-        question: 'Il tuo team sta valutando se introdurre un co-pilota AI per supportare i medici nella diagnosi differenziale. Quale approccio di rollout è più corretto?',
-        options: [
-          'Deploy immediato su tutti i reparti per raccogliere feedback reali il prima possibile',
-          'Pilot controllato su un reparto specifico con KPI di qualità e sicurezza predefiniti, supervisione medica obbligatoria, e decision gate prima dell’espansione',
-          'Deploy solo nei reparti con più carico di lavoro per massimizzare il ROI immediato',
-          'Aspettare che il modello raggiunga F1=0.99 prima di qualsiasi test clinico',
+          'Deploy esteso su tutti i reparti per raccogliere feedback su volume reale.',
+          'Pilot controllato su un reparto con KPI predefiniti e supervisione medica.',
+          'Rollout sui reparti più carichi per massimizzare il ROI nel breve periodo.',
+          'Attesa fino a F1=0.99 prima di qualsiasi sperimentazione clinica reale.',
         ],
         correct: 1,
-        explanation: 'In ambiti ad alto impatto, il rollout progressivo con KPI predefiniti e decision gate è l’unico approccio responsabile. Un deploy immediato ovunque non permette di misurare l’impatto reale prima che i problemi diventino sistemici. La supervisione medica obbligatoria non è opzionale in sistemi clinici.'
+        explanation: 'In ambito clinico serve rollout progressivo con decision gate misurabili. Deploy ampio senza pilot blocca correzioni; F1=0.99 è irrealistico.'
       },
       {
-        question: 'Un professionista del marketing con 10 anni di esperienza teme che l’AI sostituirà il suo ruolo. Quale risposta è più accurata rispetto ai dati sull’impatto AI sul lavoro?',
+        question: 'Marketing manager con 10 anni di esperienza teme che l\'AI sostituisca il suo ruolo. Risposta più accurata?',
         options: [
-          'Ha ragione — i ruoli creativi saranno automatizzati entro 3 anni',
-          'Non ha nulla da temere — l’AI non sostituisce mai persone con esperienza',
-          'La sua esperienza di dominio è un vantaggio, ma deve integrare competenze di orchestrazione AI: chi sa usare l’AI come moltiplicatore di produttività avrà un vantaggio competitivo su chi non lo fa',
-          'L’unica strategia è spostarsi su ruoli tecnici come ML engineer',
+          'Ha ragione: i ruoli creativi senior saranno automatizzati nei prossimi tre anni.',
+          'Non rischia: l\'AI non sostituisce mai professionisti con esperienza di dominio.',
+          'Deve riconvertirsi: l\'unica strategia è passare a ruoli tecnici come ML engineer.',
+          'Esperienza + capacità di orchestrare AI = vantaggio competitivo sostenibile.',
+        ],
+        correct: 3,
+        explanation: 'L\'impatto AI è task-level, non role-level. Chi combina dominio + orchestrazione AI diventa più produttivo; chi ignora il cambiamento perde rilevanza.'
+      },
+      {
+        question: 'Governance AI minima ma sufficiente per un sistema di controllo qualità manifatturiero:',
+        options: [
+          'Dashboard real-time + aggiornamento annuale del modello in produzione.',
+          'Solo accuracy globale misurata in pre-produzione con target sopra il 95%.',
+          'KPI definiti + soglie di escalation + log decisioni + revisione periodica.',
+          'Formazione operatori + manuale d\'uso + procedure di sicurezza standard.',
         ],
         correct: 2,
-        explanation: 'La ricerca sull’impatto AI sul lavoro mostra che la sostituzione è più granulare dei task che dei ruoli interi. Chi combina esperienza di dominio con capacità di orchestrare AI diventa più produttivo, non meno rilevante. La minaccia reale non è l’AI — è chi sa usarla meglio di te.'
+        explanation: 'Governance reale richiede quattro elementi: cosa misuri, quando intervieni, cosa è successo, se si degrada nel tempo. Senza uno è solo carta.'
       },
       {
-        question: 'Stai progettando la governance AI per un’azienda manifatturiera che vuole automatizzare il controllo qualità. Quale combinazione di controlli è minima ma sufficiente?',
+        question: '8 processi automatizzati in 3 mesi: 3 positivi, 3 neutri, 2 negativi. Nessuno sa perché. Causa radice?',
         options: [
-          'Dashboard estetica + modello aggiornato ogni anno',
-          'KPI di qualità definiti prima del deploy + soglie di escalation umana per casi ambigui + log delle decisioni automatiche + revisione periodica delle performance per sottogruppo di prodotto',
-          'Solo accuracy globale > 95% misurata in pre-produzione',
-          'Formazione iniziale degli operatori + manuale d’uso del sistema',
+          'Modelli AI di qualità insufficiente per i processi più complessi del set.',
+          'Mancano KPI predefiniti e ownership chiara per processo: niente misurabile.',
+          'Rollout troppo lento: con 12 processi i risultati si sarebbero compensati.',
+          'Team non abbastanza tecnico per gestire l\'integrazione di sistemi eterogenei.',
         ],
         correct: 1,
-        explanation: 'Una governance minima ma reale richiede: sapere cosa misuri (KPI), sapere quando intervenire (soglie di escalation), sapere cosa è successo (log), e sapere se il sistema si degrada nel tempo (revisione periodica). Senza uno di questi quattro elementi, la governance è solo sulla carta.'
+        explanation: 'Senza KPI predefiniti e ownership non puoi imparare dagli errori né replicare i successi. È l\'errore più comune nell\'adozione AI aziendale.'
       },
       {
-        question: 'Un’azienda introduce AI in 8 processi diversi in 3 mesi. Dopo 6 mesi, i risultati sono positivi in 3, neutri in 3, negativi in 2 — ma nessuno sa esattamente perché. Qual è la causa radice più probabile?',
+        question: 'Manager propone un LLM per generare i feedback annuali di performance dei dipendenti. Problema?',
         options: [
-          'I modelli AI usati erano di qualità insufficiente',
-          'Il rollout è stato troppo lento — servivano 12 processi invece di 8',
-          'Mancavano KPI predefiniti per ogni processo e ownership chiara: senza metriche di successo definite prima, non puoi capire cosa ha funzionato e cosa no',
-          'Il team non era abbastanza tecnico per gestire sistemi AI',
+          'I LLM non sono abbastanza precisi grammaticalmente per documenti HR formali.',
+          'Il problema è economico: i LLM enterprise costano troppo per questo use case.',
+          'Non è un problema se il manager rivede il testo finale prima di inviarlo.',
+          'Feedback automatizzato svuota la valutazione e introduce bias gestionali.',
+        ],
+        correct: 3,
+        explanation: 'Il feedback di performance è atto gestionale: automatizzarlo senza supervisione autentica svuota il significato e introduce bias sistemici.'
+      },
+      {
+        question: 'Quale affermazione descrive meglio l\'impatto AI sul lavoro nei prossimi 5 anni dai dati attuali?',
+        options: [
+          'Sostituzione uniforme di tutti i ruoli cognitivi entro la fine del 2028.',
+          'Impatto minimo sui knowledge worker: la tecnologia è ancora troppo immatura.',
+          'Trasformazione task-level: alcune attività automatizzate, altre amplificate.',
+          'Impatto concentrato solo sui ruoli tecnici come developer e data scientist.',
         ],
         correct: 2,
-        explanation: 'Senza KPI predefiniti e ownership chiara per processo, è impossibile imparare dagli errori o replicare i successi. Il problema non è la velocità del rollout o la qualità del modello — è la mancanza di framework per misurare e attribuire i risultati. Questo è l’errore più comune nell’adozione AI in azienda.'
-      },
-      {
-        question: 'Un manager vuole usare un LLM per automatizzare la stesura dei feedback di performance annuali dei dipendenti. Quale problema etico e operativo devi sollevare?',
-        options: [
-          'I LLM non sono abbastanza precisi grammaticalmente per documenti HR formali',
-          'Il feedback generato da AI senza revisione umana priva i dipendenti di valutazione autentica e personalizzata, può essere discriminatorio, e in molti contesti è un obbligo legale che il responsabile venga coinvolto direttamente',
-          'Il problema è solo di costo: i LLM enterprise sono troppo costosi per questo use case',
-          'Non è un problema se il manager revisiona il testo finale prima di inviarlo',
-        ],
-        correct: 1,
-        explanation: 'Il feedback di performance è un atto gestionale con implicazioni legali, relazionali e motivazionali. Automatizzarlo senza supervisione autentica del manager svuota il significato del processo e può introdurre bias sistematici. La revisione superficiale di un testo generato non equivale a una valutazione reale.'
-      },
-      {
-        question: 'Quale affermazione descrive meglio il ruolo dell’AI nel lavoro nei prossimi 5 anni, basandosi sui pattern attuali?',
-        options: [
-          'L’AI sostituirà uniformemente tutti i ruoli cognitivi entro il 2028',
-          'L’AI avrà impatto minimo sui lavori del knowledge worker — è ancora troppo primitiva',
-          'L’AI trasformerà la composizione dei task all’interno dei ruoli: alcune attività saranno automatizzate, altre amplificate. Chi sa orchestrare AI + esperienza di dominio + giudizio contestuale avrà un vantaggio strutturale',
-          'Solo i ruoli tecnici (developer, data scientist) saranno impattati significativamente',
-        ],
-        correct: 2,
-        explanation: 'I dati attuali mostrano che l’impatto AI è task-level, non role-level. I ruoli non spariscono in blocco — cambiano: alcuni task vengono automatizzati, altri diventano più importanti (giudizio, relazione, creatività strategica). Il vantaggio competitivo va a chi sa navigare questa transizione, non a chi la ignora o la teme.'
+        explanation: 'L\'impatto è granulare sui task, non sui ruoli interi. Chi orchestra AI + dominio + giudizio guadagna vantaggio; gli altri restano fermi.'
       },
     ]
 };
