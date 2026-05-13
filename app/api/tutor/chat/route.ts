@@ -53,8 +53,14 @@ function scoreChunk(chunk: Chunk, tokens: string[], chapterSlug?: string) {
 }
 
 function toReadableTitle(c: Chunk): string {
+  if (c.url?.startsWith('/chapters/')) {
+    const slug = c.url.replace('/chapters/', '').trim();
+    if (slug) return `Capitolo: ${slug}`;
+  }
+  if (c.url === '/glossario') return 'Glossario';
+
   const cleaned = (c.title || '').replace(/\\+/g, '').trim();
-  if (cleaned.length >= 3) return cleaned;
+  if (cleaned.length >= 3 && !/^capitolo[:\s-]?$/i.test(cleaned)) return cleaned;
 
   if (c.sourceType === 'lab_zip') {
     if (c.filePath && c.zipName) return `${c.zipName} · ${c.filePath}`;
@@ -62,7 +68,6 @@ function toReadableTitle(c: Chunk): string {
   }
 
   if (c.chapterSlug) return `Capitolo: ${c.chapterSlug}`;
-  if (c.url === '/glossario') return 'Glossario';
   return c.url || 'Fonte interna';
 }
 
@@ -132,7 +137,10 @@ async function callLLM(question: string, context: Chunk[]) {
 function parseTutorAnswer(raw: string): TutorAnswer | null {
   try {
     const cleaned = raw.trim().replace(/^```json\s*/i, '').replace(/^```/i, '').replace(/```$/, '').trim();
-    const parsed = JSON.parse(cleaned) as TutorAnswer;
+    const candidate = cleaned.includes('{') && cleaned.includes('}')
+      ? cleaned.slice(cleaned.indexOf('{'), cleaned.lastIndexOf('}') + 1)
+      : cleaned;
+    const parsed = JSON.parse(candidate) as TutorAnswer;
     if (!parsed.summary || typeof parsed.summary !== 'string') return null;
     return {
       summary: parsed.summary,
@@ -146,18 +154,11 @@ function parseTutorAnswer(raw: string): TutorAnswer | null {
 
 function buildUniqueSources(ranked: Chunk[]) {
   const out: Array<{ title: string; url: string; sourceType: Chunk['sourceType']; zipName?: string; filePath?: string }> = [];
-  const seen = new Set<string>();
-  const perUrlCount = new Map<string, number>();
+  const seenUrls = new Set<string>();
 
   for (const c of ranked) {
-    const key = `${c.url}|${c.filePath || ''}`;
-    if (seen.has(key)) continue;
-
-    const current = perUrlCount.get(c.url) || 0;
-    if (current >= 2) continue;
-
-    seen.add(key);
-    perUrlCount.set(c.url, current + 1);
+    if (seenUrls.has(c.url)) continue;
+    seenUrls.add(c.url);
     out.push({
       title: toReadableTitle(c),
       url: c.url,

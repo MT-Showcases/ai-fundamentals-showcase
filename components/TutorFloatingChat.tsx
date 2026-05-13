@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 type AnswerData = { summary: string; bullets?: string[]; suggestions?: Array<{ label: string; url: string }> };
@@ -8,6 +8,14 @@ type Msg = { role: 'user' | 'assistant'; text: string; data?: AnswerData };
 type Source = { title: string; url: string; filePath?: string };
 
 const STORAGE_KEY = 'tutor_ai_session_v1';
+
+function normalizeAssistantText(text: string): string {
+  return text
+    .replace(/\*\*/g, '')
+    .replace(/\[([^\]]+)\]\((\/[^)]+)\)/g, '$1 ($2)')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
 
 export default function TutorFloatingChat() {
   const pathname = usePathname();
@@ -21,6 +29,7 @@ export default function TutorFloatingChat() {
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [lastSources, setLastSources] = useState<Source[]>([]);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     try {
@@ -35,6 +44,15 @@ export default function TutorFloatingChat() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ messages }));
   }, [messages]);
 
+  useEffect(() => {
+    if (!open) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    requestAnimationFrame(() => {
+      el.scrollTop = el.scrollHeight;
+    });
+  }, [messages, open]);
+
   const ask = async () => {
     const q = question.trim();
     if (!q || loading) return;
@@ -48,7 +66,8 @@ export default function TutorFloatingChat() {
         body: JSON.stringify({ question: q, chapterSlug }),
       });
       const data = await res.json();
-      setMessages((prev) => [...prev, { role: 'assistant', text: data.answer || 'Nessuna risposta disponibile.', data: data.answerData }]);
+      const answerText = normalizeAssistantText(data.answer || 'Nessuna risposta disponibile.');
+      setMessages((prev) => [...prev, { role: 'assistant', text: answerText, data: data.answerData }]);
       setLastSources(data.sources || []);
     } catch {
       setMessages((prev) => [...prev, { role: 'assistant', text: 'Errore temporaneo del tutor. Riprova tra poco.' }]);
@@ -82,7 +101,7 @@ export default function TutorFloatingChat() {
             <button onClick={clearChat} className="text-xs text-gray-400 hover:text-white">Reset</button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-3 space-y-2">
+          <div ref={scrollRef} className="flex-1 overflow-y-auto p-3 space-y-2">
             {messages.length === 0 && (
               <p className="text-xs text-gray-400">Chiedimi capitoli, esercizi, ZIP lab o navigazione del sito.</p>
             )}
