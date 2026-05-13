@@ -53,6 +53,14 @@ function IconSend() {
   );
 }
 
+function IconClose() {
+  return (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M18 6L6 18M6 6l12 12" />
+    </svg>
+  );
+}
+
 function normalizeAssistantText(text: string): string {
   return text
     .replace(/\*\*/g, '')
@@ -97,6 +105,16 @@ export default function TutorFloatingChat() {
     });
   }, [messages, open]);
 
+  // Lock body scroll when drawer is open on mobile
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
   const ask = async () => {
     const q = question.trim();
     if (!q || loading) return;
@@ -119,7 +137,7 @@ export default function TutorFloatingChat() {
       setMessages((prev) => [...prev, { role: 'assistant', text: answerText, data: data.answerData }]);
       setLastSources(data.sources || []);
     } catch {
-      setMessages((prev) => [...prev, { role: 'assistant', text: 'Errore temporaneo del tutor. Riprova tra poco.' }]);
+      setMessages((prev) => [...prev, { role: 'assistant', text: 'Errore temporaneo. Riprova tra poco.' }]);
     } finally {
       setLoading(false);
     }
@@ -131,105 +149,150 @@ export default function TutorFloatingChat() {
     localStorage.removeItem(STORAGE_KEY);
   };
 
+  // Shared chat content (header + messages + input)
+  const chatContent = (
+    <>
+      {/* Header */}
+      <div className="p-3 border-b border-cyan-400/20 flex items-center justify-between flex-shrink-0">
+        <div>
+          <p className="text-sm font-semibold text-cyan-300 flex items-center gap-2">
+            <IconBot className="w-4 h-4" /> {TUTOR_NAME}
+            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
+          </p>
+          <p className="text-[11px] text-gray-400">Sessione persistente su tutto il sito</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button onClick={clearChat} className="text-xs text-gray-400 hover:text-white flex items-center gap-1">
+            <IconTrash /> Reset
+          </button>
+          <button
+            onClick={() => setOpen(false)}
+            className="text-gray-400 hover:text-white p-1 rounded-md hover:bg-white/10 transition"
+            aria-label="Chiudi"
+          >
+            <IconClose />
+          </button>
+        </div>
+      </div>
+
+      {/* Messages */}
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-3 space-y-2">
+        {messages.length === 0 && (
+          <p className="text-xs text-gray-400">{TUTOR_TAGLINE}</p>
+        )}
+        {messages.map((m, i) => (
+          <div key={i} className={`text-sm p-2 rounded-lg ${m.role === 'user' ? 'bg-cyan-600/20 ml-8' : 'bg-navy-800 mr-8'}`}>
+            <div className="mb-1 text-[11px] uppercase tracking-wide text-gray-400 flex items-center gap-1">
+              {m.role === 'user' ? <IconUser /> : <IconBot />}
+              {m.role === 'user' ? 'Tu' : TUTOR_NAME}
+            </div>
+            <p className="whitespace-pre-wrap">{m.text}</p>
+            {m.role === 'assistant' && m.data?.bullets && m.data.bullets.length > 0 && (
+              <ul className="list-disc ml-5 mt-2 text-xs text-gray-300 space-y-1">
+                {m.data.bullets.map((b, bi) => <li key={bi}>{b}</li>)}
+              </ul>
+            )}
+            {m.role === 'assistant' && m.data?.suggestions && m.data.suggestions.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {m.data.suggestions.map((s, si) => (
+                  <a key={si} href={s.url} className="text-[11px] px-2 py-1 rounded bg-cyan-500/20 text-cyan-200 hover:bg-cyan-500/30">
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+        {loading && (
+          <div className="text-sm p-2 rounded-lg bg-navy-800 mr-8">
+            <div className="mb-1 text-[11px] uppercase tracking-wide text-gray-400 flex items-center gap-1">
+              <IconBot /> {TUTOR_NAME}
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse [animation-delay:120ms]" />
+              <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse [animation-delay:240ms]" />
+              <span className="text-xs text-gray-400 ml-2">Sto rispondendo…</span>
+            </div>
+          </div>
+        )}
+        {lastSources.length > 0 && (
+          <div className="pt-2">
+            <p className="text-[11px] text-gray-400 mb-1">Fonti</p>
+            <ul className="space-y-1">
+              {lastSources.slice(0, 4).map((s, i) => (
+                <li key={i} className="text-[11px] text-gray-300">
+                  <a href={s.url} className="text-blue-300 hover:underline">{s.title}</a>
+                  {s.filePath ? <span> · {s.filePath}</span> : null}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {/* Input */}
+      <div className="p-3 border-t border-cyan-400/20 flex gap-2 items-end flex-shrink-0">
+        <textarea
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              ask();
+            }
+          }}
+          placeholder={TUTOR_PLACEHOLDER}
+          rows={2}
+          className="flex-1 rounded-md bg-navy-950 border border-cyan-400/20 px-3 py-2 text-sm resize-none min-h-[44px] max-h-28"
+        />
+        <button
+          onClick={ask}
+          disabled={loading}
+          className="rounded-md bg-cyan-500 text-navy-950 px-3 py-2 text-sm font-semibold disabled:opacity-50 flex-shrink-0"
+        >
+          <span className="flex items-center gap-1">{loading ? '...' : <><span className="hidden sm:inline">Invia</span> <IconSend /></>}</span>
+        </button>
+      </div>
+    </>
+  );
+
   return (
     <>
+      {/* FAB button */}
       <button
         onClick={() => setOpen((v) => !v)}
         className="fixed bottom-6 right-5 z-[90] rounded-full bg-cyan-500 text-navy-950 px-4 py-3 font-semibold shadow-lg shadow-cyan-900/40 flex items-center gap-2 hover:bg-cyan-400 transition"
+        aria-label={`Apri ${TUTOR_NAME}`}
       >
         <IconSparkles />
         {TUTOR_NAME}
       </button>
 
       {open && (
-        <div className="fixed bottom-18 right-5 z-[90] w-[92vw] max-w-md h-[68vh] rounded-2xl border border-cyan-400/30 bg-navy-900 text-gray-100 shadow-2xl flex flex-col">
-          <div className="p-3 border-b border-cyan-400/20 flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-cyan-300 flex items-center gap-2">
-                <IconBot className="w-4 h-4" /> {TUTOR_NAME}
-                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
-              </p>
-              <p className="text-[11px] text-gray-400">Sessione persistente su tutto il sito</p>
+        <>
+          {/* Mobile backdrop */}
+          <div
+            className="fixed inset-0 z-[89] bg-black/60 sm:hidden"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Mobile: drawer from bottom — Desktop: floating modal */}
+          <div className={[
+            'fixed z-[90] bg-navy-900 text-gray-100 border border-cyan-400/30 shadow-2xl flex flex-col',
+            // Mobile drawer
+            'bottom-0 left-0 right-0 rounded-t-2xl h-[85vh]',
+            // Desktop modal
+            'sm:bottom-20 sm:right-5 sm:left-auto sm:w-[92vw] sm:max-w-md sm:h-[68vh] sm:rounded-2xl',
+          ].join(' ')}>
+            {/* Drawer handle (mobile only) */}
+            <div className="flex justify-center pt-3 pb-1 sm:hidden flex-shrink-0">
+              <div className="w-10 h-1 rounded-full bg-gray-600" />
             </div>
-            <button onClick={clearChat} className="text-xs text-gray-400 hover:text-white flex items-center gap-1">
-              <IconTrash /> Reset
-            </button>
+            {chatContent}
           </div>
-
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-3 space-y-2">
-            {messages.length === 0 && (
-              <p className="text-xs text-gray-400">{TUTOR_TAGLINE}</p>
-            )}
-            {messages.map((m, i) => (
-              <div key={i} className={`text-sm p-2 rounded-lg ${m.role === 'user' ? 'bg-cyan-600/20 ml-8' : 'bg-navy-800 mr-8'}`}>
-                <div className="mb-1 text-[11px] uppercase tracking-wide text-gray-400 flex items-center gap-1">
-                  {m.role === 'user' ? <IconUser /> : <IconBot />}
-                  {m.role === 'user' ? 'Tu' : 'Tutor'}
-                </div>
-                <p className="whitespace-pre-wrap">{m.text}</p>
-                {m.role === 'assistant' && m.data?.bullets && m.data.bullets.length > 0 && (
-                  <ul className="list-disc ml-5 mt-2 text-xs text-gray-300 space-y-1">
-                    {m.data.bullets.map((b, bi) => <li key={bi}>{b}</li>)}
-                  </ul>
-                )}
-                {m.role === 'assistant' && m.data?.suggestions && m.data.suggestions.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {m.data.suggestions.map((s, si) => (
-                      <a key={si} href={s.url} className="text-[11px] px-2 py-1 rounded bg-cyan-500/20 text-cyan-200 hover:bg-cyan-500/30">
-                        {s.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            {loading && (
-              <div className="text-sm p-2 rounded-lg bg-navy-800 mr-8">
-                <div className="mb-1 text-[11px] uppercase tracking-wide text-gray-400 flex items-center gap-1">
-                  <IconBot /> Tutor
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse" />
-                  <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse [animation-delay:120ms]" />
-                  <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse [animation-delay:240ms]" />
-                  <span className="text-xs text-gray-400 ml-2">Sto rispondendo…</span>
-                </div>
-              </div>
-            )}
-            {lastSources.length > 0 && (
-              <div className="pt-2">
-                <p className="text-[11px] text-gray-400 mb-1">Fonti</p>
-                <ul className="space-y-1">
-                  {lastSources.slice(0, 4).map((s, i) => (
-                    <li key={i} className="text-[11px] text-gray-300">
-                      <a href={s.url} className="text-blue-300 hover:underline">{s.title}</a>
-                      {s.filePath ? <span> · {s.filePath}</span> : null}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          <div className="p-3 border-t border-cyan-400/20 flex gap-2 items-end">
-            <textarea
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                  e.preventDefault();
-                  ask();
-                }
-              }}
-              placeholder={TUTOR_PLACEHOLDER}
-              rows={2}
-              className="flex-1 rounded-md bg-navy-950 border border-cyan-400/20 px-3 py-2 text-sm resize-none min-h-[44px] max-h-28"
-            />
-            <button onClick={ask} disabled={loading} className="rounded-md bg-cyan-500 text-navy-950 px-3 py-2 text-sm font-semibold disabled:opacity-50">
-              <span className="flex items-center gap-1">{loading ? '...' : <>Invia <IconSend /></>}</span>
-            </button>
-          </div>
-        </div>
+        </>
       )}
     </>
   );
