@@ -11,6 +11,15 @@ export const ch14: Chapter = {
       { title: 'Fine-tuning: quando conviene davvero', content: "Il **fine-tuning** è utile quando hai pattern ricorrenti e mismatch persistente che prompt+RAG non risolvono in modo stabile. Non è il primo passo: richiede dataset curato, valutazioni robuste e ciclo di aggiornamento dei dati. In molti casi, una baseline con prompt strutturato + retrieval ben fatto offre ROI più rapido e meno complessità operativa. *Nota operativa:* scegli tuning solo dopo benchmark comparativi con KPI chiari su qualità, costo e latenza. <<Takeaway: tuning sì, ma solo con evidenza misurabile>>." },
       { title: 'Errore comune + Check rapido', content: "**Errore comune:** scegliere l'architettura più complessa senza baseline e senza KPI.\n\n**Check rapido (2 min):** per un caso reale del tuo dominio, rispondi:\n1) quale problema risolvi (qualità, aggiornabilità, automazione)?\n2) quale opzione parte per prima (prompt, RAG o agent) e perché?\n3) quale metrica userai entro 2 settimane per confermare la scelta?" }
     ],
+    media: [
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 14',
+        description: 'Mappa decisionale per scegliere tra RAG, Agent e Fine-tuning con guardrail operativi e KPI di validazione.',
+        placeholderPath: 'media/ch14-advanced-patterns/infographic.jpg',
+        notes: 'ready'
+      }
+    ],
     keyTakeaways: [
       'RAG migliora aggiornabilità e controllo delle fonti',
       'Gli agent richiedono governance: permessi, limiti e audit trail',
