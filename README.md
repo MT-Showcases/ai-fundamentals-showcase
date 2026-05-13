@@ -168,6 +168,31 @@ npm run start
 
 Interactive challenge system docs: `docs/interactive-challenges.md`
 
+### Tutor AI (RAG, Vercel-native)
+
+This project includes a first MVP of a Tutor AI with contextual retrieval:
+
+- API route: `app/api/tutor/chat/route.ts`
+- UI component: `components/TutorChat.tsx`
+- Local RAG index (static JSON): `public/rag/index.json`
+- Lab ZIP manifest: `public/rag/lab-manifest.json`
+- Index builder script: `scripts/build-rag-index.py`
+
+#### Rebuild index after changing chapters/glossary/ZIP labs
+
+```bash
+npm run build-rag-index
+```
+
+#### Environment variables (optional for full LLM answers)
+
+- `GROQ_API_KEY` (recommended low-cost)
+- `GROQ_MODEL` (default: `llama-3.1-8b-instant`)
+- `OPENAI_API_KEY` (fallback)
+- `OPENAI_MODEL` (default: `gpt-4o-mini`)
+
+Without API keys, the Tutor still retrieves relevant sources and returns a local guidance response.
+
 ---
 
 ## ✏️ How to Add or Edit Content

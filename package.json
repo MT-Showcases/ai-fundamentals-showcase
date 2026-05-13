@@ -8,7 +8,8 @@
     "build:full": "next build",
     "start": "next start",
     "lint": "eslint",
-    "validate-datasets": "node scripts/validate-datasets.js"
+    "validate-datasets": "node scripts/validate-datasets.js",
+    "build-rag-index": "python3 scripts/build-rag-index.py"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",

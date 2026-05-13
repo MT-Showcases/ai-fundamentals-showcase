@@ -1,0 +1,60 @@
+[
+  {
+    "zipName": "ml-lab-01-regression.zip",
+    "downloadUrl": "/downloads/ml-lab-01-regression.zip",
+    "files": [
+      "ml-lab-01-regression/README.md",
+      "ml-lab-01-regression/requirements.txt",
+      "ml-lab-01-regression/.gitignore",
+      "ml-lab-01-regression/main.py",
+      "ml-lab-01-regression/data/housing.csv",
+      "ml-lab-01-regression/",
+      "ml-lab-01-regression/data/"
+    ]
+  },
+  {
+    "zipName": "ml-lab-02-neural-networks.zip",
+    "downloadUrl": "/downloads/ml-lab-02-neural-networks.zip",
+    "files": [
+      "ml-lab-02-neural-networks/",
+      "ml-lab-02-neural-networks/README.md",
+      "ml-lab-02-neural-networks/requirements.txt",
+      "ml-lab-02-neural-networks/main.py"
+    ]
+  },
+  {
+    "zipName": "ml-lab-03-nlp.zip",
+    "downloadUrl": "/downloads/ml-lab-03-nlp.zip",
+    "files": [
+      "ml-lab-03-nlp/",
+      "ml-lab-03-nlp/README.md",
+      "ml-lab-03-nlp/requirements.txt",
+      "ml-lab-03-nlp/main.py"
+    ]
+  },
+  {
+    "zipName": "ml-lab-04-generative-ai.zip",
+    "downloadUrl": "/downloads/ml-lab-04-generative-ai.zip",
+    "files": [
+      "main.py",
+      "README.md",
+      "requirements.txt"
+    ]
+  },
+  {
+    "zipName": "ml-lab-05-small-llm-rag.zip",
+    "downloadUrl": "/downloads/ml-lab-05-small-llm-rag.zip",
+    "files": [
+      "docs/finetune_data.txt",
+      "docs/knowledge_base.txt",
+      ".env.example",
+      "main_api.py",
+      "main_finetune.py",
+      "main_local.py",
+      "README.md",
+      "requirements_api.txt",
+      "requirements_finetune.txt",
+      "requirements_local.txt"
+    ]
+  }
+]

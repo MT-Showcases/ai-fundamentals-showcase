@@ -21,6 +21,7 @@ import ChapterChallengeHallucination from '@/components/ChapterChallengeHallucin
 import ChapterChallengeRiskClassification from '@/components/ChapterChallengeRiskClassification';
 import ChapterChallengeTableReview from '@/components/ChapterChallengeTableReview';
 import MachineLearningWorkflow from '@/components/workflows/MachineLearningWorkflow';
+import TutorChat from '@/components/TutorChat';
 import type { ChapterChallengeBias, ChapterChallengeHallucination as ChapterChallengeHallucinationType, ChapterChallengeRiskClassification as ChapterChallengeRiskClassificationType, ChapterChallengeTableReview as ChapterChallengeTableReviewType } from '@/data/types';
 import Link from 'next/link';
 
@@ -932,6 +933,8 @@ Esempi di utilizzo:
                 <ChapterQuiz quiz={chapter.quiz} chapterId={chapter.id} chapterSlug={chapter.slug} />
               </div>
             )}
+
+            <TutorChat chapterSlug={chapter.slug} />
 
             <div className="flex justify-between items-center mt-16 pt-8 border-t border-navy-600 gap-4">
               {previousChapter ? (
