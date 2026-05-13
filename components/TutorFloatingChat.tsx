@@ -109,6 +109,7 @@ export default function TutorFloatingChat() {
         body: JSON.stringify({
           question: q,
           chapterSlug,
+          pathname: pathname || '/',
           history: messages.map((m) => ({ role: m.role, text: m.text })),
         }),
       });

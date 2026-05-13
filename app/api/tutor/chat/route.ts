@@ -39,7 +39,7 @@ function tokenize(input: string): string[] {
     .filter((t) => t.length > 2);
 }
 
-function scoreChunk(chunk: Chunk, tokens: string[], chapterSlug?: string) {
+function scoreChunk(chunk: Chunk, tokens: string[], chapterSlug?: string, pathname?: string) {
   const text = chunk.text.toLowerCase();
   let score = 0;
   for (const t of tokens) {
@@ -48,6 +48,8 @@ function scoreChunk(chunk: Chunk, tokens: string[], chapterSlug?: string) {
     if (chunk.filePath?.toLowerCase().includes(t)) score += 1;
   }
   if (chapterSlug && chunk.chapterSlug === chapterSlug) score += 4;
+  // boost chunks matching current page URL (homepage, /openclaw, ecc.)
+  if (pathname && !chapterSlug && chunk.url === pathname) score += 4;
   if (chunk.sourceType === 'lab_zip' && tokens.some((t) => ['zip', 'lab', 'esercizio', 'main', 'requirements', 'readme'].includes(t))) {
     score += 3;
   }
@@ -73,16 +75,20 @@ function toReadableTitle(c: Chunk): string {
   return c.url || 'Fonte interna';
 }
 
-async function callLLM(question: string, context: Chunk[], history: ChatTurn[] = []) {
+async function callLLM(question: string, context: Chunk[], history: ChatTurn[] = [], pathname?: string) {
   const openaiKey = process.env.OPENAI_API_KEY;
   const groqKey = process.env.GROQ_API_KEY;
   let failReason = 'provider non configurato';
+
+  const pageContext = pathname && pathname !== '/chapters'
+    ? `\nL'utente si trova sulla pagina: ${pathname}.`
+    : '';
 
   const contextText = context
     .map((c, i) => `[Fonte ${i + 1}] ${c.title} (${c.url})\n${c.text.slice(0, 1200)}`)
     .join('\n\n');
 
-  const system = `Sei il Tutor AI di AI Fundamentals. Rispondi in italiano, pratico e breve. Usa solo fonti fornite. Se mancano info, dillo chiaramente.\nRispondi SOLO JSON valido con questo schema: {"summary":"string","bullets":["string"],"suggestions":[{"label":"string","url":"/chapters/... o /glossario"}]}`;
+  const system = `Sei il Tutor AI di AI Fundamentals. Rispondi in italiano, pratico e breve. Usa solo fonti fornite. Se mancano info, dillo chiaramente.${pageContext}\nRispondi SOLO JSON valido con questo schema: {"summary":"string","bullets":["string"],"suggestions":[{"label":"string","url":"/chapters/... o /glossario"}]}`;
   const compactHistory = history
     .slice(-12)
     .map((h, i) => `${i + 1}. ${h.role === 'user' ? 'Utente' : 'Tutor'}: ${h.text}`)
@@ -180,7 +186,7 @@ function buildUniqueSources(ranked: Chunk[]) {
 
 export async function POST(req: NextRequest) {
   try {
-    const { question, chapterSlug, history } = (await req.json()) as { question?: string; chapterSlug?: string; history?: ChatTurn[] };
+    const { question, chapterSlug, pathname, history } = (await req.json()) as { question?: string; chapterSlug?: string; pathname?: string; history?: ChatTurn[] };
     if (!question || question.trim().length < 3) {
       return NextResponse.json({ error: 'Domanda troppo corta' }, { status: 400 });
     }
@@ -189,7 +195,7 @@ export async function POST(req: NextRequest) {
     const tokens = tokenize(question);
 
     const ranked = index
-      .map((chunk) => ({ chunk, score: scoreChunk(chunk, tokens, chapterSlug) }))
+      .map((chunk) => ({ chunk, score: scoreChunk(chunk, tokens, chapterSlug, pathname) }))
       .filter((r) => r.score > 0)
       .sort((a, b) => b.score - a.score)
       .slice(0, 8)
@@ -199,7 +205,7 @@ export async function POST(req: NextRequest) {
       ? history.filter((h) => h && (h.role === 'user' || h.role === 'assistant') && typeof h.text === 'string').slice(-20)
       : [];
 
-    const rawAnswer = await callLLM(question, ranked, safeHistory);
+    const rawAnswer = await callLLM(question, ranked, safeHistory, pathname);
     const answerData = parseTutorAnswer(rawAnswer);
     const answer = answerData?.summary || rawAnswer;
     const sources = buildUniqueSources(ranked);
