@@ -13,6 +13,12 @@ type Chunk = {
   filePath?: string;
 };
 
+type TutorAnswer = {
+  summary: string;
+  bullets?: string[];
+  suggestions?: Array<{ label: string; url: string }>;
+};
+
 let cachedIndex: Chunk[] | null = null;
 
 async function loadIndex(): Promise<Chunk[]> {
@@ -69,7 +75,7 @@ async function callLLM(question: string, context: Chunk[]) {
     .map((c, i) => `[Fonte ${i + 1}] ${c.title} (${c.url})\n${c.text.slice(0, 1200)}`)
     .join('\n\n');
 
-  const system = `Sei il Tutor AI di AI Fundamentals. Rispondi in italiano, in modo pratico e breve.\nRegole: usa solo le fonti fornite; se manca informazione, dillo chiaramente.\nQuando utile, suggerisci 1-3 link interni del sito.`;
+  const system = `Sei il Tutor AI di AI Fundamentals. Rispondi in italiano, pratico e breve. Usa solo fonti fornite. Se mancano info, dillo chiaramente.\nRispondi SOLO JSON valido con questo schema: {"summary":"string","bullets":["string"],"suggestions":[{"label":"string","url":"/chapters/... o /glossario"}]}`;
   const user = `Domanda: ${question}\n\nFonti disponibili:\n${contextText}`;
 
   if (groqKey) {
@@ -123,6 +129,47 @@ async function callLLM(question: string, context: Chunk[]) {
   return `Ti rispondo in modalità locale (fallback).\nMotivo: ${failReason}.\n\nHo trovato fonti utili su questa domanda: controlla i riferimenti sotto e dimmi se vuoi una risposta più dettagliata punto per punto.`;
 }
 
+function parseTutorAnswer(raw: string): TutorAnswer | null {
+  try {
+    const cleaned = raw.trim().replace(/^```json\s*/i, '').replace(/^```/i, '').replace(/```$/, '').trim();
+    const parsed = JSON.parse(cleaned) as TutorAnswer;
+    if (!parsed.summary || typeof parsed.summary !== 'string') return null;
+    return {
+      summary: parsed.summary,
+      bullets: Array.isArray(parsed.bullets) ? parsed.bullets.slice(0, 6) : [],
+      suggestions: Array.isArray(parsed.suggestions) ? parsed.suggestions.slice(0, 4) : [],
+    };
+  } catch {
+    return null;
+  }
+}
+
+function buildUniqueSources(ranked: Chunk[]) {
+  const out: Array<{ title: string; url: string; sourceType: Chunk['sourceType']; zipName?: string; filePath?: string }> = [];
+  const seen = new Set<string>();
+  const perUrlCount = new Map<string, number>();
+
+  for (const c of ranked) {
+    const key = `${c.url}|${c.filePath || ''}`;
+    if (seen.has(key)) continue;
+
+    const current = perUrlCount.get(c.url) || 0;
+    if (current >= 2) continue;
+
+    seen.add(key);
+    perUrlCount.set(c.url, current + 1);
+    out.push({
+      title: toReadableTitle(c),
+      url: c.url,
+      sourceType: c.sourceType,
+      zipName: c.zipName,
+      filePath: c.filePath,
+    });
+    if (out.length >= 5) break;
+  }
+  return out;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { question, chapterSlug } = (await req.json()) as { question?: string; chapterSlug?: string };
@@ -140,17 +187,12 @@ export async function POST(req: NextRequest) {
       .slice(0, 8)
       .map((r) => r.chunk);
 
-    const answer = await callLLM(question, ranked);
+    const rawAnswer = await callLLM(question, ranked);
+    const answerData = parseTutorAnswer(rawAnswer);
+    const answer = answerData?.summary || rawAnswer;
+    const sources = buildUniqueSources(ranked);
 
-    const sources = ranked.slice(0, 5).map((c) => ({
-      title: toReadableTitle(c),
-      url: c.url,
-      sourceType: c.sourceType,
-      zipName: c.zipName,
-      filePath: c.filePath,
-    }));
-
-    return NextResponse.json({ answer, sources });
+    return NextResponse.json({ answer, answerData, sources });
   } catch (err) {
     return NextResponse.json({ error: 'Errore interno tutor' }, { status: 500 });
   }

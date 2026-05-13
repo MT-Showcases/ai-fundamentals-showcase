@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-type Msg = { role: 'user' | 'assistant'; text: string };
+type AnswerData = { summary: string; bullets?: string[]; suggestions?: Array<{ label: string; url: string }> };
+type Msg = { role: 'user' | 'assistant'; text: string; data?: AnswerData };
 type Source = { title: string; url: string; filePath?: string };
 
 const STORAGE_KEY = 'tutor_ai_session_v1';
@@ -47,7 +48,7 @@ export default function TutorFloatingChat() {
         body: JSON.stringify({ question: q, chapterSlug }),
       });
       const data = await res.json();
-      setMessages((prev) => [...prev, { role: 'assistant', text: data.answer || 'Nessuna risposta disponibile.' }]);
+      setMessages((prev) => [...prev, { role: 'assistant', text: data.answer || 'Nessuna risposta disponibile.', data: data.answerData }]);
       setLastSources(data.sources || []);
     } catch {
       setMessages((prev) => [...prev, { role: 'assistant', text: 'Errore temporaneo del tutor. Riprova tra poco.' }]);
@@ -87,7 +88,21 @@ export default function TutorFloatingChat() {
             )}
             {messages.map((m, i) => (
               <div key={i} className={`text-sm p-2 rounded-lg ${m.role === 'user' ? 'bg-cyan-600/20 ml-8' : 'bg-navy-800 mr-8'}`}>
-                {m.text}
+                <p className="whitespace-pre-wrap">{m.text}</p>
+                {m.role === 'assistant' && m.data?.bullets && m.data.bullets.length > 0 && (
+                  <ul className="list-disc ml-5 mt-2 text-xs text-gray-300 space-y-1">
+                    {m.data.bullets.map((b, bi) => <li key={bi}>{b}</li>)}
+                  </ul>
+                )}
+                {m.role === 'assistant' && m.data?.suggestions && m.data.suggestions.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {m.data.suggestions.map((s, si) => (
+                      <a key={si} href={s.url} className="text-[11px] px-2 py-1 rounded bg-cyan-500/20 text-cyan-200 hover:bg-cyan-500/30">
+                        {s.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
             {lastSources.length > 0 && (
