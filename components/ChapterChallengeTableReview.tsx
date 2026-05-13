@@ -98,6 +98,9 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
       </div>
 
       <div className="text-sm text-amber-200 mb-3">{phase.title} — {phase.instruction}</div>
+      {phase.selectionMode === 'cell' && (
+        <p className="text-xs text-gray-400 mb-2">Passa il mouse sulle celle per vederle evidenziate — clicca per selezionare.</p>
+      )}
 
       <div className="mb-3 text-xs text-gray-300 flex flex-wrap gap-3">
         <span className="inline-flex items-center gap-2"><span className="w-3 h-3 rounded bg-blue-800/70" /> Selezionato</span>
@@ -148,7 +151,7 @@ export default function ChapterChallengeTableReview({ challenge }: Props) {
                           e.stopPropagation();
                           toggle(phase.id, cellKey);
                         }}
-                        className={`px-3 py-2 whitespace-nowrap ${phase.selectionMode === 'cell' ? 'cursor-pointer' : ''} ${cellSelected ? 'bg-blue-800/60' : ''} ${cellCorrect ? 'ring-2 ring-emerald-400 ring-inset bg-emerald-900/20' : ''}`}
+                        className={`px-3 py-2 whitespace-nowrap ${phase.selectionMode === 'cell' ? 'cursor-pointer hover:bg-blue-900/40 transition-colors' : ''} ${cellSelected ? 'bg-blue-800/60 ring-1 ring-blue-400/60 ring-inset' : ''} ${cellCorrect ? 'ring-2 ring-emerald-400 ring-inset bg-emerald-900/20' : ''}`}
                       >
                         {String(row[col] ?? '')}
                       </td>
