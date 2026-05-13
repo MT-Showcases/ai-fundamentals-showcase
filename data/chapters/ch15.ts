@@ -23,6 +23,15 @@ export const ch15: Chapter = {
         content: '**Errore comune:** confondere trend mediatico con priorità strategica del proprio contesto.\n\n**Check rapido (2 min):** scegli un caso AI del tuo dominio e rispondi:\n1) quale problema reale risolve?\n2) quale rischio operativo introduce?\n3) quale controllo metti prima del rollout, nel rispetto di principi di **Etica AI**?'
       }
     ],
+    media: [
+      {
+        type: 'infographic',
+        title: 'Infografica Capitolo 15',
+        description: 'Scenario map sul futuro dell’AI: impatti, rischi e scelte strategiche nei prossimi 5-10 anni.',
+        placeholderPath: 'media/ch15-future-ai/infographic.jpg',
+        notes: 'ready'
+      }
+    ],
     keyTakeaways: [
       'Narrow AI e AGI sono concetti diversi: confonderli porta a decisioni strategiche errate',
       'Nei prossimi anni vinceranno i team che integrano AI in workflow misurabili e governati',
