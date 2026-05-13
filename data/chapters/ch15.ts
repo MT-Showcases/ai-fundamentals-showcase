@@ -38,6 +38,14 @@ export const ch15: Chapter = {
         description: 'Scenario map sul futuro dell’AI: impatti, rischi e scelte strategiche nei prossimi 5-10 anni.',
         placeholderPath: 'media/ch15-future-ai/infographic.jpg',
         notes: 'ready'
+      },
+      {
+        type: 'podcast',
+        title: 'Podcast Capitolo 15',
+        description: 'Versione audio completa del Capitolo 15: scenari futuri AI, AGI vs Narrow AI, governance, rischi e opportunità strategiche nei prossimi 5-10 anni. Perfetto da ascoltare in mobilità.',
+        estimatedDuration: '25-30 min',
+        placeholderPath: 'media/ch15-future-ai/podcast.mp3',
+        notes: 'ready'
       }
     ],
     keyTakeaways: [
@@ -54,7 +62,7 @@ export const ch15: Chapter = {
     ],
     challenge: {
       id: 'ch15-roadmap-review',
-      title: 'Roadmap Review — Futuro AI',
+      title: 'Roadmap Review - Futuro AI',
       intro: 'Valuta scenari futuri e individua dove strategia o mitigazioni sono insufficienti per il rischio dichiarato.',
       scoringMode: 'balanced',
       table: {
@@ -93,7 +101,7 @@ export const ch15: Chapter = {
           'Narrow AI usa reti neurali, AGI usa algoritmi classici',
           'Narrow AI è open-source, AGI è sempre proprietaria',
           'Narrow AI eccelle in un dominio specifico, AGI (ipotetica) ragionerebbe autonomamente su qualsiasi problema',
-          'Non c\'è differenza — AGI è solo marketing',
+          'Non c\'è differenza - AGI è solo marketing',
         ],
         correct: 2,
         explanation: 'Tutti i sistemi AI attuali (GPT, Gemini, Copilot) sono Narrow AI: eccezionali nel loro dominio, incapaci di generalizzare fuori. AGI è ancora un obiettivo di ricerca, non un prodotto esistente.'
@@ -134,7 +142,7 @@ export const ch15: Chapter = {
       {
         question: 'Un progetto AI aumenta produttività del 30% ma genera errori critici in casi sensibili. Cosa fai?',
         options: [
-          'Accetti il trade-off — il 30% vale qualsiasi rischio',
+          'Accetti il trade-off - il 30% vale qualsiasi rischio',
           'Segmenti per rischio: usi AI sui casi low-risk, mantieni supervisione umana sui casi critici',
           'Disattivi tutto immediatamente e torni al processo manuale',
           'Aumenti solo la temperatura del modello',
@@ -148,7 +156,7 @@ export const ch15: Chapter = {
           'Policy d\'uso + ruoli definiti + monitoring KPI + processo di incident response',
           'Solo un documento di policy approvato dal CEO',
           'Solo audit annuale da parte di una società esterna',
-          'Nessuna governance — rallenta l\'innovazione',
+          'Nessuna governance - rallenta l\'innovazione',
         ],
         correct: 0,
         explanation: 'Governance efficace non significa burocrazia: significa sapere chi decide cosa, come si misura la qualità, come si gestiscono i problemi. Senza questi elementi, l\'adozione AI è caotica.'
@@ -187,10 +195,10 @@ export const ch15: Chapter = {
         explanation: 'Con contenuti dinamici, il RAG è nettamente superiore: non richiede re-training, si aggiorna cambiando i documenti e garantisce tracciabilità delle fonti. Fine-tuning frequente è costoso e lento.'
       },
       {
-        question: 'Messaggio chiave del Capitolo 15 — Futuro dell\'AI:',
+        question: 'Messaggio chiave del Capitolo 15 - Futuro dell\'AI:',
         options: [
           'AGI arriverà presto e renderà obsoleto qualsiasi piano strategico attuale',
-          'Il futuro dell\'AI si naviga con scelte graduali, misurate, governate — non con hype o paura',
+          'Il futuro dell\'AI si naviga con scelte graduali, misurate, governate - non con hype o paura',
           'L\'AI va adottata tutta e subito per non restare indietro',
           'Solo le grandi aziende possono usare l\'AI in modo responsabile',
         ],
