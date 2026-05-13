@@ -49,6 +49,7 @@ function scoreChunk(chunk: Chunk, tokens: string[], chapterSlug?: string) {
 async function callLLM(question: string, context: Chunk[]) {
   const openaiKey = process.env.OPENAI_API_KEY;
   const groqKey = process.env.GROQ_API_KEY;
+  let failReason = 'provider non configurato';
 
   const contextText = context
     .map((c, i) => `[Fonte ${i + 1}] ${c.title} (${c.url})\n${c.text.slice(0, 1200)}`)
@@ -77,6 +78,8 @@ async function callLLM(question: string, context: Chunk[]) {
       const json = await r.json();
       return json.choices?.[0]?.message?.content as string;
     }
+    const errText = await r.text();
+    failReason = `Groq HTTP ${r.status}` + (errText ? `: ${errText.slice(0, 160)}` : '');
   }
 
   if (openaiKey) {
@@ -99,9 +102,11 @@ async function callLLM(question: string, context: Chunk[]) {
       const json = await r.json();
       return json.choices?.[0]?.message?.content as string;
     }
+    const errText = await r.text();
+    failReason = `OpenAI HTTP ${r.status}` + (errText ? `: ${errText.slice(0, 160)}` : '');
   }
 
-  return `Ti rispondo in modalità locale (senza provider LLM attivo).\n\nHo trovato fonti utili su questa domanda: controlla i riferimenti sotto e dimmi se vuoi una risposta più dettagliata punto per punto.`;
+  return `Ti rispondo in modalità locale (fallback).\nMotivo: ${failReason}.\n\nHo trovato fonti utili su questa domanda: controlla i riferimenti sotto e dimmi se vuoi una risposta più dettagliata punto per punto.`;
 }
 
 export async function POST(req: NextRequest) {
