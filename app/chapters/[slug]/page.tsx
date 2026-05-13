@@ -463,15 +463,10 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                         <p className="text-sm font-semibold text-gray-300 mb-2">Comandi di avvio:</p>
                         <div className="bg-navy-900 rounded-lg p-4 border border-cyan-400/20 font-mono text-xs text-cyan-300 space-y-1">
                           <p>$ cd ml-lab-05-small-llm-rag/</p>
-                          <p className="text-gray-400"># Livello 1 — API</p>
                           <p>$ cp .env.example .env</p>
-                          <p>$ pip install -r requirements_api.txt</p>
+                          <p className="text-gray-400"># Scegli un solo livello da eseguire (dettaglio comandi negli step)</p>
                           <p>$ python main_api.py</p>
-                          <p className="text-gray-400"># Livello 2 — Locale con Ollama</p>
-                          <p>$ pip install -r requirements_local.txt</p>
                           <p>$ python main_local.py</p>
-                          <p className="text-gray-400"># Livello 3 — Fine-tuning con LoRA</p>
-                          <p>$ pip install -r requirements_finetune.txt</p>
                           <p>$ python main_finetune.py</p>
                         </div>
                       </div>
@@ -489,7 +484,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       number: 1,
                       title: 'Livello 1 — Configura API',
                       description: <>Configura <code>.env</code> e prepara l&apos;esecuzione con Groq (LLaMA 3) o Anthropic Claude.</>,
-                      code: 'cp .env.example .env\n# inserisci GROQ_API_KEY o ANTHROPIC_API_KEY\npip install -r requirements_api.txt',
+                      code: 'cp .env.example .env\n# inserisci GROQ_API_KEY o ANTHROPIC_API_KEY',
                       codeLang: 'bash',
                       tryThis: <><strong>Prova:</strong> esegui <code>python main_api.py</code> e confronta la stessa query in zero-shot e in modalità RAG.</>,
                     },
@@ -497,7 +492,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       number: 2,
                       title: 'Livello 1 — Confronto zero-shot vs RAG (API)',
                       description: <>Osserva differenze di qualità tra risposta senza contesto e risposta con retrieval TF-IDF.</>,
-                      code: 'python main_api.py',
+                      code: 'pip install -r requirements_api.txt\npython main_api.py',
                       codeLang: 'bash',
                       tryThis: <><strong>Prova:</strong> modifica i contenuti in <code>docs/knowledge_base.txt</code> e riesegui per vedere l&apos;impatto immediato.</>,
                     },
@@ -513,7 +508,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       number: 4,
                       title: 'Livello 3 — Setup fine-tuning LoRA',
                       description: <>Prepara ambiente e dipendenze per il fine-tuning leggero su <code>GroNLP/gpt2-small-italian</code>.</>,
-                      code: 'pip install -r requirements_finetune.txt\npython main_finetune.py',
+                      code: 'pip install -r requirements_finetune.txt',
                       codeLang: 'bash',
                       tryThis: <><strong>Prova:</strong> salva i completamenti prima del training per il confronto finale.</>,
                     },
@@ -521,7 +516,7 @@ OBIETTIVO GENERAZIONE CONTENUTI:
                       number: 5,
                       title: 'Livello 3 — Osserva training e loss',
                       description: <>Durante il training controlla la discesa della loss e la stabilità dei completamenti su prompt fissi.</>,
-                      code: '# output atteso\nstep=... loss=...\n# confronta snapshot prima/dopo',
+                      code: 'python main_finetune.py\n# output atteso\nstep=... loss=...\n# confronta snapshot prima/dopo',
                       codeLang: 'python',
                       tryThis: <><strong>Prova:</strong> modifica <code>docs/finetune_data.txt</code> con esempi coerenti e valuta come cambia il comportamento del modello.</>,
                     },
