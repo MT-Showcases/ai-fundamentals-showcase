@@ -63,7 +63,11 @@ export default function TutorFloatingChat() {
       const res = await fetch('/api/tutor/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: q, chapterSlug }),
+        body: JSON.stringify({
+          question: q,
+          chapterSlug,
+          history: messages.map((m) => ({ role: m.role, text: m.text })),
+        }),
       });
       const data = await res.json();
       const answerText = normalizeAssistantText(data.answer || 'Nessuna risposta disponibile.');

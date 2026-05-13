@@ -19,6 +19,8 @@ type TutorAnswer = {
   suggestions?: Array<{ label: string; url: string }>;
 };
 
+type ChatTurn = { role: 'user' | 'assistant'; text: string };
+
 let cachedIndex: Chunk[] | null = null;
 
 async function loadIndex(): Promise<Chunk[]> {
@@ -71,7 +73,7 @@ function toReadableTitle(c: Chunk): string {
   return c.url || 'Fonte interna';
 }
 
-async function callLLM(question: string, context: Chunk[]) {
+async function callLLM(question: string, context: Chunk[], history: ChatTurn[] = []) {
   const openaiKey = process.env.OPENAI_API_KEY;
   const groqKey = process.env.GROQ_API_KEY;
   let failReason = 'provider non configurato';
@@ -81,7 +83,12 @@ async function callLLM(question: string, context: Chunk[]) {
     .join('\n\n');
 
   const system = `Sei il Tutor AI di AI Fundamentals. Rispondi in italiano, pratico e breve. Usa solo fonti fornite. Se mancano info, dillo chiaramente.\nRispondi SOLO JSON valido con questo schema: {"summary":"string","bullets":["string"],"suggestions":[{"label":"string","url":"/chapters/... o /glossario"}]}`;
-  const user = `Domanda: ${question}\n\nFonti disponibili:\n${contextText}`;
+  const compactHistory = history
+    .slice(-12)
+    .map((h, i) => `${i + 1}. ${h.role === 'user' ? 'Utente' : 'Tutor'}: ${h.text}`)
+    .join('\n');
+
+  const user = `Cronologia recente (se presente):\n${compactHistory || '(nessuna)'}\n\nDomanda attuale: ${question}\n\nFonti disponibili:\n${contextText}`;
 
   if (groqKey) {
     const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -173,7 +180,7 @@ function buildUniqueSources(ranked: Chunk[]) {
 
 export async function POST(req: NextRequest) {
   try {
-    const { question, chapterSlug } = (await req.json()) as { question?: string; chapterSlug?: string };
+    const { question, chapterSlug, history } = (await req.json()) as { question?: string; chapterSlug?: string; history?: ChatTurn[] };
     if (!question || question.trim().length < 3) {
       return NextResponse.json({ error: 'Domanda troppo corta' }, { status: 400 });
     }
@@ -188,7 +195,11 @@ export async function POST(req: NextRequest) {
       .slice(0, 8)
       .map((r) => r.chunk);
 
-    const rawAnswer = await callLLM(question, ranked);
+    const safeHistory = Array.isArray(history)
+      ? history.filter((h) => h && (h.role === 'user' || h.role === 'assistant') && typeof h.text === 'string').slice(-20)
+      : [];
+
+    const rawAnswer = await callLLM(question, ranked, safeHistory);
     const answerData = parseTutorAnswer(rawAnswer);
     const answer = answerData?.summary || rawAnswer;
     const sources = buildUniqueSources(ranked);
