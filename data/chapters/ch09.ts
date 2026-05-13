@@ -23,41 +23,6 @@ export const ch09: Chapter = {
       'Quale rischio vedi nel tuning con dati poco curati?',
       'In quali scenari RAG resta preferibile?'
     ],
-    challenge: {
-      id: 'ch09-strategy-review',
-      title: 'Strategy Review — Zero-shot vs RAG vs Fine-tuning',
-      intro: 'Valuta ogni scenario e individua dove la strategia proposta è debole o ad alto rischio.',
-      scoringMode: 'balanced',
-      table: {
-        columns: ['scenario_id', 'domain', 'data_freshness', 'accuracy_need', 'budget_level', 'time_to_market', 'recommended_strategy'],
-        rows: [
-          { scenario_id: 'S001', domain: 'customer_support', data_freshness: 'high', accuracy_need: 'high', budget_level: 'medium', time_to_market: 'fast', recommended_strategy: 'rag' },
-          { scenario_id: 'S002', domain: 'legal_ops', data_freshness: 'medium', accuracy_need: 'high', budget_level: 'high', time_to_market: 'medium', recommended_strategy: 'fine_tuning' },
-          { scenario_id: 'S003', domain: 'marketing', data_freshness: 'high', accuracy_need: 'medium', budget_level: 'low', time_to_market: 'fast', recommended_strategy: 'zero_shot' },
-          { scenario_id: 'S004', domain: 'finance_reporting', data_freshness: 'high', accuracy_need: 'high', budget_level: 'medium', time_to_market: 'fast', recommended_strategy: 'zero_shot' },
-          { scenario_id: 'S005', domain: 'hr_onboarding', data_freshness: 'low', accuracy_need: 'medium', budget_level: 'low', time_to_market: 'fast', recommended_strategy: 'fine_tuning' },
-        ]
-      },
-      phases: [
-        {
-          id: 'wrong-strategy-cell',
-          title: 'Fase 1',
-          instruction: 'Seleziona le celle recommended_strategy che ritieni errate rispetto ai vincoli. Ce ne sono 2.',
-          selectionMode: 'cell',
-          correctCells: [
-            { row: 3, column: 'recommended_strategy', feedback: '❌ S004 — finance_reporting con data_freshness HIGH e accuracy_need HIGH dovrebbe usare RAG, non zero_shot. Dati aggiornati + alta precisione = RAG obbligatorio.' },
-            { row: 4, column: 'recommended_strategy', feedback: '❌ S005 — hr_onboarding con budget LOW e time_to_market FAST non può permettersi fine_tuning. Con data_freshness LOW, zero_shot con prompt ben costruito è la scelta corretta.' },
-          ]
-        },
-        {
-          id: 'decision-columns',
-          title: 'Fase 2',
-          instruction: 'Seleziona le colonne chiave per prendere una decisione di strategia.',
-          selectionMode: 'column',
-          correctColumns: ['data_freshness', 'accuracy_need', 'budget_level', 'time_to_market']
-        }
-      ]
-    },
     media: [
       {
         type: 'video',
