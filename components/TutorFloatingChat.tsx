@@ -90,8 +90,9 @@ export default function TutorFloatingChat() {
     <>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-24 right-5 z-[90] rounded-full bg-cyan-500 text-navy-950 px-4 py-3 font-semibold shadow-lg shadow-cyan-900/40"
+        className="fixed bottom-24 right-5 z-[90] rounded-full bg-cyan-500 text-navy-950 px-4 py-3 font-semibold shadow-lg shadow-cyan-900/40 flex items-center gap-2 hover:bg-cyan-400 transition"
       >
+        <span aria-hidden="true">✨</span>
         Tutor AI
       </button>
 
@@ -99,10 +100,15 @@ export default function TutorFloatingChat() {
         <div className="fixed bottom-36 right-5 z-[90] w-[92vw] max-w-md h-[68vh] rounded-2xl border border-cyan-400/30 bg-navy-900 text-gray-100 shadow-2xl flex flex-col">
           <div className="p-3 border-b border-cyan-400/20 flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-cyan-300">Tutor AI</p>
+              <p className="text-sm font-semibold text-cyan-300 flex items-center gap-2">
+                <span aria-hidden="true">🤖</span> Tutor AI
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
+              </p>
               <p className="text-[11px] text-gray-400">Sessione persistente su tutto il sito</p>
             </div>
-            <button onClick={clearChat} className="text-xs text-gray-400 hover:text-white">Reset</button>
+            <button onClick={clearChat} className="text-xs text-gray-400 hover:text-white flex items-center gap-1">
+              <span aria-hidden="true">🗑️</span> Reset
+            </button>
           </div>
 
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-3 space-y-2">
@@ -111,6 +117,10 @@ export default function TutorFloatingChat() {
             )}
             {messages.map((m, i) => (
               <div key={i} className={`text-sm p-2 rounded-lg ${m.role === 'user' ? 'bg-cyan-600/20 ml-8' : 'bg-navy-800 mr-8'}`}>
+                <div className="mb-1 text-[11px] uppercase tracking-wide text-gray-400 flex items-center gap-1">
+                  {m.role === 'user' ? <span aria-hidden="true">🧑</span> : <span aria-hidden="true">🤖</span>}
+                  {m.role === 'user' ? 'Tu' : 'Tutor'}
+                </div>
                 <p className="whitespace-pre-wrap">{m.text}</p>
                 {m.role === 'assistant' && m.data?.bullets && m.data.bullets.length > 0 && (
                   <ul className="list-disc ml-5 mt-2 text-xs text-gray-300 space-y-1">
@@ -128,6 +138,19 @@ export default function TutorFloatingChat() {
                 )}
               </div>
             ))}
+            {loading && (
+              <div className="text-sm p-2 rounded-lg bg-navy-800 mr-8">
+                <div className="mb-1 text-[11px] uppercase tracking-wide text-gray-400 flex items-center gap-1">
+                  <span aria-hidden="true">🤖</span> Tutor
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse [animation-delay:120ms]" />
+                  <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse [animation-delay:240ms]" />
+                  <span className="text-xs text-gray-400 ml-2">Sto rispondendo…</span>
+                </div>
+              </div>
+            )}
             {lastSources.length > 0 && (
               <div className="pt-2">
                 <p className="text-[11px] text-gray-400 mb-1">Fonti</p>
@@ -158,7 +181,7 @@ export default function TutorFloatingChat() {
               className="flex-1 rounded-md bg-navy-950 border border-cyan-400/20 px-3 py-2 text-sm resize-none min-h-[44px] max-h-28"
             />
             <button onClick={ask} disabled={loading} className="rounded-md bg-cyan-500 text-navy-950 px-3 py-2 text-sm font-semibold disabled:opacity-50">
-              {loading ? '...' : 'Invia'}
+              <span className="flex items-center gap-1">{loading ? '...' : <>Invia <span aria-hidden="true">➤</span></>}</span>
             </button>
           </div>
         </div>
