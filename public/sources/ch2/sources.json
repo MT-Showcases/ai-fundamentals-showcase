@@ -1,0 +1,20 @@
+{
+  "chapter": "ch2",
+  "slug": "how-ai-works",
+  "title": "Come funziona l'AI",
+  "policy": "Capitolo introduttivo teorico — nessun dataset primario.",
+  "sources": [
+    {
+      "id": "src-013",
+      "title": "AI for Everyone — Andrew Ng (Coursera)",
+      "origin": "https://www.coursera.org/learn/ai-for-everyone",
+      "type": "course"
+    },
+    {
+      "id": "src-014",
+      "title": "What is Machine Learning? — Google ML Crash Course",
+      "origin": "https://developers.google.com/machine-learning/crash-course/ml-intro",
+      "type": "tutorial"
+    }
+  ]
+}

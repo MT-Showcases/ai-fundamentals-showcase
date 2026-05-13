@@ -41,7 +41,8 @@
       "chapters": [
         "ch3",
         "ch5",
-        "ch9"
+        "ch9",
+        "ch4"
       ],
       "notes": "Dispensa strutturata su supervised/unsupervised learning e valutazione modelli."
     },
@@ -100,7 +101,8 @@
       "chapters": [
         "ch3",
         "ch5",
-        "ch13"
+        "ch13",
+        "ch4"
       ],
       "notes": "Guida pratica per pipeline ML, preprocessing, training e metriche."
     },
@@ -129,7 +131,8 @@
       "chapters": [
         "ch3",
         "ch9",
-        "ch13"
+        "ch13",
+        "ch4"
       ],
       "notes": "Dataset classico per classificazione e feature engineering."
     },
@@ -176,6 +179,39 @@
         "ch15"
       ],
       "notes": "Framework operativo per gestire rischi AI in progettazione e deployment."
+    },
+    {
+      "id": "src-013",
+      "title": "AI for Everyone — Andrew Ng (Coursera)",
+      "origin": "https://www.coursera.org/learn/ai-for-everyone",
+      "type": "course",
+      "license": "All rights reserved",
+      "version": "1.0",
+      "lastVerified": "2026-05-13",
+      "chapters": [
+        "ch1",
+        "ch2"
+      ],
+      "notes": "Corso introduttivo accessibile sull'AI, ottimo per CH1 e CH2."
+    },
+    {
+      "id": "src-014",
+      "title": "What is Machine Learning? — Google ML Crash Course",
+      "origin": "https://developers.google.com/machine-learning/crash-course/ml-intro",
+      "type": "tutorial",
+      "license": "CC-BY-4.0",
+      "version": "1.0",
+      "lastVerified": "2026-05-13",
+      "chapters": [
+        "ch1",
+        "ch2",
+        "ch4"
+      ],
+      "notes": "Introduzione pratica al ML di Google, usabile per CH1, CH2 e CH4."
     }
-  ]
+  ],
+  "policy": {
+    "ch1": "Capitolo introduttivo teorico — nessun dataset primario. Fonti: media divulgativo e articoli generali.",
+    "ch2": "Capitolo introduttivo teorico — nessun dataset primario. Fonti: media divulgativo e articoli generali."
+  }
 }

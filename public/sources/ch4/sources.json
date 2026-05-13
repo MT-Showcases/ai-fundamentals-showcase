@@ -1,0 +1,31 @@
+{
+  "chapter": "ch4",
+  "slug": "machine-learning",
+  "title": "Machine Learning",
+  "sources": [
+    {
+      "id": "src-003",
+      "title": "Stanford CS229 Lecture Notes",
+      "origin": "https://cs229.stanford.edu/main_notes.pdf",
+      "type": "pdf"
+    },
+    {
+      "id": "src-007",
+      "title": "Scikit-learn User Guide",
+      "origin": "https://scikit-learn.org/stable/user_guide.html",
+      "type": "article"
+    },
+    {
+      "id": "src-009",
+      "title": "Kaggle Titanic Dataset",
+      "origin": "https://www.kaggle.com/c/titanic",
+      "type": "dataset"
+    },
+    {
+      "id": "src-014",
+      "title": "What is Machine Learning? — Google ML Crash Course",
+      "origin": "https://developers.google.com/machine-learning/crash-course/ml-intro",
+      "type": "tutorial"
+    }
+  ]
+}
