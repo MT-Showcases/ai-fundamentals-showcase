@@ -130,6 +130,31 @@ export default function OpenClawPage() {
 
       <div className="max-w-4xl mx-auto px-6 py-16 space-y-20">
 
+        {/* Sezione 0 — Cos'è OpenClaw */}
+        <section>
+          <h2 className="text-2xl font-bold text-white mb-2">Cos&apos;è OpenClaw?</h2>
+          <p className="text-gray-400 mb-6 leading-relaxed">
+            <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:text-cyan-200 font-semibold">OpenClaw</a> è una piattaforma per orchestrare agenti AI via CLI e configurazione. Permette di connettere modelli linguistici (Claude, GPT-4, Gemini...) a strumenti reali — browser, terminale, API, file system — e farli collaborare su task complessi.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div className="rounded-xl border border-blue-400/20 bg-navy-800/60 p-5">
+              <p className="text-cyan-300 font-bold mb-1">Agenti autonomi</p>
+              <p className="text-gray-400 text-sm">Ogni agente ha un ruolo, una memoria e accesso a tool specifici. Lavorano in parallelo o in sequenza.</p>
+            </div>
+            <div className="rounded-xl border border-blue-400/20 bg-navy-800/60 p-5">
+              <p className="text-cyan-300 font-bold mb-1">Orchestrazione</p>
+              <p className="text-gray-400 text-sm">Un agente principale coordina i sotto-agenti, assegna task, raccoglie output e gestisce errori.</p>
+            </div>
+            <div className="rounded-xl border border-blue-400/20 bg-navy-800/60 p-5">
+              <p className="text-cyan-300 font-bold mb-1">Memoria persistente</p>
+              <p className="text-gray-400 text-sm">Gli agenti ricordano decisioni, contesto e storico tra sessioni diverse tramite file di memoria strutturati.</p>
+            </div>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            In questo progetto, Michele invia un messaggio su Telegram. Spark (l&apos;agente principale) lo riceve, pianifica il lavoro e attiva i sotto-agenti giusti. Tutto il materiale che vedi su questo sito — capitoli, quiz, lab, media — è stato prodotto da questa catena di agenti.
+          </p>
+        </section>
+
         {/* Sezione 1 — Il sistema */}
         <section>
           <h2 className="text-2xl font-bold text-white mb-2">Il sistema</h2>
@@ -274,6 +299,89 @@ export default function OpenClawPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </section>
+
+        {/* Sezione — Risorse e link */}
+        <section>
+          <h2 className="text-2xl font-bold text-white mb-2">Risorse e link utili</h2>
+          <p className="text-gray-400 mb-8">Tool, documentazione e repository usati in questo progetto.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              {
+                name: 'OpenClaw',
+                desc: 'La piattaforma di orchestrazione agenti AI usata per costruire tutto questo.',
+                url: 'https://openclaw.ai',
+                urlLabel: 'openclaw.ai',
+                color: 'border-cyan-400/40 hover:border-cyan-400',
+              },
+              {
+                name: 'OpenClaw Docs',
+                desc: 'Documentazione ufficiale: skill, agenti, configurazione, CLI reference.',
+                url: 'https://docs.openclaw.ai',
+                urlLabel: 'docs.openclaw.ai',
+                color: 'border-cyan-400/40 hover:border-cyan-400',
+              },
+              {
+                name: 'Wayground',
+                desc: 'Piattaforma quiz e learning usata da Quizard per creare i quiz interattivi del corso.',
+                url: 'https://wayground.com',
+                urlLabel: 'wayground.com',
+                color: 'border-yellow-400/40 hover:border-yellow-400',
+              },
+              {
+                name: 'Gamma.app',
+                desc: 'Generatore di slide AI usato da GammaBot per produrre le presentazioni del corso.',
+                url: 'https://gamma.app',
+                urlLabel: 'gamma.app',
+                color: 'border-purple-400/40 hover:border-purple-400',
+              },
+              {
+                name: 'Google NotebookLM',
+                desc: 'Usato da Notebook per analizzare i capitoli e generare podcast e video riassuntivi.',
+                url: 'https://notebooklm.google.com',
+                urlLabel: 'notebooklm.google.com',
+                color: 'border-green-400/40 hover:border-green-400',
+              },
+              {
+                name: 'GitHub MT-Showcases',
+                desc: 'Repository del sito. Ogni push su main triggera il deploy automatico su Vercel.',
+                url: 'https://github.com/MT-Showcases/ai-fundamentals-showcase',
+                urlLabel: 'github.com/MT-Showcases',
+                color: 'border-blue-400/40 hover:border-blue-400',
+              },
+              {
+                name: 'Vercel',
+                desc: 'Hosting e deploy continuo del sito. Zero config, integrazione nativa con Next.js.',
+                url: 'https://vercel.com',
+                urlLabel: 'vercel.com',
+                color: 'border-blue-400/40 hover:border-blue-400',
+              },
+              {
+                name: 'Next.js',
+                desc: 'Framework React usato per costruire il sito. App Router, SSG, API routes.',
+                url: 'https://nextjs.org',
+                urlLabel: 'nextjs.org',
+                color: 'border-gray-400/40 hover:border-gray-300',
+              },
+            ].map(link => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block rounded-xl border ${link.color} bg-navy-800/40 p-5 transition-all group`}
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="font-semibold text-white group-hover:text-cyan-300 transition-colors">{link.name}</p>
+                    <p className="text-gray-400 text-sm mt-1 leading-relaxed">{link.desc}</p>
+                  </div>
+                  <span className="text-gray-500 text-xs mt-1 whitespace-nowrap">↗</span>
+                </div>
+                <p className="text-xs text-gray-600 mt-3 font-mono">{link.urlLabel}</p>
+              </a>
+            ))}
           </div>
         </section>
 

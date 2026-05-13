@@ -85,5 +85,32 @@ Il sito include un Tutor AI integrato (chat floating in basso a destra) che risp
 Provider: Groq (llama-3.3-70b-versatile)
 Architettura: Vercel-native, RAG index statico JSON, nessun database esterno.
 
+RISORSE E LINK UTILI
+
+OpenClaw — https://openclaw.ai
+La piattaforma di orchestrazione agenti AI usata per costruire questo sito.
+
+OpenClaw Docs — https://docs.openclaw.ai
+Documentazione ufficiale: skill, agenti, configurazione, CLI reference.
+
+Wayground — https://wayground.com
+Piattaforma quiz e learning usata da Quizard per creare i quiz interattivi del corso.
+
+Gamma.app — https://gamma.app
+Generatore di slide AI usato da GammaBot per produrre le presentazioni del corso.
+
+Google NotebookLM — https://notebooklm.google.com
+Usato da Notebook per analizzare i capitoli e generare podcast e video riassuntivi.
+
+GitHub MT-Showcases — https://github.com/MT-Showcases/ai-fundamentals-showcase
+Repository del sito. Ogni push su main triggera il deploy automatico su Vercel.
+
+Vercel — https://vercel.com
+Hosting e deploy continuo del sito. Zero config, integrazione nativa con Next.js.
+
+Next.js — https://nextjs.org
+Framework React usato per costruire il sito. App Router, SSG, API routes.
+
+Docente alla Steve Jobs Academy di Catania. Ha progettato il corso, supervisionato ogni capitolo e guidato il sistema di agenti per creare questo sito.
 Michele Tornello — Docente e Ideatore
 Docente alla Steve Jobs Academy di Catania. Ha progettato il corso, supervisionato ogni capitolo e guidato il sistema di agenti per creare questo sito.
