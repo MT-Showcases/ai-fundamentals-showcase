@@ -6,7 +6,6 @@ node_modules
 
 # Local/docs artifacts not needed at runtime
 docs
-media
 scripts
 
 # Workspace/meta
