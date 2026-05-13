@@ -25,6 +25,14 @@ export const ch15: Chapter = {
     ],
     media: [
       {
+        type: 'video',
+        title: 'Video Capitolo 15',
+        description: 'Panoramica guidata su scenari futuri AI, trade-off strategici e governance nei prossimi 5-10 anni.',
+        estimatedDuration: '15 min',
+        placeholderPath: 'media/ch15-future-ai/video.mp4',
+        notes: 'ready'
+      },
+      {
         type: 'infographic',
         title: 'Infografica Capitolo 15',
         description: 'Scenario map sul futuro dell’AI: impatti, rischi e scelte strategiche nei prossimi 5-10 anni.',
